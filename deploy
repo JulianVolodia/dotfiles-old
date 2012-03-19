@@ -59,9 +59,9 @@ def main():
     parser.add_argument('symlink_dir', type=str, help="Directory where symlinks should be created")
     args = parser.parse_args()
 
-    source_dir = args['source']
-    sink_dir = args['sink']
-    symlink_dir = args['symlink_dir']
+    source_dir = args.source_dir
+    sink_dir = args.sink_dir
+    symlink_dir = args.symlink_dir
     for i in find_source_files(source_dir):
         print("\n========")
         print(i)
