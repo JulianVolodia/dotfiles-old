@@ -71,11 +71,6 @@ zstyle ':vcs_info:*' actionformats "$black%s%c%u:%a$reset $repocwd"
 zstyle ':vcs_info:*' nvcsformats "$cwd"
 zstyle ':vcs_info:*+set-message:*' hooks remove-trailing-dot shorten-path
 
-local userrepocwd="$greenb~$reset@$green%b$reset/$cyanb%S$reset"
-zstyle ":vcs_info:*:$USER" formats "$black%s%c%u$reset $userrepocwd"
-zstyle ":vcs_info:*:$USER" actionformats "$black%s%c%u:%a$reset $userrepocwd"
-zstyle ":vcs_info:*+set-message:*:$USER" hooks remove-trailing-dot
-
 # Shortens path
 function +vi-shorten-path() {
     hook_com[base]="${hook_com[base]/#$HOME/~}"
