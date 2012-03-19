@@ -43,7 +43,10 @@ def copy_or_symlink(source, target, create_symlink=False):
         os.makedirs(op.dirname(target))
     if create_symlink:
         print("Creating symlink from", source, "to", target + "…")
-        os.symlink(source, target)
+        try:
+            os.symlink(source, target)
+        except OSError:
+            print("Skipping creation of symlink at", target)
     else:
         print("Copying from", source, "to", target + "…")
         shutil.copyfile(source, target)
