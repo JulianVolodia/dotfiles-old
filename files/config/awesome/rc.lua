@@ -19,7 +19,7 @@ require("naughty")
 
 -- {{{ Variable definitions
 datadir = os.getenv("XDG_DATA_HOME") .. "/awesome" or "/home/runiq/.local/share/awesome"
-beautiful.init(datadir .. "/themes/runiq/theme.lua")
+beautiful.init(datadir .. "/themes/molokai/theme.lua")
 
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
