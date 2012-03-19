@@ -1,0 +1,24 @@
+# Language
+# Help files have been translated into a few languages.
+# You can set lang to a semicolon separated list of the following
+# values: en, cs, de, fr, it, nl, pl, ru, uk. If you omit this,
+# mcabber will try to autodetect it from your locale, with fallback
+# to en.
+# You also can specify a list of directories, where help is located,
+# for example, if your mcabber is installed with another prefix than
+# your modules.
+# This may be convenient to print help not into the status buffer, but into
+# currently opened buffer. For that set help_to_current option.
+#set lang = en
+#set help_dirs = "/usr/share/mcabber/help;~/share/mcabber/help"
+#set help_to_current = 0
+
+# Aspell
+# If your mcabber has been built with Aspell support, you can enable spell
+# checking with the following options (you can't change them once mcabber is
+# running).
+set spell_enable = 0
+#set spell_lang = de_DE
+#set spell_encoding = iso8859-1
+#set spell_encoding = UTF-8
+

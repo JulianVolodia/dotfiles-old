@@ -1,0 +1,20 @@
+# ~/.zprofile
+
+export PATH="$HOME/.local/bin:$PATH"
+export PYTHONDOCS="/usr/share/doc/python/html"
+export EDITOR="vim"
+export RXVT_SOCKET="${XDG_CACHE_HOME}/urxvt/urxvtd-${HOST}"
+
+# For virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export WORKON_HOME="${XDG_DATA_HOME}/virtualenv/envs"
+export PROJECT_HOME="${HOME}/prj"
+export VIRTUALENVWRAPPER_HOOK_DIR="${XDG_DATA_HOME}/virtualenv/hooks"
+export VIRTUALENVWRAPPER_LOG_DIR="${HOME}/.log/virtualenv"
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--no-site-packages --distribute"
+# make pip automatically use a virtualenv if it's active
+export PIP_VIRTUALENV_BASE=${WORKON_HOME}
+export PIP_RESPECT_VIRTUALENV=true
+
+# for notmuch mail index program
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"

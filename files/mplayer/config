@@ -1,0 +1,8 @@
+[default]
+# Write your default config options here!
+
+ao=pulse
+ass=true
+embeddedfonts=true
+nosub=true
+fixed-vo=true

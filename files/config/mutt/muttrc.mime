@@ -1,0 +1,16 @@
+##################
+# MIME-Optionen  #
+##################
+
+# Stellt alle automatisch im Pager darstellbaren Dateitypen auch dort dar
+set implicit_autoview
+
+# Gibt die Dateitypen an, die geöffnet werden können (durch Leerzeichen
+# trennen)
+auto_view application/msword text/html
+
+alternative_order text/plain text/enriched text/html
+
+# Pfad zur .mailcap-Datei, die MIME-Typen und Informationen über die sie
+# öffnenden Programme enthält
+set mailcap_path = "~/.mailcap"

@@ -1,0 +1,34 @@
+[ui]
+username = runiq <runiq@archlinux.us>
+merge = vimdiff
+ssh = ssh -C
+# Cleaner style for graphlog extension
+style = compact
+# directory
+# Also works for rsync! (apparently…)
+ignore=~/.cvsignore
+
+[diff]
+# Use git diff format as default
+git = True
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -f -d -c "wincmd J" "$output" "$local" "$other" "$base"
+
+[extensions]
+children = 
+color = 
+fetch =
+gpg =
+graphlog = 
+inotify = 
+keyword =
+mq = 
+record = 
+rebase = 
+schemes =
+
+[gpg]
+# if cmd is not provided it defaults to gpg
+cmd=/usr/bin/gpg2

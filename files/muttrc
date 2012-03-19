@@ -1,0 +1,122 @@
+unset move
+set folder="$HOME/.mail"
+
+source ~/.config/mutt/muttrc.accounts
+
+source ~/.config/mutt/muttrc.mailboxes
+
+set spoolfile="+al/INBOX"
+
+##################
+# SMTP-Optionen #
+##################
+
+set edit_headers=yes
+set sendmail="/usr/local/bin/msmtpQ"
+set sendmail_wait=-1
+set use_envelope_from=yes
+
+#######################
+# Allgemeine Optionen #
+#######################
+
+# Keine Verzögerung beim Umschalten von Mailboxes
+set sleep_time=0
+
+# Beim Beenden fragen, aber Ja als Standardantwort setzen
+set quit=ask-yes
+
+# Nachrichten in MAIL belassen, ohne beim Beenden des Programmes nach Verschieben der Nachrichten zu fragen
+set nomove
+
+# Nachrichten nicht als Gelesen markieren, wenn mit dem Cursor drübergefahren wird
+unset mark_old
+
+# Alte Nachricht bei Antworten zitieren
+set include = yes
+
+# "Cc:"-Zeile hinzufügen
+set askcc
+
+# "Bcc:"-Zeile hinzufügen
+set askbcc
+
+# Anhänge mit weiterleiten
+set fcc_attach
+
+# Bei Antworten an eine ganze Gruppe sich nicht selbst als Adressant eintragen
+unset reply_self
+
+# Antworttext
+set attribution = "On %d, %n wrote:"
+
+# Weiterleitungs-Betreff
+set forward_format = "Fwd: %s"
+
+# Format von eingerücktem Text
+set indent_str = "> "
+
+# Tilde einfügen nach Ende einer Mail
+set tilde
+
+# Anzahl der Index-Zeilen, die über dem Pager angezeigt werden
+# (eine davon ist die Statusleiste)
+set pager_index_lines=6
+set pager_context=5
+set pager_stop
+set smart_wrap
+set sig_dashes
+
+###################
+# System-Optionen #
+###################
+
+# Kopzeilen bleiben im Speicher
+# Unnötig mit offlineimap
+set header_cache = ~/.cache/mutt/headers
+
+# Nachrichtenkörper bleibt ebenfalls im Speicher
+# Unnötig mit offlineimap
+#unset message_cachedir
+
+# Mailbox-Format einstellen
+set mbox_type = "maildir"
+
+# Editor zum Mails schreiben
+# Hier: Vim mit Textumbruch nach 72 Zeichen
+set editor = "vim +':set textwidth=72' +':set wrap'"
+
+# Charset einstellen
+set charset = "UTF8"
+
+# Piepsen einstellen
+unset beep
+
+# Befehl zum Kommandozeilendrucker
+set print_command = "lp"
+
+# ob "@localhost" an die E-Mails angefügt wird, bei denen kein Domainname
+# angefügt wird 
+unset use_domain
+
+# Beim Start von Mutt nicht nach dem Weiterschreiben von Entwürfen fragen
+set recall = no
+set ssl_usesystemcerts = yes
+set move = no 
+
+# Nachrichten nach Threads sortieren
+set sort=threads
+# In Threads älteste Nachricht zuletzt anzeigen
+set sort_aux=date-received
+# Mailbox mit neuester Nachricht ganz oben anzeigen
+#set sort_browser=reverse-date
+
+source ~/.config/mutt/muttrc.mime
+
+source ~/.config/mutt/muttrc.keybindings
+
+source ~/.config/mutt/muttrc.colors
+
+source ~/.config/mutt/muttrc.crypto
+
+source ~/.config/mutt/muttrc.lists

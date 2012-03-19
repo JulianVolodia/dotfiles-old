@@ -1,0 +1,222 @@
+" Vim Configuration file
+" TODO:
+" - find suitable substitute for <esc> that works with lmap
+
+" {{{ General
+" Runtime paths
+set rtp=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
+
+" put pathogen before filetype indent on and syntax indent on
+" but after setting the rtp
+call pathogen#infect()
+call pathogen#helptags()
+
+syntax enable
+filetype plugin indent on
+set background=dark
+colorscheme molokai
+" Don't create backup files
+set nobackup
+" Save viminfo file to keep state information from one vim session to the next
+set viminfo+=n$XDG_CACHE_HOME/vim/info
+" Common directory for all swap files (first existing directory is used)
+set directory=$XDG_CACHE_HOME/vim/tmp,.,/var/tmp,/tmp
+" Persistent undo (see ":help persistent-undo")
+set undofile
+" Common directory for persistent undo files
+set undodir=$XDG_CACHE_HOME/vim/undo
+
+" Always show status line
+set laststatus=2
+" Use markers as a standard fold method
+set foldmethod=marker
+
+" Use mouse
+set mouse=a
+" Breaks lines in sane places
+" (e.g. whitespace instead of smack in the middle of words)
+set linebreak
+" Add this in front of line if line is too long for terminal
+set showbreak=+
+" Show search hits during input
+set incsearch
+" highlight search hits
+set hlsearch
+" Case-insensitive search unless there are capital letters in search expression
+set ignorecase
+set smartcase
+" Lets you leave edited buffers without having to save them
+set hidden
+" When splitting, only split current viewport
+set noequalalways
+" When splitting, create new viewports below/right to current viewports
+set splitbelow
+set splitright
+" At all times show at least this many lines over/under cursor
+set scrolloff=3
+" Show current command in status line
+set showcmd
+" Also consider other tabs if searching for already open buffers
+set switchbuf=usetab
+" Show tabline only if there is >1 tab
+set showtabline=1
+
+" 1 tab = 8 spaces
+" Don’t fuck with this
+set tabstop=8
+" use this many spaces for autoindent and day-to-day editing
+set shiftwidth=4
+" God, this is complicated, see ":help smarttab"
+set smarttab
+" Replace tabs with spaces
+" To put actual tab, use <c-v><tab>
+set expandtab
+" Use this when pressing <tab> instead of tabstop
+" Allows to keep tabstop at default value while editing as if it's set to
+" softtabstop width
+set softtabstop=4
+
+" Bash-like completion behavior
+set wildmenu
+set wildmode=list:longest,list:full
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+" Doesn't work if put in tex.vim ftplugin file
+let g:tex_flavor = "latex"
+" }}}
+
+" {{{ Keybindings
+" Better access to <leader>
+let mapleader = ","
+" Put colon closer to home row
+map ö :
+" Easier switching to window mode
+noremap <leader>w <c-w>
+" Easier :nohl
+noremap <silent> <cr> :nohl<cr>
+" Easier movement between viewports
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+" Easier switching between buffers
+noremap <silent> <right> :bnext<cr>
+noremap <silent> <left> :bprev<cr>
+
+" Makes folding fun
+noremap <silent> <Space> za
+
+" Y should yank to end of line
+noremap Y y$
+
+" Allow saving of files as root if I forgot to use sudo
+cmap W %!sudo tee > /dev/null %
+
+" Easier opening of command line window
+nnoremap : q:i
+vnoremap : q:i
+nnoremap / q/i
+vnoremap / q/i
+nnoremap ? q?i
+vnoremap ? q?i
+" allow leaving cmdline-window with <ESC>
+au CmdwinEnter * nnoremap <buffer> <ESC> :q<cr>
+" allow normal cmdline :, / and ?
+nnoremap q: :
+vnoremap q: :
+nnoremap q/ /
+vnoremap q/ /
+nnoremap q? ?
+vnoremap q? ?
+
+" Open quickfix window
+map <leader>qo :botright :cope<cr>
+" Jump to current error
+map <leader>qc :cc<cr>
+" Open quickfix window in bottom right IF there are any errors
+map <leader>qq :botright :cw<cr>
+" Go to next error in quickfix window
+map <leader>qn :cn<cr>
+" Go to previous error in quickfix window
+map <leader>qp :cp<cr>
+" }}}
+
+" {{{ Plugins
+" ack plugin
+noremap <leader>a <Esc>:Ack<Space>
+" for adding to the current search results
+noremap <leader>A <Esc>:AckAdd<Space>
+
+" command-t plugin
+" Max height the match window is allowed to expand to
+let g:CommandTMaxHeight = 12
+" Open match window at top so best result is shown always in the same place
+" let g:CommandTMatchWindowAtTop = 0
+"
+" Gundo plugin
+" Toggles the Gundo windows
+" It looks kinda like a tree, see? See?
+nnoremap <leader>y :GundoToggle<CR>
+" horizontal width of Gundo graph
+let g:gundo_width = 50
+" Vertical height of preview window
+"let g:gundo_preview_height = 25
+" Show preview window below file instead of below graph
+let g:gundo_preview_bottom = 0
+" Show Gundo graph on the right
+"let g:gundo_right = 1
+" automatically close Gundo windows on reverting
+let g:gundo_close_on_revert = 1
+
+" NERDTree plugin
+" Sort case sensitively
+let g:NERDTreeCaseSensitiveSort = 1
+" Close the NERDTree window after using o, i, t and T mappings
+let g:NERDTreeQuitOnOpen = 1
+" No line numbers in NERDTree
+let g:NERDTreeShowLineNumbers = 0
+" No statusline for NERDTree since that is used for displaying buffers
+let g:NERDTreeStatusline = 0
+" Open NERDTree
+noremap <leader>T :NERDTreeToggle<CR>
+
+" Tagbar plugin
+" Open tagbar window on the left
+let tagbar_left = 1
+" Make tagbar window as wide as the gundo plugin windows
+let tagbar_width = 45
+" Automatically jump to tagbar window as soon as it's opened
+let tagbar_autofocus = 1
+" Automatically close tagbar window when choosing a tag
+let tagbar_autoclose = 1
+" If current tag is inside a closed fold, open that fold just enough to show
+" the tag
+let tagbar_autoshowtag = 1
+" Toggle Tagbar window
+nnoremap <silent> <leader>g :TagbarToggle<cr>
+
+" TaskList plugin
+" Open TaskList
+" Don't use ":" in place of "<Plug>" here, messes with another plugin
+noremap <leader>l <Plug>TaskList
+" Open TaskList on bottom (0 = top)
+let g:tlWindowPosition = 1
+" List of tokens to look for
+let g:tlTokenList = ['TODO', 'FIXME']
+
+" yankring plugin
+" TODO: Configure properly
+" Disable plugin until I have it configured properly
+let g:yankring_enabled = 0
+" Place where history file is stored
+let g:yankring_history_dir = '~/.cache/vim/yankring'
+" }}}
+" vim: foldmethod=marker
+" bla

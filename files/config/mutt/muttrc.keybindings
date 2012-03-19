@@ -1,0 +1,47 @@
+###############
+# Keybindings #
+###############
+
+
+
+##########
+# Makros #
+##########
+
+set query_command = "abook --mutt-query '%s'"
+
+macro generic,index,pager \ca \
+    "<shell-escape>abook<return>" \
+    "Abook starten"
+
+macro index,pager A \
+    "<shell-escape>abook --add-email<return>" \
+    "Absender zum Adressbuch hinzufügen"
+
+macro index \cb \
+    urlview\n \
+    "URLs aus einer Nachricht extrahieren"
+macro pager \cb \
+    <pipe-entry>'w3m'<enter> \
+    "Follow links in w3m"
+
+# Prompts user for notmuch search terms and jumps to a temporary maildir
+# showing search results
+macro index,pager <F8> \
+    "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --output-dir ~/.cache/mutt-notmuch/results/ --prompt search<enter><change-folder-readonly>~/.cache/mutt-notmuch/results<enter>" \
+    "search mail with notmuch"
+# Same thing for the browser screen
+# macro browser <F8> \
+    # "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --output-dir ~/.cache/mutt-notmuch/results/ --prompt search<enter><change-dir>../.cache/<enter><search>mutt_results<enter><enter>" \
+    # "search mail with notmuch"
+
+# Reconstructs thread corresponding to current search result
+macro index <F9> \
+    "<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>mutt-notmuch --output-dir ~/.cache/mutt-notmuch/results/ thread<enter><change-folder-readonly>~/.cache/mutt-notmuch/results<enter><enter-command>set wait_key<enter>" \
+    "search and reconstruct owning thread with notmuch"
+
+# Removes inbox tag from the current message; customize tags according to
+# workflow, please
+# macro index,pager <F6> \
+    # "<enter-command>unset wait_key<enter><pipe-message>mutt-notmuch --output-dir ~/.cache/mutt-notmuch/results/ tag -inbox<enter><enter-command>set wait_key<enter>" \
+    # "remove message from inbox with notmuch"

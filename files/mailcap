@@ -1,0 +1,5 @@
+application/msword; antiword %s; copiousoutput
+application/pdf; mupdf %s
+image/*; feh %s
+text/html; w3m -I %{charset} -T text/html -dump; nametemplate=%s.html; copiousoutput
+text/htm; w3m -I %{charset} -T text/html -dump; nametemplate=%s.htm; copiousoutput

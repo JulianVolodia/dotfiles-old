@@ -1,0 +1,26 @@
+##########
+# Farben #
+##########
+
+color normal default default 
+color attachment brightblack default 
+color hdrdefault brightdefault default 
+color indicator default blue 
+color markers default red 
+color quoted blue default 
+color signature red default 
+color status default default 
+color tilde black default 
+color tree brightblue default 
+color index red default ~D 
+color index green default ~T 
+color header brightgreen default ^From: 
+color header brightgreen default ^To: 
+color header brightgreen default ^Reply-To: 
+color header brightgreen default ^Cc: 
+color header brightgreen default ^Bcc: 
+color header brightblue default ^Subject: 
+# identifies email addresses 
+color body red default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ 
+# identifies URLs
+color body blue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+ 

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Monitor setzen
+if [[ $(xrandr | grep "HDMI1 connected") ]]; then
+    xrandr --output HDMI1 --auto --output LVDS1 --auto --primary --below HDMI1
+    # X-Einstellungen setzen
+    xrdb -merge ~/.Xresources-monitor
+else
+    # X-Einstellungen setzen
+    xrdb -merge ~/.Xresources
+fi
+
+# Set background
+imlibsetroot -x 0 -s -p c ~/.config/background.jpg -x 1 -s -p c ~/.config/background.jpg  
+
+# Set cursor
+xsetroot -cursor_name left_ptr
+
+# Farbtemperatur setzen
+redshift &
+
+# UIM
+#export GTK_IM_MODULE='uim'
+#export QT_IM_MODULE='uim'
+
+# GTK2-Einstellungen setzen
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# Awesome
+exec ck-launch-session awesome

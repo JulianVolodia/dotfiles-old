@@ -1,0 +1,10 @@
+# This file contains all mailing lists.
+#
+set followup_to
+set honor_followup_to
+
+subscribe aur-general@archlinux.org
+subscribe arch-haskell@archlinux.org
+subscribe arch-dev-public@archlinux.org
+subscribe rsync@lists.samba.org
+subscribe dev@suckless.org

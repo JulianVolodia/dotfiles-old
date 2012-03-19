@@ -1,0 +1,114 @@
+# ~/.zshrc
+
+autoload -Uz compinit zmv colors
+compinit
+colors
+
+# Setup gpg-agent for SSH keys
+if [ -f "${HOME}/.cache/gpg-agent/gpg-agent.info" ]; then
+    source "${HOME}/.cache/gpg-agent/gpg-agent.info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export GPG_TTY=$(tty)
+fi
+
+source virtualenvwrapper.sh
+
+# One history to rule them all
+HISTFILE=~/.cache/zsh/histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt inc_append_history share_history extended_glob
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle :compinstall filename '/home/runiq/.zshrc'
+
+# dircolors
+d="~/.dircolors"
+test -r $d && eval "$(dircolors $d)"
+
+alias mkdbindex="dropbox-index -R ~/shr/Dropbox/Public"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ya="yaourt"
+alias ls='ls -F --group-directories-first -h --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -lA'
+alias cdp='cdproject'
+
+# Prompt
+local reset black white red green blue cyan magenta yellow
+# Color definitions
+reset="%{$reset_color%}"
+black="%{$fg[black]%}"
+blackb="%{$fg_bold[black]%}"
+white="%{$fg[white]%}"
+whiteb="%{$fg_bold[white]%}"
+red="%{$fg[red]%}"
+redb="%{$fg_bold[red]%}"
+green="%{$fg[green]%}"
+greenb="%{$fg_bold[green]%}"
+blue="%{$fg[blue]%}"
+blueb="%{$fg_bold[blue]%}"
+cyan="%{$fg[cyan]%}"
+cyanb="%{$fg_bold[cyan]%}"
+magenta="%{$fg[magenta]%}"
+magentab="%{$fg_bold[magenta]%}"
+yellow="%{$fg[yellow]%}"
+yellowb="%{$fg_bold[yellow]%}"
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:*' enable hg git
+zstyle ':vcs_info:hg*:*' get-mq true
+zstyle ':vcs_info:*' stagedstr "$magenta?$reset"
+zstyle ':vcs_info:*' unstagedstr "$magenta!$reset"
+local repocwd="$cyanb%R$reset/$greenb%r$reset@$green%b$reset/$cyanb%S$reset"
+local cwd="$cyanb${PWD/#$HOME/%~}$reset"
+zstyle ':vcs_info:*' formats "$black%s%c%u$reset $repocwd"
+zstyle ':vcs_info:*' actionformats "$black%s%c%u:%a$reset $repocwd"
+zstyle ':vcs_info:*' nvcsformats "$cwd"
+zstyle ':vcs_info:*+set-message:*' hooks remove-trailing-dot shorten-path
+
+local userrepocwd="$greenb~$reset@$green%b$reset/$cyanb%S$reset"
+zstyle ":vcs_info:*:$USER" formats "$black%s%c%u$reset $userrepocwd"
+zstyle ":vcs_info:*:$USER" actionformats "$black%s%c%u:%a$reset $userrepocwd"
+zstyle ":vcs_info:*+set-message:*:$USER" hooks remove-trailing-dot
+
+# Shortens path
+function +vi-shorten-path() {
+    hook_com[base]="${hook_com[base]/#$HOME/~}"
+    hook_com[base]="${hook_com[base]:h}"
+}
+# Removes trailing dot
+function +vi-remove-trailing-dot() {
+    hook_com[subdir]=${hook_com[subdir]%%.}
+}
+
+precmd() {
+    vcs_info
+}
+user="%(!.$magentab%n.$yellow%n)$reset"
+host="$yellow%m$reset"
+repo='${vcs_info_msg_0_}'
+venv='${VIRTUAL_ENV+${black}venv${reset}}'
+sign="%(?.$black>.$magenta>)$reset"
+PROMPT="$user@$host $venv $repo
+$sign "
+
+autoload -Uz zkbd
+[[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && zkbd
+source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
+
+[[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
+[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
+[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
+[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
+[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
+[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
+[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
+[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
