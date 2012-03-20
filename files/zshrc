@@ -87,7 +87,7 @@ precmd() {
 user="%(!.$magentab%n.$yellow%n)$reset"
 host="$yellow%m$reset"
 repo='${vcs_info_msg_0_}'
-venv=' ${VIRTUAL_ENV+${black}venv${reset}}'
+venv='${VIRTUAL_ENV+ ${black}venv${reset}}'
 sign="%(?.$black>.$magenta>)$reset"
 PROMPT="$user@$host$venv $repo
 $sign "
