@@ -1,8 +1,5 @@
 # ~/.zprofile
 
-# Load keymap file to swap
-loadkeys $XDG_CONFIG_HOME/keymap
-
 export PATH="$HOME/.local/bin:$PATH"
 export PYTHONDOCS="/usr/share/doc/python/html"
 export EDITOR="vim"
