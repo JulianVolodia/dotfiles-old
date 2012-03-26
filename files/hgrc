@@ -24,6 +24,7 @@ gpg =
 graphlog = 
 inotify = 
 keyword =
+largefiles =
 mq = 
 record = 
 rebase = 
@@ -32,3 +33,12 @@ schemes =
 [gpg]
 # if cmd is not provided it defaults to gpg
 cmd=/usr/bin/gpg2
+
+[largefiles]
+# global cache
+usercache = $XDG_CACHE_HOME/mercurial/largefiles
+# files matching these patterns are always considered large
+# patterns =
+# new files larger than this threshold (in MiB) will always be
+# considered large
+# minsize = 10
