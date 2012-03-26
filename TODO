@@ -2,7 +2,7 @@
 deploy:
 =======
 
-* configparser, logging, argparse
+* configparser, logging
 
 Options:
 ========
