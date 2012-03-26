@@ -45,8 +45,8 @@ URxvt*imLocale: ja_JP.UTF-8
 URxvt*depth: 24
 URxvt*buffered: true
 URxvt*transparent: false
-URxvt*font: xft:Consolas:size=11,\
-            xft:IPAMonaGothic:size=11
+URxvt*font: xft:Consolas:size=12,\
+            xft:IPAMonaGothic:size=12
 URxvt*scrollBar: false
 URxvt*cursorColor: #98a1b9
 URxvt*cursorBlink: true
