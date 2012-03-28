@@ -3,6 +3,9 @@ deploy:
 =======
 
 * configparser, logging
+* reploy: Transfer changes in *deployed* dotfiles into their repo
+  equivalents (e.g. change ~/.zshrc -> reploy -> changes are put into
+  <dotfilesrepo>/files/zshrc)
 
 Options:
 ========
