@@ -15,7 +15,7 @@ if [ -f "${HOME}/.cache/gpg-agent/gpg-agent.info" ]; then
     export GPG_TTY=$(tty)
 fi
 
-source virtualenvwrapper.sh
+$(which virtualenvwrapper.sh) && source virtualenvwrapper.sh
 
 # One history to rule them all
 HISTFILE=~/.cache/zsh/histfile
@@ -28,7 +28,7 @@ zstyle :compinstall filename '/home/runiq/.zshrc'
 
 # dircolors
 d="~/.dircolors"
-test -r $d && eval "$(dircolors $d)"
+[[ -f "$d" ]] && eval "$(dircolors $d)"
 # }}}
 
 # {{{ Aliases
