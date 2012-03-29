@@ -41,4 +41,4 @@ usercache = $XDG_CACHE_HOME/mercurial/largefiles
 # patterns =
 # new files larger than this threshold (in MiB) will always be
 # considered large
-# minsize = 10
+minsize = 10
