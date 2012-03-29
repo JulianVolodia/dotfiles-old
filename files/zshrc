@@ -8,14 +8,14 @@ colors
 
 # {{{ Setup
 # Setup gpg-agent for SSH keys
-if [ -f "${HOME}/.cache/gpg-agent/gpg-agent.info" ]; then
+if [ -r "${HOME}/.cache/gpg-agent/gpg-agent.info" ]; then
     source "${HOME}/.cache/gpg-agent/gpg-agent.info"
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
     export GPG_TTY=$(tty)
 fi
 
-$(which virtualenvwrapper.sh) && source virtualenvwrapper.sh
+[ -r "$(which virtualenvwrapper.sh)" ] && source virtualenvwrapper.sh
 
 # One history to rule them all
 HISTFILE=~/.cache/zsh/histfile
