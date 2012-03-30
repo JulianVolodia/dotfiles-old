@@ -68,51 +68,68 @@ yellowb="%{$fg_bold[yellow]%}"
 # }}}
 
 # {{{ vcs_info
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:*' enable hg git
-zstyle ':vcs_info:hg*:*' get-mq true
-zstyle ':vcs_info:*' stagedstr "$magenta?$reset"
-zstyle ':vcs_info:*' unstagedstr "$magenta!$reset"
-local repocwd="$cyanb%R$reset/$greenb%r$reset(%s)$green%b$reset/$cyanb%S$reset"
-local cwd="$cyanb${PWD/#$HOME/%~}$reset"
-zstyle ':vcs_info:*' formats "$repocwd"
-zstyle ':vcs_info:*' actionformats "$magenta%a$reset $repocwd"
-zstyle ':vcs_info:*' nvcsformats "$cwd"
-zstyle ':vcs_info:*+set-message:*' hooks change-vcs-name remove-trailing-dot shorten-path
-
-# {{{ Hooks
-
-# Changes repo name to funny symbol
-function +vi-change-vcs-name() {
-    case $hook_com[vcs] in
-        hg) hook_com[vcs]="☿" ;;
-        git) hook_com[vcs]="±" ;;
-    esac
+# Checks if vcs_info is available
+function_exists() {
+    local -a files
+    # expands occurrences of $1 anywhere in $fpath,
+    # removing files that don't exist
+    files=(${^fpath}/$1(N))
+    # Success if any files exist
+    (( ${#files} ))
 }
 
-# Shortens path
-function +vi-shorten-path() {
-    hook_com[base]="${hook_com[base]/#$HOME/~}"
-    hook_com[base]="${hook_com[base]:h}"
-}
-# Removes trailing dot
-function +vi-remove-trailing-dot() {
-    hook_com[subdir]=${hook_com[subdir]%%.}
-}
-# }}}
+if function_exists vcs_info; then
+    autoload -Uz vcs_info
+    setopt prompt_subst
+    zstyle ':vcs_info:*' enable hg git
+    zstyle ':vcs_info:hg*:*' get-mq true
+    zstyle ':vcs_info:*' stagedstr "$magenta?$reset"
+    zstyle ':vcs_info:*' unstagedstr "$magenta!$reset"
+    local repocwd="$cyanb%R$reset/$greenb%r$reset(%s)$green%b$reset/$cyanb%S$reset"
+    local cwd="$cyanb${PWD/#$HOME/%~}$reset"
+    zstyle ':vcs_info:*' formats "$repocwd"
+    zstyle ':vcs_info:*' actionformats "$magenta%a$reset $repocwd"
+    zstyle ':vcs_info:*' nvcsformats "$cwd"
+    zstyle ':vcs_info:*+set-message:*' hooks change-vcs-name remove-trailing-dot shorten-path
 
-# }}}
+    # {{{ Functions
+    # Changes repo name to funny symbol
+    function +vi-change-vcs-name() {
+        case $hook_com[vcs] in
+            hg) hook_com[vcs]="☿" ;;
+            git) hook_com[vcs]="±" ;;
+        esac
+    }
 
-precmd() {
-    vcs_info
-}
+    # Shortens path
+    function +vi-shorten-path() {
+        hook_com[base]="${hook_com[base]/#$HOME/~}"
+        hook_com[base]="${hook_com[base]:h}"
+    }
+    # Removes trailing dot
+    function +vi-remove-trailing-dot() {
+        hook_com[subdir]=${hook_com[subdir]%%.}
+    }
+    # }}}
+
+    precmd() {
+        vcs_info
+    }
+fi
+    # }}}
+
+local user host wd venv sign
 user="%(!.$magentab%n.$yellow%n)$reset"
 host="$yellow%m$reset"
-repo='${vcs_info_msg_0_}'
+if function_exists vcs_info; then
+    wd='${vcs_info_msg_0_}'
+else
+    wd="$cyanb${PWD/#$HOME/%~}$reset"
+fi
 venv='${VIRTUAL_ENV+ ${black}venv${reset}}'
 sign="%(?.$black>.$magenta>)$reset"
-PROMPT="$user@$host$venv $repo
+
+PROMPT="$user@$host$venv $wd
 $sign "
 # }}}
 
