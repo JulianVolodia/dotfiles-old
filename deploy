@@ -54,9 +54,9 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Deploy dotfiles and set the right symlinks.")
-    parser.add_argument('source_dir', type=str, help='Directory where configuration files are in')
-    parser.add_argument('sink_dir', type=str, help="Directory where configuration files should be copied to")
-    parser.add_argument('symlink_dir', type=str, help="Directory where symlinks should be created")
+    parser.add_argument('--source-dir', type=str, default='files', help='Directory where configuration files are in')
+    parser.add_argument('--sink-dir', type=str, default='~/.config/dotfiles', help="Directory where configuration files should be copied to")
+    parser.add_argument('--symlink-dir', type=str, default='~', help="Directory where symlinks should be created")
     args = parser.parse_args()
 
     source_dir = args.source_dir
