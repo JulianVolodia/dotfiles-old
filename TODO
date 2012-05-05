@@ -11,3 +11,13 @@ Options:
 ========
 
 * don't overwrite files with source if target is newer
+
+Zsh:
+====
+
+* Figure out how to incorporate virtualenv into path
+* Figure out what's going on with ranger:
+  * Whenever I'm not in a vcs_info project, the "starting path" after ~
+    gets appended again
+  * Whenever I'm outside ~, the path just gets stuck at its "starting
+    path" value
