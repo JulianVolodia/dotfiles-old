@@ -1,26 +1,48 @@
 ##########
-# Farben #
+# Colors #
 ##########
 
-color normal default default 
-color attachment brightblack default 
-color hdrdefault brightdefault default 
-color indicator default blue 
-color markers default red 
-color quoted blue default 
-color signature red default 
-color status default default 
-color tilde black default 
-color tree brightblue default 
-color index red default ~D 
-color index green default ~T 
-color header brightgreen default ^From: 
-color header brightgreen default ^To: 
-color header brightgreen default ^Reply-To: 
-color header brightgreen default ^Cc: 
-color header brightgreen default ^Bcc: 
-color header brightblue default ^Subject: 
-# identifies email addresses 
-color body red default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ 
+color normal default default
+color attachment magenta default
+color indicator brightmagenta default
+color status brightgreen default
+# Blank line padding
+color tilde black default
+# Line wraps
+color markers black default
+color tree black default
+color index cyan default ~N
+color index red default ~D
+color index yellow default ~T
+color index green default ~F
+color signature black default
+
+#Headers
+color hdrdefault green default
+color header brightgreen default ^From:
+color header brightgreen default ^To:
+color header brightgreen default ^Subject:
+
+# Quoting
+color quoted cyan default
+color quoted1 green default
+color quoted2 yellow default
+color quoted3 red default
+color quoted4 magenta default
+color quoted5 blue default
+
+# GPG stuff
+color body green default "^gpg: Good signature from"
+color body brightred default "^gpg: Bad signature from"
+color body brightred default "^gpg: BAD signature from"
+color body brightred default "^gpg: Note: This key has expired!"
+color body brightyellow default	"^gpg: WARNING: This key is not certified with a trusted signature!"
+color body brightyellow default	"^gpg:          There is no indication that the signature belongs to the owner."
+color body brightyellow default	"^gpg: can't handle these multiple signatures"
+color body brightyellow default	"^gpg: signature verification suppressed"
+color body brightyellow default	"^gpg: invalid node with packet of type"
+
+# identifies email addresses
+color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
-color body blue default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+ 
+color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
