@@ -14,11 +14,14 @@ imlibsetroot -x 0 -s -p c ~/.config/background.jpg -x 1 -s -p c ~/.config/backgr
 # Set cursor
 xsetroot -cursor_name left_ptr
 
-# Farbtemperatur setzen
+# Set color temperature depending on time of day
 redshift &
 
-# GTK2-Einstellungen setzen
+# Compositing manager
+unagi &
+
+# Set GTK2 RC file location
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Start WM/DE
-exec ck-launch-session i3
+exec i3
