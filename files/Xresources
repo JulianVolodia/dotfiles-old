@@ -15,7 +15,7 @@ Xft*rgba: rgba
 Xcursor*theme:vanilla-dmz
 
 URxvt*foreground: #d0d0d0
-URxvt*background: [80]#121212
+URxvt*background: [95]#121212
 ! black
 URxvt*color0: #5f5f5f
 URxvt*color8: #5f5f5f
