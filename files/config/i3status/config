@@ -1,6 +1,6 @@
 general {
     colors = true
-    color_good = "#a6e32d"
+    color_good = "#ffffff"
     color_degraded = "#fc951e"
     color_bad = "#fa2573"
     color_separator = "#121212"

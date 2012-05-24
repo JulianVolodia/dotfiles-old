@@ -17,7 +17,7 @@ set $mod Mod4
 set $term urxvt
 
 # Dmenu arguments
-set $dmenu_args -h 24 -fn Consolas-12 -nf '#d0d0d0' -nb '#121212' -sb '#a6e32d' -sf '#ffffff'
+set $dmenu_args -h 22 -fn Consolas-12 -nf '#d0d0d0' -nb '#121212' -sb '#a6e32d' -sf '#ffffff'
 # }}}
 # {{{ General
 # font for window titles
