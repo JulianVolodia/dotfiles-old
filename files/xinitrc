@@ -17,9 +17,6 @@ xsetroot -cursor_name left_ptr
 # Set color temperature depending on time of day
 redshift &
 
-# Compositing manager
-unagi &
-
 # Set GTK2 RC file location
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
