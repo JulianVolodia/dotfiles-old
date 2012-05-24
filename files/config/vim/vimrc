@@ -1,13 +1,15 @@
 " Vim Configuration file
 " TODO:
 " - find suitable substitute for <esc> that works with lmap
+" - have a look at quickfix stuff
+" - configure yankring plugin
+" - make <C-j> work (yankring remaps it)
 
 " {{{ General
 " Runtime paths
 set rtp=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
-" put pathogen before filetype indent on and syntax indent on
-" but after setting the rtp
+" Pathogen is installed system wide
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -117,6 +119,7 @@ noremap <silent> <Space> za
 noremap Y y$
 
 " Allow saving of files as root if I forgot to use sudo
+" Needs tee installed
 cmap W %!sudo tee > /dev/null %
 
 " Easier opening of command line window
@@ -219,4 +222,3 @@ let g:yankring_enabled = 0
 let g:yankring_history_dir = '~/.cache/vim/yankring'
 " }}}
 " vim: foldmethod=marker
-" bla
