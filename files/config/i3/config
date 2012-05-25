@@ -43,7 +43,7 @@ client.background #121212
 bar {
     status_command i3status
     position top
-    font xft:Consolas 12
+    font xft:Consolas Bold 12
     # Systray only on main monitor
     tray_output primary
     colors {

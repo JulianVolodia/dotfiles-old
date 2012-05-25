@@ -15,7 +15,7 @@ order += "time"
 
 wireless wlan0 {
     format_up = "WLAN: %essid"
-    format_down = ""
+    format_down = "WLAN: None"
 }
 
 battery 0 {
