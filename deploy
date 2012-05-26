@@ -1,9 +1,19 @@
 #!/usr/bin/env python
 
+"""
+TODO
+"""
+
 import os
 import os.path as op
 import shutil
 
+
+def expand_path(path):
+    """
+    Expands ``~`` and environment variables in a pathname.
+    """
+    return op.expandvars(op.expanduser(path))
 
 def find_source_files(path):
     """
@@ -36,18 +46,18 @@ def copy_or_symlink(source, target, create_symlink=False):
     If ``create_symlink`` is ``True``, then the file is not copied, but symlinked.
     """
     if op.exists(op.dirname(target)):
-        print("Skipping generation of", op.dirname(target))
+        print(op.dirname(target), "already exists")
     else:
-        print("Creating", op.dirname(target) + "…")
+        print("Creating", op.dirname(target))
         os.makedirs(op.dirname(target))
     if create_symlink:
-        print("Creating symlink from", source, "to", target + "…")
+        print("Symlinking from", source, "to", target)
         try:
             os.symlink(source, target)
         except OSError:
-            print("Skipping creation of symlink at", target)
+            print("Symlink at", target, "already in place")
     else:
-        print("Copying from", source, "to", target + "…")
+        print("Copying from", source, "to", target)
         shutil.copyfile(source, target)
 
 def main():
@@ -59,26 +69,18 @@ def main():
     parser.add_argument('--symlink-dir', type=str, default='~', help="Directory where symlinks should be created")
     args = parser.parse_args()
 
-    source_dir = args.source_dir
-    sink_dir = args.sink_dir
-    symlink_dir = args.symlink_dir
+    source_dir = expand_path(args.source_dir)
+    sink_dir = expand_path(args.sink_dir)
+    symlink_dir = expand_path(args.symlink_dir)
     for i in find_source_files(source_dir):
-        print("\n========")
-        print(i)
-        print("========")
         sink_file = create_rel_name(i, source_dir)
         sink_path = op.join(sink_dir, sink_file)
         copy_or_symlink(i, sink_path)
-        print("========")
     print('--------------------------------------------------------------')
     for i in find_source_files(sink_dir):
-        print("\n========")
-        print(i)
-        print("========")
         symlink_file = create_rel_name(i, sink_dir, make_dotfile=True)
         symlink_path = op.join(symlink_dir, symlink_file)
         copy_or_symlink(i, symlink_path, create_symlink=True)
-        print("========")
     print('--------------------------------------------------------------')
 
 if __name__ == '__main__':

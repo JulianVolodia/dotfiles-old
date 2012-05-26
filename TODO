@@ -2,14 +2,10 @@
 deploy:
 =======
 
-* configparser, logging
-* reploy: Transfer changes in *deployed* dotfiles into their repo
+* Logging
+* ``reploy``: Transfer changes in *deployed* dotfiles into their repo
   equivalents (e.g. change ~/.zshrc -> reploy -> changes are put into
-  <dotfilesrepo>/files/zshrc)
-
-Options:
-========
-
+  :file:`<dotfilesrepo>/files/zshrc`)
 * don't overwrite files with source if target is newer
 
 Zsh:
@@ -21,3 +17,8 @@ Zsh:
     gets appended again
   * Whenever I'm outside ~, the path just gets stuck at its "starting
     path" value
+
+Vim:
+====
+
+* Change foldtext()
