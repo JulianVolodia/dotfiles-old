@@ -3,10 +3,7 @@ deploy:
 =======
 
 * Logging
-* ``reploy``: Transfer changes in *deployed* dotfiles into their repo
-  equivalents (e.g. change ~/.zshrc -> reploy -> changes are put into
-  :file:`<dotfilesrepo>/files/zshrc`)
-* don't overwrite files with source if target is newer
+* create relative instead of absolute symlinks
 
 Zsh:
 ====
