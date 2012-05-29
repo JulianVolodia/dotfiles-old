@@ -94,6 +94,25 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 " }}}
 
+" {{{ Functions
+fu! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " (" . foldSize . " lines)"
+    return line . foldSizeStr
+endf
+set foldtext=CustomFoldText()
+" }}}
+"
 " {{{ Keybindings
 " Better access to <leader>
 let mapleader = ","
@@ -221,4 +240,5 @@ let g:yankring_enabled = 0
 " Place where history file is stored
 let g:yankring_history_dir = '~/.cache/vim/yankring'
 " }}}
+
 " vim: foldmethod=marker
