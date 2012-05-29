@@ -14,8 +14,3 @@ Zsh:
     gets appended again
   * Whenever I'm outside ~, the path just gets stuck at its "starting
     path" value
-
-Vim:
-====
-
-* Change foldtext()
