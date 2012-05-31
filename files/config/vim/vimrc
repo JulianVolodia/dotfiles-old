@@ -54,8 +54,14 @@ set noequalalways
 " When splitting, create new viewports below/right to current viewports
 set splitbelow
 set splitright
+" Prettify splits, diffs, folds
+set fillchars="vert: ,fold: ,diff: "
 " At all times show at least this many lines over/under cursor
 set scrolloff=3
+" Not necessary because of powerline plugin
+set noshowmode
+" Highlights the current line
+set cursorline
 " Show current command in status line
 set showcmd
 " Also consider other tabs if searching for already open buffers
@@ -63,6 +69,7 @@ set switchbuf=usetab
 " Show tabline only if there is >1 tab
 set showtabline=1
 
+" {{{ Indentation
 " 1 tab = 8 spaces
 " Don’t fuck with this
 set tabstop=8
@@ -77,6 +84,7 @@ set expandtab
 " Allows to keep tabstop at default value while editing as if it's set to
 " softtabstop width
 set softtabstop=4
+" }}}
 
 " Bash-like completion behavior
 set wildmenu
