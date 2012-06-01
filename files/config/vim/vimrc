@@ -221,6 +221,10 @@ noremap <leader>T :NERDTreeToggle<CR>
 " Toggle display of all kinds of parens
 noremap <silent> <F12> :RainbowParenthesesToggleAll<CR>
 
+" Splice plugin
+" Use this as the splice prefix
+let g:splice_prefix = "<leader>s"
+
 " Tagbar plugin
 " Open tagbar window on the left
 let tagbar_left = 1
