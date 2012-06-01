@@ -5,7 +5,7 @@
 " - configure yankring plugin
 " - find out what slows everything down
 
-" {{{ General
+" General {{{
 " Runtime paths
 set rtp=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
@@ -102,7 +102,7 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 " }}}
 
-" {{{ Functions
+" Functions {{{
 fu! CustomFoldText()
     "get first non-blank line
     let fs = v:foldstart
@@ -121,7 +121,7 @@ endf
 set foldtext=CustomFoldText()
 " }}}
 "
-" {{{ Keybindings
+" Keybindings {{{
 " Better access to <leader>
 let mapleader = ","
 " Put colon closer to home row
@@ -182,7 +182,7 @@ noremap <leader>qn :cn<cr>
 noremap <leader>qp :cp<cr>
 " }}}
 
-" {{{ Plugins
+" Plugins {{{
 " ack plugin
 noremap <leader>a <Esc>:Ack<Space>
 " for adding to the current search results
