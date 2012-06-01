@@ -1,6 +1,6 @@
 [ui]
 username = runiq <runiq@archlinux.us>
-merge = vimdiff
+merge = splice
 ssh = ssh -C
 # Cleaner style for graphlog extension
 style = compact
@@ -13,6 +13,11 @@ ignore=~/.cvsignore
 git = True
 
 [merge-tools]
+splice.executable = vim
+splice.args = -f $base $local $other $output -c 'SpliceInit'
+splice.premerge = keep
+splice.priority = 1
+
 vimdiff.executable = vim
 vimdiff.args = -f -d -c "wincmd J" "$output" "$local" "$other" "$base"
 
