@@ -125,7 +125,7 @@ set foldtext=CustomFoldText()
 " Better access to <leader>
 let mapleader = ","
 " Put colon closer to home row
-map ö :
+noremap ö :
 " Easier switching to window mode
 noremap <leader>w <c-w>
 " Easier :nohl
@@ -147,7 +147,7 @@ noremap Y y$
 
 " Allow saving of files as root if I forgot to use sudo
 " Needs tee installed
-cmap W %!sudo tee > /dev/null %
+cnoremap W %!sudo tee > /dev/null %
 
 " Easier opening of command line window
 nnoremap : q:i
@@ -167,15 +167,15 @@ nnoremap q? ?
 vnoremap q? ?
 
 " Open quickfix window
-map <leader>qo :botright :cope<cr>
+noremap <leader>qo :botright :cope<cr>
 " Jump to current error
-map <leader>qc :cc<cr>
+noremap <leader>qc :cc<cr>
 " Open quickfix window in bottom right IF there are any errors
-map <leader>qq :botright :cw<cr>
+noremap <leader>qq :botright :cw<cr>
 " Go to next error in quickfix window
-map <leader>qn :cn<cr>
+noremap <leader>qn :cn<cr>
 " Go to previous error in quickfix window
-map <leader>qp :cp<cr>
+noremap <leader>qp :cp<cr>
 " }}}
 
 " {{{ Plugins
