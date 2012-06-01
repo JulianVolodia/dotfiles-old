@@ -7,7 +7,7 @@
 
 " General {{{
 " Runtime paths
-set rtp=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
+set runtimepath=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
 " Pathogen is installed system wide
 call pathogen#infect()
@@ -69,7 +69,7 @@ set switchbuf=usetab
 " Show tabline only if there is >1 tab
 set showtabline=1
 
-" {{{ Indentation
+" Indentation {{{
 " 1 tab = 8 spaces
 " Don’t fuck with this
 set tabstop=8
@@ -103,7 +103,7 @@ let g:tex_flavor = "latex"
 " }}}
 
 " Functions {{{
-fu! CustomFoldText()
+function! CustomFoldText()
     "get first non-blank line
     let fs = v:foldstart
     while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
@@ -133,7 +133,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Easier switching to window mode
 noremap <leader>w <c-w>
 " Easier :nohl
-noremap <silent> <cr> :nohl<cr>
+noremap <silent> <cr> :nohlsearch<cr>
 " Easier movement between viewports
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
@@ -147,7 +147,7 @@ noremap <silent> <left> :bprev<cr>
 noremap <silent> <Space> za
 
 " Y should yank to end of line
-noremap Y y$
+map Y y$
 
 " Allow saving of files as root if I forgot to use sudo
 " Needs tee installed
@@ -161,7 +161,7 @@ vnoremap / q/i
 nnoremap ? q?i
 vnoremap ? q?i
 " allow leaving cmdline-window with <ESC>
-au CmdwinEnter * nnoremap <buffer> <ESC> :q<cr>
+au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
 " allow normal cmdline :, / and ?
 nnoremap q: :
 vnoremap q: :
@@ -171,15 +171,15 @@ nnoremap q? ?
 vnoremap q? ?
 
 " Open quickfix window
-noremap <leader>qo :botright :cope<cr>
+noremap <leader>qo :botright :copen<cr>
 " Jump to current error
 noremap <leader>qc :cc<cr>
 " Open quickfix window in bottom right IF there are any errors
-noremap <leader>qq :botright :cw<cr>
+noremap <leader>qq :botright :cwindow<cr>
 " Go to next error in quickfix window
-noremap <leader>qn :cn<cr>
+noremap <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
-noremap <leader>qp :cp<cr>
+noremap <leader>qp :cprevious<cr>
 " }}}
 
 " Plugins {{{
