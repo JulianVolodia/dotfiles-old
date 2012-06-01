@@ -2,8 +2,7 @@
 " - nose integration 
 "   (see http://www.vim.org/scripts/script.php?script_id=3842)
 " - rope integration
-" - pydoc integration
-" - perhaps tab completion
+" - tab completion
 " - virtualenv integration
 " - See http://sontek.net/turning-vim-into-a-modern-python-ide
 " - makegreen 
@@ -21,7 +20,7 @@ setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py
 
 " PEP8 plugin
 " Calls the plugin
-noremap <buffer> <leader>8 :call Pep8()<cr>
+noremap <buffer> <localleader>8 :call Pep8()<cr>
 
 " Pylint plugin
 " Don't call pylint every time I write a file
@@ -33,11 +32,8 @@ let b:pylint_cwindow = 0
 " Don't show funny signs
 let b:pylint_signs = 0
 " Compile to pylint
-map <buffer> <leader>pl :call CompilePylint()<cr>
+map <buffer> <localleader>pl :call CompilePylint()<cr>
 fu! CompilePylint()
     compiler pylint
     Pylint
 endf
-
-" Fold code by indent
-" set foldmethod=indent
