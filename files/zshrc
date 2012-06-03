@@ -8,8 +8,8 @@ colors
 
 # {{{ Setup
 # Setup gpg-agent for SSH keys
-if [ -r "${XDG_CACHE_HOME}/gpg-agent/gpg-agent.info" ]; then
-    source "${XDG_CACHE_HOME}/gpg-agent/gpg-agent.info"
+if [ -r "${XDG_RUNTIME_DIR}/gpg-agent/gpg-agent.info" ]; then
+    source "${XDG_RUNTIME_DIR}/gpg-agent/gpg-agent.info"
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
     export GPG_TTY=$(tty)
