@@ -124,8 +124,6 @@ set foldtext=CustomFoldText()
 " Keybindings {{{
 " Better access to <leader>
 let mapleader = ","
-" Put colon closer to home row
-noremap ö :
 " Meta-efficiency, man
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " More meta-efficiency, whoa dude
@@ -154,6 +152,8 @@ map Y y$
 cnoremap W %!sudo tee > /dev/null %
 
 " Easier opening of command line window
+nnoremap ö q:i
+vnoremap ö q:i
 nnoremap : q:i
 vnoremap : q:i
 nnoremap / q/i
