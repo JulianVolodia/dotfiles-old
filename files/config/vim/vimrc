@@ -162,6 +162,8 @@ nnoremap ? q?i
 vnoremap ? q?i
 " allow leaving cmdline-window with <ESC>
 au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
+" Select current line without having to enter insert mode
+au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
 " allow normal cmdline :, / and ?
 nnoremap q: :
 vnoremap q: :
