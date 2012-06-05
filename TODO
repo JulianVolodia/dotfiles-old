@@ -1,16 +1,39 @@
-=======
 deploy:
 =======
 
 * Logging
-* create relative instead of absolute symlinks
+* Create relative instead of absolute symlinks
 
 Zsh:
 ====
 
 * Figure out how to incorporate virtualenv into path
 * Figure out what's going on with ranger:
-  * Whenever I'm not in a vcs_info project, the "starting path" after ~
-    gets appended again
+  * Whenever I'm not in a vcs_info project, the "starting path" after
+    ~ gets appended again
   * Whenever I'm outside ~, the path just gets stuck at its "starting
     path" value
+* venv: magenta if not in venv (ex.:)
+  /home/runiq/prj/venv-test/subdir
+  \______  _____/|\______  ______/
+         \/      |       \/
+         red   white    blue
+  * ${$(cat "$VIRTUALENV/.project"):h} + "/" + $(basename $VIRTUAL_ENV)
+* Show applied patches
+
+Gpg-agent:
+==========
+
+* See if I can omit some values in the config file or on the
+  command-line
+
+Vim:
+====
+
+* Use dmenu for files/buffers
+* Find better keys for Ctrl, Esc, CapsLock
+
+Mutt-kz:
+========
+
+* Get it working
