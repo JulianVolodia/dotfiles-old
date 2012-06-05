@@ -1,0 +1,12 @@
+#!/bin/sh
+
+mkdir -p "$XDG_RUNTIME_DIR/gpg-agent"
+ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent/gpg-agent.info"
+
+if [[ -r "$ENV_FILE" ]]; then
+    . "$ENV_FILE"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+else
+    gpg-agent --daemon -s -q --enable-ssh-support --write-env-file "$ENV_FILE"
+fi
