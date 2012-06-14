@@ -39,3 +39,6 @@ Mutt-kz:
 ========
 
 * Get it working
+* Get procmail to work; ideally on the server side (does it work with Gmail?)
+* Is spam filtering by moving spam to the Spam folder possible?
+* Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
