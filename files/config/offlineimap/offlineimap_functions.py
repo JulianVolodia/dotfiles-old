@@ -1,5 +1,7 @@
 #!/usr/bin/python2
-# -*- coding: latin-1 -*-
+"""
+Helper functions for offlineimap
+"""
 
 
 import netrc
