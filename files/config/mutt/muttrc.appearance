@@ -1,6 +1,7 @@
+# General appearance 
+
 # Make thread display narrower
 set narrow_tree=yes
-
 # Number of index lines (one of them is the status bar)
 set pager_index_lines=6
 # Number of lines of context
@@ -12,16 +13,13 @@ set pager_stop
 set smart_wrap
 # Insert "--" line before signature
 set sig_dashes
-
 # Don't beep, dammit
 unset beep
-
-# Sort messages by threads
-set sort=threads
-# Show oldest message first in threads
-set sort_aux=date-received
+# Display of folders:
+set folder_format = "%2C %N %D %f %t"
 
 # Sidebar options
+
 # The delimiter string
 set sidebar_delim=" "
 # Show sidebar by default
@@ -29,9 +27,7 @@ set sidebar_visible=yes
 # Sidebar width
 set sidebar_width=20
 
-##########
-# Colors #
-##########
+# Colors
 
 color normal default default
 color attachment magenta default
@@ -47,21 +43,18 @@ color index red default ~D
 color index yellow default ~T
 color index green default ~F
 color signature black default
-
-#Headers
+# Headers
 color hdrdefault green default
 color header brightgreen default ^From:
 color header brightgreen default ^To:
 color header brightgreen default ^Subject:
-
-# Quoting
+# Rainbow quoting, baby!
 color quoted cyan default
 color quoted1 green default
 color quoted2 yellow default
 color quoted3 red default
 color quoted4 magenta default
 color quoted5 blue default
-
 # GPG stuff
 color body green default "^gpg: Good signature from"
 color body brightred default "^gpg: Bad signature from"
@@ -72,7 +65,6 @@ color body brightyellow default	"^gpg:          There is no indication that the 
 color body brightyellow default	"^gpg: can't handle these multiple signatures"
 color body brightyellow default	"^gpg: signature verification suppressed"
 color body brightyellow default	"^gpg: invalid node with packet of type"
-
 # identifies email addresses
 color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs

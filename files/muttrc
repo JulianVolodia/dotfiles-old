@@ -100,11 +100,7 @@ set sort_aux=date-received
 set nm_open_timeout=5
 
 source ~/.config/mutt/muttrc.mime
-
 source ~/.config/mutt/muttrc.keybindings
-
 source ~/.config/mutt/muttrc.appearance
-
 source ~/.config/mutt/muttrc.crypto
-
 source ~/.config/mutt/muttrc.lists
