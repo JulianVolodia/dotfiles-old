@@ -38,7 +38,11 @@ Vim:
 Mutt-kz:
 ========
 
-* Get it working
-* Get procmail to work; ideally on the server side (does it work with Gmail?)
-* Is spam filtering by moving spam to the Spam folder possible?
+* Sidebar
+* Trash patch
+* Add some useful keybindings & get familiar with them
+* How does it work?
 * Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
+  * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
+  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham
+* IMAPfilter
