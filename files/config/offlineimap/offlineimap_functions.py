@@ -1,4 +1,5 @@
 #!/usr/bin/python2
+# -*- coding: utf-8
 """
 Helper functions for offlineimap
 """
@@ -8,8 +9,23 @@ import netrc
 import binascii
 import codecs
 
+#############
+# Nametrans #
+#############
+gmail_folders = ['Entwürfe', 'Gesendet', 'Markiert', 'Papierkorb',
+        'Spam', 'Wichtig', 'Alle Nachrichten']
 
-# Credentials
+def gmail_local_nametrans(foldername, prefix='[Gmail]', separator='/'):
+    if foldername in gmail_folders:
+        return "{}{}{}".format(prefix, separator, foldername)
+    else:
+        return foldername
+
+
+
+###############
+# Credentials #
+###############
 def getcredentials(hostname, auth):
     try:
         netrcfile = netrc.netrc()
@@ -23,22 +39,21 @@ def getcredentials(hostname, auth):
         return netrcfile.authenticators(hostname)[2]
 
 
-# De-/encoding
-#
+##################
+# # De-/encoding #
+##################
 # Imap folder names are encoded using a special version of utf-7 as defined in RFC 
 # 2060 section 5.1.3.
-#
-# For example, here is a mailbox name which mixes English, Japanese,
-# and Chinese text: ~peter/mail/&ZeVnLIqe-/&U,BTFw-
-
 def encoder(s):
     def doB64(_in, r):
         def modified_base64(s):
             s = s.encode('utf-16be')
             return binascii.b2a_base64(s).rstrip('\n=').replace('/', ',')
+
         if _in:
             r.append('&%s-' % modified_base64(''.join(_in)))
             del _in[:]
+
     r = []
     _in = []
     for c in s:
@@ -59,6 +74,7 @@ def decoder(s):
     def modified_unbase64(s):
         b = binascii.a2b_base64(s.replace(',', '/') + '===')
         return unicode(b, 'utf-16be')
+
     r = []
     decode = []
     for c in s:
