@@ -1,4 +1,3 @@
-unset move
 set folder="$HOME/.mail"
 
 source ~/.config/mutt/muttrc.accounts
