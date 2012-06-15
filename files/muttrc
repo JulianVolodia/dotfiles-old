@@ -26,9 +26,6 @@ set sleep_time=0
 # Ask for confirmation when quitting
 set quit=ask-yes
 
-# Make thread display narrower
-set narrow_tree=yes
-
 # Don't mark new unread messages as old when leaving a mailbox
 # without reading them
 unset mark_old
@@ -47,6 +44,7 @@ set fcc_attach
 
 # Remove my own address from list of recipients when replying to a
 # message
+set metoo=no
 
 # When replying to message sent by myself, actually address the
 # message to the recipients of that message
@@ -64,18 +62,6 @@ set indent_str = "> "
 # Add tildes at EOF
 set tilde
 
-# Number of index lines (one of them is the status bar)
-set pager_index_lines=6
-# Number of lines of context
-set pager_context=5
-# Don't jump to next message when I invoke <next-page> on the end of
-# a message
-set pager_stop
-# Wrap lines at word boundary
-set smart_wrap
-# Insert "--" line before signature
-set sig_dashes
-
 # System options
 
 # Keep headers in cache file
@@ -90,9 +76,6 @@ set editor = "vim +':set textwidth=72' +':set wrap' +':set formatoptions+=w'"
 
 # Encoding
 set charset = "UTF8"
-
-# Don't beep, dammit
-unset beep
 
 # Command for printing
 set print_command = "lp"
@@ -113,14 +96,6 @@ set sort=threads
 # Show oldest message first in threads
 set sort_aux=date-received
 
-# Sidebar options
-# The delimiter string
-set sidebar_delim=" "
-# Show sidebar by default
-set sidebar_visible=yes
-# Sidebar width
-set sidebar_width=20
-
 # Notmuch options
 # Timeout for opening database (in seconds)
 set nm_open_timeout=5
@@ -129,7 +104,7 @@ source ~/.config/mutt/muttrc.mime
 
 source ~/.config/mutt/muttrc.keybindings
 
-source ~/.config/mutt/muttrc.colors
+source ~/.config/mutt/muttrc.appearance
 
 source ~/.config/mutt/muttrc.crypto
 

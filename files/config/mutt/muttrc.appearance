@@ -1,3 +1,34 @@
+# Make thread display narrower
+set narrow_tree=yes
+
+# Number of index lines (one of them is the status bar)
+set pager_index_lines=6
+# Number of lines of context
+set pager_context=5
+# Don't jump to next message when I invoke <next-page> on the end of
+# a message
+set pager_stop
+# Wrap lines at word boundary
+set smart_wrap
+# Insert "--" line before signature
+set sig_dashes
+
+# Don't beep, dammit
+unset beep
+
+# Sort messages by threads
+set sort=threads
+# Show oldest message first in threads
+set sort_aux=date-received
+
+# Sidebar options
+# The delimiter string
+set sidebar_delim=" "
+# Show sidebar by default
+set sidebar_visible=yes
+# Sidebar width
+set sidebar_width=20
+
 ##########
 # Colors #
 ##########
