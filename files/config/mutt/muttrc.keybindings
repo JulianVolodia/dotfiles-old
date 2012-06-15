@@ -19,3 +19,15 @@ macro index \cb \
 macro pager \cb \
     <pipe-entry>'w3m'<enter> \
     "Follow links in w3m"
+
+macro index,pager . \
+    "<sidebar-next>" \
+    "Toggle sidebar"
+
+macro index,pager , \
+    "<sidebar-prev>" \
+    "Move to next entry in sidebar"
+
+macro index,pager <return> \
+    "<sidebar-open>" \
+    "Open currently selected mailbox"
