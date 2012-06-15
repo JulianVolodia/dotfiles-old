@@ -7,109 +7,123 @@ source ~/.config/mutt/muttrc.mailboxes
 
 set spoolfile="+al/INBOX"
 
-##################
-# SMTP-Optionen #
-##################
+# SMTP options
 
+# Include headers in editor window
 set edit_headers=yes
+# Use this for sending mail
 set sendmail="/usr/local/bin/msmtpQ"
+# Always put sendmail in the background without waiting
 set sendmail_wait=-1
+# If envelope_from_address is set, use it as the sender address
 set use_envelope_from=yes
 
-#######################
-# Allgemeine Optionen #
-#######################
+# General options
 
-# Keine Verzögerung beim Umschalten von Mailboxes
+# No delay when switching mailboxes
 set sleep_time=0
 
-# Beim Beenden fragen, aber Ja als Standardantwort setzen
+# Ask for confirmation when quitting
 set quit=ask-yes
 
-# Nachrichten in MAIL belassen, ohne beim Beenden des Programmes nach Verschieben der Nachrichten zu fragen
-set nomove
+# Make thread display narrower
+set narrow_tree=yes
 
-# Nachrichten nicht als Gelesen markieren, wenn mit dem Cursor drübergefahren wird
+# Don't mark new unread messages as old when leaving a mailbox
+# without reading them
 unset mark_old
 
-# Alte Nachricht bei Antworten zitieren
+# Include parent message(s) when replying
 set include = yes
 
-# "Cc:"-Zeile hinzufügen
+# Ask for CC header before editing
 set askcc
 
-# "Bcc:"-Zeile hinzufügen
+# Ask for BCC header before editing
 set askbcc
 
-# Anhänge mit weiterleiten
+# Save attachments too when creating records of sent messages
 set fcc_attach
 
-# Bei Antworten an eine ganze Gruppe sich nicht selbst als Adressant eintragen
+# Remove my own address from list of recipients when replying to a
+# message
+
+# When replying to message sent by myself, actually address the
+# message to the recipients of that message
 unset reply_self
 
-# Antworttext
+# Quote header
 set attribution = "On %d, %n wrote:"
 
-# Weiterleitungs-Betreff
+# Forward header
 set forward_format = "Fwd: %s"
 
-# Format von eingerücktem Text
+# Indent string
 set indent_str = "> "
 
-# Tilde einfügen nach Ende einer Mail
+# Add tildes at EOF
 set tilde
 
-# Anzahl der Index-Zeilen, die über dem Pager angezeigt werden
-# (eine davon ist die Statusleiste)
+# Number of index lines (one of them is the status bar)
 set pager_index_lines=6
+# Number of lines of context
 set pager_context=5
+# Don't jump to next message when I invoke <next-page> on the end of
+# a message
 set pager_stop
+# Wrap lines at word boundary
 set smart_wrap
+# Insert "--" line before signature
 set sig_dashes
 
-###################
-# System-Optionen #
-###################
+# System options
 
-# Kopzeilen bleiben im Speicher
-# Unnötig mit offlineimap
+# Keep headers in cache file
 set header_cache = ~/.cache/mutt/headers
 
-# Nachrichtenkörper bleibt ebenfalls im Speicher
-# Unnötig mit offlineimap
-#unset message_cachedir
-
-# Mailbox-Format einstellen
+# Use maildir as mailboxes format
 set mbox_type = "maildir"
 
-# Editor zum Mails schreiben
-# Hier: Vim mit Textumbruch nach 72 Zeichen
-set editor = "vim +':set textwidth=72' +':set wrap'"
+# Editor for writing mails
+# Allow format=flowed with formatoptions+=w
+set editor = "vim +':set textwidth=72' +':set wrap' +':set formatoptions+=w'"
 
-# Charset einstellen
+# Encoding
 set charset = "UTF8"
 
-# Piepsen einstellen
+# Don't beep, dammit
 unset beep
 
-# Befehl zum Kommandozeilendrucker
+# Command for printing
 set print_command = "lp"
 
-# ob "@localhost" an die E-Mails angefügt wird, bei denen kein Domainname
-# angefügt wird 
+# Don't add @<domain> when not specifying it
 unset use_domain
 
-# Beim Start von Mutt nicht nach dem Weiterschreiben von Entwürfen fragen
+# No, I do not want to continue my drafts, thank you very much
 set recall = no
+# Use system-wide CA certificate store
 set ssl_usesystemcerts = yes
+# Don't move read messages out from spoolfile 
+# I don't have an mbox anyways
 set move = no 
 
-# Nachrichten nach Threads sortieren
+# Sort messages by threads
 set sort=threads
-# In Threads älteste Nachricht zuletzt anzeigen
+# Show oldest message first in threads
 set sort_aux=date-received
-# Mailbox mit neuester Nachricht ganz oben anzeigen
-#set sort_browser=reverse-date
+
+# Sidebar options
+# The delimiter string
+set sidebar_delim=" "
+# Show sidebar by default
+set sidebar_visible=yes
+# Sidebar width
+set sidebar_width=20
+
+# Notmuch options
+# Timeout for opening database (in seconds)
+set nm_open_timeout=5
 
 source ~/.config/mutt/muttrc.mime
 

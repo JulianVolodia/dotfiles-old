@@ -46,3 +46,4 @@ Mutt-kz:
   * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
   * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham
 * IMAPfilter
+* Reorganize config files
