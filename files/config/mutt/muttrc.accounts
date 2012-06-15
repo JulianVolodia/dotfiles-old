@@ -7,8 +7,7 @@
 
 folder-hook =al \
 'set from="Patrice Peterson <runiq@archlinux.us>" \
-postponed="+al/Entwürfe" \
-trash="+al/Papierkorb"; \
+postponed="+al/Entwürfe"; \
 unset record'
 
 # dapatti@googlemail.com #
@@ -16,8 +15,7 @@ unset record'
 
 folder-hook =gm \
 'set from="Patrice Peterson <dapatti@googlemail.com>" \
-postponed="+gm/Entwürfe" \
-trash="+gm/Papierkorb"; \
+postponed="+gm/Entwürfe"; \
 unset record'
 
 # patrice.peterson@student.uni-halle.de #
@@ -26,8 +24,7 @@ unset record'
 folder-hook =un \
 'set from="Patrice Peterson <patrice.peterson@student.uni-halle.de>" \
 record="+un/Sent" \
-postponed="+un/Drafts" \
-trash="+un/Trash"'
+postponed="+un/Drafts"'
 
 # patrice.peterson@dronox.de #
 ##############################
@@ -35,5 +32,4 @@ trash="+un/Trash"'
 folder-hook =dr \
 'set from="Patrice Peterson <patrice.peterson@dronox.de>" \
 record="+dr/Sent" \
-postponed="+dr/Drafts" \
-trash="+dr/Trash"'
+postponed="+dr/Drafts"'
