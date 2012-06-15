@@ -13,4 +13,4 @@ alternative_order text/plain text/enriched text/html
 
 # Pfad zur .mailcap-Datei, die MIME-Typen und Informationen über die sie
 # öffnenden Programme enthält
-set mailcap_path = "~/.mailcap"
+set mailcap_path = "~/.config/mailcap"
