@@ -39,6 +39,7 @@ Mutt-kz:
 ========
 
 * Trash patch
+* Show mailboxes in sidebar hierarchically
 * Add some useful keybindings & get familiar with them
 * How does it work?
 * Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
