@@ -22,8 +22,8 @@ set folder_format = "%2C %N %D %f %t"
 
 # The delimiter string
 set sidebar_delim=" "
-# Show sidebar by default
-set sidebar_visible=yes
+# Don't show sidebar by default
+set sidebar_visible = no
 # Sidebar width
 set sidebar_width=20
 
