@@ -103,6 +103,7 @@ let g:tex_flavor = "latex"
 " }}}
 
 " Functions {{{
+" Customize  fold text: just fold text with length appended
 function! CustomFoldText()
     "get first non-blank line
     let fs = v:foldstart
@@ -119,8 +120,21 @@ function! CustomFoldText()
     return line . foldSizeStr
 endf
 set foldtext=CustomFoldText()
+" Strip the newline from the end of a string
+function! Chomp(str)
+  return substitute(a:str, '\n$', '', '')
+endfunction
+
+" Find a file and pass it to cmd
+function! DmenuOpen(cmd, prompt)
+  let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:prompt))
+  if empty(fname)
+    return
+  endif
+  execute a:cmd . " " . fname
+endfunction
 " }}}
-"
+
 " Keybindings {{{
 " Better access to <leader>
 let mapleader = ","
@@ -182,6 +196,9 @@ noremap <leader>qq :botright :cwindow<cr>
 noremap <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
 noremap <leader>qp :cprevious<cr>
+
+" Open dmenu
+noremap <leader>t :call DmenuOpen(":e", "Edit:")<cr>
 " }}}
 
 " Plugins {{{
