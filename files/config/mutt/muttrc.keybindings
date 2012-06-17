@@ -31,3 +31,7 @@ macro index,pager , \
 macro index,pager <return> \
     "<sidebar-open>" \
     "Open currently selected mailbox"
+
+macro index,pager y \
+    "<enter-command>toggle sidebar_visible<enter>" \
+    "Toggle sidebar visibility"
