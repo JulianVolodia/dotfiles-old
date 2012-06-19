@@ -16,8 +16,6 @@ If I have left out a license or improperly attributed something and you want tha
 
 This little devil takes three parameters:
 
-1. Where your dotfiles currently reside (default: ``files``)
-2. Where they should be copied to (default: ``~/.config/dotfiles``)
-3. What directory you want to put the symlinks in (default: ``~``)
-
-The default values aren't implemented yet.
+1. Where your dotfiles currently reside (default: ``files``---take care, it's a relative path).
+2. Where they should be copied to (default: ``~/.config/dotfiles``).
+3. What directory you want to put the symlinks in (default: ``~``).
