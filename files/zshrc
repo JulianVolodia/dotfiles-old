@@ -119,7 +119,7 @@ fi
     # }}}
 
 local user host wd venv sign
-user="%(!.$magentab%n.$yellow%n)$reset"
+user="%(!.$magentab%n.$red%n)$reset"
 host="$yellow%m$reset"
 if function_exists vcs_info; then
     wd='${vcs_info_msg_0_}'
