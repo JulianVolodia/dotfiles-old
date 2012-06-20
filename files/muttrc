@@ -11,7 +11,7 @@ set spoolfile="+al/INBOX"
 # Include headers in editor window
 set edit_headers=yes
 # Use this for sending mail
-set sendmail="/usr/local/bin/msmtpQ"
+set sendmail="/usr/local/bin/msmtpq"
 # Always put sendmail in the background without waiting
 set sendmail_wait=-1
 # If envelope_from_address is set, use it as the sender address
