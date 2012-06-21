@@ -212,7 +212,14 @@ noremap <leader>A <Esc>:AckAdd<Space>
 let g:CommandTMaxHeight = 12
 " Open match window at top so best result is shown always in the same place
 " let g:CommandTMatchWindowAtTop = 0
-"
+
+" Commentary plugin
+" Use ü and üü for commenting
+xmap ü <Plug>Commentary
+nmap ü <Plug>Commentary
+nmap üü <Plug>CommentaryLine
+nmap üu <Plug>CommentaryUndo
+
 " Gundo plugin
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
