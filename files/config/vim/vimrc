@@ -228,18 +228,6 @@ let g:gundo_preview_bottom = 0
 " automatically close Gundo windows on reverting
 let g:gundo_close_on_revert = 1
 
-" NERDTree plugin
-" Sort case sensitively
-let g:NERDTreeCaseSensitiveSort = 1
-" Close the NERDTree window after using o, i, t and T mappings
-let g:NERDTreeQuitOnOpen = 1
-" No line numbers in NERDTree
-let g:NERDTreeShowLineNumbers = 0
-" No statusline for NERDTree since that is used for displaying buffers
-let g:NERDTreeStatusline = 0
-" Open NERDTree
-noremap <leader>T :NERDTreeToggle<CR>
-
 " Rainbow Parentheses plugin
 " Toggle display of all kinds of parens
 noremap <silent> <F12> :RainbowParenthesesToggleAll<CR>
