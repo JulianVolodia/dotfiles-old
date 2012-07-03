@@ -56,7 +56,7 @@ draw_borders = False
 draw_bookmark_borders = True
 
 # Display the directory name in tabs?
-dirname_in_tabs = False
+dirname_in_tabs = True
 
 # Enable the mouse support?
 mouse_enabled = True
