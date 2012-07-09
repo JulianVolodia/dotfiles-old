@@ -2,7 +2,6 @@
 " TODO:
 " - find suitable substitute for <esc> that works with lmap
 " - have a look at quickfix stuff
-" - configure yankring plugin
 " - find out what slows everything down
 
 " General {{{
@@ -268,10 +267,19 @@ let g:tlWindowPosition = 1
 let g:tlTokenList = ['TODO', 'FIXME']
 
 " yankring plugin
-" Disable plugin until I have it configured properly
 let g:yankring_enabled = 1
 " Place where history file is stored
 let g:yankring_history_dir = '~/.cache/vim/yankring'
+" Ignore single-letter deletes
+let g:yankring_min_element_length = 2
+" No upper limit on yankring element size
+let g:yankring_max_element_length = 0
+" Use "." for repeated yanks (requires cpoptions+=y)
+let g:yankring_map_dot = 1
+" Don't map gp and gP
+let g:yankring_paste_using_g = 0
+" Let yankring manage numbered registers
+let g:yankring_manage_numbered_reg = 1
 " }}}
 
 " vim: foldmethod=marker
