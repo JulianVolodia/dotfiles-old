@@ -26,6 +26,9 @@ if [[ $HOSTNAME == "caballo" ]]; then
     export PIP_VIRTUALENV_BASE=${WORKON_HOME}
     export PIP_RESPECT_VIRTUALENV=true
 
+    # Use this as local texmf tree
+    export TEXMFHOME="$HOME/.texlive"
+
     # for notmuch mail index program
     export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
 elif [[ $HOSTNAME == "molmod19" ]]; then
