@@ -8,6 +8,7 @@ if [[ $HOSTNAME == "caballo" ]]; then
     export EDITOR="vim"
     mkdir -p "$XDG_RUNTIME_DIR/urxvt"
     export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvt/urxvtd-${HOST}"
+    export PATH="$PATH:$HOME/.local/moe2011/bin"
 
     # For Python
     # Enables me to import modeller modules
