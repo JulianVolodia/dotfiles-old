@@ -4,7 +4,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYTHONDOCS="/usr/share/doc/python/html"
 export PAGER="less -R"
 
-if [[ $HOSTNAME == "caballo" ]]; then
+if [[ $(hostname) == "caballo" ]]; then
     export EDITOR="vim"
     mkdir -p "$XDG_RUNTIME_DIR/urxvt"
     export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvt/urxvtd-${HOST}"
@@ -32,7 +32,7 @@ if [[ $HOSTNAME == "caballo" ]]; then
 
     # for notmuch mail index program
     export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
-elif [[ $HOSTNAME == "molmod19" ]]; then
+elif [[ $(hostname) == "molmod19" ]]; then
     export PATH="$HOME/.local/epd/7.3.1/bin:$PATH"
     export EDITOR="gvim"
 
