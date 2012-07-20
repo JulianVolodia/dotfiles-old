@@ -64,6 +64,9 @@ bindsym $mod+y exec $term
 # Dmenu
 bindsym $mod+x exec dmenu_run -p 'Run:' $dmenu_args
 
+# Ranger
+bindsym $mod+c exec $term -e ranger
+
 # Mounting
 bindsym $mod+i exec mount-script -m -- dmenu -p 'Mount:' $dmenu_args
 # Unmounting
