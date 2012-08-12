@@ -41,7 +41,16 @@ alias ls='ls -F --group-directories-first -h --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
+
+# virtualenv {{{
+# These only work when a virtualenv is active
+# cd's into the project root directory
 alias cdp='cdproject'
+# cd into virtualenv directory (and subdirectory if given)
+alias cdv='cdvirtualenv'
+# cd into sitepackages (and subdirectory if given)
+alias cds='cdsitepackages'
+# }}}
 # }}}
 
 # {{{ Prompt
