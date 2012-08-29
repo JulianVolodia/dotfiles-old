@@ -4,14 +4,18 @@
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # gpg-agent {{{
-mkdir -p "$XDG_RUNTIME_DIR/gpg-agent"
-ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent/gpg-agent.info"
+ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent.info"
 
-if [[ -r "$ENV_FILE" ]]; then
-    . "$ENV_FILE"
+if [[ -r "$ENV_FILE" ]] && kill -0 $(grep $GPG_AGENT_INFO "$ENV_FILE" | cut -d: -f 2) 2>&1 > /dev/null; then
+    # Fetch info from $ENV_FILE if gpg-agent is already running
+    source "$ENV_FILE"
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
 else
-    gpg-agent --daemon -s -q --enable-ssh-support --write-env-file "$ENV_FILE"
+    # Start the agent if it's not already running
+    gpg-agent --log-file $HOME/gpg-agent.log --daemon -q --enable-ssh-support --write-env-file "$ENV_FILE"
+    source "$ENV_FILE"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
 fi
 # }}}
