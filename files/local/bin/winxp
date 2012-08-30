@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Run Windows XP SP3 with Samba share and host CPU emulation
-qemu-kvm -hda "$HOME/.images/winxpsp3.qcow2" -smb -vga std -cpu host
+qemu-kvm -hda "$HOME/.images/winxpsp3.qcow2" -smb "$HOME/shr/smb/winxp" -vga std -cpu host
