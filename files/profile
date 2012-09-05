@@ -15,11 +15,10 @@ if [[ $(hostname) == "caballo" ]]; then
     export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvt/urxvtd-${HOST}"
 
     # MODELLER {{{
-    # Use MODELLER from system Python installation (should work with both
-    # Python 2.5+ and Python 3.x)
-    MODELLER_PATH="/usr/lib/modeller"
-    export PYTHONPATH="$MODELLER_PATH/modlib:$MODELLER_PATH/lib/x86_64-intel8/python2.5"
-    export PYTHON3PATH="$MODELLER_PATH/modlib:$MODELLER_PATH/lib/x86_64-intel8/python3.2"
+    # Use MODELLER with system Python installation (won't work with Python 3.x)
+    export MODINSTALL9v10="/usr/lib/modeller"
+    export PYTHONPATH="$MODINSTALL9v10/modlib:$MODINSTALL9v10/lib/x86_64-intel8/python2.5"
+    export LD_LIBRARY_PATH="$MODINSTALL9v10/lib/x86_64-intel8"
     # }}}
 
     # virtualenvwrapper {{{
