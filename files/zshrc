@@ -9,7 +9,7 @@ colors
 # {{{ Setup
 # Setup gpg-agent for SSH keys
 ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent.info"
-if [ -r "$ENV_FILE" ]; then
+if [[ -r "$ENV_FILE" ]]; then
     source "$ENV_FILE"
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
@@ -19,7 +19,7 @@ fi
 [ -r "$(which virtualenvwrapper.sh)" ] && source virtualenvwrapper.sh
 
 # One history to rule them all
-HISTFILE=~/.cache/zsh/histfile
+HISTFILE="$XDG_CACHE_HOME/zsh/histfile"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt inc_append_history share_history extended_glob
