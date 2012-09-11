@@ -13,7 +13,7 @@ if [[ -r "$ENV_FILE" ]] && kill -0 $(grep $GPG_AGENT_INFO "$ENV_FILE" | cut -d: 
     export SSH_AUTH_SOCK
 else
     # Start the agent if it's not already running
-    gpg-agent --log-file $HOME/gpg-agent.log --daemon -q --enable-ssh-support --write-env-file "$ENV_FILE"
+    gpg-agent --daemon -q --enable-ssh-support --write-env-file "$ENV_FILE"
     source "$ENV_FILE"
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
