@@ -37,7 +37,7 @@ if [[ $(hostname) == "caballo" ]]; then
     # }}}
 
     # Use this as local texmf tree
-    export TEXMFHOME="$HOME/.texlive"
+    export TEXMFHOME="$HOME/.texmf"
 
     # for notmuch mail index program
     export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
