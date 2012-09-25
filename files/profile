@@ -16,9 +16,9 @@ if [[ $(hostname) == "caballo" ]]; then
 
     # MODELLER {{{
     # Use MODELLER with system Python installation (won't work with Python 3.x)
-    export MODINSTALL9v10="/usr/lib/modeller"
-    export PYTHONPATH="$MODINSTALL9v10/modlib:$MODINSTALL9v10/lib/x86_64-intel8/python2.5"
-    export LD_LIBRARY_PATH="$MODINSTALL9v10/lib/x86_64-intel8"
+    export MODINSTALL9v11="/usr/lib/modeller"
+    export PYTHONPATH="$MODINSTALL9v11/modlib:$MODINSTALL9v11/lib/x86_64-intel8/python2.5"
+    export LD_LIBRARY_PATH="$MODINSTALL9v11/lib/x86_64-intel8"
     # }}}
 
     # virtualenvwrapper {{{
