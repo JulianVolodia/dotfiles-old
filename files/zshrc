@@ -1,7 +1,9 @@
 # ~/.zshrc
 
 # {{{ Modules
-autoload -Uz compinit zmv colors
+autoload -Uz compinit
+autoload -Uz zmv
+autoload -Uz colors
 compinit
 colors
 # }}}
@@ -142,6 +144,10 @@ $sign "
 
 # {{{ zkbd
 autoload -Uz zkbd
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 [[ ! -f ${XDG_CONFIG_HOME}/zsh/zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
 source ${XDG_CONFIG_HOME}/zsh/zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 
@@ -152,8 +158,8 @@ source ${XDG_CONFIG_HOME}/zsh/zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
 [[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 [[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
-[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
+[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-beginning-search
 [[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
-[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
+[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 # }}}
