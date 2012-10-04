@@ -1,5 +1,6 @@
 application/msword; antiword %s; copiousoutput
 application/pdf; zathura %s &
 image/*; sxiv %s
-text/html; lynx -display_charset=utf-8 -dump -width=78 -nolist %s | sed 's/^   //'; copiousoutput; needsterminal; nametemplate=%s.html
+image/svg; firefox %s
+text/html; lynx -display_charset=utf-8 -dump -assume_charset=%{charset} -width=78 -nolist %s | sed 's/^   //'; copiousoutput; nametemplate=%s.html
 
