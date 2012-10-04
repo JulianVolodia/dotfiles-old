@@ -1,11 +1,11 @@
 # General appearance 
 
 # Make thread display narrower
-set narrow_tree=yes
+set narrow_tree
 # Number of index lines (one of them is the status bar)
-set pager_index_lines=6
+set pager_index_lines = 6
 # Number of lines of context
-set pager_context=5
+set pager_context = 5
 # Don't jump to next message when I invoke <next-page> on the end of
 # a message
 set pager_stop
@@ -21,11 +21,11 @@ set folder_format = "%2C %N %D %f %t"
 # Sidebar options
 
 # The delimiter string
-set sidebar_delim=" "
+set sidebar_delim = " "
 # Don't show sidebar by default
-set sidebar_visible = no
+unset sidebar_visible
 # Sidebar width
-set sidebar_width=20
+set sidebar_width = 20
 
 # Colors
 

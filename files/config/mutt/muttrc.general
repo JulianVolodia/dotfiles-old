@@ -1,30 +1,36 @@
-set spoolfile="+al/INBOX"
+set spoolfile = "+al/INBOX"
 
 # SMTP options
 
 # Include headers in editor window
-set edit_headers=yes
+set edit_headers
 # Use this for sending mail
-set sendmail="/usr/local/bin/msmtpq"
+set sendmail = "/usr/local/bin/msmtpq"
 # Always put sendmail in the background without waiting
-set sendmail_wait=-1
+set sendmail_wait = -1
 # If envelope_from_address is set, use it as the sender address
-set use_envelope_from=yes
+set use_envelope_from
 
 # General options
 
 # No delay when switching mailboxes
-set sleep_time=0
+set sleep_time = 0
 
-# Ask for confirmation when quitting
-set quit=ask-yes
+# Don't ask for confirmation when quitting
+unset quit
+
+# Strip headers and eval mimes when piping
+set pipe_decode
+
+# Strip headers and eval mimes before searching
+set thorough_search
 
 # Don't mark new unread messages as old when leaving a mailbox
 # without reading them
 unset mark_old
 
 # Include parent message(s) when replying
-set include = yes
+set include
 
 # Ask for CC header before editing
 set askcc
@@ -37,7 +43,7 @@ set fcc_attach
 
 # Remove my own address from list of recipients when replying to a
 # message
-set metoo=no
+unset metoo
 
 # When replying to message sent by myself, actually address the
 # message to the recipients of that message
@@ -54,6 +60,13 @@ set indent_str = "> "
 
 # Add tildes at EOF
 set tilde
+
+# Don't wait after calling subprocess
+unset wait_key
+
+# Don't ask for confirmation when appending messages to existing
+# mailbox
+unset confirmappend
 
 # System options
 
@@ -80,18 +93,18 @@ set print_command = "lp"
 unset use_domain
 
 # No, I do not want to continue my drafts, thank you very much
-set recall = no
+unset recall
 # Use system-wide CA certificate store
-set ssl_usesystemcerts = yes
+set ssl_usesystemcerts
 # Don't move read messages out from spoolfile
 # I don't have an mbox anyways
-set move = no
+unset move
 
 # Sort messages by threads
-set sort=threads
+set sort = threads
 # Show oldest message first in threads
-set sort_aux=date-received
+set sort_aux = date-received
 
 # Notmuch options
 # Timeout for opening database (in seconds)
-set nm_open_timeout=5
+set nm_open_timeout = 5
