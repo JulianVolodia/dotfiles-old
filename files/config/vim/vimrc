@@ -1,8 +1,10 @@
 " Vim Configuration file
+"
 " TODO:
 " - find out what slows everything down
 
 " General {{{
+" Early stuff {{{
 " Runtime paths
 set runtimepath=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
@@ -14,6 +16,7 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colorscheme molokai
+" }}}
 
 " Files {{{
 " Don't create backup files
@@ -28,7 +31,7 @@ set undofile
 set undodir=$XDG_CACHE_HOME/vim/undo
 " }}}
 
-" Indentation {{{
+" Indentation & linebreaks {{{
 " 1 tab = 8 spaces
 " Don’t fuck with this
 set tabstop=8
@@ -45,17 +48,7 @@ set expandtab
 set softtabstop=4
 " }}}
 
-" Always show status line
-set laststatus=2
-" Use markers as a standard fold method
-set foldmethod=marker
-
-" Use mouse
-set mouse=a
-" Breaks lines in sane places
-set linebreak
-" Add this in front of line if line is too long for terminal
-set showbreak=+
+" Search {{{
 " Show search hits during input
 set incsearch
 " highlight search hits
@@ -63,6 +56,11 @@ set hlsearch
 " Case-insensitive search unless there are capital letters in search expression
 set ignorecase
 set smartcase
+" Use ":s///g" by default
+set gdefault
+" }}}
+
+" Tabs & buffers {{{
 " Lets you leave edited buffers without having to save them
 set hidden
 " When splitting, only split current viewport
@@ -72,6 +70,16 @@ set splitbelow
 set splitright
 " Prettify splits, diffs, folds
 set fillchars="vert: ,fold: ,diff: "
+" Also consider other tabs if searching for already open buffers
+set switchbuf=usetab
+" }}}
+
+" Appearance {{{
+" Breaks lines in sane places
+set linebreak
+" Add this in front of line if line is too long for terminal
+set showbreak=+
+
 " At all times show at least this many lines over/under cursor
 set scrolloff=3
 " Not necessary because of powerline plugin
@@ -80,17 +88,24 @@ set noshowmode
 set cursorline
 " Show current command in status line
 set showcmd
-" Also consider other tabs if searching for already open buffers
-set switchbuf=usetab
 " Show tabline only if there is >1 tab
 set showtabline=1
+" Always show status line
+set laststatus=2
+" Use markers as a standard fold method
+set foldmethod=marker
+" }}}
 
+" Mouse {{{
+" Use mouse
+set mouse=a
+" }}}
+
+" Completion {{{
 " Bash-like completion behavior
 set wildmenu
 set wildmode=list:longest
-
-" Use ":s///g" by default
-set gdefault
+" }}}
 " }}}
 
 " Functions {{{
@@ -117,16 +132,6 @@ function! Chomp(str)
 endfunction
 " }}}
 
-" Find a file and pass it to cmd {{{
-function! DmenuOpen(cmd, prompt)
-  let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:prompt))
-  if empty(fname)
-    return
-  endif
-  execute a:cmd . " " . fname
-endfunction
-" }}}
-
 " Put Y into its place {{{
 function! YRRunAfterMaps()
     nnoremap <silent> Y :<C-U>YRYankCount 'y$'<cr>
@@ -135,48 +140,51 @@ endfunction
 " }}}
 
 " Keybindings {{{
+" Leaders {{{
+let mapleader = ","
+let maplocalleader = "´"
+" }}}
+
+" Fucking keys {{{
 " Fuck you, help key
 noremap <f1> <esc>
 " Fuck you too, man key
 noremap K <nop>
+" }}}
 
-" Make!
-noremap <silent> <f5> :make<cr>
-
-" I use the original gj more often than j
+" Movement {{{
+" Easier movement between virtual lines
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
-" Better access to <leader>
-let mapleader = ","
-" Easier :nohl
-noremap <silent> <cr> :nohlsearch<cr>
+
 " Easier movement between viewports
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
-" Easier switching between buffers
+
+" Easier movement between buffers
 noremap <silent> <right> :bnext<cr>
 noremap <silent> <left> :bprev<cr>
 
-" Makes folding fun
-noremap <silent> <space> za
+" Use <tab> to teleport to matching parens
+nnoremap <tab> %
+vnoremap <tab> %
+" }}}
 
-" Easier opening of command line window
-nnoremap ö q:i
-vnoremap ö q:i
+" Command-line window {{{
+" Opens appropriate command-line window with every operation
+nmap ö :
+vmap ö :
 nnoremap : q:i
 vnoremap : q:i
 nnoremap / q/i
 vnoremap / q/i
 nnoremap ? q?i
 vnoremap ? q?i
-" allow leaving cmdline-window with <ESC>
-au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
-" Select current line without having to enter insert mode
-au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
+
 " allow normal cmdline :, / and ?
 nnoremap q: :
 vnoremap q: :
@@ -185,6 +193,13 @@ vnoremap q/ /
 nnoremap q? ?
 vnoremap q? ?
 
+" allow leaving cmdline-window with <ESC>
+au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
+" Select current line without having to enter insert mode
+au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
+" }}}
+
+" Quickfix window {{{
 " Open quickfix window
 noremap <silent> <leader>qo :botright :copen<cr>
 " Jump to current error
@@ -195,26 +210,34 @@ noremap <silent> <leader>qw :botright :cwindow<cr>
 noremap <silent> <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
 noremap <silent> <leader>qp :cprevious<cr>
+" }}}
 
-" Use <tab> to teleport to matching parens
-nnoremap <tab> %
-vnoremap <tab> %
+" Make!
+noremap <silent> <f5> :make<cr>
+
+" Easier :nohl
+noremap <silent> <cr> :nohlsearch<cr>
+
+" Makes folding fun
+noremap <silent> <space> za
 " }}}
 
 " Plugins {{{
-" ack plugin
+" Ack {{{
 noremap <leader>a <Esc>:Ack<Space>
 " for adding to the current search results
 noremap <leader>A <Esc>:AckAdd<Space>
+" }}}
 
-" Commentary plugin
+" Commentary {{{
 " Use ü and üü for commenting
 xmap ü <Plug>Commentary
 nmap ü <Plug>Commentary
 nmap üü <Plug>CommentaryLine
 nmap üu <Plug>CommentaryUndo
+" }}}
 
-" Gundo plugin
+" Gundo {{{
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
 nnoremap <leader>g :GundoToggle<cr>
@@ -228,16 +251,19 @@ let g:gundo_width = 50
 "let g:gundo_right = 1
 " automatically close Gundo windows on reverting
 let g:gundo_close_on_revert = 1
+" }}}
 
-" Rainbow Parentheses plugin
+" Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
 noremap <silent> ä :RainbowParenthesesToggleAll<cr>
+" }}}
 
-" Splice plugin
+" Splice {{{
 " Use this as the splice prefix
 let g:splice_prefix = "<leader>s"
+" }}}
 
-" Tagbar plugin
+" Tagbar {{{
 " Open tagbar window on the left
 let tagbar_left = 1
 " Make tagbar window as wide as the gundo plugin windows
@@ -251,8 +277,9 @@ let tagbar_autoclose = 1
 let tagbar_autoshowtag = 1
 " Toggle Tagbar window
 nnoremap <silent> <f2> :TagbarToggle<cr>
+" }}}
 
-" TaskList plugin
+" TaskList {{{
 " Open TaskList
 " Don't use ":" in place of "<Plug>" here, messes with another plugin
 noremap <silent> <f12> <Plug>TaskList
@@ -260,13 +287,15 @@ noremap <silent> <f12> <Plug>TaskList
 let g:tlWindowPosition = 1
 " List of tokens to look for
 let g:tlTokenList = ['TODO', 'FIXME']
+" }}}
 
-" Trailing Whitespace plugin
+" Trailing Whitespace {{{
 " Do this to fix trailing whitespace
 nnoremap <silent> <leader>w :FixWhitespace<cr>
 vnoremap <silent> <leader>w :FixWhitespace<cr>
+" }}}
 
-" Yankring plugin
+" Yankring {{{
 " How many elements to save
 let g:yankring_max_history = 1000
 " Don't put single letters into the ring
@@ -291,6 +320,7 @@ call YRRunAfterMaps()
 " Use <leader>y to toggle the yankring
 nnoremap <silent> <leader>y :YRShow<cr>
 vnoremap <silent> <leader>y :YRShow<cr>
+" }}}
 " }}}
 
 " vim: foldmethod=marker
