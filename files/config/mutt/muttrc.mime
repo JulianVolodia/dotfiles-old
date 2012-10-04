@@ -10,4 +10,4 @@ auto_view application/msword text/html
 alternative_order text/plain text/enriched text/html
 
 # Path to mailcap file
-set mailcap_path = "~/.config/mailcap"
+set mailcap_path = "${XDG_CONFIG_HOME}/mailcap"
