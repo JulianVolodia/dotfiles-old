@@ -16,7 +16,7 @@ set use_envelope_from
 set sleep_time = 0
 
 # Don't ask for confirmation when quitting
-unset quit
+set quit
 
 # Strip headers and eval mimes when piping
 set pipe_decode
@@ -48,6 +48,9 @@ unset metoo
 # message to the recipients of that message
 unset reply_self
 
+# Skip to "compose" when replying and skip "subject" when forwarding
+set fast_reply
+
 # Quote header
 set attribution = "On %d, %n wrote:"
 
@@ -74,6 +77,9 @@ set header_cache = ${XDG_CACHE_HOME}/mutt/headers
 
 # Keep bodies in cache file too
 set message_cachedir = ${XDG_CACHE_HOME}/mutt/bodies
+
+# Save tempfiles here
+set tmpdir = ${XDG_CACHE_HOME}/mutt/tmp
 
 # Use maildir as mailboxes format
 set mbox_type = "maildir"
@@ -103,6 +109,8 @@ unset move
 set sort = threads
 # Show oldest message first in threads
 set sort_aux = date-received
+# Only create threads from "In-Reply-To" and "References" fields
+set strict_threads
 # }}}
 
 # Notmuch options {{{
