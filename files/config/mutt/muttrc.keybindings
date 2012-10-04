@@ -1,11 +1,15 @@
 # Keybindings {{{
-bind index,pager <down> sidebar-next
-bind index,pager <up> sidebar-prev
-bind index,pager <right> sidebar-open
-macro index,pager y "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar visibility"
+bind index,pager . sidebar-next
+bind index,pager , sidebar-prev
+bind index,pager - sidebar-open
+macro index,pager y \
+    "<enter-command>toggle sidebar_visible<enter>" \
+    "Toggle sidebar visibility"
 
 bind index gg first-entry
 bind index G last-entry
+bind index j next-entry
+bind index k previous-entry
 bind index <tab> sync-mailbox
 bind index <space> collapse-thread
 bind index p recall-message
