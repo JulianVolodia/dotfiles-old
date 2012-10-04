@@ -137,6 +137,16 @@ function! YRRunAfterMaps()
     nnoremap <silent> Y :<C-U>YRYankCount 'y$'<cr>
 endfunction
 " }}}
+"
+" Find a file and pass it to cmd {{{
+function! DmenuOpen(cmd, prompt)
+  let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:prompt))
+  if empty(fname)
+    return
+  endif
+  execute a:cmd . " " . fname
+endfunction
+" }}}
 " }}}
 
 " Keybindings {{{
