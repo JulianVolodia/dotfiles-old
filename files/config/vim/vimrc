@@ -1,7 +1,5 @@
 " Vim Configuration file
 " TODO:
-" - find suitable substitute for <esc> that works with lmap
-" - have a look at quickfix stuff
 " - find out what slows everything down
 
 " General {{{
@@ -16,6 +14,8 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colorscheme molokai
+
+" Files {{{
 " Don't create backup files
 set nobackup
 " Save viminfo file to keep state information from one vim session to the next
@@ -26,6 +26,24 @@ set directory=$XDG_CACHE_HOME/vim/tmp,.,/var/tmp,/tmp
 set undofile
 " Common directory for persistent undo files
 set undodir=$XDG_CACHE_HOME/vim/undo
+" }}}
+
+" Indentation {{{
+" 1 tab = 8 spaces
+" Don’t fuck with this
+set tabstop=8
+" use this many spaces for autoindent and day-to-day editing
+set shiftwidth=4
+" God, this is complicated, see ":help smarttab"
+set smarttab
+" Replace tabs with spaces
+" To put actual tab, use <c-v><tab>
+set expandtab
+" Use this when pressing <tab> instead of tabstop
+" Allows to keep tabstop at default value while editing as if it's set to
+" softtabstop width
+set softtabstop=4
+" }}}
 
 " Always show status line
 set laststatus=2
@@ -35,7 +53,6 @@ set foldmethod=marker
 " Use mouse
 set mouse=a
 " Breaks lines in sane places
-" (e.g. whitespace instead of smack in the middle of words)
 set linebreak
 " Add this in front of line if line is too long for terminal
 set showbreak=+
@@ -68,41 +85,16 @@ set switchbuf=usetab
 " Show tabline only if there is >1 tab
 set showtabline=1
 
-" Indentation {{{
-" 1 tab = 8 spaces
-" Don’t fuck with this
-set tabstop=8
-" use this many spaces for autoindent and day-to-day editing
-set shiftwidth=4
-" God, this is complicated, see ":help smarttab"
-set smarttab
-" Replace tabs with spaces
-" To put actual tab, use <c-v><tab>
-set expandtab
-" Use this when pressing <tab> instead of tabstop
-" Allows to keep tabstop at default value while editing as if it's set to
-" softtabstop width
-set softtabstop=4
-" }}}
-
 " Bash-like completion behavior
 set wildmenu
-set wildmode=list:longest,list:full
+set wildmode=list:longest
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-" Doesn't work if put in tex.vim ftplugin file
-let g:tex_flavor = "latex"
+" Use ":s///g" by default
+set gdefault
 " }}}
 
 " Functions {{{
-" Customize  fold text: just fold text with length appended
+" Customize  fold text: just fold text with length appended {{{
 function! CustomFoldText()
     "get first non-blank line
     let fs = v:foldstart
@@ -123,8 +115,9 @@ set foldtext=CustomFoldText()
 function! Chomp(str)
   return substitute(a:str, '\n$', '', '')
 endfunction
+" }}}
 
-" Find a file and pass it to cmd
+" Find a file and pass it to cmd {{{
 function! DmenuOpen(cmd, prompt)
   let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:prompt))
   if empty(fname)
@@ -134,15 +127,29 @@ function! DmenuOpen(cmd, prompt)
 endfunction
 " }}}
 
+" Put Y into its place {{{
+function! YRRunAfterMaps()
+    nnoremap <silent> Y :<C-U>YRYankCount 'y$'<cr>
+endfunction
+" }}}
+" }}}
+
 " Keybindings {{{
+" Fuck you, help key
+noremap <f1> <esc>
+" Fuck you too, man key
+noremap K <nop>
+
+" Make!
+noremap <silent> <f5> :make<cr>
+
+" I use the original gj more often than j
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 " Better access to <leader>
 let mapleader = ","
-" Meta-efficiency, man
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" More meta-efficiency, whoa dude
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" Easier switching to window mode
-noremap <leader>w <c-w>
 " Easier :nohl
 noremap <silent> <cr> :nohlsearch<cr>
 " Easier movement between viewports
@@ -155,14 +162,7 @@ noremap <silent> <right> :bnext<cr>
 noremap <silent> <left> :bprev<cr>
 
 " Makes folding fun
-noremap <silent> <Space> za
-
-" Y should yank to end of line
-map Y y$
-
-" Allow saving of files as root if I forgot to use sudo
-" Needs tee installed
-cnoremap W %!sudo tee > /dev/null %
+noremap <silent> <space> za
 
 " Easier opening of command line window
 nnoremap ö q:i
@@ -186,18 +186,19 @@ nnoremap q? ?
 vnoremap q? ?
 
 " Open quickfix window
-noremap <leader>qo :botright :copen<cr>
+noremap <silent> <leader>qo :botright :copen<cr>
 " Jump to current error
-noremap <leader>qc :cc<cr>
+noremap <silent> <leader>qq :cc<cr>
 " Open quickfix window in bottom right IF there are any errors
-noremap <leader>qq :botright :cwindow<cr>
+noremap <silent> <leader>qw :botright :cwindow<cr>
 " Go to next error in quickfix window
-noremap <leader>qn :cnext<cr>
+noremap <silent> <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
-noremap <leader>qp :cprevious<cr>
+noremap <silent> <leader>qp :cprevious<cr>
 
-" Open dmenu
-noremap <leader>t :call DmenuOpen(":e", "Edit:")<cr>
+" Use <tab> to teleport to matching parens
+nnoremap <tab> %
+vnoremap <tab> %
 " }}}
 
 " Plugins {{{
@@ -205,12 +206,6 @@ noremap <leader>t :call DmenuOpen(":e", "Edit:")<cr>
 noremap <leader>a <Esc>:Ack<Space>
 " for adding to the current search results
 noremap <leader>A <Esc>:AckAdd<Space>
-
-" command-t plugin
-" Max height the match window is allowed to expand to
-let g:CommandTMaxHeight = 12
-" Open match window at top so best result is shown always in the same place
-" let g:CommandTMatchWindowAtTop = 0
 
 " Commentary plugin
 " Use ü and üü for commenting
@@ -222,13 +217,13 @@ nmap üu <Plug>CommentaryUndo
 " Gundo plugin
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
-nnoremap <leader>y :GundoToggle<CR>
+nnoremap <leader>g :GundoToggle<cr>
 " horizontal width of Gundo graph
 let g:gundo_width = 50
 " Vertical height of preview window
 "let g:gundo_preview_height = 25
 " Show preview window below file instead of below graph
-let g:gundo_preview_bottom = 0
+" let g:gundo_preview_bottom = 0
 " Show Gundo graph on the right
 "let g:gundo_right = 1
 " automatically close Gundo windows on reverting
@@ -236,7 +231,7 @@ let g:gundo_close_on_revert = 1
 
 " Rainbow Parentheses plugin
 " Toggle display of all kinds of parens
-noremap <silent> <F12> :RainbowParenthesesToggleAll<CR>
+noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 
 " Splice plugin
 " Use this as the splice prefix
@@ -246,7 +241,7 @@ let g:splice_prefix = "<leader>s"
 " Open tagbar window on the left
 let tagbar_left = 1
 " Make tagbar window as wide as the gundo plugin windows
-let tagbar_width = 45
+let tagbar_width = 50
 " Automatically jump to tagbar window as soon as it's opened
 let tagbar_autofocus = 1
 " Automatically close tagbar window when choosing a tag
@@ -255,31 +250,47 @@ let tagbar_autoclose = 1
 " the tag
 let tagbar_autoshowtag = 1
 " Toggle Tagbar window
-nnoremap <silent> <leader>g :TagbarToggle<cr>
+nnoremap <silent> <f2> :TagbarToggle<cr>
 
 " TaskList plugin
 " Open TaskList
 " Don't use ":" in place of "<Plug>" here, messes with another plugin
-noremap <leader>l <Plug>TaskList
+noremap <silent> <f12> <Plug>TaskList
 " Open TaskList on bottom (0 = top)
 let g:tlWindowPosition = 1
 " List of tokens to look for
 let g:tlTokenList = ['TODO', 'FIXME']
 
-" yankring plugin
-let g:yankring_enabled = 1
-" Place where history file is stored
-let g:yankring_history_dir = '~/.cache/vim/yankring'
-" Ignore single-letter deletes
+" Trailing Whitespace plugin
+" Do this to fix trailing whitespace
+nnoremap <silent> <leader>w :FixWhitespace<cr>
+vnoremap <silent> <leader>w :FixWhitespace<cr>
+
+" Yankring plugin
+" How many elements to save
+let g:yankring_max_history = 1000
+" Don't put single letters into the ring
 let g:yankring_min_element_length = 2
-" No upper limit on yankring element size
-let g:yankring_max_element_length = 0
-" Use "." for repeated yanks (requires cpoptions+=y)
+" Display max. this many characters per element
+let g:yankring_max_display = 70
+" Don't add duplicates to the ring
+let g:yankring_ignore_duplicate = 1
+" Make yy, dd, dw, ... repeatable
 let g:yankring_map_dot = 1
-" Don't map gp and gP
-let g:yankring_paste_using_g = 0
-" Let yankring manage numbered registers
+" Have the yankring manage numbered registers
 let g:yankring_manage_numbered_reg = 1
+" Use this directory for history
+let g:yankring_history_dir = '$XDG_CACHE_HOME/vim/yankring'
+" ...and this file
+let g:yankring_history_file = 'yankring_history'
+" Use + and - to cycle forwards and backwards through yanks
+let g:yankring_replace_n_pkey = '-'
+let g:yankring_replace_n_nkey = '+'
+" Maps to run after having configured yankring
+call YRRunAfterMaps()
+" Use <leader>y to toggle the yankring
+nnoremap <silent> <leader>y :YRShow<cr>
+vnoremap <silent> <leader>y :YRShow<cr>
 " }}}
 
 " vim: foldmethod=marker
