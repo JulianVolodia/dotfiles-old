@@ -1,5 +1,4 @@
-# General appearance 
-
+# General appearance {{{
 # Make thread display narrower
 set narrow_tree
 # Number of index lines (one of them is the status bar)
@@ -17,18 +16,29 @@ set sig_dashes
 unset beep
 # Display of folders:
 set folder_format = "%2C %N %D %f %t"
+# }}}
 
-# Sidebar options
-
+# Sidebar options {{{
 # The delimiter string
-set sidebar_delim = " "
-# Don't show sidebar by default
-unset sidebar_visible
+set sidebar_delim = " │"
+# Show sidebar by default
+set sidebar_visible
 # Sidebar width
-set sidebar_width = 20
+set sidebar_width = 24
+set status_chars = "*%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# }}}
 
-# Colors
+# Headers {{{
+# Ignore all headers...
+ignore *
+# ...but show these...
+unignore from: to: cc: date: subject:
+# ...in this order
+hdr_order from: to: cc: date: subject:
+# }}}
 
+# Colors {{{
 color normal default default
 color attachment magenta default
 color indicator brightmagenta default
@@ -69,3 +79,4 @@ color body brightyellow default	"^gpg: invalid node with packet of type"
 color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
 color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# }}}

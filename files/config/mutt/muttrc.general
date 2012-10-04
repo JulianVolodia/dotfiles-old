@@ -1,7 +1,6 @@
 set spoolfile = "+al/INBOX"
 
-# SMTP options
-
+# SMTP options {{{
 # Include headers in editor window
 set edit_headers
 # Use this for sending mail
@@ -10,9 +9,9 @@ set sendmail = "/usr/local/bin/msmtpq"
 set sendmail_wait = -1
 # If envelope_from_address is set, use it as the sender address
 set use_envelope_from
+# }}}
 
-# General options
-
+# General options {{{
 # No delay when switching mailboxes
 set sleep_time = 0
 
@@ -67,9 +66,9 @@ unset wait_key
 # Don't ask for confirmation when appending messages to existing
 # mailbox
 unset confirmappend
+# }}}
 
-# System options
-
+# System options {{{
 # Keep headers in cache file
 set header_cache = ${XDG_CACHE_HOME}/mutt/headers
 
@@ -104,7 +103,9 @@ unset move
 set sort = threads
 # Show oldest message first in threads
 set sort_aux = date-received
+# }}}
 
-# Notmuch options
+# Notmuch options {{{
 # Timeout for opening database (in seconds)
 set nm_open_timeout = 5
+# }}}
