@@ -13,7 +13,7 @@ set smart_wrap
 # Insert "--" line before signature
 set sig_dashes
 # Don't beep, dammit
-unset beep
+set beep = no
 # Display of folders:
 set folder_format = "%2C %N %D %f %t"
 # }}}
@@ -27,6 +27,11 @@ set sidebar_visible
 set sidebar_width = 24
 set status_chars = "*%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# }}}
+
+# Index view {{{
+set index_format = "[%Z]  %D  %-20.20F  %s"
+unset uncollapse_jump
 # }}}
 
 # Headers {{{
