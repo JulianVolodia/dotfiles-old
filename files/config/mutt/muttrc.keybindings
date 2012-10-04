@@ -1,4 +1,5 @@
 # Keybindings {{{
+bind index,pager N search-opposite
 bind index,pager . sidebar-next
 bind index,pager , sidebar-prev
 bind index,pager - sidebar-open
