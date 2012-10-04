@@ -28,12 +28,9 @@ macro index,pager A \
     "<shell-escape>abook --add-email<return>" \
     "Absender zum Adressbuch hinzufügen"
 
-macro index \cb \
-    urlview\n \
-    "URLs aus einer Nachricht extrahieren"
-macro pager \cb \
-    <pipe-entry>'w3m'<enter> \
-    "Follow links in w3m"
-
-
+macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+    <enter-command> unset pipe_decode<enter>\
+    <pipe-message>extract_url<enter>\
+    <enter-command> set pipe_decode=\$my_pdsave<enter>" \
+    "Get URLs"
 # }}}
