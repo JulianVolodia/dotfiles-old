@@ -93,7 +93,7 @@ set showtabline=1
 " Always show status line
 set laststatus=2
 " Use markers as a standard fold method
-set foldmethod=marker
+" set foldmethod=marker
 " }}}
 
 " Mouse {{{
@@ -170,10 +170,10 @@ noremap gj j
 noremap gk k
 
 " Easier movement between viewports
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 " Easier movement between buffers
 noremap <silent> <right> :bnext<cr>
@@ -220,6 +220,16 @@ noremap <silent> <leader>qw :botright :cwindow<cr>
 noremap <silent> <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
 noremap <silent> <leader>qp :cprevious<cr>
+" }}}
+
+" Completion {{{
+" Use <C-J> and <C-K> instead of <C-N> and <C-P>
+imap <c-j> <c-n>
+imap <c-k> <c-p>
+" Use <C-H> to abort completion
+inoremap <c-h> <c-e>
+" Use <C-L> to confirm completion
+inoremap <c-l> <c-y>
 " }}}
 
 " Make!
