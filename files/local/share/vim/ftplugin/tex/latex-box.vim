@@ -10,7 +10,7 @@ let g:LatexBox_bibtex_wild_spaces = 1
 " Use LuaLaTeX as default
 " Use "continuous viewing"
 " Enable quickfix error parsing
-let g:LatexBox_latexmk_options = "-pvc -file-line-error -pdflatex=lualatex"
+let g:LatexBox_latexmk_options = "-file-line-error -pdflatex=lualatex"
 " Automatically jump to first error after calling latexmk
 let g:LatexBox_autojump = 1
 " }}}
