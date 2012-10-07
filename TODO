@@ -1,0 +1,48 @@
+deploy:
+=======
+
+* Docstring
+* Logging
+* Create relative instead of absolute symlinks
+* Remove stale symlinks
+
+i3:
+===
+
+* Make dmenu work again
+
+Zsh:
+====
+
+* Figure out how to incorporate virtualenv into path
+* venv: magenta if not in venv (ex.:)
+* Show applied patches
+
+Gpg-agent:
+==========
+
+* See if I can omit some values in the config file or on the
+  command-line
+
+Vim:
+====
+
+* Use dmenu for files/buffers
+* Find better keys for Ctrl, Esc, CapsLock
+* Configure LaTeX-Box
+* Use one vim server per virtualenv
+
+Mutt-kz:
+========
+
+* Trash patch
+* Show mailboxes in sidebar hierarchically
+* Add some useful keybindings & get familiar with them
+* How does it work?
+* Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
+  * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
+  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham
+* IMAPfilter
+* Reorganize config files
+* Update mailing lists
+* Gmail hardlinks

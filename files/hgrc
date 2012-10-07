@@ -1,0 +1,50 @@
+[ui]
+username = runiq <runiq@archlinux.us>
+merge = splice
+ssh = ssh -C
+# Cleaner style for graphlog extension
+style = compact
+# directory
+# Also works for rsync! (apparently…)
+ignore=~/.cvsignore
+
+[diff]
+# Use git diff format as default
+git = True
+
+[merge-tools]
+splice.executable = vim
+splice.args = -f $base $local $other $output -c 'SpliceInit'
+splice.premerge = keep
+splice.priority = 1
+
+vimdiff.executable = vim
+vimdiff.args = -f -d -c "wincmd J" "$output" "$local" "$other" "$base"
+
+[extensions]
+children = 
+color = 
+fetch =
+gpg =
+graphlog = 
+inotify = 
+keyword =
+largefiles =
+mq = 
+record = 
+rebase = 
+schemes =
+
+[gpg]
+# if cmd is not provided it defaults to gpg
+cmd=/usr/bin/gpg2
+key = DBB5CD84
+
+[largefiles]
+# global cache
+usercache = $XDG_CACHE_HOME/mercurial/largefiles
+# files matching these patterns are always considered large
+# patterns =
+# new files larger than this threshold (in MiB) will always be
+# considered large
+minsize = 10

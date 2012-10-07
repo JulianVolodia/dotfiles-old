@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# Lookup path for binaries
+export PATH="$HOME/.local/bin:$PATH"
+# Pager
+export PAGER="less -R"
+# Path to Python documentation
+export PYTHONDOCS="/usr/share/doc/python/html"
+
+if [[ $(hostname) == "caballo" ]]; then
+    export EDITOR="vim"
+    # I believe this is the proper place for sockets, but it doesn't exist by
+    # default
+    mkdir -p "$XDG_RUNTIME_DIR/urxvt"
+    export RXVT_SOCKET="${XDG_RUNTIME_DIR}/urxvt/urxvtd-${HOST}"
+
+    # MODELLER {{{
+    # Use MODELLER with system Python installation (won't work with Python 3.x)
+    export MODINSTALL9v11="/usr/lib/modeller"
+    export PYTHONPATH="$MODINSTALL9v11/modlib:$MODINSTALL9v11/lib/x86_64-intel8/python2.5"
+    export LD_LIBRARY_PATH="$MODINSTALL9v11/lib/x86_64-intel8"
+    # }}}
+
+    # virtualenvwrapper {{{
+    # Base directories for venvs
+    export WORKON_HOME="${XDG_DATA_HOME}/virtualenv/envs"
+    # Base directories for venvs
+    export PROJECT_HOME="${HOME}/prj"
+    # Base directories for venvs
+    export VIRTUALENVWRAPPER_HOOK_DIR="${XDG_DATA_HOME}/virtualenv/hooks"
+    # Base directories for venvs
+    export VIRTUALENVWRAPPER_LOG_DIR="${HOME}/.log/virtualenv"
+    # Use this filename to indicate project root directory
+    export VIRTUALENVWRAPPER_PROJECT_FILENAME=".project"
+    # I like to use my own prompt, thank you very much
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    # }}}
+
+    # Use this as local texmf tree
+    export TEXMFHOME="$HOME/.texmf"
+
+    # for notmuch mail index program
+    export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
+elif [[ $(hostname) == "molmod19" ]]; then
+    export PATH="$HOME/.local/epd/7.3.1/bin:$PATH"
+    export EDITOR="gvim"
+
+    # MODELLER {{{
+    # Use MODELLER from system Python installation (works with Python 2.5+ only)
+    MODELLER_PATH="$HOME/.local/modeller/9.10"
+    export PYTHONPATH="$MODELLER_PATH/modlib:$MODELLER_PATH/lib/i386-intel8/python2.5"
+    # }}}
+fi

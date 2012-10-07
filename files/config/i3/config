@@ -1,0 +1,201 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete
+# reference!
+
+# {{{ TODO
+# Add more molokai colors
+# Put colors into variables
+# Window gaps?
+# Transparency (bar, terminals)
+# }}}
+# {{{ Variables
+# Modificator
+set $mod Mod4
+
+# Terminal
+set $term urxvt
+
+# Dmenu arguments
+set $dmenu_args -fn 'Consolas bold 12' -nf '#d0d0d0' -nb '#121212' -sb '#a6e32d' -sf '#ffffff'
+# }}}
+# {{{ General
+# font for window titles
+font xft:Consolas Bold 12
+
+# Automatic back-and-forth
+workspace_auto_back_and_forth no
+# }}}
+# {{{ Colors
+# Name - border - background - text - indicator
+# Focused window
+client.focused #a6e32d #121212 #a6e32d #a6e32d
+# Focused window on another screen
+client.focused_inactive #121212 #121212 #a6e32d #121212
+# Unfocused window
+client.unfocused #363636 #121212 #d0d0d0 #121212
+# Window with urgent hint
+client.urgent #121212 #fa2573 #ffffff #121212
+# The part of a window that's not the client
+client.background #121212
+# }}}
+# {{{ Status bar
+bar {
+    status_command i3status
+    position top
+    font xft:Consolas Bold 12
+    # Systray only on main monitor
+    tray_output primary
+    colors {
+        background #121212
+        statusline #d0d0d0
+        focused_workspace #121212 #a6e32d #121212
+        active_workspace #121212 #fc951e #121212
+        inactive_workspace #121212 #121212 #d0d0d0
+        urgent_workspace #121212 #fa2573 #ffffff
+    }
+}
+# }}}
+# {{{ Keybindings
+# {{{ Starters
+# Terminal
+bindsym $mod+y exec $term
+
+# Dmenu
+bindsym $mod+x exec dmenu_run -p 'Run:' $dmenu_args
+
+# Ranger
+bindsym $mod+c exec $term -e ranger
+
+# Mounting
+bindsym $mod+i exec mount-script -m -- dmenu -p 'Mount:' $dmenu_args
+# Unmounting
+bindsym $mod+o exec mount-script -u -- dmenu -p 'Unmount:' $dmenu_args
+# }}}
+# {{{ MPD stuff
+# mpc prev
+bindsym $mod+Left exec mpc prev
+# mpc next
+bindsym $mod+Right exec mpc next
+# albumbler
+bindsym $mod+Up exec albumbler
+# mpc toggle
+bindsym $mod+Down exec mpc toggle
+
+# mpc single
+bindsym $mod+Shift+Left exec mpc single
+# mpc consume
+bindsym $mod+Shift+Down exec mpc consume
+# mpc random
+bindsym $mod+Shift+Up exec mpc random
+# mpc repeat
+bindsym $mod+Shift+Right exec mpc repeat
+
+# mpc seek -10s
+bindsym $mod+Ctrl+Left exec mpc seek -00:00:10
+# mpc seek +10s
+bindsym $mod+Ctrl+Right exec mpc seek +00:00:10
+# mpc volume +5
+bindsym $mod+Ctrl+Up exec mpc volume +5
+# mpc volume -5
+bindsym $mod+Ctrl+Down exec mpc volume -5
+# }}}
+# {{{ Moving
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+# }}}
+# {{{ Window Management
+# Use this+mouse to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Split in horizontal orientation
+bindsym $mod+less split h
+
+# Split in vertical orientation
+bindsym $mod+minus split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# Change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+a layout tabbed
+bindsym $mod+d layout default
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Focus the parent container
+bindsym $mod+comma focus parent
+
+# Focus the child container
+bindsym $mod+period focus child
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# }}}
+# {{{ Interaction
+# Kill focused window
+bindsym $mod+Shift+x kill
+
+# Reload the configuration file
+bindsym $mod+q reload
+# restart i3 inplace (preserves layout/session, can be used to
+# upgrade i3)
+bindsym $mod+shift+q restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Escape exit
+
+# }}}
+# {{{ Modes
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h           resize shrink width 10 px or 10 ppt
+        bindsym j           resize grow height 10 px or 10 ppt
+        bindsym k           resize shrink height 10 px or 10 ppt
+        bindsym l           resize grow width 10 px or 10 ppt
+
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+# }}}
+# }}}
