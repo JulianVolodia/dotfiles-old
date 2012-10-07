@@ -16,6 +16,9 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colorscheme molokai
+
+" Needs to be called before redefining yank maps
+call yankstack#setup()
 " }}}
 
 " Files {{{
@@ -180,8 +183,7 @@ noremap <silent> <right> :bnext<cr>
 noremap <silent> <left> :bprev<cr>
 
 " Use <tab> to teleport to matching parens
-nnoremap <tab> %
-vnoremap <tab> %
+noremap <tab> %
 " }}}
 
 " Command-line window {{{
@@ -209,7 +211,7 @@ au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
 au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
 " }}}
 
-" Quickfix window {{{
+" Quickfix and location list windows {{{
 " Open quickfix window
 noremap <silent> <leader>qo :botright :copen<cr>
 " Jump to current error
@@ -220,6 +222,17 @@ noremap <silent> <leader>qw :botright :cwindow<cr>
 noremap <silent> <leader>qn :cnext<cr>
 " Go to previous error in quickfix window
 noremap <silent> <leader>qp :cprevious<cr>
+
+" Open location list window
+noremap <silent> <leader>lo :botright :copen<cr>
+" Jump to current error
+noremap <silent> <leader>ll :cc<cr>
+" Open location list window in bottom right IF there are any errors
+noremap <silent> <leader>lw :botright :cwindow<cr>
+" Go to next error in location list window
+noremap <silent> <leader>ln :cnext<cr>
+" Go to previous error in location list window
+noremap <silent> <leader>lp :cprevious<cr>
 " }}}
 
 " Completion {{{
@@ -236,17 +249,20 @@ inoremap <c-l> <c-y>
 noremap <silent> <f5> :make<cr>
 
 " Easier :nohl
-noremap <silent> <cr> :nohlsearch<cr>
+noremap <silent> <leader><cr> :nohlsearch<cr>
 
 " Makes folding fun
 noremap <silent> <space> za
+
+" Use <f2> to toggle paste mode
+set pastetoggle=<f2>
 " }}}
 
 " Plugins {{{
 " Ack {{{
-noremap <leader>a <Esc>:Ack<Space>
+noremap <leader>a :Ack<Space>
 " for adding to the current search results
-noremap <leader>A <Esc>:AckAdd<Space>
+noremap <leader>A :AckAdd<Space>
 " }}}
 
 " Commentary {{{
@@ -260,7 +276,7 @@ nmap üu <Plug>CommentaryUndo
 " Gundo {{{
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
-nnoremap <leader>g :GundoToggle<cr>
+noremap <leader>g :GundoToggle<cr>
 " horizontal width of Gundo graph
 let g:gundo_width = 50
 " Vertical height of preview window
@@ -324,13 +340,13 @@ let tagbar_autoclose = 1
 " the tag
 let tagbar_autoshowtag = 1
 " Toggle Tagbar window
-nnoremap <silent> <f2> :TagbarToggle<cr>
+nnoremap <silent> <f3> :TagbarToggle<cr>
 " }}}
 
 " TaskList {{{
 " Open TaskList
 " Don't use ":" in place of "<Plug>" here, messes with another plugin
-noremap <silent> <f12> <Plug>TaskList
+noremap <silent> <f4> <Plug>TaskList
 " Open TaskList on bottom (0 = top)
 let g:tlWindowPosition = 1
 " List of tokens to look for
@@ -339,8 +355,7 @@ let g:tlTokenList = ['TODO', 'FIXME']
 
 " Trailing Whitespace {{{
 " Do this to fix trailing whitespace
-nnoremap <silent> <leader>w :FixWhitespace<cr>
-vnoremap <silent> <leader>w :FixWhitespace<cr>
+noremap <silent> <leader>fw :FixWhitespace<cr>
 " }}}
 
 " Yankstack {{{
