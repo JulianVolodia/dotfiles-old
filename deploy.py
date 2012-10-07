@@ -4,6 +4,7 @@
 TODO
 """
 
+
 import os
 import os.path as op
 import shutil
@@ -15,6 +16,7 @@ def expand_path(path):
     """
     return op.expanduser(op.expandvars(path))
 
+
 def find_files(path):
     """
     Recursively yields all files in a directory.
@@ -22,6 +24,7 @@ def find_files(path):
     for root, dirs, files in os.walk(path):
         for filename in files:
             yield op.join(root, filename)
+
 
 def gen_dotfile_name(src_file, src_dir):
     """
@@ -37,6 +40,7 @@ def gen_dotfile_name(src_file, src_dir):
     src_file = expand_path(src_file)
     src_dir = expand_path(src_dir)
     return '.' + op.relpath(src_file, src_dir)
+
 
 def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
     """
@@ -72,9 +76,11 @@ def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
             elif overwrite == 'file':
                 print("Overwriting file", dst_file, "with link to", src_file)
                 relink(src_file, dst_file)
-        else: raise
+        else:
+            raise
     else:
         print("Creating symlink from", src_file, "to", dst_file)
+
 
 def create_symlinks(src_dir, dst_dir, overwrite='symlink',
         dry_run=False):
@@ -96,17 +102,24 @@ def create_symlinks(src_dir, dst_dir, overwrite='symlink',
         symlink(src_file, dst_abs_file, overwrite=overwrite,
                 dry_run=dry_run)
 
+
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description="Deploy dotfiles and set the right symlinks.")
-    parser.add_argument('-s', '--source-dir', default='files', help='Directory where configuration files are in')
-    parser.add_argument('-d', '--sink-dir', default='~/.config/dotfiles', help="Directory where configuration files should be copied to")
-    parser.add_argument('-l', '--symlink-dir', default='~', help="Directory where symlinks should be created")
-    parser.add_argument('-o', '--overwrite', choices=['nothing', 'symlink', 'file'], default='symlink', help="How to deal with existing destination files")
-    parser.add_argument('-n', '--dry-run', action='store_true', default=False, help='Only list actions that would have been performed')
+    p = argparse.ArgumentParser(description="Deploy dotfiles")
+    p.add_argument('-s', '--source-dir', default='files',
+            help='Directory where configuration files are in')
+    p.add_argument('-d', '--sink-dir', default='~/.config/dotfiles',
+            help="Directory where configuration files should be copied to")
+    p.add_argument('-l', '--symlink-dir', default='~',
+            help="Directory where symlinks should be created")
+    p.add_argument('-o', '--overwrite', choices=['nothing', 'symlink', 'file'],
+            default='symlink',
+            help="How to deal with existing destination files")
+    p.add_argument('-n', '--dry-run', action='store_true', default=False,
+            help='Only list actions that would have been performed')
 
-    args = parser.parse_args()
+    args = p.parse_args()
 
     source_dir = expand_path(args.source_dir)
     sink_dir = expand_path(args.sink_dir)
@@ -124,6 +137,7 @@ def main():
     else:
         create_symlinks(source_dir, symlink_dir,
                 overwrite=args.overwrite, dry_run=dry_run)
+
 
 if __name__ == '__main__':
     main()
