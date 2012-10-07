@@ -283,6 +283,34 @@ noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 let g:splice_prefix = "<leader>s"
 " }}}
 
+" Syntastic {{{
+" Don't run Syntastic on opening files
+let g:syntastic_check_on_open = 0
+" Don't print error message for current line to command window
+let g:syntastic_echo_current_error = 0
+" Use the :sign interface to show errors
+let g:syntastic_enable_signs = 1
+" Use these symbols for errors, warnings, and style errors/warnings
+let g:syntastic_error_symbol = 'E'
+let g:syntastic_warning_symbol = 'W'
+let g:syntastic_style_error_symbol = 'S'
+let g:syntastic_style_warning_symbol = 's'
+" Don't use balloons
+let g:syntastic_enable_balloons = 0
+" Don't use syntax highlighting
+let g:syntastic_enable_highlighting = 0
+" Don't automatically jump to the first error when first opening a file
+let g:syntastic_auto_jump = 0
+" Automatically close location list when no more errors are found
+let g:syntastic_auto_loc_list = 2
+" Error list height = command window height
+let g:syntastic_loc_list_height = 7
+" Don't automatically check
+let g:syntastic_mode_map = { 'mode': 'passive' }
+" Check manually
+noremap <leader>sc :SyntasticCheck<cr>
+" }}}
+
 " Tagbar {{{
 " Open tagbar window on the left
 let tagbar_left = 1
@@ -315,31 +343,14 @@ nnoremap <silent> <leader>w :FixWhitespace<cr>
 vnoremap <silent> <leader>w :FixWhitespace<cr>
 " }}}
 
-" Yankring {{{
-" How many elements to save
-let g:yankring_max_history = 1000
-" Don't put single letters into the ring
-let g:yankring_min_element_length = 2
-" Display max. this many characters per element
-let g:yankring_max_display = 70
-" Don't add duplicates to the ring
-let g:yankring_ignore_duplicate = 1
-" Make yy, dd, dw, ... repeatable
-let g:yankring_map_dot = 1
-" Have the yankring manage numbered registers
-let g:yankring_manage_numbered_reg = 1
-" Use this directory for history
-let g:yankring_history_dir = '$XDG_CACHE_HOME/vim/yankring'
-" ...and this file
-let g:yankring_history_file = 'yankring_history'
-" Use + and - to cycle forwards and backwards through yanks
-let g:yankring_replace_n_pkey = '-'
-let g:yankring_replace_n_nkey = '+'
-" Maps to run after having configured yankring
-call YRRunAfterMaps()
-" Use <leader>y to toggle the yankring
-nnoremap <silent> <leader>y :YRShow<cr>
-vnoremap <silent> <leader>y :YRShow<cr>
+" Yankstack {{{
+" Don't load default maps
+let g:yankstack_map_keys = 0
+" Use + and - to cycle through yank stack
+nmap <silent> + <Plug>yankstack_substitute_older_map
+nmap <silent> - <Plug>yankstack_substitute_newer_map
+" Use this to show yank stack
+nnoremap <leader>y :Yanks<cr>
 " }}}
 " }}}
 
