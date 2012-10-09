@@ -78,9 +78,6 @@ unset confirmappend
 # Keep headers in cache file
 set header_cache = ${XDG_CACHE_HOME}/mutt/headers
 
-# Keep bodies in cache file too
-set message_cachedir = ${XDG_CACHE_HOME}/mutt/bodies
-
 # Save tempfiles here
 set tmpdir = ${XDG_CACHE_HOME}/mutt/tmp
 
@@ -102,8 +99,6 @@ unset use_domain
 
 # No, I do not want to continue my drafts, thank you very much
 unset recall
-# Use system-wide CA certificate store
-set ssl_usesystemcerts
 # Don't move read messages out from spoolfile
 # I don't have an mbox anyways
 unset move
@@ -114,9 +109,4 @@ set sort = threads
 set sort_aux = date-received
 # Only create threads from "In-Reply-To" and "References" fields
 set strict_threads
-# }}}
-
-# Notmuch options {{{
-# Timeout for opening database (in seconds)
-set nm_open_timeout = 5
 # }}}

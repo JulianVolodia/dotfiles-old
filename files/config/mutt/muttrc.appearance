@@ -29,6 +29,12 @@ set sidebar_delim = " │"
 set sidebar_visible
 # Sidebar width
 set sidebar_width = 24
+# Sort sidebar entries
+set sidebar_sort
+# Shorten sidebar path
+set sidebar_shortpath
+# Indent subfolders
+set sidebar_folderindent
 # }}}
 
 # Index view {{{
