@@ -1,0 +1,129 @@
+#!/usr/bin/env python
+
+"""
+TODO
+"""
+
+import os
+import os.path as op
+import shutil
+
+
+def expand_path(path):
+    """
+    Expands ``~`` and environment variables in a pathname.
+    """
+    return op.expanduser(op.expandvars(path))
+
+def find_files(path):
+    """
+    Recursively yields all files in a directory.
+    """
+    for root, dirs, files in os.walk(path):
+        for filename in files:
+            yield op.join(root, filename)
+
+def gen_dotfile_name(src_file, src_dir):
+    """
+    Generates a filename for a dotfile.
+
+    ``src_file``'s path relative to ``src_dir`` is prepended by a dot.
+
+    Example::
+
+        >>> create_dotfile_path('foo/bar/fnord', 'foo')
+        '.bar/fnord'
+    """
+    src_file = expand_path(src_file)
+    src_dir = expand_path(src_dir)
+    return '.' + op.relpath(src_file, src_dir)
+
+def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
+    """
+    Symlinks ``dst_file`` to ``src_file``.
+
+    ``overwrite`` determines what to do in case of an already existing
+    ``dst_file``.
+    * ``'nothing'`` leaves an already in-place ``dst_file``
+      completely untouched.
+    * ``'symlink'`` updates ``dst_file`` to point to
+      ``src_file``.
+    * ``'file'`` overwrites ``dst_file`` with a symlink to
+    ``src_file`` even if it is a regular file.
+
+    If ``dry_run`` is ``True``, no actual operation is carried out.
+    """
+    def relink(src_file, dst_file):
+        if not dry_run:
+            os.remove(dst_file)
+            os.symlink(src_file, dst_file)
+
+    try:
+        if not dry_run:
+            os.symlink(src_file, dst_file)
+    except OSError as e:
+        import errno
+        if e.errno == errno.EEXIST:
+            if overwrite == 'nothing':
+                print(dst_file, "already exists, moving on")
+            elif op.islink(dst_file) and overwrite == 'symlink':
+                print("Updating symlink", dst_file, "to point to", src_file)
+                relink(src_file, dst_file)
+            elif overwrite == 'file':
+                print("Overwriting file", dst_file, "with link to", src_file)
+                relink(src_file, dst_file)
+        else: raise
+    else:
+        print("Creating symlink from", src_file, "to", dst_file)
+
+def create_symlinks(src_dir, dst_dir, overwrite='symlink',
+        dry_run=False):
+    """
+    Creates symlinks from ``src_dir`` to ``dst_dir``.
+
+    Creates all necessary directories under ``dst_dir``.
+    """
+    for src_file in find_files(src_dir):
+        dst_file = gen_dotfile_name(src_file, src_dir)
+        dst_abs_file = op.join(dst_dir, dst_file)
+        if not dry_run:
+            try:
+                os.makedirs(op.dirname(dst_abs_file))
+            except OSError as e:
+                import errno
+                if e.errno == errno.EEXIST:
+                    print(op.dirname(dst_abs_file), "already exists")
+        symlink(src_file, dst_abs_file, overwrite=overwrite,
+                dry_run=dry_run)
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Deploy dotfiles and set the right symlinks.")
+    parser.add_argument('-s', '--source-dir', default='files', help='Directory where configuration files are in')
+    parser.add_argument('-d', '--sink-dir', default='~/.config/dotfiles', help="Directory where configuration files should be copied to")
+    parser.add_argument('-l', '--symlink-dir', default='~', help="Directory where symlinks should be created")
+    parser.add_argument('-o', '--overwrite', choices=['nothing', 'symlink', 'file'], default='symlink', help="How to deal with existing destination files")
+    parser.add_argument('-n', '--dry-run', action='store_true', default=False, help='Only list actions that would have been performed')
+
+    args = parser.parse_args()
+
+    source_dir = expand_path(args.source_dir)
+    sink_dir = expand_path(args.sink_dir)
+    symlink_dir = expand_path(args.symlink_dir)
+    dry_run = args.dry_run
+
+    print("Copying files from", source_dir, "to", sink_dir)
+    if not dry_run:
+        shutil.rmtree(sink_dir, ignore_errors=True)
+        shutil.copytree(source_dir, sink_dir)
+    print("Symlinking files from", sink_dir, "to", symlink_dir)
+    if not dry_run:
+        create_symlinks(sink_dir, symlink_dir,
+                overwrite=args.overwrite, dry_run=dry_run)
+    else:
+        create_symlinks(source_dir, symlink_dir,
+                overwrite=args.overwrite, dry_run=dry_run)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,9 @@
+# Mailing lists
+
+# Generate Mail-Followup-To header when sending mail
+set followup_to
+# Honors Mail-Followup-To of received messages
+set honor_followup_to
+
+subscribe aur-general@archlinux.org
+subscribe arch-dev-public@archlinux.org

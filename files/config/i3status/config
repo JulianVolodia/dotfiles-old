@@ -1,0 +1,38 @@
+general {
+    colors = true
+    color_good = "#ffffff"
+    color_degraded = "#fc951e"
+    color_bad = "#fa2573"
+    color_separator = "#121212"
+    interval = 5
+}
+
+order += "wireless wlan0"
+order += "run_watch VPN"
+order += "battery 0"
+order += "volume master"
+order += "time"
+
+wireless wlan0 {
+    format_up = "WLAN: %essid"
+    format_down = "WLAN: None"
+}
+
+battery 0 {
+    format = "B: %percentage %remaining"
+}
+
+run_watch VPN {
+    pidfile = "/var/run/vpnc/pid"
+}
+
+time {
+    format = "%H:%M"
+}
+
+/* volume master { */
+/*     format = "♪ %volume */
+/*     device = "default" */
+/*     mixer = "Master" */
+/*     mixer_idx = 0 */
+/* } */
