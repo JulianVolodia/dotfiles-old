@@ -1,37 +1,45 @@
-# Keybindings
+# Keybindings {{{
+bind index,pager N search-opposite
+bind index,pager . sidebar-next
+bind index,pager , sidebar-prev
+bind index,pager - sidebar-open
+macro index,pager y \
+    "<enter-command>toggle sidebar_visible<enter>" \
+    "Toggle sidebar visibility"
 
-# Makros
+bind index gg first-entry
+bind index G last-entry
+bind index j next-entry
+bind index k previous-entry
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+bind index p recall-message
+
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind pager R group-reply
+
+bind compose p postpone-message
+# }}}
+
+# Macros {{{
 
 # Use abook for queries
 set query_command = "abook --mutt-query '%s'"
 
-macro generic,index,pager \ca \
+macro generic,index,pager A \
     "<shell-escape>abook<return>" \
-    "Abook starten"
+    "Start abook"
 
-macro index,pager A \
-    "<shell-escape>abook --add-email<return>" \
-    "Absender zum Adressbuch hinzufügen"
+macro index,pager a \
+    "<pipe-message>abook --add-email<return>" \
+    "Add sender to address book"
 
-macro index \cb \
-    urlview\n \
-    "URLs aus einer Nachricht extrahieren"
-macro pager \cb \
-    <pipe-entry>'w3m'<enter> \
-    "Follow links in w3m"
-
-macro index,pager . \
-    "<sidebar-next>" \
-    "Toggle sidebar"
-
-macro index,pager , \
-    "<sidebar-prev>" \
-    "Move to next entry in sidebar"
-
-macro index,pager <return> \
-    "<sidebar-open>" \
-    "Open currently selected mailbox"
-
-macro index,pager y \
-    "<enter-command>toggle sidebar_visible<enter>" \
-    "Toggle sidebar visibility"
+macro index,pager \cu "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+    <enter-command> unset pipe_decode<enter>\
+    <pipe-message>extract_url<enter>\
+    <enter-command> set pipe_decode=\$my_pdsave<enter>" \
+    "Get URLs"
+# }}}

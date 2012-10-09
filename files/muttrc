@@ -1,9 +1,10 @@
 set folder="$HOME/.mail"
 
-source ~/.config/mutt/muttrc.accounts
-source ~/.config/mutt/muttrc.mailboxes
-source ~/.config/mutt/muttrc.mime
-source ~/.config/mutt/muttrc.keybindings
-source ~/.config/mutt/muttrc.appearance
-source ~/.config/mutt/muttrc.crypto
-source ~/.config/mutt/muttrc.lists
+source ${XDG_CONFIG_HOME}/mutt/muttrc.accounts
+source ${XDG_CONFIG_HOME}/mutt/muttrc.mailboxes
+source ${XDG_CONFIG_HOME}/mutt/muttrc.general
+source ${XDG_CONFIG_HOME}/mutt/muttrc.mime
+source ${XDG_CONFIG_HOME}/mutt/muttrc.keybindings
+source ${XDG_CONFIG_HOME}/mutt/muttrc.appearance
+source ${XDG_CONFIG_HOME}/mutt/muttrc.crypto
+source ${XDG_CONFIG_HOME}/mutt/muttrc.lists

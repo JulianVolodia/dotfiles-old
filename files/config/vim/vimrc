@@ -1,10 +1,10 @@
 " Vim Configuration file
+"
 " TODO:
-" - find suitable substitute for <esc> that works with lmap
-" - have a look at quickfix stuff
 " - find out what slows everything down
 
 " General {{{
+" Early stuff {{{
 " Runtime paths
 set runtimepath=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
@@ -16,6 +16,12 @@ syntax enable
 filetype plugin indent on
 set background=dark
 colorscheme molokai
+
+" Needs to be called before redefining yank maps
+call yankstack#setup()
+" }}}
+
+" Files {{{
 " Don't create backup files
 set nobackup
 " Save viminfo file to keep state information from one vim session to the next
@@ -26,49 +32,9 @@ set directory=$XDG_CACHE_HOME/vim/tmp,.,/var/tmp,/tmp
 set undofile
 " Common directory for persistent undo files
 set undodir=$XDG_CACHE_HOME/vim/undo
+" }}}
 
-" Always show status line
-set laststatus=2
-" Use markers as a standard fold method
-set foldmethod=marker
-
-" Use mouse
-set mouse=a
-" Breaks lines in sane places
-" (e.g. whitespace instead of smack in the middle of words)
-set linebreak
-" Add this in front of line if line is too long for terminal
-set showbreak=+
-" Show search hits during input
-set incsearch
-" highlight search hits
-set hlsearch
-" Case-insensitive search unless there are capital letters in search expression
-set ignorecase
-set smartcase
-" Lets you leave edited buffers without having to save them
-set hidden
-" When splitting, only split current viewport
-set noequalalways
-" When splitting, create new viewports below/right to current viewports
-set splitbelow
-set splitright
-" Prettify splits, diffs, folds
-set fillchars="vert: ,fold: ,diff: "
-" At all times show at least this many lines over/under cursor
-set scrolloff=3
-" Not necessary because of powerline plugin
-set noshowmode
-" Highlights the current line
-set cursorline
-" Show current command in status line
-set showcmd
-" Also consider other tabs if searching for already open buffers
-set switchbuf=usetab
-" Show tabline only if there is >1 tab
-set showtabline=1
-
-" Indentation {{{
+" Indentation & linebreaks {{{
 " 1 tab = 8 spaces
 " Don’t fuck with this
 set tabstop=8
@@ -85,24 +51,68 @@ set expandtab
 set softtabstop=4
 " }}}
 
+" Search {{{
+" Show search hits during input
+set incsearch
+" highlight search hits
+set hlsearch
+" Case-insensitive search unless there are capital letters in search expression
+set ignorecase
+set smartcase
+" Use ":s///g" by default
+set gdefault
+" }}}
+
+" Tabs & buffers {{{
+" Lets you leave edited buffers without having to save them
+set hidden
+" When splitting, only split current viewport
+set noequalalways
+" When splitting, create new viewports below/right to current viewports
+set splitbelow
+set splitright
+" Prettify splits, diffs, folds
+set fillchars="vert: ,fold: ,diff: "
+" Also consider other tabs if searching for already open buffers
+set switchbuf=usetab
+" }}}
+
+" Appearance {{{
+" Breaks lines in sane places
+set linebreak
+" Add this in front of line if line is too long for terminal
+set showbreak=+
+
+" At all times show at least this many lines over/under cursor
+set scrolloff=3
+" Not necessary because of powerline plugin
+set noshowmode
+" Highlights the current line
+set cursorline
+" Show current command in status line
+set showcmd
+" Show tabline only if there is >1 tab
+set showtabline=1
+" Always show status line
+set laststatus=2
+" Use markers as a standard fold method
+" set foldmethod=marker
+" }}}
+
+" Mouse {{{
+" Use mouse
+set mouse=a
+" }}}
+
+" Completion {{{
 " Bash-like completion behavior
 set wildmenu
-set wildmode=list:longest,list:full
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-" Doesn't work if put in tex.vim ftplugin file
-let g:tex_flavor = "latex"
+set wildmode=list:longest
+" }}}
 " }}}
 
 " Functions {{{
-" Customize  fold text: just fold text with length appended
+" Customize  fold text: just fold text with length appended {{{
 function! CustomFoldText()
     "get first non-blank line
     let fs = v:foldstart
@@ -123,8 +133,15 @@ set foldtext=CustomFoldText()
 function! Chomp(str)
   return substitute(a:str, '\n$', '', '')
 endfunction
+" }}}
 
-" Find a file and pass it to cmd
+" Put Y into its place {{{
+function! YRRunAfterMaps()
+    nnoremap <silent> Y :<C-U>YRYankCount 'y$'<cr>
+endfunction
+" }}}
+"
+" Find a file and pass it to cmd {{{
 function! DmenuOpen(cmd, prompt)
   let fname = Chomp(system("ls | dmenu -i -l 20 -p " . a:prompt))
   if empty(fname)
@@ -133,50 +150,53 @@ function! DmenuOpen(cmd, prompt)
   execute a:cmd . " " . fname
 endfunction
 " }}}
+" }}}
 
 " Keybindings {{{
-" Better access to <leader>
+" Leaders {{{
 let mapleader = ","
-" Meta-efficiency, man
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" More meta-efficiency, whoa dude
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" Easier switching to window mode
-noremap <leader>w <c-w>
-" Easier :nohl
-noremap <silent> <cr> :nohlsearch<cr>
+let maplocalleader = "´"
+" }}}
+
+" Fucking keys {{{
+" Fuck you, help key
+noremap <f1> <esc>
+" Fuck you too, man key
+noremap K <nop>
+" }}}
+
+" Movement {{{
+" Easier movement between virtual lines
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
 " Easier movement between viewports
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
-" Easier switching between buffers
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+
+" Easier movement between buffers
 noremap <silent> <right> :bnext<cr>
 noremap <silent> <left> :bprev<cr>
 
-" Makes folding fun
-noremap <silent> <Space> za
+" Use <tab> to teleport to matching parens
+noremap <tab> %
+" }}}
 
-" Y should yank to end of line
-map Y y$
-
-" Allow saving of files as root if I forgot to use sudo
-" Needs tee installed
-cnoremap W %!sudo tee > /dev/null %
-
-" Easier opening of command line window
-nnoremap ö q:i
-vnoremap ö q:i
+" Command-line window {{{
+" Opens appropriate command-line window with every operation
+nmap ö :
+vmap ö :
 nnoremap : q:i
 vnoremap : q:i
 nnoremap / q/i
 vnoremap / q/i
 nnoremap ? q?i
 vnoremap ? q?i
-" allow leaving cmdline-window with <ESC>
-au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
-" Select current line without having to enter insert mode
-au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
+
 " allow normal cmdline :, / and ?
 nnoremap q: :
 vnoremap q: :
@@ -185,68 +205,133 @@ vnoremap q/ /
 nnoremap q? ?
 vnoremap q? ?
 
-" Open quickfix window
-noremap <leader>qo :botright :copen<cr>
-" Jump to current error
-noremap <leader>qc :cc<cr>
-" Open quickfix window in bottom right IF there are any errors
-noremap <leader>qq :botright :cwindow<cr>
-" Go to next error in quickfix window
-noremap <leader>qn :cnext<cr>
-" Go to previous error in quickfix window
-noremap <leader>qp :cprevious<cr>
+" allow leaving cmdline-window with <ESC>
+au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
+" Select current line without having to enter insert mode
+au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
+" }}}
 
-" Open dmenu
-noremap <leader>t :call DmenuOpen(":e", "Edit:")<cr>
+" Quickfix and location list windows {{{
+" Open quickfix window
+noremap <silent> <leader>qo :botright :copen<cr>
+" Jump to current error
+noremap <silent> <leader>qq :cc<cr>
+" Open quickfix window in bottom right IF there are any errors
+noremap <silent> <leader>qw :botright :cwindow<cr>
+" Go to next error in quickfix window
+noremap <silent> <leader>qn :cnext<cr>
+" Go to previous error in quickfix window
+noremap <silent> <leader>qp :cprevious<cr>
+
+" Open location list window
+noremap <silent> <leader>lo :botright :copen<cr>
+" Jump to current error
+noremap <silent> <leader>ll :cc<cr>
+" Open location list window in bottom right IF there are any errors
+noremap <silent> <leader>lw :botright :cwindow<cr>
+" Go to next error in location list window
+noremap <silent> <leader>ln :cnext<cr>
+" Go to previous error in location list window
+noremap <silent> <leader>lp :cprevious<cr>
+" }}}
+
+" Completion {{{
+" Use <C-J> and <C-K> instead of <C-N> and <C-P>
+imap <c-j> <c-n>
+imap <c-k> <c-p>
+" Use <C-H> to abort completion
+inoremap <c-h> <c-e>
+" Use <C-L> to confirm completion
+inoremap <c-l> <c-y>
+" }}}
+
+" Make!
+noremap <silent> <f5> :make<cr>
+
+" Easier :nohl
+noremap <silent> <leader><cr> :nohlsearch<cr>
+
+" Makes folding fun
+noremap <silent> <space> za
+
+" Use <f2> to toggle paste mode
+set pastetoggle=<f2>
 " }}}
 
 " Plugins {{{
-" ack plugin
-noremap <leader>a <Esc>:Ack<Space>
+" Ack {{{
+noremap <leader>a :Ack<Space>
 " for adding to the current search results
-noremap <leader>A <Esc>:AckAdd<Space>
+noremap <leader>A :AckAdd<Space>
+" }}}
 
-" command-t plugin
-" Max height the match window is allowed to expand to
-let g:CommandTMaxHeight = 12
-" Open match window at top so best result is shown always in the same place
-" let g:CommandTMatchWindowAtTop = 0
-
-" Commentary plugin
+" Commentary {{{
 " Use ü and üü for commenting
 xmap ü <Plug>Commentary
 nmap ü <Plug>Commentary
 nmap üü <Plug>CommentaryLine
 nmap üu <Plug>CommentaryUndo
+" }}}
 
-" Gundo plugin
+" Gundo {{{
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
-nnoremap <leader>y :GundoToggle<CR>
+noremap <leader>g :GundoToggle<cr>
 " horizontal width of Gundo graph
 let g:gundo_width = 50
 " Vertical height of preview window
 "let g:gundo_preview_height = 25
 " Show preview window below file instead of below graph
-let g:gundo_preview_bottom = 0
+" let g:gundo_preview_bottom = 0
 " Show Gundo graph on the right
 "let g:gundo_right = 1
 " automatically close Gundo windows on reverting
 let g:gundo_close_on_revert = 1
+" }}}
 
-" Rainbow Parentheses plugin
+" Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
-noremap <silent> <F12> :RainbowParenthesesToggleAll<CR>
+noremap <silent> ä :RainbowParenthesesToggleAll<cr>
+" }}}
 
-" Splice plugin
+" Splice {{{
 " Use this as the splice prefix
 let g:splice_prefix = "<leader>s"
+" }}}
 
-" Tagbar plugin
+" Syntastic {{{
+" Don't run Syntastic on opening files
+let g:syntastic_check_on_open = 0
+" Don't print error message for current line to command window
+let g:syntastic_echo_current_error = 0
+" Use the :sign interface to show errors
+let g:syntastic_enable_signs = 1
+" Use these symbols for errors, warnings, and style errors/warnings
+let g:syntastic_error_symbol = 'E'
+let g:syntastic_warning_symbol = 'W'
+let g:syntastic_style_error_symbol = 'S'
+let g:syntastic_style_warning_symbol = 's'
+" Don't use balloons
+let g:syntastic_enable_balloons = 0
+" Don't use syntax highlighting
+let g:syntastic_enable_highlighting = 0
+" Don't automatically jump to the first error when first opening a file
+let g:syntastic_auto_jump = 0
+" Automatically close location list when no more errors are found
+let g:syntastic_auto_loc_list = 2
+" Error list height = command window height
+let g:syntastic_loc_list_height = 7
+" Don't automatically check
+let g:syntastic_mode_map = { 'mode': 'passive' }
+" Check manually
+noremap <leader>sc :SyntasticCheck<cr>
+" }}}
+
+" Tagbar {{{
 " Open tagbar window on the left
 let tagbar_left = 1
 " Make tagbar window as wide as the gundo plugin windows
-let tagbar_width = 45
+let tagbar_width = 50
 " Automatically jump to tagbar window as soon as it's opened
 let tagbar_autofocus = 1
 " Automatically close tagbar window when choosing a tag
@@ -255,31 +340,33 @@ let tagbar_autoclose = 1
 " the tag
 let tagbar_autoshowtag = 1
 " Toggle Tagbar window
-nnoremap <silent> <leader>g :TagbarToggle<cr>
+nnoremap <silent> <f3> :TagbarToggle<cr>
+" }}}
 
-" TaskList plugin
+" TaskList {{{
 " Open TaskList
 " Don't use ":" in place of "<Plug>" here, messes with another plugin
-noremap <leader>l <Plug>TaskList
+noremap <silent> <f4> <Plug>TaskList
 " Open TaskList on bottom (0 = top)
 let g:tlWindowPosition = 1
 " List of tokens to look for
 let g:tlTokenList = ['TODO', 'FIXME']
+" }}}
 
-" yankring plugin
-let g:yankring_enabled = 1
-" Place where history file is stored
-let g:yankring_history_dir = '~/.cache/vim/yankring'
-" Ignore single-letter deletes
-let g:yankring_min_element_length = 2
-" No upper limit on yankring element size
-let g:yankring_max_element_length = 0
-" Use "." for repeated yanks (requires cpoptions+=y)
-let g:yankring_map_dot = 1
-" Don't map gp and gP
-let g:yankring_paste_using_g = 0
-" Let yankring manage numbered registers
-let g:yankring_manage_numbered_reg = 1
+" Trailing Whitespace {{{
+" Do this to fix trailing whitespace
+noremap <silent> <leader>fw :FixWhitespace<cr>
+" }}}
+
+" Yankstack {{{
+" Don't load default maps
+let g:yankstack_map_keys = 0
+"map Use + and - to cycle through yank stack
+nmap <silent> + <Plug>yankstack_substitute_older_paste
+nmap <silent> - <Plug>yankstack_substitute_newer_paste
+" Use this to show yank stack
+nnoremap <leader>y :Yanks<cr>
+" }}}
 " }}}
 
 " vim: foldmethod=marker

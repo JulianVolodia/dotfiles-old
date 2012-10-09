@@ -2,24 +2,24 @@
 
 # runiq@archlinux.us
 folder-hook =al \
-'set from="Patrice Peterson <runiq@archlinux.us>" \
-postponed="+al/Entwürfe"; \
+'set from = "Patrice Peterson <runiq@archlinux.us>" \
+postponed = "+al/Entwürfe"; \
 unset record'
 
 # dapatti@googlemail.com
 folder-hook =gm \
-'set from="Patrice Peterson <dapatti@googlemail.com>" \
-postponed="+gm/Entwürfe"; \
+'set from = "Patrice Peterson <dapatti@googlemail.com>" \
+postponed = "+gm/Entwürfe"; \
 unset record'
 
 # patrice.peterson@student.uni-halle.de
 folder-hook =un \
-'set from="Patrice Peterson <patrice.peterson@student.uni-halle.de>" \
-record="+un/Sent" \
-postponed="+un/Drafts"'
+'set from = "Patrice Peterson <patrice.peterson@student.uni-halle.de>" \
+record = "+un/Sent" \
+postponed = "+un/Drafts"'
 
 # patrice.peterson@dronox.de
 folder-hook =dr \
 'set from="Patrice Peterson <patrice.peterson@dronox.de>" \
-record="+dr/Sent" \
-postponed="+dr/Drafts"'
+record = "+dr/Sent" \
+postponed = "+dr/Drafts"'

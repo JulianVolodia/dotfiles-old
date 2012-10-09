@@ -1,11 +1,11 @@
 " TODO:
-" - nose integration 
+" - nose integration
 "   (see http://www.vim.org/scripts/script.php?script_id=3842)
 " - rope integration
 " - tab completion
 " - virtualenv integration
 " - See http://sontek.net/turning-vim-into-a-modern-python-ide
-" - makegreen 
+" - makegreen
 "   (See http://blog.staz.be/?post/2010/09/04/Python-unit-test-and-vim)
 
 setlocal softtabstop=4

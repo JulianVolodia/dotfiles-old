@@ -1,11 +1,10 @@
-# General appearance 
-
+# General appearance {{{
 # Make thread display narrower
-set narrow_tree=yes
+set narrow_tree
 # Number of index lines (one of them is the status bar)
-set pager_index_lines=6
+set pager_index_lines = 6
 # Number of lines of context
-set pager_context=5
+set pager_context = 5
 # Don't jump to next message when I invoke <next-page> on the end of
 # a message
 set pager_stop
@@ -15,20 +14,39 @@ set smart_wrap
 set sig_dashes
 # Don't beep, dammit
 unset beep
+# No ugly plus signs
+unset markers
 # Display of folders:
-set folder_format = "%2C %N %D %f %t"
+set folder_format = "%t %2C %N %D %f"
+set status_chars = "*%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# }}}
 
-# Sidebar options
-
+# Sidebar options {{{
 # The delimiter string
-set sidebar_delim=" "
-# Don't show sidebar by default
-set sidebar_visible = no
+set sidebar_delim = " │"
+# Show sidebar by default
+set sidebar_visible
 # Sidebar width
-set sidebar_width=20
+set sidebar_width = 24
+# }}}
 
-# Colors
+# Index view {{{
+set date_format = "%g-%m-%d %R"
+set index_format="%C [%Z] %D %-20.20F %?M?+& ? %s"
+unset uncollapse_jump
+# }}}
 
+# Headers {{{
+# Ignore all headers...
+ignore *
+# ...but show these...
+unignore from: to: cc: date: subject:
+# ...in this order
+hdr_order from: to: cc: date: subject:
+# }}}
+
+# Colors {{{
 color normal default default
 color attachment magenta default
 color indicator brightmagenta default
@@ -69,3 +87,4 @@ color body brightyellow default	"^gpg: invalid node with packet of type"
 color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
 color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# }}}
