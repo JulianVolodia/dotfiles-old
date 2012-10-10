@@ -29,8 +29,7 @@ Vim:
 
 * Use dmenu for files/buffers
 * Find better keys for Ctrl, Esc, CapsLock
-* Configure LaTeX-Box
-* Use one vim server per virtualenv
+* Use one vim server per virtualenv and per LaTeX project (localvimrc)
 
 Mutt-kz:
 ========
@@ -44,5 +43,4 @@ Mutt-kz:
   * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham
 * IMAPfilter
 * Reorganize config files
-* Update mailing lists
 * Gmail hardlinks
