@@ -35,6 +35,7 @@ d="~/.dircolors"
 # }}}
 
 # {{{ Aliases
+alias qmine="qstat | grep $USER"
 alias mkdbindex="dropbox-index -R ~/shr/Dropbox/Public"
 alias ..="cd .."
 alias ...="cd ../.."
