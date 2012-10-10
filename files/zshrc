@@ -1,9 +1,9 @@
 # ~/.zshrc
 
 # {{{ Modules
-autoload -Uz compinit
-autoload -Uz zmv
-autoload -Uz colors
+autoload -U compinit
+autoload -U zmv
+autoload -U colors
 compinit
 colors
 # }}}
@@ -40,7 +40,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ya="yaourt"
-alias ls='ls -F --group-directories-first -h --color'
+alias ls='ls -F -h --color'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
@@ -142,9 +142,9 @@ $sign "
 # }}}
 
 # {{{ zkbd
-autoload -Uz zkbd
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
+autoload -U zkbd
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 [[ ! -f ${XDG_CONFIG_HOME}/zsh/zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} ]] && zkbd
