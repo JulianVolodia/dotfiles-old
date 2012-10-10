@@ -57,7 +57,7 @@ alias cds='cdsitepackages'
 # }}}
 
 # {{{ Prompt
-
+setopt prompt_subst
 # {{{ Color definitions
 local reset black white red green blue cyan magenta yellow
 reset="%{$reset_color%}"
@@ -92,7 +92,6 @@ function_exists() {
 
 if function_exists vcs_info; then
     autoload -Uz vcs_info
-    setopt prompt_subst
     zstyle ':vcs_info:*' enable hg git
     zstyle ':vcs_info:hg*:*' get-mq true
     zstyle ':vcs_info:*' stagedstr "$magenta?$reset"
@@ -129,7 +128,7 @@ fi
 
 local user host wd venv sign
 user="%(!.$magentab%n.$red%n)$reset"
-host="$yellow%m$reset"
+host="${HOSTCOLOR=$yellow}%m$reset"
 if function_exists vcs_info; then
     wd='${vcs_info_msg_0_}'
 else
