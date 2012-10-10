@@ -28,7 +28,7 @@ set sidebar_delim = " │"
 # Show sidebar by default
 set sidebar_visible
 # Sidebar width
-set sidebar_width = 24
+set sidebar_width = 30
 # Sort sidebar entries
 set sidebar_sort
 # Shorten sidebar path
