@@ -18,7 +18,7 @@ if [[ -r "$ENV_FILE" ]]; then
     export GPG_TTY=$(tty)
 fi
 
-[ -r "$(which virtualenvwrapper.sh)" ] && source virtualenvwrapper.sh
+[ -r "$(which virtualenvwrapper_lazy.sh)" ] && source virtualenvwrapper_lazy.sh
 
 # One history to rule them all
 HISTFILE="$XDG_CACHE_HOME/zsh/histfile"
