@@ -8,9 +8,9 @@ let g:LatexBox_bibtex_wild_spaces = 1
 " let g:LatexBox_Folding = 1
 
 " Use LuaLaTeX as default
-" Use "continuous viewing"
 " Enable quickfix error parsing
-let g:LatexBox_latexmk_options = "-file-line-error -pdflatex=lualatex"
+" Use -shell-escape for minted
+let g:LatexBox_latexmk_options = "-file-line-error -shell-escape -pdflatex=lualatex"
 " Automatically jump to first error after calling latexmk
 let g:LatexBox_autojump = 1
 " }}}
