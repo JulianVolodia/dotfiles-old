@@ -16,7 +16,6 @@ call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 " Bundles {{{
 Bundle 'git://github.com/gmarik/vundle'
 Bundle 'git://github.com/mileszs/ack.vim'
-Bundle 'git://github.com/MarcWeber/vim-addon-mw-utils.git'
 Bundle 'git://github.com/tpope/vim-commentary'
 Bundle 'git://github.com/dahu/vim-fanfingtastic'
 Bundle 'git://github.com/sjl/gundo.vim.git'
@@ -29,16 +28,15 @@ Bundle 'git://github.com/Lokaltog/vim-powerline'
 Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 Bundle 'git://github.com/tpope/vim-repeat'
 Bundle 'git://github.com/tmhedberg/SimpylFold'
-Bundle 'git://github.com/garbas/vim-snipmate.git'
 Bundle 'git://github.com/tpope/vim-speeddating'
 Bundle 'git://github.com/sjl/splice.vim.git'
 Bundle 'git://github.com/tpope/vim-surround'
 Bundle 'git://github.com/scrooloose/syntastic'
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/majutsushi/tagbar'
-Bundle 'git://github.com/tomtom/tlib_vim.git'
 Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
+Bundle 'git://github.com/SirVer/ultisnips'
 " }}}
 
 " Configuration {{{
@@ -139,6 +137,24 @@ let g:tlTokenList = ['TODO', 'FIXME']
 " Trailing Whitespace {{{
 " Do this to fix trailing whitespace
 noremap <silent> <leader>fw :FixWhitespace<cr>
+" }}}
+
+" UltiSnips {{{
+" Snippet directory for private snippets
+let g:UltiSnipsSnippetsDir = "$XDG_DATA_HOME/vim/snippets"
+" Snippet search path
+" The default snippets are in <bundledir>/ultisnips/UltiSnips directory
+let g:UltiSnipsSnippedDirectories = ["UltiSnips", "snippets"]
+" Don't calculate hashes every time I change a file
+let g:UltiSnipsDoHash = 1
+" " Use this to expand a trigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+" Use this to list snippets
+let g:UltiSnipsListSnippets = "<c-tab>"
+" Use this to jump forward to next trigger
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" Use this to jump backward to next trigger
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " }}}
 
 " Yankstack {{{
