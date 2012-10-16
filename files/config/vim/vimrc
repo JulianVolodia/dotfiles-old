@@ -4,13 +4,42 @@
 " - find out what slows everything down
 
 " General {{{
-" Early stuff {{{
 " Runtime paths
-set runtimepath=$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
+set filetype=off
+set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
-" Pathogen is installed system wide
-call pathogen#infect()
-call pathogen#helptags()
+" Vundle initialization
+call vundle#rc()
+
+" Manage vundle with vundle
+Bundle 'git://github.com/gmarik/vundle'
+
+" Plugins {{{
+Bundle 'git://github.com/mileszs/ack.vim'
+Bundle 'git://github.com/MarcWeber/vim-addon-mw-utils.git'
+Bundle 'git://github.com/tpope/vim-commentary'
+Bundle 'git://github.com/dahu/vim-fanfingtastic'
+Bundle 'git://github.com/sjl/gundo.vim.git'
+Bundle 'git://github.com/ivanov/vim-ipython'
+Bundle 'git://github.com/LaTeX-Box-Team/LaTeX-Box'
+Bundle 'git://github.com/MarcWeber/vim-addon-local-vimrc'
+Bundle 'git://github.com/edsono/vim-matchit'
+Bundle 'git://github.com/tpope/vim-pathogen'
+Bundle 'git://github.com/Lokaltog/vim-powerline'
+Bundle 'git://github.com/kien/rainbow_parentheses.vim'
+Bundle 'git://github.com/tpope/vim-repeat'
+Bundle 'git://github.com/tmhedberg/SimpylFold'
+Bundle 'git://github.com/garbas/vim-snipmate.git'
+Bundle 'git://github.com/tpope/vim-speeddating'
+Bundle 'git://github.com/sjl/splice.vim.git'
+Bundle 'git://github.com/tpope/vim-surround'
+Bundle 'git://github.com/scrooloose/syntastic'
+Bundle 'git://github.com/godlygeek/tabular'
+Bundle 'git://github.com/majutsushi/tagbar'
+Bundle 'git://github.com/tomtom/tlib_vim.git'
+Bundle 'git://github.com/bronson/vim-trailing-whitespace'
+Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
+" }}}
 
 syntax enable
 filetype plugin indent on
@@ -19,7 +48,6 @@ colorscheme molokai
 
 " Needs to be called before redefining yank maps
 call yankstack#setup()
-" }}}
 
 " Files {{{
 " Don't create backup files
