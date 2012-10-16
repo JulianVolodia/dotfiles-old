@@ -37,6 +37,7 @@ Bundle 'git://github.com/majutsushi/tagbar'
 Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
+Bundle 'git://github.com/vim-scripts/TaskList.vim'
 " }}}
 
 " Configuration {{{
