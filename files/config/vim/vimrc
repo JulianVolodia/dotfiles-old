@@ -1,20 +1,20 @@
 " Vim Configuration file
 "
-" TODO:
+" TODO
 " - find out what slows everything down
 
-" General {{{
+" Early stuff {{{
 " Runtime paths
 set filetype=off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
 " Vundle initialization
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
-
-" Manage vundle with vundle
-Bundle 'git://github.com/gmarik/vundle'
+" }}}
 
 " Plugins {{{
+" Bundles {{{
+Bundle 'git://github.com/gmarik/vundle'
 Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/MarcWeber/vim-addon-mw-utils.git'
 Bundle 'git://github.com/tpope/vim-commentary'
@@ -41,6 +41,119 @@ Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 " }}}
 
+" Configuration {{{
+" Ack {{{
+noremap <leader>a :Ack<Space>
+" for adding to the current search results
+noremap <leader>A :AckAdd<Space>
+" }}}
+
+" Commentary {{{
+" Use ü and üü for commenting
+xmap ü <Plug>Commentary
+nmap ü <Plug>Commentary
+nmap üü <Plug>CommentaryLine
+nmap üu <Plug>CommentaryUndo
+" }}}
+
+" Gundo {{{
+" Toggles the Gundo windows
+" It looks kinda like a tree, see? See?
+noremap <leader>g :GundoToggle<cr>
+" horizontal width of Gundo graph
+let g:gundo_width = 50
+" Vertical height of preview window
+"let g:gundo_preview_height = 25
+" Show preview window below file instead of below graph
+" let g:gundo_preview_bottom = 0
+" Show Gundo graph on the right
+"let g:gundo_right = 1
+" automatically close Gundo windows on reverting
+let g:gundo_close_on_revert = 1
+" }}}
+
+" Rainbow Parentheses {{{
+" Toggle display of all kinds of parens
+noremap <silent> ä :RainbowParenthesesToggleAll<cr>
+" }}}
+
+" Splice {{{
+" Use this as the splice prefix
+let g:splice_prefix = "<leader>S"
+" }}}
+
+" Syntastic {{{
+" Don't run Syntastic on opening files
+let g:syntastic_check_on_open = 0
+" Don't print error message for current line to command window
+let g:syntastic_echo_current_error = 0
+" Use the :sign interface to show errors
+let g:syntastic_enable_signs = 1
+" Use these symbols for errors, warnings, and style errors/warnings
+let g:syntastic_error_symbol = 'E'
+let g:syntastic_warning_symbol = 'W'
+let g:syntastic_style_error_symbol = 'S'
+let g:syntastic_style_warning_symbol = 's'
+" Don't use balloons
+let g:syntastic_enable_balloons = 0
+" Don't use syntax highlighting
+let g:syntastic_enable_highlighting = 0
+" Don't automatically jump to the first error when first opening a file
+let g:syntastic_auto_jump = 0
+" Automatically close location list when no more errors are found
+let g:syntastic_auto_loc_list = 2
+" Error list height = command window height
+let g:syntastic_loc_list_height = 7
+" Don't automatically check
+let g:syntastic_mode_map = { 'mode': 'passive' }
+" Check manually
+noremap <leader>sc :SyntasticCheck<cr>
+" }}}
+
+" Tagbar {{{
+" Open tagbar window on the left
+let tagbar_left = 1
+" Make tagbar window as wide as the gundo plugin windows
+let tagbar_width = 50
+" Automatically jump to tagbar window as soon as it's opened
+let tagbar_autofocus = 1
+" Automatically close tagbar window when choosing a tag
+let tagbar_autoclose = 1
+" If current tag is inside a closed fold, open that fold just enough to show
+" the tag
+let tagbar_autoshowtag = 1
+" Toggle Tagbar window
+nnoremap <silent> <f3> :TagbarToggle<cr>
+" }}}
+
+" TaskList {{{
+" Open TaskList
+" Don't use ":" in place of "<Plug>" here, messes with another plugin
+noremap <silent> <f4> <Plug>TaskList
+" Open TaskList on bottom (0 = top)
+let g:tlWindowPosition = 1
+" List of tokens to look for
+let g:tlTokenList = ['TODO', 'FIXME']
+" }}}
+
+" Trailing Whitespace {{{
+" Do this to fix trailing whitespace
+noremap <silent> <leader>fw :FixWhitespace<cr>
+" }}}
+
+" Yankstack {{{
+" Don't load default maps
+let g:yankstack_map_keys = 0
+"map Use + and - to cycle through yank stack
+nmap <silent> + <Plug>yankstack_substitute_older_paste
+nmap <silent> - <Plug>yankstack_substitute_newer_paste
+" Use this to show yank stack
+nnoremap <leader>y :Yanks<cr>
+" }}}
+" }}}
+" }}}
+
+" General {{{
 syntax enable
 filetype plugin indent on
 set background=dark
@@ -284,117 +397,6 @@ noremap <silent> <space> za
 
 " Use <f2> to toggle paste mode
 set pastetoggle=<f2>
-" }}}
-
-" Plugins {{{
-" Ack {{{
-noremap <leader>a :Ack<Space>
-" for adding to the current search results
-noremap <leader>A :AckAdd<Space>
-" }}}
-
-" Commentary {{{
-" Use ü and üü for commenting
-xmap ü <Plug>Commentary
-nmap ü <Plug>Commentary
-nmap üü <Plug>CommentaryLine
-nmap üu <Plug>CommentaryUndo
-" }}}
-
-" Gundo {{{
-" Toggles the Gundo windows
-" It looks kinda like a tree, see? See?
-noremap <leader>g :GundoToggle<cr>
-" horizontal width of Gundo graph
-let g:gundo_width = 50
-" Vertical height of preview window
-"let g:gundo_preview_height = 25
-" Show preview window below file instead of below graph
-" let g:gundo_preview_bottom = 0
-" Show Gundo graph on the right
-"let g:gundo_right = 1
-" automatically close Gundo windows on reverting
-let g:gundo_close_on_revert = 1
-" }}}
-
-" Rainbow Parentheses {{{
-" Toggle display of all kinds of parens
-noremap <silent> ä :RainbowParenthesesToggleAll<cr>
-" }}}
-
-" Splice {{{
-" Use this as the splice prefix
-let g:splice_prefix = "<leader>S"
-" }}}
-
-" Syntastic {{{
-" Don't run Syntastic on opening files
-let g:syntastic_check_on_open = 0
-" Don't print error message for current line to command window
-let g:syntastic_echo_current_error = 0
-" Use the :sign interface to show errors
-let g:syntastic_enable_signs = 1
-" Use these symbols for errors, warnings, and style errors/warnings
-let g:syntastic_error_symbol = 'E'
-let g:syntastic_warning_symbol = 'W'
-let g:syntastic_style_error_symbol = 'S'
-let g:syntastic_style_warning_symbol = 's'
-" Don't use balloons
-let g:syntastic_enable_balloons = 0
-" Don't use syntax highlighting
-let g:syntastic_enable_highlighting = 0
-" Don't automatically jump to the first error when first opening a file
-let g:syntastic_auto_jump = 0
-" Automatically close location list when no more errors are found
-let g:syntastic_auto_loc_list = 2
-" Error list height = command window height
-let g:syntastic_loc_list_height = 7
-" Don't automatically check
-let g:syntastic_mode_map = { 'mode': 'passive' }
-" Check manually
-noremap <leader>sc :SyntasticCheck<cr>
-" }}}
-
-" Tagbar {{{
-" Open tagbar window on the left
-let tagbar_left = 1
-" Make tagbar window as wide as the gundo plugin windows
-let tagbar_width = 50
-" Automatically jump to tagbar window as soon as it's opened
-let tagbar_autofocus = 1
-" Automatically close tagbar window when choosing a tag
-let tagbar_autoclose = 1
-" If current tag is inside a closed fold, open that fold just enough to show
-" the tag
-let tagbar_autoshowtag = 1
-" Toggle Tagbar window
-nnoremap <silent> <f3> :TagbarToggle<cr>
-" }}}
-
-" TaskList {{{
-" Open TaskList
-" Don't use ":" in place of "<Plug>" here, messes with another plugin
-noremap <silent> <f4> <Plug>TaskList
-" Open TaskList on bottom (0 = top)
-let g:tlWindowPosition = 1
-" List of tokens to look for
-let g:tlTokenList = ['TODO', 'FIXME']
-" }}}
-
-" Trailing Whitespace {{{
-" Do this to fix trailing whitespace
-noremap <silent> <leader>fw :FixWhitespace<cr>
-" }}}
-
-" Yankstack {{{
-" Don't load default maps
-let g:yankstack_map_keys = 0
-"map Use + and - to cycle through yank stack
-nmap <silent> + <Plug>yankstack_substitute_older_paste
-nmap <silent> - <Plug>yankstack_substitute_newer_paste
-" Use this to show yank stack
-nnoremap <leader>y :Yanks<cr>
-" }}}
 " }}}
 
 " vim: foldmethod=marker
