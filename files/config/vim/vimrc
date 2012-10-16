@@ -2,6 +2,7 @@
 "
 " TODO
 " - find out what slows everything down
+" - find <s-tab> replacement for terminal vim
 
 " Early stuff {{{
 " Runtime paths
@@ -38,6 +39,7 @@ Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
 Bundle 'git://github.com/vim-scripts/TaskList.vim'
+Bundle 'git://github.com/ervandew/supertab'
 " }}}
 
 " Configuration {{{
@@ -79,6 +81,25 @@ noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 " Splice {{{
 " Use this as the splice prefix
 let g:splice_prefix = "<leader>S"
+" }}}
+
+" Supertab {{{
+" Let supertab make out completion context
+let g:SuperTabDefaultCompletionType = "context"
+" Use omnicompletion as fallback
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" Complete longest common match (like in shells)
+let g:SuperTabLongestEnhanced = 1
+" Use this to move forward
+let g:SuperTabMappingForward = "<tab>"
+" Use this to move backward
+let g:SuperTabMappingBackward = "<s-tab>"
+" Use this to display the normal <tab> character (is still affected by
+" expandtab, shiftwidth, etc.)
+" Doesn't work in terminal
+let g:SuperTabMappingTabLiteral = "<c-tab>"
+" Use <cr> to cancel completion
+let g:SuperTabCrMapping = 1
 " }}}
 
 " Syntastic {{{
@@ -148,14 +169,14 @@ let g:UltiSnipsSnippetsDir = "$XDG_DATA_HOME/vim/snippets"
 let g:UltiSnipsSnippedDirectories = ["UltiSnips", "snippets"]
 " Don't calculate hashes every time I change a file
 let g:UltiSnipsDoHash = 1
-" " Use this to expand a trigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+" " Use this to expand a trigger (i.e. insert a snippet)
+let g:UltiSnipsExpandTrigger = "<c-l>"
 " Use this to list snippets
-let g:UltiSnipsListSnippets = "<c-tab>"
+let g:UltiSnipsListSnippets = "<c-h>"
 " Use this to jump forward to next trigger
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 " Use this to jump backward to next trigger
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " }}}
 
 " Yankstack {{{
@@ -264,6 +285,7 @@ set mouse=a
 
 " Completion {{{
 " Bash-like completion behavior
+set completeopt=menu,preview,longest
 set wildmenu
 set wildmode=list:longest
 " }}}
