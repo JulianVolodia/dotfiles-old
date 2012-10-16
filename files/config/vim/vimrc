@@ -9,7 +9,7 @@ set filetype=off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
 " Vundle initialization
-call vundle#rc()
+call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 
 " Manage vundle with vundle
 Bundle 'git://github.com/gmarik/vundle'
