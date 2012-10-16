@@ -324,7 +324,7 @@ noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 
 " Splice {{{
 " Use this as the splice prefix
-let g:splice_prefix = "<leader>s"
+let g:splice_prefix = "<leader>S"
 " }}}
 
 " Syntastic {{{
