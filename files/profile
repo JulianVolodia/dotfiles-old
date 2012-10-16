@@ -3,7 +3,9 @@
 # Lookup path for binaries
 export PATH="$HOME/.local/bin:$PATH"
 # Pager
-export PAGER="less -R"
+export PAGER="less"
+# Don't remove color control sequences
+export LESS="-R"
 # Path to Python documentation
 export PYTHONDOCS="/usr/share/doc/python/html"
 
