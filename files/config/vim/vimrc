@@ -6,16 +6,16 @@
 
 " Early stuff {{{
 " Runtime paths
-set filetype=off
+filetype off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 
 " Vundle initialization
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
+filetype plugin indent on
 " }}}
 
 " General {{{
 syntax enable
-filetype plugin indent on
 set background=dark
 colorscheme molokai
 
@@ -435,6 +435,9 @@ noremap <silent> <space> za
 
 " Use <f2> to toggle paste mode
 set pastetoggle=<f2>
+
+" Make Y behave like D and C
+noremap <silent> Y y$
 " }}}
 
 " vim: foldmethod=marker
