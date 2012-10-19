@@ -57,7 +57,7 @@ c = get_config()
 
 # Set to display confirmation dialog on exit. You can always use 'exit' or
 # 'quit', to force a direct exit without any confirmation.
-# c.IPythonQtConsoleApp.confirm_exit = False
+c.IPythonQtConsoleApp.confirm_exit = False
 
 # Use a plaintext widget instead of rich text (plain can't print/save).
 # c.IPythonQtConsoleApp.plain = False
@@ -131,7 +131,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.IPythonWidget.clear_on_kernel_restart = True
 
 #
-# c.IPythonWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
+c.IPythonWidget.in_prompt = '<span class="in-prompt-number">%i</span> &gt; '
 
 # Whether to process ANSI escape codes.
 # c.IPythonWidget.ansi_codes = True
@@ -188,7 +188,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.IPythonWidget.font_family = ''
 
 #
-# c.IPythonWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
+c.IPythonWidget.out_prompt = '<span class="out-prompt-number">%i</span> &lt; '
 
 #------------------------------------------------------------------------------
 # IPKernelApp configuration
