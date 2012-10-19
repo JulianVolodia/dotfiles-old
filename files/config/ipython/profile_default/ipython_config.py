@@ -35,7 +35,7 @@ c = get_config()
 # c.InteractiveShellApp.pylab = None
 
 # If true, an 'import *' is done from numpy and pylab, when using pylab
-# c.InteractiveShellApp.pylab_import_all = True
+c.InteractiveShellApp.pylab_import_all = False
 
 # A list of dotted module names of IPython extensions to load.
 # c.InteractiveShellApp.extensions = []
@@ -69,7 +69,7 @@ c = get_config()
 # c.TerminalIPythonApp.log_level = 30
 
 # Whether to display a banner upon starting IPython.
-# c.TerminalIPythonApp.display_banner = True
+c.TerminalIPythonApp.display_banner = False
 
 # lines of code to run at IPython startup.
 # c.TerminalIPythonApp.exec_lines = []
@@ -279,7 +279,7 @@ c.TerminalInteractiveShell.confirm_exit = False
 # This is the primary interface for producing IPython's prompts.
 
 # Output prompt. '\#' will be transformed to the prompt number
-c.PromptManager.out_template = '\\# < '
+c.PromptManager.out_template = '\\# > '
 
 # Continuation prompt.
 # c.PromptManager.in2_template = '   .\\D.: '
@@ -288,7 +288,7 @@ c.PromptManager.out_template = '\\# < '
 # c.PromptManager.justify = True
 
 # Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = '\\# > '
+c.PromptManager.in_template = '\\# < '
 
 # 
 # c.PromptManager.color_scheme = 'Linux'

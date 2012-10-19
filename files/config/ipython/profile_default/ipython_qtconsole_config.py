@@ -84,6 +84,13 @@ c = get_config()
 # c.IPythonQtConsoleApp.iopub_port = 0
 
 #------------------------------------------------------------------------------
+# IPythonConsoleWidget configuration
+#------------------------------------------------------------------------------
+
+# Use consolas in all console widgets
+c.ConsoleWidget.font_family = 'Consolas'
+
+#------------------------------------------------------------------------------
 # IPythonWidget configuration
 #------------------------------------------------------------------------------
 
