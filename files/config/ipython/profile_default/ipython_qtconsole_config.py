@@ -27,7 +27,7 @@ c = get_config()
 # c.IPythonQtConsoleApp.ip = '127.0.0.1'
 
 # JSON file in which to store connection info [default: kernel-<pid>.json]
-# 
+#
 # This file will contain the IP, ports, and authentication key needed to connect
 # clients to this kernel. By default, this file will be created in the security-
 # dir of the current profile, but can be specified by absolute path.
@@ -99,14 +99,14 @@ c.ConsoleWidget.font_family = 'Consolas'
 # IPythonWidget will inherit config from: FrontendWidget, HistoryConsoleWidget,
 # ConsoleWidget
 
-# 
+#
 # c.IPythonWidget.input_sep = '\n'
 
 # The type of underlying text widget to use. Valid values are 'plain', which
 # specifies a QPlainTextEdit, and 'rich', which specifies a QTextEdit.
 # c.IPythonWidget.kind = 'plain'
 
-# 
+#
 # c.IPythonWidget.output_sep2 = ''
 
 # The font size. If unconfigured, Qt will be entrusted with the size of the
@@ -117,7 +117,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.IPythonWidget.enable_calltips = True
 
 # The type of completer to use. Valid values are:
-# 
+#
 # 'plain'   : Show the availlable completion as a text list
 #             Below the editting area.
 # 'droplist': Show the completion in a drop down list navigable
@@ -130,7 +130,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # Whether to clear the console when the kernel is restarted
 # c.IPythonWidget.clear_on_kernel_restart = True
 
-# 
+#
 # c.IPythonWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
 
 # Whether to process ANSI escape codes.
@@ -148,7 +148,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.IPythonWidget.style_sheet = ''
 
 # The type of paging to use. Valid values are:
-# 
+#
 #     'inside' : The widget pages like a traditional terminal.
 #     'hsplit' : When paging is requested, the widget is split
 #                horizontally. The top pane contains the console, and the
@@ -163,7 +163,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # Whether to ask for user confirmation when restarting kernel
 # c.IPythonWidget.confirm_restart = True
 
-# 
+#
 # c.IPythonWidget.output_sep = ''
 
 # A command for invoking a system text editor. If the string contains a
@@ -179,7 +179,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # positive number disables text truncation (not recommended).
 # c.IPythonWidget.buffer_size = 500
 
-# 
+#
 # c.IPythonWidget.history_lock = False
 
 # The font family to use for the console. On OSX this defaults to Monaco, on
@@ -187,7 +187,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # platforms the default is Monospace.
 # c.IPythonWidget.font_family = ''
 
-# 
+#
 # c.IPythonWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
 
 #------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # Set the IP or interface on which the kernel will listen.
 # c.IPKernelApp.ip = '127.0.0.1'
 
-# 
+#
 # c.IPKernelApp.parent_appname = ''
 
 # Create a massive crash report when IPython encounters what may be an internal
@@ -263,7 +263,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.IPKernelApp.parent = 0
 
 # JSON file in which to store connection info [default: kernel-<pid>.json]
-# 
+#
 # This file will contain the IP, ports, and authentication key needed to connect
 # clients to this kernel. By default, this file will be created in the security-
 # dir of the current profile, but can be specified by absolute path.
@@ -319,7 +319,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # color codes, this capability can be turned off.
 # c.ZMQInteractiveShell.color_info = True
 
-# 
+#
 # c.ZMQInteractiveShell.history_length = 10000
 
 # Don't call post-execute functions that have failed in the past.
@@ -331,13 +331,13 @@ c.ConsoleWidget.font_family = 'Consolas'
 # Set the color scheme (NoColor, Linux, or LightBG).
 # c.ZMQInteractiveShell.colors = 'Linux'
 
-# 
+#
 # c.ZMQInteractiveShell.separate_in = '\n'
 
 # Deprecated, use PromptManager.in2_template
 # c.ZMQInteractiveShell.prompt_in2 = '   .\\D.: '
 
-# 
+#
 # c.ZMQInteractiveShell.separate_out = ''
 
 # Deprecated, use PromptManager.in_template
@@ -359,28 +359,28 @@ c.ConsoleWidget.font_family = 'Consolas'
 # no arguments are present).
 # c.ZMQInteractiveShell.autocall = 0
 
-# 
+#
 # c.ZMQInteractiveShell.separate_out2 = ''
 
 # Deprecated, use PromptManager.justify
 # c.ZMQInteractiveShell.prompts_pad_left = True
 
-# 
+#
 # c.ZMQInteractiveShell.readline_parse_and_bind = ['tab: complete', '"\\C-l": clear-screen', 'set show-all-if-ambiguous on', '"\\C-o": tab-insert', '"\\C-r": reverse-search-history', '"\\C-s": forward-search-history', '"\\C-p": history-search-backward', '"\\C-n": history-search-forward', '"\\e[A": history-search-backward', '"\\e[B": history-search-forward', '"\\C-k": kill-line', '"\\C-u": unix-line-discard']
 
 # Enable magic commands to be called without the leading %.
 # c.ZMQInteractiveShell.automagic = True
 
-# 
+#
 # c.ZMQInteractiveShell.debug = False
 
-# 
+#
 # c.ZMQInteractiveShell.object_info_string_level = 0
 
-# 
+#
 # c.ZMQInteractiveShell.ipython_dir = ''
 
-# 
+#
 # c.ZMQInteractiveShell.readline_remove_delims = '-/~'
 
 # Start logging to the default log file.
@@ -389,7 +389,7 @@ c.ConsoleWidget.font_family = 'Consolas'
 # The name of the logfile to use.
 # c.ZMQInteractiveShell.logfile = ''
 
-# 
+#
 # c.ZMQInteractiveShell.wildcards_case_sensitive = True
 
 # Save multi-line entries as one entry in readline history
@@ -398,10 +398,10 @@ c.ConsoleWidget.font_family = 'Consolas'
 # Start logging to the given file in append mode.
 # c.ZMQInteractiveShell.logappend = ''
 
-# 
+#
 # c.ZMQInteractiveShell.xmode = 'Context'
 
-# 
+#
 # c.ZMQInteractiveShell.quiet = False
 
 # Deprecated, use PromptManager.out_template
@@ -427,10 +427,10 @@ c.ConsoleWidget.font_family = 'Consolas'
 #------------------------------------------------------------------------------
 
 # An object to manage the profile directory and its resources.
-# 
+#
 # The profile directory is used by all IPython applications, to manage
 # configuration, logging and security.
-# 
+#
 # This object knows how to find, create and manage these directories. This
 # should be used by any code that wants to handle profiles.
 
@@ -443,27 +443,27 @@ c.ConsoleWidget.font_family = 'Consolas'
 #------------------------------------------------------------------------------
 
 # Object for handling serialization and sending of messages.
-# 
+#
 # The Session object handles building messages and sending them with ZMQ sockets
 # or ZMQStream objects.  Objects can communicate with each other over the
 # network via Session objects, and only need to work with the dict-based IPython
 # message spec. The Session will handle serialization/deserialization, security,
 # and metadata.
-# 
+#
 # Sessions support configurable serialiization via packer/unpacker traits, and
 # signing with HMAC digests via the key/keyfile traits.
-# 
+#
 # Parameters ----------
-# 
+#
 # debug : bool
 #     whether to trigger extra debugging statements
 # packer/unpacker : str : 'json', 'pickle' or import_string
 #     importstrings for methods to serialize message parts.  If just
 #     'json' or 'pickle', predefined JSON and pickle packers will be used.
 #     Otherwise, the entire importstring must be used.
-# 
+#
 #     The functions must accept at least valid JSON input, and output *bytes*.
-# 
+#
 #     For example, to use msgpack:
 #     packer = 'msgpack.packb', unpacker='msgpack.unpackb'
 # pack/unpack : callables
@@ -512,12 +512,12 @@ c.ConsoleWidget.font_family = 'Consolas'
 # c.InlineBackend.figure_format = 'png'
 
 # Close all figures at the end of each cell.
-# 
+#
 # When True, ensures that each cell starts with no active figures, but it also
 # means that one must keep track of references in order to edit or redraw
 # figures in subsequent cells. This mode is ideal for the notebook, where
 # residual plots from other cells might be surprising.
-# 
+#
 # When False, one must call figure() to create new figures. This means that
 # gcf() and getfigs() can reference figures created in other cells, and the
 # active figure can continue to be edited with pylab/pyplot methods that
