@@ -160,7 +160,7 @@ noremap <silent> <leader>fw :FixWhitespace<cr>
 let g:UltiSnipsSnippetsDir = "$XDG_DATA_HOME/vim/snippets"
 " Snippet search path
 " The default snippets are in <bundledir>/ultisnips/UltiSnips directory
-let g:UltiSnipsSnippedDirectories = ["snippets", "UltiSnips"]
+let g:UltiSnipsSnippetDirectories = ["snippets", "UltiSnips"]
 " Don't calculate hashes every time I change a file
 let g:UltiSnipsDoHash = 1
 " " Use this to expand a trigger (i.e. insert a snippet)
