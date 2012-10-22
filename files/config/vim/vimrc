@@ -234,9 +234,9 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 " Complete longest common match (like in shells)
 let g:SuperTabLongestEnhanced = 1
 " Use this to move forward
-let g:SuperTabMappingForward = "<tab>"
+let g:SuperTabMappingForward = "<c-j>"
 " Use this to move backward
-let g:SuperTabMappingBackward = "<s-tab>"
+let g:SuperTabMappingBackward = "<c-k>"
 " Use this to display the normal <tab> character (is still affected by
 " expandtab, shiftwidth, etc.)
 " Doesn't work in terminal
@@ -313,13 +313,11 @@ let g:UltiSnipsSnippedDirectories = ["UltiSnips", "snippets"]
 " Don't calculate hashes every time I change a file
 let g:UltiSnipsDoHash = 1
 " " Use this to expand a trigger (i.e. insert a snippet)
-let g:UltiSnipsExpandTrigger = "<c-l>"
-" Use this to list snippets
-let g:UltiSnipsListSnippets = "<c-h>"
+let g:UltiSnipsExpandTrigger = "<tab>"
 " Use this to jump forward to next trigger
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
 " Use this to jump backward to next trigger
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsJumpBackwardTrigger = "<tab>"
 " }}}
 
 " Yankstack {{{
