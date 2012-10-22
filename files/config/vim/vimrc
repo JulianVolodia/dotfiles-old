@@ -4,6 +4,12 @@
 " Runtime paths
 filetype off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
+" Leaders {{{
+" Have to be set early for Fan,fingTastic; to leave them alone
+let mapleader = ","
+let maplocalleader = "´"
+
+" }}}
 " Vundle initialization
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 " These have to be put here in order to work
@@ -194,11 +200,6 @@ filetype plugin indent on
 syntax enable
 set background=dark
 colorscheme molokai
-" Leaders {{{
-let mapleader = ","
-let maplocalleader = "´"
-
-" }}}
 " Files {{{
 " Don't create backup files
 set nobackup
