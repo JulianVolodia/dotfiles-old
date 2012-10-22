@@ -317,7 +317,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 " Use this to jump forward to next trigger
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 " Use this to jump backward to next trigger
-let g:UltiSnipsJumpBackwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " }}}
 
 " Yankstack {{{
