@@ -1,0 +1,9 @@
+#!/bin/sh
+
+WALLPAPER="$XDG_CONFIG_HOME/background.png"
+[[ -r "$WALLPAPER" ]] && imlibsetroot -x e -s -p c "$WALLPAPER"
+
+XRESOURCES="$HOME/.Xresources"
+[[ -r "$XRESOURCES" ]] && xrdb -merge "$XRESOURCES"
+
+exec i3
