@@ -1,15 +1,7 @@
-" Vim Configuration file
-
 " Early stuff {{{
 " Runtime paths
 filetype off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
-" Leaders {{{
-" Have to be set early for Fan,fingTastic; to leave them alone
-let mapleader = ","
-let maplocalleader = "´"
-
-" }}}
 " Vundle initialization
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 " These have to be put here in order to work
@@ -18,7 +10,6 @@ call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 Bundle 'git://github.com/gmarik/vundle'
 Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/tpope/vim-commentary'
-Bundle 'git://github.com/dahu/vim-fanfingtastic'
 Bundle 'git://github.com/sjl/gundo.vim.git'
 Bundle 'git://github.com/ivanov/vim-ipython'
 Bundle 'git://github.com/LaTeX-Box-Team/LaTeX-Box'
@@ -29,7 +20,6 @@ Bundle 'git://github.com/Lokaltog/vim-powerline'
 Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 Bundle 'git://github.com/tpope/vim-repeat'
 Bundle 'git://github.com/tmhedberg/SimpylFold'
-Bundle 'git://github.com/tpope/vim-speeddating'
 Bundle 'git://github.com/sjl/splice.vim.git'
 Bundle 'git://github.com/tpope/vim-surround'
 Bundle 'git://github.com/scrooloose/syntastic'
@@ -38,7 +28,6 @@ Bundle 'git://github.com/majutsushi/tagbar'
 Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
-Bundle 'git://github.com/vim-scripts/TaskList.vim'
 Bundle 'git://github.com/ervandew/supertab'
 
 " }}}
@@ -146,16 +135,6 @@ let tagbar_autoshowtag = 1
 nnoremap <silent> <f3> :TagbarToggle<cr>
 
 " }}}
-" TaskList {{{
-" Open TaskList
-" Don't use ":" in place of "<Plug>" here, messes with another plugin
-noremap <silent> <f4> <Plug>TaskList
-" Open TaskList on bottom (0 = top)
-let g:tlWindowPosition = 1
-" List of tokens to look for
-let g:tlTokenList = ['TODO', 'FIXME']
-
-" }}}
 " Trailing Whitespace {{{
 " Do this to fix trailing whitespace
 noremap <silent> <leader>fw :FixWhitespace<cr>
@@ -200,6 +179,11 @@ filetype plugin indent on
 syntax enable
 set background=dark
 colorscheme molokai
+" Leaders {{{
+let mapleader = ","
+let maplocalleader = "´"
+
+" }}}
 " Files {{{
 " Don't create backup files
 set nobackup
