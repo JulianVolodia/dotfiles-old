@@ -17,11 +17,11 @@ set $mod Mod4
 set $term urxvt
 
 # Dmenu arguments
-set $dmenu_args -fn 'Consolas bold 12' -nf '#d0d0d0' -nb '#121212' -sb '#a6e32d' -sf '#ffffff'
+set $dmenu_args -fn 'EB Garamond 12' -nf '#262729' -nb '#fafafa' -sb '#356aa0' -sf '#ffffff'
 # }}}
 # {{{ General
 # font for window titles
-font xft:Consolas Bold 12
+font xft:EB Garamond 12
 
 # Automatic back-and-forth
 workspace_auto_back_and_forth no
@@ -29,30 +29,30 @@ workspace_auto_back_and_forth no
 # {{{ Colors
 # Name - border - background - text - indicator
 # Focused window
-client.focused #a6e32d #121212 #a6e32d #a6e32d
-# Focused window on another screen
-client.focused_inactive #121212 #121212 #a6e32d #121212
+client.focused #d3d3d4 #356aa0 #fafafa #262729
+# Focused window in another container
+client.focused_inactive #356aa0 #fafafa #356aa0 #262729
 # Unfocused window
-client.unfocused #363636 #121212 #d0d0d0 #121212
+client.unfocused #d3d3d4 #fafafa #262729 #262729
 # Window with urgent hint
-client.urgent #121212 #fa2573 #ffffff #121212
+client.urgent #121212 #fa2573 #ffffff #262729
 # The part of a window that's not the client
-client.background #121212
+client.background #fafafa
 # }}}
 # {{{ Status bar
 bar {
     status_command i3status
     position top
-    font xft:Consolas Bold 12
+    font xft:EB Garamond 12
     # Systray only on main monitor
     tray_output primary
     colors {
-        background #121212
-        statusline #d0d0d0
-        focused_workspace #121212 #a6e32d #121212
-        active_workspace #121212 #fc951e #121212
-        inactive_workspace #121212 #121212 #d0d0d0
-        urgent_workspace #121212 #fa2573 #ffffff
+        background #fafafa
+        statusline #262729
+        focused_workspace #356aa0 #356aa0 #ffffff
+        active_workspace #d3d3d4 #98b2cd #262729
+        inactive_workspace #d3d3d4 #fafafa #262729
+        urgent_workspace #eda087 #eda087 #262729
     }
 }
 # }}}
@@ -145,7 +145,7 @@ bindsym $mod+f fullscreen
 # Change container layout (stacked, tabbed, default)
 bindsym $mod+s layout stacking
 bindsym $mod+a layout tabbed
-bindsym $mod+d layout default
+bindsym $mod+d layout toggle split
 
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -199,3 +199,5 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # }}}
 # }}}
+
+# vim: foldmethod=marker

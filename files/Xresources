@@ -14,39 +14,39 @@ Xft*rgba: rgba
 
 Xcursor*theme:vanilla-dmz
 
-URxvt*foreground: #d0d0d0
-URxvt*background: [95]#121212
+URxvt*foreground: #262729
+URxvt*background: [90]#fafafa
 ! black
-URxvt*color0: #5f5f5f
-URxvt*color8: #5f5f5f
+URxvt*color0: #000103
+URxvt*color8: #000103
 ! red
-URxvt*color1: #fc951e
+URxvt*color1: #5d0000
 URxvt*color9: #fc951e
 ! green
-URxvt*color2: #a6e32d
-URxvt*color10: #a6e32d
+URxvt*color2: #86b42c
+URxvt*color10: #86b42c
 ! yellow
 URxvt*color3: #e6db74
 URxvt*color11: #e6db74
 ! blue
-URxvt*color4: #c48dff
-URxvt*color12: #c48dff
+URxvt*color4: #356aa0
+URxvt*color12: #356aa0
 ! magenta
 URxvt*color5: #fa2573
 URxvt*color13: #fa2573
 ! cyan
-URxvt*color6: #67d9f0
-URxvt*color14: #67d9f0
+URxvt*color6: #46aec7
+URxvt*color14: #40a8b7
 ! white
-URxvt*color7: #f2f2f2
-URxvt*color15: #f2f2f2
+URxvt*color7: #d0d0d0
+URxvt*color15: #d0d0d0
 
 URxvt*imLocale: ja_JP.UTF-8
 URxvt*depth: 32
 URxvt*buffered: true
 URxvt*transparent: false
-URxvt*font: xft:Consolas:size=12,\
-            xft:IPAMonaGothic:size=12
+URxvt*font: xft:Consolas:size=11,\
+            xft:IPAMonaGothic:size=11
 URxvt*scrollBar: false
 URxvt*cursorColor: #98a1b9
 URxvt*cursorBlink: true
@@ -57,12 +57,7 @@ URxvt*urlLauncher: firefox
 URxvt*perl-ext: default,matcher
 URxvt*matcher.button: 1
 
-irssi*title: irssi
-mcabber*title: mcabber
 rtorrent*title: rtorrent
 htop*title: htop
 abook*title: abook
-ncmpcpp*title: ncmpcpp
 mutt*title: mutt
-w3m*title: w3m
-

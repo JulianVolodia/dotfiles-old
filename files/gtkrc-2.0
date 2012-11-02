@@ -1,5 +1,5 @@
-gtk-theme-name="Elegant_Brit"
-gtk-font-name="Consolas 12"
+gtk-theme-name="Elegant_revisited"
+gtk-font-name="EB Garamond 12"
 gtk-icon-theme-name="all-blacks"
 gtk-cursor-theme-size=0
 gtk-button-images=1
@@ -9,4 +9,4 @@ gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintfull"
-gtk-xft-rgba="rgb"
+gtk-xft-rgba="rgba"

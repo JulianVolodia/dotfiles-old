@@ -6,11 +6,6 @@ deploy:
 * Create relative instead of absolute symlinks
 * Remove stale symlinks
 
-i3:
-===
-
-* Make dmenu work again
-
 Zsh:
 ====
 

@@ -10,7 +10,7 @@ export LESS="-R"
 export PYTHONDOCS="/usr/share/doc/python/html"
 
 if [[ $(hostname) == "caballo" ]]; then
-    export HOSTCOLOR='$white'
+    export HOSTCOLOR='$black'
     export EDITOR="vim"
     # I believe this is the proper place for sockets, but it doesn't exist by
     # default
