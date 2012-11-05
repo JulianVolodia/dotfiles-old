@@ -32,4 +32,6 @@ else
 fi
 
 # }}}
+
+nm-applet &
 # vim: foldmethod=marker
