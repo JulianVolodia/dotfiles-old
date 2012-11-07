@@ -48,3 +48,7 @@ usercache = $XDG_CACHE_HOME/mercurial/largefiles
 # new files larger than this threshold (in MiB) will always be
 # considered large
 minsize = 10
+
+[mq]
+# Don't publish patches
+secret = true
