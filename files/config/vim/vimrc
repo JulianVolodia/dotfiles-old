@@ -70,6 +70,11 @@ noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 " Splice {{{
 " Use this as the splice prefix
 let g:splice_prefix = "<leader>S"
+" Use scrollbind on all modes
+let g:splice_initial_scrollbind_grid = 1
+let g:splice_initial_scrollbind_loupe = 1
+let g:splice_initial_scrollbind_compare = 1
+let g:splice_initial_scrollbind_path = 1
 
 " }}}
 " Supertab {{{
