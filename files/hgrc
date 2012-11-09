@@ -37,8 +37,6 @@ rebase =
 schemes =
 
 [gpg]
-# if cmd is not provided it defaults to gpg
-cmd=/usr/bin/gpg2
 key = DBB5CD84
 
 [largefiles]
