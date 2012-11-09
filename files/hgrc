@@ -31,6 +31,7 @@ inotify =
 keyword =
 largefiles =
 mq = 
+pager =
 record = 
 rebase = 
 schemes =
