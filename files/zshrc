@@ -45,6 +45,12 @@ alias ls='ls -F -h --color'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
+# Syntax-highlighted cat
+alias ccat='pygmentize -f terminal -g'
+# Syntax-highlighted less
+function cless() {
+  pygmentize -g "$1" | less -R
+}
 
 # virtualenv {{{
 # These only work when a virtualenv is active
