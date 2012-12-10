@@ -1,9 +1,3 @@
-General:
-========
-
-* Remove machine-specific configuration and put it into files that can be
-  sourced (especially relevant with shell RC files)
-
 deploy:
 =======
 
