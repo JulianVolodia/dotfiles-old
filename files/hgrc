@@ -51,3 +51,10 @@ minsize = 10
 [mq]
 # Don't publish patches
 secret = true
+
+[pager]
+# F: Exit less immediately if file can be displayed on screen in its entirety
+# R: Don't escape color codes
+# X: Don't clear the screen prior to starting less
+# d: Don't complain about 'dumb terminals'
+pager = LESS='-FRX' less -d
