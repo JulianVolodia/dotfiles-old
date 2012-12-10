@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 """
 TODO
@@ -69,17 +69,17 @@ def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
         import errno
         if e.errno == errno.EEXIST:
             if overwrite == 'nothing':
-                print(dst_file, "already exists, moving on")
+                print dst_file, "already exists, moving on"
             elif op.islink(dst_file) and overwrite == 'symlink':
-                print("Updating symlink", dst_file, "to point to", src_file)
+                print "Updating symlink", dst_file, "to point to", src_file
                 relink(src_file, dst_file)
             elif overwrite == 'file':
-                print("Overwriting file", dst_file, "with link to", src_file)
+                print "Overwriting file", dst_file, "with link to", src_file
                 relink(src_file, dst_file)
         else:
             raise
     else:
-        print("Creating symlink from", src_file, "to", dst_file)
+        print "Creating symlink from", src_file, "to", dst_file
 
 
 def create_symlinks(src_dir, dst_dir, overwrite='symlink',
@@ -98,7 +98,7 @@ def create_symlinks(src_dir, dst_dir, overwrite='symlink',
             except OSError as e:
                 import errno
                 if e.errno == errno.EEXIST:
-                    print(op.dirname(dst_abs_file), "already exists")
+                    print op.dirname(dst_abs_file), "already exists"
         symlink(src_file, dst_abs_file, overwrite=overwrite,
                 dry_run=dry_run)
 
@@ -126,11 +126,11 @@ def main():
     symlink_dir = expand_path(args.symlink_dir)
     dry_run = args.dry_run
 
-    print("Copying files from", source_dir, "to", sink_dir)
+    print "Copying files from", source_dir, "to", sink_dir
     if not dry_run:
         shutil.rmtree(sink_dir, ignore_errors=True)
         shutil.copytree(source_dir, sink_dir)
-    print("Symlinking files from", sink_dir, "to", symlink_dir)
+    print "Symlinking files from", sink_dir, "to", symlink_dir
     if not dry_run:
         create_symlinks(sink_dir, symlink_dir,
                 overwrite=args.overwrite, dry_run=dry_run)
