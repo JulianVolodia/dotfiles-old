@@ -509,7 +509,7 @@ c.IPythonWidget.out_prompt = '<span class="out-prompt-number">%i</span> &lt; '
 # An object to store configuration of the inline backend.
 
 # The image format for figures with the inline backend.
-# c.InlineBackend.figure_format = 'png'
+c.InlineBackend.figure_format = 'svg'
 
 # Close all figures at the end of each cell.
 #
