@@ -524,7 +524,7 @@ c.InlineBackend.figure_format = 'svg'
 # reference the current active figure. This mode facilitates iterative editing
 # of figures, and behaves most consistently with other matplotlib backends, but
 # figure barriers between cells must be explicit.
-# c.InlineBackend.close_figures = True
+c.InlineBackend.close_figures = False
 
 # Subset of matplotlib rcParams that should be different for the inline backend.
 # c.InlineBackend.rc = {'font.size': 10, 'savefig.dpi': 72, 'figure.figsize': (6.0, 4.0), 'figure.subplot.bottom': 0.125}
