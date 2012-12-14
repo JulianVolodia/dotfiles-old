@@ -108,11 +108,14 @@ def parse_args():
 
     p = argparse.ArgumentParser(description="Deploy dotfiles")
     p.add_argument('-s', '--source-dir', default='files',
-            help='Directory where configuration files are in')
+            help=("Directory where configuration files are in "
+                    "(default: ./files)"))
     p.add_argument('-d', '--sink-dir', default='~/.config/dotfiles',
-            help="Directory where configuration files should be copied to")
+            help=("Directory where configuration files should be copied to "
+                    "(default: ~/.config/dotfiles)"))
     p.add_argument('-l', '--symlink-dir', default='~',
-            help="Directory where symlinks should be created")
+            help=("Directory where symlinks should be created "
+                    "(default: ~)"))
     p.add_argument('-o', '--overwrite', choices=['nothing', 'symlink', 'file'],
             default='symlink',
             help="How to deal with existing destination files")
