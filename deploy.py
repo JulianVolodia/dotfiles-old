@@ -17,8 +17,6 @@ The reason for the copying step is that I simply don't like working
 directly from inside a repository; something *might* introduce changes
 to a file and I don't immediately pick up on it, and I look at hg diff
 output and wonder what I was smoking.
-
-Right now, the symlinks are absolute; I am planning to change that.
 """
 
 import os
@@ -82,24 +80,25 @@ def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
             os.remove(dst_file)
             os.symlink(src_file, dst_file)
 
+    src_rel_file = op.relpath(src_file, op.dirname(dst_file))
     try:
         if not dry_run:
-            os.symlink(src_file, dst_file)
+            os.symlink(src_rel_file, dst_file)
     except OSError as e:
         import errno
         if e.errno == errno.EEXIST:
             if overwrite == 'nothing':
                 print dst_file, "already exists, moving on"
             elif op.islink(dst_file) and overwrite == 'symlink':
-                print "Updating symlink", dst_file, "to point to", src_file
-                relink(src_file, dst_file)
+                print "Updating symlink", dst_file, "to point to", src_rel_file
+                relink(src_rel_file, dst_file)
             elif overwrite == 'file':
-                print "Overwriting file", dst_file, "with link to", src_file
-                relink(src_file, dst_file)
+                print "Overwriting file", dst_file, "with link to", src_rel_file
+                relink(src_rel_file, dst_file)
         else:
             raise
     else:
-        print "Creating symlink from", src_file, "to", dst_file
+        print "Creating symlink from", dst_file, "to", src_rel_file
 
 
 def create_symlinks(src_dir, dst_dir, overwrite='symlink',
