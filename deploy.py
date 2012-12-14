@@ -109,7 +109,7 @@ def create_symlinks(src_dir, dst_dir, overwrite='symlink',
     Creates all necessary directories under ``dst_dir``.
     """
     for src_abs_file in find_files(src_dir):
-        dst_rel_file = gen_dotfile_name(src_rel_file, src_dir)
+        dst_rel_file = gen_dotfile_name(src_abs_file, src_dir)
         dst_abs_file = op.join(dst_dir, dst_rel_file)
         if not dry_run:
             try:
