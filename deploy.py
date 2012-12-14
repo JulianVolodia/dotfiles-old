@@ -59,8 +59,6 @@ def gen_dotfile_name(src_file, src_dir):
         >>> create_dotfile_path('foo/bar/fnord', 'foo')
         '.bar/fnord'
     """
-    src_file = expand_path(src_file)
-    src_dir = expand_path(src_dir)
     return '.' + op.relpath(src_file, src_dir)
 
 
