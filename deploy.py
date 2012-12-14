@@ -103,7 +103,7 @@ def create_symlinks(src_dir, dst_dir, overwrite='symlink',
                 dry_run=dry_run)
 
 
-def main():
+def parse_args():
     import argparse
 
     p = argparse.ArgumentParser(description="Deploy dotfiles")
@@ -118,9 +118,12 @@ def main():
             help="How to deal with existing destination files")
     p.add_argument('-n', '--dry-run', action='store_true', default=False,
             help='Only list actions that would have been performed')
+    return p.parse_args()
 
-    args = p.parse_args()
 
+def main():
+
+    args = parse_args()
     source_dir = expand_path(args.source_dir)
     sink_dir = expand_path(args.sink_dir)
     symlink_dir = expand_path(args.symlink_dir)
