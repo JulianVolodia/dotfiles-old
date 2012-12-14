@@ -137,12 +137,8 @@ def main():
         shutil.rmtree(sink_dir, ignore_errors=True)
         shutil.copytree(source_dir, sink_dir)
     print "Symlinking files from", sink_dir, "to", symlink_dir
-    if not dry_run:
-        create_symlinks(sink_dir, symlink_dir,
-                overwrite=args.overwrite, dry_run=dry_run)
-    else:
-        create_symlinks(source_dir, symlink_dir,
-                overwrite=args.overwrite, dry_run=dry_run)
+    create_symlinks(sink_dir, symlink_dir, overwrite=args.overwrite,
+            dry_run=dry_run)
 
 
 if __name__ == '__main__':
