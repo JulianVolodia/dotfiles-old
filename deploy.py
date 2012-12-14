@@ -1,9 +1,25 @@
 #!/usr/bin/env python2
 
 """
-TODO
-"""
+Copies files from dir1 to dir2, and then places symlinks from dir2 into
+dir3, turning the top-level symlinks into dotfiles in the process.
 
+To re-phrase that as something that can be understood by human beings:
+
+This script is used to deploy my dotfiles into my home directory. In
+order to decouple the files themselves from the repository, however,
+they are first copied somewhere else (dir2). Only then does the script
+place symlinks from the new dotfiles directory (dir2) into the home
+directory (dir3) adding dots to the names in appropriate places, so they
+can actually do their work as configuration files.
+
+The reason for the copying step is that I simply don't like working
+directly from inside a repository; something *might* introduce changes
+to a file and I don't immediately pick up on it, and I look at hg diff
+output and wonder what I was smoking.
+
+Right now, the symlinks are absolute; I am planning to change that.
+"""
 
 import os
 import os.path as op
