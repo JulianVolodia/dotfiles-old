@@ -24,6 +24,12 @@ Right now, the symlinks are absolute; I am planning to change that.
 import os
 import os.path as op
 import shutil
+import sys
+
+
+if sys.version_info.major != 2 or sys.version_info.minor < 6:
+    print "Only Python 2.6+ is supported."
+    sys.exit(1)
 
 
 def expand_path(path):
