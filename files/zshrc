@@ -44,8 +44,8 @@ alias ls='ls -F -h --color'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
-$(which pacman) && alias p=pacman
-$(which pacaur) && alias pa=pacaur
+which pacman &> /dev/null && alias p=pacman
+which pacaur &> /dev/null && alias pa=pacaur
 if $(which pygmentize); then
     # Syntax-highlighted cat
     alias ccat='pygmentize -f terminal -g'
