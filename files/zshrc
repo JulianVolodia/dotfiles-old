@@ -46,12 +46,14 @@ alias la='ls -A'
 alias lla='ls -lA'
 $(which pacman) && alias p=pacman
 $(which pacaur) && alias pa=pacaur
-# Syntax-highlighted cat
-alias ccat='pygmentize -f terminal -g'
-# Syntax-highlighted less
-function cless() {
-  pygmentize -g "$1" | less -R
-}
+if $(which pygmentize); then
+    # Syntax-highlighted cat
+    alias ccat='pygmentize -f terminal -g'
+    # Syntax-highlighted less
+    function cless() {
+      pygmentize -g "$1" | less -R
+    }
+fi
 
 # virtualenv {{{
 # These only work when a virtualenv is active
