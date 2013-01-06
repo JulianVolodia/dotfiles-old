@@ -20,7 +20,7 @@ fi
 
 # Source virtualenvwrapper if it's installed
 if $(which virtualenvwrapper_lazy.sh); then
-    source virtualenvwrapper_lazy.sh)
+    source virtualenvwrapper_lazy.sh
 elif $(which virtualenvwrapper.sh); then
     source virtualenvwrapper.sh
 fi
