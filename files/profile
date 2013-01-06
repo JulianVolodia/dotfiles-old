@@ -9,4 +9,20 @@ export LESS="-R"
 # Path to Python documentation
 export PYTHONDOCS="/usr/share/doc/python/html"
 
+# Run profile setup for each machine separately
 [[ -r $HOME/.profile-$(hostname) ]] && source $HOME/.profile-$(hostname)
+
+# virtualenvwrapper {{{
+# Base directories for venvs
+export WORKON_HOME="${XDG_DATA_HOME}/virtualenv/envs"
+# Base directories for venvs
+export PROJECT_HOME="${HOME}/prj"
+# Base directories for venvs
+export VIRTUALENVWRAPPER_HOOK_DIR="${XDG_DATA_HOME}/virtualenv/hooks"
+# Base directories for venvs
+export VIRTUALENVWRAPPER_LOG_DIR="${HOME}/.log/virtualenv"
+# Use this filename to indicate project root directory
+export VIRTUALENVWRAPPER_PROJECT_FILENAME=".project"
+# I like to use my own prompt, thank you very much
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+# }}}
