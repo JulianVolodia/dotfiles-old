@@ -19,9 +19,9 @@ if [[ -r "$ENV_FILE" ]]; then
 fi
 
 # Source virtualenvwrapper if it's installed
-if $(which virtualenvwrapper_lazy.sh); then
+if $(which virtualenvwrapper_lazy.sh) &> /dev/null; then
     source virtualenvwrapper_lazy.sh
-elif $(which virtualenvwrapper.sh); then
+elif $(which virtualenvwrapper.sh) &> /dev/null; then
     source virtualenvwrapper.sh
 fi
 
