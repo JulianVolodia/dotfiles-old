@@ -3,7 +3,6 @@ deploy:
 
 * Docstring
 * Logging
-* Create relative instead of absolute symlinks
 * Remove stale symlinks
 
 Zsh:
