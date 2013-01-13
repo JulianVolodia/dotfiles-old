@@ -14,7 +14,7 @@ let maplocalleader = "´"
 " Plugins {{{
 " Bundles {{{
 Bundle 'git://github.com/gmarik/vundle'
-Bundle 'git://github.com/mileszs/ack.vim'
+Bundle 'git://github.com/ervandew/ag'
 Bundle 'git://github.com/tpope/vim-commentary'
 Bundle 'git://github.com/vim-scripts/DeleteTrailingWhitespace'
 Bundle 'git://github.com/sjl/gundo.vim.git'
@@ -40,10 +40,8 @@ Bundle 'git://github.com/ervandew/supertab'
 
 " }}}
 " Configuration {{{
-" Ack {{{
-noremap <leader>a :Ack<Space>
-" for adding to the current search results
-noremap <leader>A :AckAdd<Space>
+" Ag {{{
+noremap <leader>a :Ag<space>
 
 " }}}
 " Commentary {{{
@@ -301,7 +299,6 @@ set mouse=a
 
 " }}}
 " Completion {{{
-" Bash-like completion behavior
 set completeopt=menu,preview,longest
 set wildmenu
 set wildmode=list:longest
