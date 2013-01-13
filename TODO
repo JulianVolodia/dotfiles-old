@@ -1,15 +1,19 @@
 deploy:
 =======
 
-* Docstring
 * Logging
-* Remove stale symlinks
+* Remove stale symlinks (there's a trick involving find:
+
+      find -L . -type l -delete
+
+  Tries to follow symlinks, but if it cannot, the stale symlink matches the
+  "-type l" specifier and gets deleted)
+* Ignore *.orig files in source directory
 
 Zsh:
 ====
 
 * Figure out how to incorporate virtualenv into path
-* venv: magenta if not in venv (ex.:)
 * Show applied patches
 
 Gpg-agent:
@@ -23,7 +27,6 @@ Vim:
 
 * Use dmenu for files/buffers
 * Find better keys for Ctrl, Esc, CapsLock
-* Use one vim server per virtualenv and per LaTeX project (localvimrc)
 
 Mutt-kz:
 ========
@@ -34,7 +37,8 @@ Mutt-kz:
 * How does it work?
 * Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
   * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
-  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham
+  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham (not
+    really useful, especially for mailing list messages)
 * IMAPfilter
 * Reorganize config files
 * Gmail hardlinks
