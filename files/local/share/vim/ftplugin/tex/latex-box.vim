@@ -12,7 +12,9 @@ let g:LatexBox_bibtex_wild_spaces = 1
 " Use -shell-escape for minted
 let g:LatexBox_latexmk_options = "-file-line-error -shell-escape -pdflatex=lualatex"
 " Automatically jump to first error after calling latexmk
-let g:LatexBox_autojump = 1
+let g:LatexBox_autojump = 0
+" I use cleveref, so citation completion for it is a nice thing to have
+let g:LatexBox_ref_pattern = '\\\(label\)\?[cC]\?\(page)\?ref\(range\)\?\*\?\_\s*{'
 " }}}
 
 " Mappings {{{
@@ -26,4 +28,7 @@ nmap <buffer> <silent> <LocalLeader>e <Plug>LatexChangeEnv
 vmap <buffer> <silent> <LocalLeader>w <Plug>LatexWrapSelection
 " Wrap the current selection in an environment
 vmap <buffer> <silent> <LocalLeader>W <Plug>LatexEnvWrapSelection
+" The taglist plugin is not very useful for larger documents, so its key is
+" remapped to LaTeX-Box's TOC
+noremap <buffer> <silent> <F4> :LatexTOC<cr>
 " }}}
