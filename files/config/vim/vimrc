@@ -40,6 +40,12 @@ Bundle 'git://github.com/ervandew/supertab'
 
 " }}}
 " Configuration {{{
+" Some preliminary remarks:
+" - all plugin functions that open some kind of split window have mapped that
+"   the opening/toggling of said window to a function key
+" - functions that toggle other stuff are normally either <leader><key> if I
+"   use them sparingly, or use their own keys if I use them often (e.g.
+"   commentary and üü)
 " Ag {{{
 noremap <leader>a :Ag<space>
 
@@ -56,13 +62,13 @@ nmap üu <Plug>CommentaryUndo
 " Don't automatically delete on writing a buffer
 let g:DeleteTrailingWhitespace = 0
 " Do this to fix trailing whitespace
-noremap <silent> <leader>d$ :DeleteTrailingWhitespace<cr>
+noremap <silent> <leader>d<space> :DeleteTrailingWhitespace<cr>
 
 " }}}
 " Gundo {{{
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
-noremap <leader>g :GundoToggle<cr>
+noremap <f3> :GundoToggle<cr>
 " horizontal width of Gundo graph
 let g:gundo_width = 50
 " Vertical height of preview window
@@ -76,12 +82,12 @@ let g:gundo_close_on_revert = 1
 
 " }}}
 " Lawrencium {{{
-" Don't define mappings
+" Don't define default mappings
 let g:lawrencium_define_mappings = 0
 " }}}
 " Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
-noremap <silent> ä :RainbowParenthesesToggleAll<cr>
+noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
 
 " }}}
 " ShowTrailingWhitespace {{{
@@ -89,12 +95,12 @@ noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 let g:ShowTrailingWhitespace = 1
 " ZOMGWTFBBQ
 " I mean, toggle trailing whitespace display for current buffer
-noremap <silent> <leader>t$ :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<cr>
+noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<cr>
 "
 " }}}
 " Splice {{{
 " Use this as the splice prefix
-let g:splice_prefix = "<leader>S"
+let g:splice_prefix = "<leader>s"
 " Use scrollbind on all modes
 let g:splice_initial_scrollbind_grid = 1
 let g:splice_initial_scrollbind_loupe = 1
@@ -146,7 +152,7 @@ let g:syntastic_loc_list_height = 7
 " Don't automatically check
 let g:syntastic_mode_map = { 'mode': 'passive' }
 " Check manually
-noremap <leader>sc :SyntasticCheck<cr>
+noremap <leader>S :SyntasticCheck<cr>
 
 " }}}
 " Tagbar {{{
@@ -162,7 +168,7 @@ let tagbar_autoclose = 1
 " the tag
 let tagbar_autoshowtag = 1
 " Toggle Tagbar window
-nnoremap <silent> <f3> :TagbarToggle<cr>
+nnoremap <silent> <f4> :TagbarToggle<cr>
 
 " }}}
 " UltiSnips {{{
@@ -188,7 +194,7 @@ let g:yankstack_map_keys = 0
 nmap <silent> + <Plug>yankstack_substitute_older_paste
 nmap <silent> - <Plug>yankstack_substitute_newer_paste
 " Use this to show yank stack
-nnoremap <leader>y :Yanks<cr>
+nnoremap <f2> :Yanks<cr>
 " Needs to be called before redefining yank maps
 call yankstack#setup()
 
@@ -422,8 +428,8 @@ noremap <silent> <f5> :make<cr>
 noremap <silent> <leader><cr> :nohlsearch<cr>
 " Makes folding fun
 noremap <silent> <space> za
-" Use <f2> to toggle paste mode
-set pastetoggle=<f2>
+" Use this to toggle paste mode
+set pastetoggle=<f1>
 " Make Y behave like D and C
 noremap <silent> Y y$
 
