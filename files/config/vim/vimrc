@@ -16,6 +16,7 @@ let maplocalleader = "´"
 Bundle 'git://github.com/gmarik/vundle'
 Bundle 'git://github.com/mileszs/ack.vim'
 Bundle 'git://github.com/tpope/vim-commentary'
+Bundle 'git://github.com/vim-scripts/DeleteTrailingWhitespace'
 Bundle 'git://github.com/sjl/gundo.vim.git'
 Bundle 'git://github.com/ivanov/vim-ipython'
 Bundle 'git://github.com/LaTeX-Box-Team/LaTeX-Box'
@@ -26,13 +27,13 @@ Bundle 'git://github.com/tpope/vim-pathogen'
 Bundle 'git://github.com/Lokaltog/vim-powerline'
 Bundle 'git://github.com/kien/rainbow_parentheses.vim'
 Bundle 'git://github.com/tpope/vim-repeat'
+Bundle 'git://github.com/vim-scripts/ShowTrailingWhitespace'
 Bundle 'git://github.com/tmhedberg/SimpylFold'
 Bundle 'git://github.com/sjl/splice.vim.git'
 Bundle 'git://github.com/tpope/vim-surround'
 Bundle 'git://github.com/scrooloose/syntastic'
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/majutsushi/tagbar'
-Bundle 'git://github.com/bronson/vim-trailing-whitespace'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
 Bundle 'git://github.com/ervandew/supertab'
@@ -51,6 +52,13 @@ xmap ü <Plug>Commentary
 nmap ü <Plug>Commentary
 nmap üü <Plug>CommentaryLine
 nmap üu <Plug>CommentaryUndo
+
+" }}}
+" DeleteTrailingWhitespace {{{
+" Don't automatically delete on writing a buffer
+let g:DeleteTrailingWhitespace = 0
+" Do this to fix trailing whitespace
+noremap <silent> <leader>d$ :DeleteTrailingWhitespace<cr>
 
 " }}}
 " Gundo {{{
@@ -77,6 +85,14 @@ let g:lawrencium_define_mappings = 0
 " Toggle display of all kinds of parens
 noremap <silent> ä :RainbowParenthesesToggleAll<cr>
 
+" }}}
+" ShowTrailingWhitespace {{{
+" Show it by default
+let g:ShowTrailingWhitespace = 1
+" ZOMGWTFBBQ
+" I mean, toggle trailing whitespace display for current buffer
+noremap <silent> <leader>t$ :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<cr>
+"
 " }}}
 " Splice {{{
 " Use this as the splice prefix
@@ -151,11 +167,6 @@ let tagbar_autoshowtag = 1
 nnoremap <silent> <f3> :TagbarToggle<cr>
 
 " }}}
-" Trailing Whitespace {{{
-" Do this to fix trailing whitespace
-noremap <silent> <leader>fw :FixWhitespace<cr>
-
-" }}}
 " UltiSnips {{{
 " Don't reverse search order
 let g:UltiSnipsDontReverseSearchPath = "1"
@@ -206,6 +217,7 @@ let g:tex_flavor = "latex"
 " Attention: I use these dotfiles over SSH and a VPN, so setting this to a
 " too-low value might cause problems. If it does, expect this value to change.
 set ttimeoutlen=50
+
 " Files {{{
 " Don't create backup files
 set nobackup
