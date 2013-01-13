@@ -336,10 +336,10 @@ set foldtext=CustomFoldText()
 " }}}
 " Keybindings {{{
 " Fucking keys {{{
-" Fuck you, help key
-noremap <f1> <esc>
-" Fuck you too, man key
+" Fuck you, man key
 noremap K <nop>
+" Fuck you too, ex key
+noremap Q <nop>
 
 " }}}
 " Movement {{{
