@@ -63,6 +63,10 @@ let g:gundo_width = 50
 let g:gundo_close_on_revert = 1
 
 " }}}
+" Lawrencium {{{
+" Don't define mappings
+let g:lawrencium_define_mappings = 0
+}}}
 " Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
 noremap <silent> ä :RainbowParenthesesToggleAll<cr>
