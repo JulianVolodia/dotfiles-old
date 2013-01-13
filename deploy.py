@@ -32,7 +32,7 @@ if sys.version_info.major != 2 or sys.version_info.minor < 6:
 
 def expand_path(path):
     """
-    Expands ``~`` and environment variables in a pathname.
+    Expands ~ and environment variables in a pathname.
     """
     return op.expanduser(op.expandvars(path))
 
@@ -50,7 +50,7 @@ def gen_dotfile_name(src_file, src_dir):
     """
     Generates a filename for a dotfile.
 
-    ``src_file``'s path relative to ``src_dir`` is prepended by a dot.
+    src_file's path relative to src_dir is prepended by a dot.
 
     Example::
 
@@ -62,18 +62,18 @@ def gen_dotfile_name(src_file, src_dir):
 
 def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
     """
-    Symlinks ``dst_file`` to ``src_file``.
+    Symlinks dst_file to src_file.
 
-    ``overwrite`` determines what to do in case of an already existing
-    ``dst_file``.
-    * ``'nothing'`` leaves an already in-place ``dst_file``
+    The overwrite parameter determines what to do in case of an already
+    existing dst_file.
+    * 'nothing' leaves an already in-place dst_file
       completely untouched.
-    * ``'symlink'`` updates ``dst_file`` to point to
-      ``src_file``.
-    * ``'file'`` overwrites ``dst_file`` with a symlink to
-    ``src_file`` even if it is a regular file.
+    * 'symlink' updates dst_file to point to
+      src_file.
+    * 'file' overwrites dst_file with a symlink to
+      src_file even if it is a regular file.
 
-    If ``dry_run`` is ``True``, no actual operation is carried out.
+    If dry_run is True, no actual operation is carried out.
     """
     def relink(src_file, dst_file):
         if not dry_run:
@@ -104,9 +104,9 @@ def symlink(src_file, dst_file, dry_run=False, overwrite='symlink'):
 def create_symlinks(src_dir, dst_dir, overwrite='symlink',
         dry_run=False):
     """
-    Creates symlinks from ``src_dir`` to ``dst_dir``.
+    Creates symlinks from src_dir to dst_dir.
 
-    Creates all necessary directories under ``dst_dir``.
+    Creates all necessary directories under dst_dir.
     """
     for src_abs_file in find_files(src_dir):
         dst_rel_file = gen_dotfile_name(src_abs_file, src_dir)
