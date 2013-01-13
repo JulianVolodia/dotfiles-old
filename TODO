@@ -21,6 +21,8 @@ Gpg-agent:
 
 * See if I can omit some values in the config file or on the
   command-line
+* Put it from xprofile into profile
+* Possibly make it a systemd service?
 
 Vim:
 ====
