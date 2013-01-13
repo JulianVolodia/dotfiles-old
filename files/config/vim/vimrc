@@ -4,7 +4,13 @@ filetype off
 set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
 " Vundle initialization
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
-" These have to be put here in order to work
+" Leaders {{{
+" These have to be put here in order to work, otherwise the plugin keybindings
+" don't pick up the leader change
+let mapleader = ","
+let maplocalleader = "´"
+
+" }}}
 " Plugins {{{
 " Bundles {{{
 Bundle 'git://github.com/gmarik/vundle'
@@ -193,11 +199,6 @@ colorscheme runiq
 " Also, it's kind of a pain in the ass having to set this in .vimrc, though
 " that's probably just my ignorance speaking
 let g:tex_flavor = "latex"
-" Leaders {{{
-let mapleader = ","
-let maplocalleader = "´"
-
-" }}}
 " Files {{{
 " Don't create backup files
 set nobackup
