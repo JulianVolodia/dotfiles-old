@@ -199,6 +199,13 @@ colorscheme runiq
 " Also, it's kind of a pain in the ass having to set this in .vimrc, though
 " that's probably just my ignorance speaking
 let g:tex_flavor = "latex"
+" (Almost) disable the delay after keycodes
+" Attention: Disabling the delay completely by setting noesckeys would disable
+" the delay altogether, making the cursor and function keys nonfunctional in
+" insert mode
+" Attention: I use these dotfiles over SSH and a VPN, so setting this to a
+" too-low value might cause problems. If it does, expect this value to change.
+set ttimeoutlen=50
 " Files {{{
 " Don't create backup files
 set nobackup
