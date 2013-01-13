@@ -66,7 +66,7 @@ let g:gundo_close_on_revert = 1
 " Lawrencium {{{
 " Don't define mappings
 let g:lawrencium_define_mappings = 0
-}}}
+" }}}
 " Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
 noremap <silent> ä :RainbowParenthesesToggleAll<cr>
@@ -189,6 +189,10 @@ filetype plugin indent on
 syntax enable
 set background=light
 colorscheme runiq
+" I want to use LaTeX as my main TeX flavor, thank you very much
+" Also, it's kind of a pain in the ass having to set this in .vimrc, though
+" that's probably just my ignorance speaking
+let g:tex_flavor = "latex"
 " Leaders {{{
 let mapleader = ","
 let maplocalleader = "´"
