@@ -211,9 +211,10 @@ set undodir=$XDG_CACHE_HOME/vim/undo
 " 1 tab = 8 spaces
 " Don’t fuck with this
 set tabstop=8
-" use this many spaces for autoindent and day-to-day editing
+" Number of spaces to use for each step of (auto)indent
 set shiftwidth=4
-" God, this is complicated, see ":help smarttab"
+" Tab at start of line inserts shiftwidth, tab anywhere else inserts
+" tabstop/softtabstop
 set smarttab
 " Replace tabs with spaces
 " To put actual tab, use <c-v><tab>
