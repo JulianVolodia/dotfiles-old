@@ -62,7 +62,7 @@ bar {
 bindsym $mod+y exec $term
 
 # Dmenu
-bindsym $mod+x exec dmenu_run -p 'Run:' $dmenu_args
+bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p 'Run:' $dmenu_args" --entry-type=command
 
 # Ranger
 bindsym $mod+c exec $term -e ranger
