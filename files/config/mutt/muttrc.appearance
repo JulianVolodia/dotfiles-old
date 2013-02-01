@@ -33,8 +33,6 @@ set sidebar_width = 30
 set sidebar_sort
 # Shorten sidebar path
 set sidebar_shortpath
-# Indent subfolders
-set sidebar_folderindent
 # }}}
 
 # Index view {{{
