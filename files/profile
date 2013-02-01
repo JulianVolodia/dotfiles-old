@@ -5,7 +5,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # Pager
 export PAGER="less"
 # Don't remove color control sequences
-export LESS="-R"
+# Do smart case searching like in vim
+export LESS="-Ri"
 # Path to Python documentation
 export PYTHONDOCS="/usr/share/doc/python/html"
 
