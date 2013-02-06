@@ -9,20 +9,14 @@ deploy:
   Tries to follow symlinks, but if it cannot, the stale symlink matches the
   "-type l" specifier and gets deleted)
 * Ignore *.orig files in source directory
+* Figure out how to save file permissions properly
+  (see http://stackoverflow.com/questions/1289816)
 
 Zsh:
 ====
 
 * Figure out how to incorporate virtualenv into path
 * Show applied patches
-
-Gpg-agent:
-==========
-
-* See if I can omit some values in the config file or on the
-  command-line
-* Put it from xprofile into profile
-* Possibly make it a systemd service?
 
 Vim:
 ====
