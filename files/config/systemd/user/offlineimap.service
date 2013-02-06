@@ -8,7 +8,7 @@ ConditionACPower=true
 [Service]
 Type=simple
 ExecStart=/usr/bin/offlineimap -c ${XDG_CONFIG_HOME}/offlineimap/offlineimap.conf -u basic
-Restart=on-on-abort
+Restart=on-abort
 
 [Install]
 WantedBy=common.target
