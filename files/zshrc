@@ -51,7 +51,7 @@ alias la='ls -A'
 alias lla='ls -lA'
 which pacman &> /dev/null && alias p=pacman
 which pacaur &> /dev/null && alias pa=pacaur
-which systemctl &> /dev/null && alias syu=systemctl --user
+which systemctl &> /dev/null && alias syu="systemctl --user"
 
 # virtualenv {{{
 # These only work when a virtualenv is active
