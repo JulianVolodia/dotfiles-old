@@ -154,7 +154,7 @@ def main():
     print "Copying files from", source_dir, "to", sink_dir
     if not dry_run:
         shutil.rmtree(sink_dir, ignore_errors=True)
-        shutil.copytree(source_dir, sink_dir)
+        shutil.copytree(source_dir, sink_dir, symlinks=True)
     print "Symlinking files from", sink_dir, "to", symlink_dir
     create_symlinks(sink_dir, symlink_dir, overwrite=args.overwrite,
             dry_run=dry_run)

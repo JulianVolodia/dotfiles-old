@@ -1,37 +1,9 @@
 #!/bin/sh
 
 # Appearance {{{
-# Start compositing manager
-compton -b
-
-# Set wallpaper and terminal theme
-WALLPAPER="$XDG_DATA_HOME/backgrounds/background.png"
-[[ -r "$WALLPAPER" ]] && imlibsetroot -x e -s f -p c "$WALLPAPER" --bgcolor '#fafafa'
-XRESOURCES="$HOME/.Xresources"
-[[ -r "$XRESOURCES" ]] && xrdb -merge "$XRESOURCES"
-
-
 # Need this in order to use GTK style for Qt
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # }}}
-# gpg-agent {{{
-ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent.info"
-
-if [[ -r "$ENV_FILE" ]] && kill -0 $(grep $GPG_AGENT_INFO "$ENV_FILE" | cut -d: -f 2) 2>&1 > /dev/null; then
-    # Fetch info from $ENV_FILE if gpg-agent is already running
-    source "$ENV_FILE"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-else
-    # Start the agent if it's not already running
-    gpg-agent --daemon -q --enable-ssh-support --write-env-file "$ENV_FILE"
-    source "$ENV_FILE"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-fi
-
-# }}}
-
-nm-applet &
+exec systemd --user
 # vim: foldmethod=marker
