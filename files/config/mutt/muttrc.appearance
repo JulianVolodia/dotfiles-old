@@ -1,0 +1,94 @@
+# General appearance {{{
+# Make thread display narrower
+set narrow_tree
+# Number of index lines (one of them is the status bar)
+set pager_index_lines = 6
+# Number of lines of context
+set pager_context = 5
+# Don't jump to next message when I invoke <next-page> on the end of
+# a message
+set pager_stop
+# Wrap lines at word boundary
+set smart_wrap
+# Insert "--" line before signature
+set sig_dashes
+# Don't beep, dammit
+unset beep
+# No ugly plus signs
+unset markers
+# Display of folders:
+set folder_format = "%t %2C %N %D %f"
+set status_chars = "*%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# }}}
+
+# Sidebar options {{{
+# The delimiter string
+set sidebar_delim = " │"
+# Show sidebar by default
+set sidebar_visible
+# Sidebar width
+set sidebar_width = 30
+# Sort sidebar entries
+set sidebar_sort
+# Shorten sidebar path
+set sidebar_shortpath
+# }}}
+
+# Index view {{{
+set date_format = "%g-%m-%d %R"
+set index_format="%C [%Z] %D %-20.20F %?M?+& ? %s"
+unset uncollapse_jump
+# }}}
+
+# Headers {{{
+# Ignore all headers...
+ignore *
+# ...but show these...
+unignore from: to: cc: date: subject:
+# ...in this order
+hdr_order from: to: cc: date: subject:
+# }}}
+
+# Colors {{{
+color normal default default
+color attachment magenta default
+color indicator brightmagenta default
+color status brightgreen default
+# Blank line padding
+color tilde black default
+# Line wraps
+color markers black default
+color tree black default
+color index cyan default ~N
+color index red default ~D
+color index yellow default ~T
+color index green default ~F
+color signature black default
+# Headers
+color hdrdefault green default
+color header brightgreen default ^From:
+color header brightgreen default ^To:
+color header brightgreen default ^Subject:
+# Rainbow quoting, baby!
+color quoted cyan default
+color quoted1 green default
+color quoted2 yellow default
+color quoted3 red default
+color quoted4 magenta default
+color quoted5 blue default
+# GPG stuff
+color body green default "^gpg: Good signature from"
+color body brightred default "^gpg: Bad signature from"
+color body brightred default "^gpg: BAD signature from"
+color body brightred default "^gpg: Note: This key has expired!"
+color body brightyellow default	"^gpg: WARNING: This key is not certified with a trusted signature!"
+color body brightyellow default	"^gpg:          There is no indication that the signature belongs to the owner."
+color body brightyellow default	"^gpg: can't handle these multiple signatures"
+color body brightyellow default	"^gpg: signature verification suppressed"
+color body brightyellow default	"^gpg: invalid node with packet of type"
+# identifies email addresses
+color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# identifies URLs
+color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# }}}
