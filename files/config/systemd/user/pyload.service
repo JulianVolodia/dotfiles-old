@@ -1,0 +1,11 @@
+[Unit]
+Description=PyLoad
+Wants=network.target
+# Only start this automatically when not on battery
+ConditionACPower=true
+
+[Service]
+ExecStart=/usr/bin/pyLoadCore
+
+[Install]
+WantedBy=common.target
