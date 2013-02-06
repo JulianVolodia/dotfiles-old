@@ -1,0 +1,40 @@
+# Typing notifications, Chat States, Events (XEP-22/85)
+# Set disable_chatstates to 1 if you don't want to use typing notifications.
+# Note: changing this option once mcabber is running has no effect.
+set disable_chatstates = 0
+
+# Beep
+# Set beep_on_message to 1 if you want mcabber to beep when receiving
+# a new message (except in chatrooms).  If you want a more sophisticated
+# system (e.g. play a sound), have a look at 'events_command' below.
+set beep_on_message = 1
+
+# Set 'delete_on_reject' to 1 if you want to delete buddies from your
+# roster when you reject their subscription request. (default: 0)
+# (See documentation for /event)
+# The buddy is actually deleted only if there is no other subscription,
+# so for example if you are subscribed to this buddy's presence updates it
+# won't be deleted.
+#set delete_on_reject = 0
+
+# Status messages
+# The 'message' value will override all others, take care!
+#set message = Unique message status
+#set message_avail     = I'm available
+#set message_free      = I'm free for chat
+#set message_dnd       = Please do not disturb
+#set message_notavail  = I'm not available
+#set message_away      = I'm away
+#
+# The auto-away message is only used when 'autoaway' is set.  The previous
+# message will be restored when leaving auto-away status.  If this message
+# isn't defined, the status message will stay unchanged.
+#set message_autoaway = Auto-away (idle)
+
+# Set the auto-away timeout, in seconds.  If set to a value >0,
+# mcabber will change your status to away if no real activity is detected
+# (command, message, move in the buddylist...).  Note: auto-away only changes
+# the status when it is "available" (online) or "free_for_chat".
+# See 'message_autoaway' below.
+set autoaway = 0
+

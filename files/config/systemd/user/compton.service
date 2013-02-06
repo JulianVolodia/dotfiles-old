@@ -1,0 +1,10 @@
+[Unit]
+Description=Compositing Manager
+# Requires=xorg.target
+# After=xorg.target
+
+[Service]
+ExecStart=/usr/bin/compton
+
+[Install]
+WantedBy=wm.target

@@ -1,0 +1,26 @@
+# Command formats for gpg.
+
+# This version uses --status-fd messages
+# Needed to verify signed and encrypted messages
+set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+
+# Use gpg agent
+set pgp_use_gpg_agent
+
+# Use the GPGME backend
+set crypt_use_gpgme
+
+# Always verify signatures
+set crypt_verify_sig
+
+# Always sign outgoing messages
+set crypt_autosign
+
+# Always encrypt replies to encrypted messages
+set crypt_replyencrypt
+
+# Always sign replies to signed messages
+set crypt_replysign
+
+# Always sign replies to encrypted messages
+set crypt_replysignencrypted

@@ -1,0 +1,7 @@
+" Hide menubar, toolbar, right-hand scrollbar
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+
+" Use this font as guifont
+set guifont=Consolas\ 12

@@ -1,0 +1,11 @@
+[Unit]
+Description=Wallpaper setter
+# Requires=xorg.target
+# After=xorg.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-fill --no-fehbg ${XDG_DATA_HOME}/wallpapers/background
+
+[Install]
+WantedBy=wm.target

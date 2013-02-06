@@ -1,0 +1,12 @@
+[Unit]
+Description=Urxvt Daemon
+# Requires=xorg.target
+# After=xorg.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/urxvtd -q -o
+Restart=on-abort
+
+[Install]
+WantedBy=graphical.target

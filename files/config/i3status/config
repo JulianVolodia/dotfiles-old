@@ -1,0 +1,20 @@
+general {
+    colors = true
+    color_good = "#262729"
+    color_degraded = "#808080"
+    color_bad = "#356aa0"
+    color_separator = "#d3d3d4"
+    interval = 5
+}
+
+order += "battery 0"
+/* order += "volume master" */
+order += "time"
+
+battery 0 {
+    format = "B: %percentage %remaining"
+}
+
+time {
+    format = "%H:%M"
+}
