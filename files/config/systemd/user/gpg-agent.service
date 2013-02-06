@@ -2,7 +2,8 @@
 Description=gpg-agent daemon
 
 [Service]
-ExecStart=/usr/bin/gpg-agent --enable-ssh-support --use-standard-socket --write-env-file %t/gpg-agent.info
+Type=forking
+ExecStart=/usr/bin/gpg-agent --enable-ssh-support --use-standard-socket --write-env-file %t/gpg-agent.info --daemon
 ExecStartPost=/bin/sh -c "xargs systemctl --user set-environment < %t/gpg-agent.info"
 Restart=on-abort
 
