@@ -1,0 +1,461 @@
+" Early stuff {{{
+" Runtime paths
+filetype off
+set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$XDG_DATA_HOME/vim,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after,$VIM/vimfiles/after
+" Vundle initialization
+call vundle#rc("$XDG_DATA_HOME/vim/bundle")
+" Leaders {{{
+" These have to be put here in order to work, otherwise the plugin keybindings
+" don't pick up the leader change
+let mapleader = ","
+let maplocalleader = "´"
+
+" }}}
+" Plugins {{{
+" Bundles {{{
+Bundle 'git://github.com/gmarik/vundle'
+Bundle 'git://github.com/ervandew/ag'
+Bundle 'git://github.com/tpope/vim-commentary'
+Bundle 'git://github.com/vim-scripts/DeleteTrailingWhitespace'
+Bundle 'git://github.com/sjl/gundo.vim.git'
+Bundle 'git://github.com/ivanov/vim-ipython'
+Bundle 'git://github.com/LaTeX-Box-Team/LaTeX-Box'
+Bundle 'git://github.com/ludovicchabant/vim-lawrencium'
+Bundle 'git://github.com/MarcWeber/vim-addon-local-vimrc'
+Bundle 'git://github.com/edsono/vim-matchit'
+Bundle 'git://github.com/Lokaltog/vim-powerline'
+Bundle 'git://github.com/kien/rainbow_parentheses.vim'
+Bundle 'git://github.com/tpope/vim-repeat'
+Bundle 'git://github.com/vim-scripts/ShowTrailingWhitespace'
+Bundle 'git://github.com/tmhedberg/SimpylFold'
+Bundle 'git://github.com/sjl/splice.vim.git'
+Bundle 'git://github.com/tpope/vim-surround'
+Bundle 'git://github.com/scrooloose/syntastic'
+Bundle 'git://github.com/godlygeek/tabular'
+Bundle 'git://github.com/majutsushi/tagbar'
+Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
+Bundle 'git://github.com/SirVer/ultisnips'
+Bundle 'git://github.com/ervandew/supertab'
+
+" }}}
+" Configuration {{{
+" Some preliminary remarks:
+" - all plugin functions that open some kind of split window have mapped that
+"   the opening/toggling of said window to a function key
+" - functions that toggle other stuff are normally either <leader><key> if I
+"   use them sparingly, or use their own keys if I use them often (e.g.
+"   commentary and üü)
+" Ag {{{
+noremap <leader>a :Ag<space>
+
+" }}}
+" Commentary {{{
+" Use ü and üü for commenting
+xmap ü <Plug>Commentary
+nmap ü <Plug>Commentary
+nmap üü <Plug>CommentaryLine
+nmap üu <Plug>CommentaryUndo
+
+" }}}
+" DeleteTrailingWhitespace {{{
+" Don't automatically delete on writing a buffer
+let g:DeleteTrailingWhitespace = 0
+" Do this to fix trailing whitespace
+noremap <silent> <leader>d<space> :DeleteTrailingWhitespace<cr>
+
+" }}}
+" Gundo {{{
+" Toggles the Gundo windows
+" It looks kinda like a tree, see? See?
+noremap <f3> :GundoToggle<cr>
+" horizontal width of Gundo graph
+let g:gundo_width = 50
+" Vertical height of preview window
+"let g:gundo_preview_height = 25
+" Show preview window below file instead of below graph
+" let g:gundo_preview_bottom = 0
+" Show Gundo graph on the right
+"let g:gundo_right = 1
+" automatically close Gundo windows on reverting
+let g:gundo_close_on_revert = 1
+
+" }}}
+" Lawrencium {{{
+" I like my own mappings better
+let g:lawrencium_define_mappings = 0
+" :Hgedit
+noremap <buffer> <leader>ve :Hgedit<space>
+" :Hgcd
+noremap <buffer> <leader>vcd :Hgcd<space>
+" :Hglcd
+noremap <buffer> <leader>vcl :Hglcd<space>
+" Open annotation window
+noremap <silent> <buffer> <leader>va :Hgannotate<cr>
+" Open status window
+noremap <silent> <buffer> <leader>vs :Hgstatus<cr>
+" Open log window for current file
+noremap <silent> <buffer> <leader>vl :Hglogthis<cr>
+" Open log window for entire repository
+noremap <silent> <buffer> <leader>vL :Hglog<cr>
+" Open diff window
+noremap <silent> <buffer> <leader>vd :Hgdiff<cr>
+" Open diffsum window
+noremap <silent> <buffer> <leader>vD :Hgdiffsumsplit<cr>
+" Open commit buffer
+noremap <silent> <buffer> <leader>vC :Hgcommit<cr>
+" Revert current file to previous revision
+noremap <silent> <buffer> <leader>vr :Hgrevert<cr>
+" Revert current file to previous revision (no backup)
+noremap <silent> <buffer> <leader>vR :Hgrevert!<cr>
+" }}}
+" Rainbow Parentheses {{{
+" Toggle display of all kinds of parens
+noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
+
+" }}}
+" ShowTrailingWhitespace {{{
+" Show it by default
+let g:ShowTrailingWhitespace = 1
+" ZOMGWTFBBQ
+" I mean, toggle trailing whitespace display for current buffer
+noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<cr>
+"
+" }}}
+" Splice {{{
+" Use this as the splice prefix
+let g:splice_prefix = "<leader>s"
+" Use scrollbind on all modes
+let g:splice_initial_scrollbind_grid = 1
+let g:splice_initial_scrollbind_loupe = 1
+let g:splice_initial_scrollbind_compare = 1
+let g:splice_initial_scrollbind_path = 1
+
+" }}}
+" Supertab {{{
+" Let supertab make out completion context
+let g:SuperTabDefaultCompletionType = "context"
+" Use omnicompletion as fallback
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" Complete longest common match (like in shells)
+let g:SuperTabLongestEnhanced = 1
+" Use this to move forward
+let g:SuperTabMappingForward = "<c-j>"
+" Use this to move backward
+let g:SuperTabMappingBackward = "<c-k>"
+" Use this to display the normal <tab> character (is still affected by
+" expandtab, shiftwidth, etc.)
+" Doesn't work in terminal
+let g:SuperTabMappingTabLiteral = "<c-tab>"
+" Use <cr> to cancel completion
+let g:SuperTabCrMapping = 1
+
+" }}}
+" Syntastic {{{
+" Don't run Syntastic on opening files
+let g:syntastic_check_on_open = 0
+" Don't print error message for current line to command window
+let g:syntastic_echo_current_error = 0
+" Use the :sign interface to show errors
+let g:syntastic_enable_signs = 1
+" Use these symbols for errors, warnings, and style errors/warnings
+let g:syntastic_error_symbol = 'E'
+let g:syntastic_warning_symbol = 'W'
+let g:syntastic_style_error_symbol = 'S'
+let g:syntastic_style_warning_symbol = 's'
+" Don't use balloons
+let g:syntastic_enable_balloons = 0
+" Don't use syntax highlighting
+let g:syntastic_enable_highlighting = 0
+" Don't automatically jump to the first error when first opening a file
+let g:syntastic_auto_jump = 0
+" Automatically close location list when no more errors are found
+let g:syntastic_auto_loc_list = 2
+" Error list height = command window height
+let g:syntastic_loc_list_height = 7
+" Don't automatically check
+let g:syntastic_mode_map = { 'mode': 'passive' }
+" Check manually
+noremap <leader>S :SyntasticCheck<cr>
+
+" }}}
+" Tagbar {{{
+" Open tagbar window on the left
+let tagbar_left = 1
+" Make tagbar window as wide as the gundo plugin windows
+let tagbar_width = 50
+" Automatically jump to tagbar window as soon as it's opened
+let tagbar_autofocus = 1
+" Automatically close tagbar window when choosing a tag
+let tagbar_autoclose = 1
+" If current tag is inside a closed fold, open that fold just enough to show
+" the tag
+let tagbar_autoshowtag = 1
+" Toggle Tagbar window
+nnoremap <silent> <f4> :TagbarToggle<cr>
+
+" }}}
+" UltiSnips {{{
+" Don't reverse search order
+let g:UltiSnipsDontReverseSearchPath = "1"
+" Snippet directory for private snippets
+let g:UltiSnipsSnippetsDir = "$XDG_DATA_HOME/vim/snippets"
+" Snippet search path
+" The default snippets are in <bundledir>/ultisnips/UltiSnips directory
+let g:UltiSnipsSnippetDirectories = ["snippets", "UltiSnips"]
+" " Use this to expand a trigger (i.e. insert a snippet)
+let g:UltiSnipsExpandTrigger = "<tab>"
+" Use this to jump forward to next trigger
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+" Use this to jump backward to next trigger
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" }}}
+" Yankstack {{{
+" Don't load default maps
+let g:yankstack_map_keys = 0
+"map Use + and - to cycle through yank stack
+nmap <silent> + <Plug>yankstack_substitute_older_paste
+nmap <silent> - <Plug>yankstack_substitute_newer_paste
+" Use this to show yank stack
+nnoremap <f2> :Yanks<cr>
+" Needs to be called before redefining yank maps
+call yankstack#setup()
+
+" }}}
+
+" }}}
+
+" }}}
+filetype plugin indent on
+
+" }}}
+" General {{{
+syntax enable
+set background=light
+colorscheme runiq
+" I want to use LaTeX as my main TeX flavor, thank you very much
+" Also, it's kind of a pain in the ass having to set this in .vimrc, though
+" that's probably just my ignorance speaking
+let g:tex_flavor = "latex"
+" (Almost) disable the delay after keycodes
+" Attention: Disabling the delay completely by setting noesckeys would disable
+" the delay altogether, making the cursor and function keys nonfunctional in
+" insert mode
+" Attention: I use these dotfiles over SSH and a VPN, so setting this to a
+" too-low value might cause problems. If it does, expect this value to change.
+set ttimeoutlen=50
+
+" Files {{{
+" Don't create backup files
+set nobackup
+" Save viminfo file to keep state information from one vim session to the next
+set viminfo+=n$XDG_CACHE_HOME/vim/info
+" Common directory for all swap files (first existing directory is used)
+set directory=$XDG_CACHE_HOME/vim/tmp,.,/var/tmp,/tmp
+" Persistent undo (see ":help persistent-undo")
+set undofile
+" Common directory for persistent undo files
+set undodir=$XDG_CACHE_HOME/vim/undo
+
+" }}}
+" Indentation & linebreaks {{{
+" 1 tab = 8 spaces
+" Don’t fuck with this
+set tabstop=8
+" Number of spaces to use for each step of (auto)indent
+set shiftwidth=4
+" Tab at start of line inserts shiftwidth, tab anywhere else inserts
+" tabstop/softtabstop
+set smarttab
+" Replace tabs with spaces
+" To put actual tab, use <c-v><tab>
+set expandtab
+" Use this when pressing <tab> instead of tabstop
+" Allows to keep tabstop at default value while editing as if it's set to
+" softtabstop width
+set softtabstop=4
+
+" }}}
+" Search {{{
+" Show search hits during input
+set incsearch
+" highlight search hits
+set hlsearch
+" Case-insensitive search unless there are capital letters in search expression
+set ignorecase
+set smartcase
+" Use ":s///g" by default
+set gdefault
+
+" }}}
+" Tabs & buffers {{{
+" Lets you leave edited buffers without having to save them
+set hidden
+" When splitting, only split current viewport
+set noequalalways
+" When splitting, create new viewports below/right to current viewports
+set splitbelow
+set splitright
+" Prettify splits, diffs, folds
+set fillchars="vert: ,fold: ,diff: "
+" Also consider other tabs if searching for already open buffers
+set switchbuf=usetab
+
+" }}}
+" Appearance {{{
+" Breaks lines in sane places
+set linebreak
+" Add this in front of line if line is too long for terminal
+set showbreak=+
+
+" At all times show at least this many lines over/under cursor
+set scrolloff=3
+" Not necessary because of powerline plugin
+set noshowmode
+" Highlights the current line
+set cursorline
+" Show current command in status line
+set showcmd
+" Show tabline only if there is >1 tab
+set showtabline=1
+" Always show status line
+set laststatus=2
+
+" }}}
+" Mouse {{{
+" Use mouse
+set mouse=a
+
+" }}}
+" Completion {{{
+set completeopt=menu,preview,longest
+set wildmenu
+set wildmode=list:longest
+
+" }}}
+
+" }}}
+" Functions {{{
+" Customize  fold text: just fold text with length appended {{{
+function! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " (" . foldSize . " lines)"
+    return line . foldSizeStr
+endf
+set foldtext=CustomFoldText()
+
+" }}}
+
+" }}}
+" Keybindings {{{
+" Fucking keys {{{
+" Fuck you, man key
+noremap K <nop>
+" Fuck you too, ex key
+noremap Q <nop>
+
+" }}}
+" Movement {{{
+" Easier movement between virtual lines
+noremap <silent> j gj
+noremap <silent> k gk
+noremap <silent> gj j
+noremap <silent> gk k
+
+" Easier movement between viewports
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+
+" Easier movement between buffers
+noremap <silent> <right> :bnext<cr>
+noremap <silent> <left> :bprev<cr>
+
+" Use <tab> to teleport to matching parens
+noremap <tab> %
+
+" }}}
+" Command-line window {{{
+" Opens appropriate command-line window with every operation
+nmap ö :
+vmap ö :
+nnoremap : q:i
+vnoremap : q:i
+nnoremap / q/i
+vnoremap / q/i
+nnoremap ? q?i
+vnoremap ? q?i
+
+" allow normal cmdline :, / and ?
+nnoremap q: :
+vnoremap q: :
+nnoremap q/ /
+vnoremap q/ /
+nnoremap q? ?
+vnoremap q? ?
+
+" allow leaving cmdline-window with <ESC>
+au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
+" Select current line without having to enter insert mode
+au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
+
+" }}}
+" Quickfix and location list windows {{{
+" Open quickfix window
+noremap <silent> <leader>qo :botright :copen<cr>
+" Jump to current error
+noremap <silent> <leader>qq :cc<cr>
+" Open quickfix window in bottom right IF there are any errors
+noremap <silent> <leader>qw :botright :cwindow<cr>
+" Go to next error in quickfix window
+noremap <silent> <leader>qn :cnext<cr>
+" Go to previous error in quickfix window
+noremap <silent> <leader>qp :cprevious<cr>
+
+" Open location list window
+noremap <silent> <leader>lo :botright :copen<cr>
+" Jump to current error
+noremap <silent> <leader>ll :cc<cr>
+" Open location list window in bottom right IF there are any errors
+noremap <silent> <leader>lw :botright :cwindow<cr>
+" Go to next error in location list window
+noremap <silent> <leader>ln :cnext<cr>
+" Go to previous error in location list window
+noremap <silent> <leader>lp :cprevious<cr>
+
+" }}}
+" Completion {{{
+" Use <C-J> and <C-K> instead of <C-N> and <C-P>
+imap <c-j> <c-n>
+imap <c-k> <c-p>
+" Use <C-H> to abort completion
+inoremap <c-h> <c-e>
+" Use <C-L> to confirm completion
+inoremap <c-l> <c-y>
+
+" }}}
+" Make!
+noremap <silent> <f5> :make<cr>
+" Easier :nohl
+noremap <silent> <leader><cr> :nohlsearch<cr>
+" Makes folding fun
+noremap <silent> <space> za
+" Use this to toggle paste mode
+set pastetoggle=<f1>
+" Make Y behave like D and C
+noremap <silent> Y y$
+
+" }}}
+
+" vim: foldmethod=marker

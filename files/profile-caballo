@@ -1,0 +1,15 @@
+export HOSTCOLOR='$black'
+export EDITOR="vim"
+
+# MODELLER {{{
+# Use MODELLER with system Python installation (won't work with Python 3.x)
+export MODINSTALL9v11="/usr/lib/modeller"
+export PYTHONPATH="$MODINSTALL9v11/modlib:$MODINSTALL9v11/lib/x86_64-intel8/python2.5"
+export LD_LIBRARY_PATH="$MODINSTALL9v11/lib/x86_64-intel8"
+# }}}
+
+# Use this as local texmf tree
+export TEXMFHOME="$XDG_DATA_HOME/.texmf"
+
+# for notmuch mail index program
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"

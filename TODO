@@ -1,0 +1,46 @@
+deploy:
+=======
+
+* Logging
+* Remove stale symlinks (there's a trick involving find:
+
+      find -L . -type l -delete
+
+  Tries to follow symlinks, but if it cannot, the stale symlink matches the
+  "-type l" specifier and gets deleted)
+* Ignore *.orig files in source directory
+
+Zsh:
+====
+
+* Figure out how to incorporate virtualenv into path
+* Show applied patches
+
+Gpg-agent:
+==========
+
+* See if I can omit some values in the config file or on the
+  command-line
+* Put it from xprofile into profile
+* Possibly make it a systemd service?
+
+Vim:
+====
+
+* Use dmenu for files/buffers
+* Find better keys for Ctrl, Esc, CapsLock
+
+Mutt-kz:
+========
+
+* Trash patch
+* Show mailboxes in sidebar hierarchically
+* Add some useful keybindings & get familiar with them
+* How does it work?
+* Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
+  * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
+  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham (not
+    really useful, especially for mailing list messages)
+* IMAPfilter
+* Reorganize config files
+* Gmail hardlinks

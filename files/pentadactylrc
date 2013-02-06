@@ -1,0 +1,26 @@
+" ~/.pentadactylrc by runiq.
+
+set defsearch=ddg
+set titlestring=
+set complete='lf'
+set hintkeys="asdfghjkl"
+set newtab=all
+set showtabline=multitab
+
+" Hint formatting!
+highlight -a Hint text-transform: uppercase;
+highlight Hint::after content: attr(number) !important;
+
+" Remap H/J/K/L
+map H -builtin <C-p>
+map J -builtin <C-i>
+map K -builtin <C-o>
+map L -builtin <C-n>
+
+" Additional reload bindings
+map <C-R> :reloadall<CR>
+map <C-S-R> :reloadall!<CR>
+map ö :
+
+" <C-B> opens bookmarks
+map <C-B> :bmarks<CR>

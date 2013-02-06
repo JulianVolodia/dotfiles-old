@@ -1,0 +1,25 @@
+# Conference nickname
+# This nickname is used when joining a room, when no nick is explicitly
+# specified by the user.  Note that when the nickname option is not set,
+# the jid variable can be used.
+set nickname = runiq
+
+# MUC
+# Set 'muc_flag_joins' to 1 if you want the MUC rooms to be flagged in
+# the roster when somebody joins a room.  Set it to 2 if you want a flag
+# for leaves too.
+#set muc_flag_joins = 0
+# Set 'muc_print_status' to see status changes in MUC rooms:
+# 1: (none)       do not display joining/leaving members
+# 2: (in_and_out) display joining/leaving members
+# 3: (all)        display joining/leaving members and member status changes
+# (default: in_and_out)
+#set muc_print_status = 2
+# Set 'muc_auto_whois' to 1 if you want to call /room whois each time
+# somebody joins a room. (default: 0)
+#set muc_auto_whois = 0
+#
+# Set 'muc_disable_nick_hl' to 1 if you don't want mcabber to color lines
+# containing your nickname in a MUC room.
+#set muc_disable_nick_hl = 0
+

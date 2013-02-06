@@ -1,0 +1,10 @@
+[Unit]
+Description=MPD Scrobbling Helper
+PartOf=mpd.service
+
+[Service]
+ExecStart=/usr/bin/mpdscribble --no-daemon
+Restart=on-abort
+
+[Install]
+WantedBy=mpd.service
