@@ -1,0 +1,15 @@
+[Unit]
+Description=Dropbox
+After=local-fs.target network.target
+# Only launch if on AC
+ConditionACPower=true
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dropboxd
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=common.target
