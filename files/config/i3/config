@@ -14,7 +14,7 @@
 set $mod Mod4
 
 # Terminal
-set $term urxvtc
+set $term urxvt
 
 # Dmenu arguments
 set $dmenu_args -fn 'EB Garamond 12' -nf '#262729' -nb '#fafafa' -sb '#356aa0' -sf '#ffffff'
