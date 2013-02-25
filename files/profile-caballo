@@ -9,7 +9,7 @@ export LD_LIBRARY_PATH="$MODINSTALL9v11/lib/x86_64-intel8"
 # }}}
 
 # Use this as local texmf tree
-export TEXMFHOME="$XDG_DATA_HOME/.texmf"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
 
 # for notmuch mail index program
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
