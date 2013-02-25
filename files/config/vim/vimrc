@@ -84,29 +84,29 @@ let g:gundo_close_on_revert = 1
 " I like my own mappings better
 let g:lawrencium_define_mappings = 0
 " :Hgedit
-noremap <buffer> <leader>ve :Hgedit<space>
+noremap <leader>ve :Hgedit<space>
 " :Hgcd
-noremap <buffer> <leader>vcd :Hgcd<space>
+noremap <leader>vcd :Hgcd<space>
 " :Hglcd
-noremap <buffer> <leader>vcl :Hglcd<space>
+noremap <leader>vcl :Hglcd<space>
 " Open annotation window
-noremap <silent> <buffer> <leader>va :Hgannotate<cr>
+noremap <silent> <leader>va :Hgannotate<cr>
 " Open status window
-noremap <silent> <buffer> <leader>vs :Hgstatus<cr>
+noremap <silent> <leader>vs :Hgstatus<cr>
 " Open log window for current file
-noremap <silent> <buffer> <leader>vl :Hglogthis<cr>
+noremap <silent> <leader>vl :Hglogthis<cr>
 " Open log window for entire repository
-noremap <silent> <buffer> <leader>vL :Hglog<cr>
+noremap <silent> <leader>vL :Hglog<cr>
 " Open diff window
-noremap <silent> <buffer> <leader>vd :Hgdiff<cr>
+noremap <silent> <leader>vd :Hgdiff<cr>
 " Open diffsum window
-noremap <silent> <buffer> <leader>vD :Hgdiffsumsplit<cr>
+noremap <silent> <leader>vD :Hgdiffsumsplit<cr>
 " Open commit buffer
-noremap <silent> <buffer> <leader>vC :Hgcommit<cr>
+noremap <silent> <leader>vC :Hgcommit<cr>
 " Revert current file to previous revision
-noremap <silent> <buffer> <leader>vr :Hgrevert<cr>
+noremap <silent> <leader>vr :Hgrevert<cr>
 " Revert current file to previous revision (no backup)
-noremap <silent> <buffer> <leader>vR :Hgrevert!<cr>
+noremap <silent> <leader>vR :Hgrevert!<cr>
 " }}}
 " Rainbow Parentheses {{{
 " Toggle display of all kinds of parens
