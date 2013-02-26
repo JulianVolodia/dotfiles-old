@@ -133,21 +133,29 @@ let g:splice_initial_scrollbind_path = 1
 " }}}
 " Supertab {{{
 " Let supertab make out completion context
+" Uses completefunc if set, or else omnifunc
+" Else: Falls back to secondary default as specified by
+" g:SuperTabContextDefaultCompletionType
 let g:SuperTabDefaultCompletionType = "context"
-" Use omnicompletion as fallback
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" Use this as fallback
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
 " Complete longest common match (like in shells)
 let g:SuperTabLongestEnhanced = 1
+" Automatically select first entry in menu
+let g:SuperTabLongestHighlight = 1
 " Use this to move forward
-let g:SuperTabMappingForward = "<c-j>"
+let g:SuperTabMappingForward = "<tab>"
 " Use this to move backward
-let g:SuperTabMappingBackward = "<c-k>"
+let g:SuperTabMappingBackward = "<s-tab>"
 " Use this to display the normal <tab> character (is still affected by
 " expandtab, shiftwidth, etc.)
 " Doesn't work in terminal
+left
 let g:SuperTabMappingTabLiteral = "<c-tab>"
 " Use <cr> to cancel completion
 let g:SuperTabCrMapping = 1
+" Automatically close preview window when popup window is closed
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " }}}
 " Syntastic {{{
@@ -208,6 +216,8 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 " Use this to jump backward to next trigger
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" NOTE: UltiSnips automatically falls back on Supertab completion if there's
+" no snippet to expand
 
 " }}}
 " Yankstack {{{
@@ -328,7 +338,10 @@ set mouse=a
 
 " }}}
 " Completion {{{
-set completeopt=menu,preview,longest
+" Show a popup even if there's only one option
+" Show preview window
+" Complete to longest common substring
+set completeopt=menuone,preview,longest
 set wildmenu
 set wildmode=list:longest
 
