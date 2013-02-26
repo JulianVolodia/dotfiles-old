@@ -108,7 +108,22 @@ noremap <silent> <leader>vr :Hgrevert<cr>
 " Revert current file to previous revision (no backup)
 noremap <silent> <leader>vR :Hgrevert!<cr>
 " }}}
+" Powerline {{{
+" Set mode names
+let g:Powerline_mode_n = ' N '
+let g:Powerline_mode_i = ' I '
+let g:Powerline_mode_R = ' R '
+let g:Powerline_mode_v = ' V '
+let g:Powerline_mode_V = 'VLN'
+let g:Powerline_mode_cv = 'VBL'
+let g:Powerline_mode_s = ' S '
+let g:Powerline_mode_S = 'SLN'
+let g:Powerline_mode_cs = 'SBL'
+" TODO: Theme
+" }}}
 " Rainbow Parentheses {{{
+" TODO:
+" - Add explicit color mappings
 " Toggle display of all kinds of parens
 noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
 
@@ -118,7 +133,7 @@ noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
 let g:ShowTrailingWhitespace = 1
 " ZOMGWTFBBQ
 " I mean, toggle trailing whitespace display for current buffer
-noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Show trailing whitespace' : 'Not showing trailing whitespace')<cr>
+noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Showing trailing whitespace' : 'Not showing trailing whitespace')<cr>
 "
 " }}}
 " Splice {{{
@@ -161,8 +176,8 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " Syntastic {{{
 " Don't run Syntastic on opening files
 let g:syntastic_check_on_open = 0
-" Don't print error message for current line to command window
-let g:syntastic_echo_current_error = 0
+" Print error message for current line to command window
+let g:syntastic_echo_current_error = 1
 " Use the :sign interface to show errors
 let g:syntastic_enable_signs = 1
 " Use these symbols for errors, warnings, and style errors/warnings

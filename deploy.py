@@ -1,5 +1,7 @@
 #!/usr/bin/env python2
 
+print "bla!"
+
 """
 Copies files from dir1 to dir2, and then places symlinks from dir2 into
 dir3, turning the top-level symlinks into dotfiles in the process.
