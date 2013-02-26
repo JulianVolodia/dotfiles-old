@@ -1,5 +1,6 @@
 export HOSTCOLOR='$black'
 export EDITOR="vim"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYVIMRC | source $MYGVIMRC'
 
 # MODELLER {{{
 # Use MODELLER with system Python installation (won't work with Python 3.x)
