@@ -99,10 +99,16 @@ noremap <silent> <leader>vl :Hglogthis<cr>
 noremap <silent> <leader>vL :Hglog<cr>
 " Open diff window
 noremap <silent> <leader>vd :Hgdiff<cr>
+" Open vertical diff window
+noremap <silent> <leader>vvd :Hgvdiff<cr>
 " Open diffsum window
 noremap <silent> <leader>vD :Hgdiffsumsplit<cr>
+" Open vertical diffsum window
+noremap <silent> <leader>vvD :Hgvdiffsumsplit<cr>
 " Open commit buffer
 noremap <silent> <leader>vC :Hgcommit<cr>
+" Open vertical commit buffer
+noremap <silent> <leader>vvC :Hgvcommit<cr>
 " Revert current file to previous revision
 noremap <silent> <leader>vr :Hgrevert<cr>
 " Revert current file to previous revision (no backup)
