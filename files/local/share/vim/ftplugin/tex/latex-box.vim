@@ -5,6 +5,8 @@ let g:LatexBox_no_mappings = 1
 let g:LatexBox_bibtex_wild_spaces = 1
 " Allow folding; caution: takes \end{document} hostage
 let g:LatexBox_Folding = 1
+" Change Supertab default context to omnifunc
+call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 " Use LuaLaTeX as default
 " Enable quickfix error parsing
@@ -13,7 +15,7 @@ let g:LatexBox_latexmk_options = "-file-line-error -shell-escape -pdflatex=luala
 " Don't automatically jump to first error after calling latexmk
 let g:LatexBox_autojump = 0
 " I use cleveref, so citation completion for it is a nice thing to have
-let g:LatexBox_ref_pattern = '\\\(\(namec\|nameC|lcnamec\)refs\?\|\(label\)\?[cC]\?\(page\)\?ref\(range\)\?\){'
+" let g:LatexBox_ref_pattern = '\\\(\(lc\)\?name\[Cc\]refs\?\|\(label\)\?[cC]\?\(page\)\?ref\(range\)\?\){'
 
 " }}}
 " Mappings {{{
