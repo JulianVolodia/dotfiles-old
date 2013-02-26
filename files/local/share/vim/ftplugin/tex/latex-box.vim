@@ -3,9 +3,9 @@
 let g:LatexBox_no_mappings = 1
 " Use spaces as wildcards in BibTeX completion
 let g:LatexBox_bibtex_wild_spaces = 1
-" Allow folding; caution: takes \end{document} hostage
+" Allow folding
 let g:LatexBox_Folding = 1
-" Change Supertab default context to omnifunc
+" Change Supertab default context to omnifunc, is local to current buffer
 call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 
 " Use LuaLaTeX as default
@@ -21,37 +21,43 @@ let g:LatexBox_autojump = 0
 " Mappings {{{
 " Latexmk interface {{{
 " Compile with latexmk in background
-noremap <buffer> <silent> <localleader>ll :Latexmk<cr>
+noremap <buffer> <silent> <localleader>l :Latexmk<cr>
 " Force latexmk compilation
-noremap <buffer> <silent> <localleader>lL :LatexmkForce<cr>
+noremap <buffer> <silent> <localleader>L :LatexmkForce<cr>
 " Clean temporary compilation output
-noremap <buffer> <silent> <localleader>lc :LatexmkClean<cr>
-" Clean all compilation output
-noremap <buffer> <silent> <localleader>lC :LatexmkClean!<cr>
+noremap <buffer> <silent> <localleader>c :LatexmkClean<cr>
+" Clean all compilation output (including generated output file)
+noremap <buffer> <silent> <localleader>C :LatexmkClean!<cr>
 " Stop latexmk if it is running
-noremap <buffer> <silent> <localleader>lk :LatexmkStop<cr>
+noremap <buffer> <silent> <localleader>k :LatexmkStop<cr>
 " Show running status for current buffer
-noremap <buffer> <silent> <localleader>ls :LatexmkStatus<cr>
+noremap <buffer> <silent> <localleader>s :LatexmkStatus<cr>
 " Show running status for all buffers within process group
-noremap <buffer> <silent> <localleader>lS :LatexmkStatus!<cr>
+noremap <buffer> <silent> <localleader>S :LatexmkStatus!<cr>
 " Load log file for current document and jump to first error
-noremap <buffer> <silent> <localleader>le :LatexErrors<cr>
+noremap <buffer> <silent> <localleader>E :LatexErrors<cr>
 " View output
-noremap <buffer> <silent> <localleader>lv :LatexView<cr>
+noremap <buffer> <silent> <localleader>v :LatexView<cr>
 
 " }}}
 " {{{
-nmap <buffer> % <Plug>LatexBox_JumpToMatch
+" Jump to corresponding match
+nmap <buffer> <silent> % <Plug>LatexBox_JumpToMatch
 vmap <buffer> % <Plug>LatexBox_JumpToMatch
 omap <buffer> % <Plug>LatexBox_JumpToMatch
+" Select in environment
 vmap <buffer> ie <Plug>LatexBox_SelectCurrentEnvInner
-vmap <buffer> ae <Plug>LatexBox_SelectCurrentEnvOuter
 omap <buffer> ie :normal vie<cr>
+" Select an environment
+vmap <buffer> ae <Plug>LatexBox_SelectCurrentEnvOuter
 omap <buffer> ae :normal vae<cr>
+" Select in math environment
 vmap <buffer> i$ <Plug>LatexBox_SelectInlineMathInner
-vmap <buffer> a$ <Plug>LatexBox_SelectInlineMathOuter
 omap <buffer> i$ :normal vi$<cr>
+" Select a math environment
+vmap <buffer> a$ <Plug>LatexBox_SelectInlineMathOuter
 omap <buffer> a$ :normal va$<cr>
+" Easier jumping to match
 map <buffer> <silent> <tab> %
 
 " }}}
@@ -61,7 +67,7 @@ nmap <buffer> <silent> <LocalLeader>e <Plug>LatexChangeEnv
 vmap <buffer> <silent> <LocalLeader>w <Plug>LatexWrapSelection
 " Wrap the current selection in an environment
 vmap <buffer> <silent> <LocalLeader>W <Plug>LatexEnvWrapSelection
-" The taglist plugin is not very useful for larger documents, so its key is
+" The tagbar plugin is not very useful for larger documents, so its key is
 " remapped to LaTeX-Box's TOC
 noremap <buffer> <silent> <F4> :LatexTOC<cr>
 
