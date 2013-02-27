@@ -20,6 +20,7 @@ Bundle 'git://github.com/tpope/vim-surround'
 Bundle 'git://github.com/scrooloose/syntastic'
 Bundle 'git://github.com/godlygeek/tabular'
 Bundle 'git://github.com/majutsushi/tagbar'
+Bundle 'git://github.com/LStinson/TagmaTasks'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
 Bundle 'git://github.com/ervandew/supertab'
@@ -226,6 +227,22 @@ let tagbar_autoshowtag = 1
 " Toggle Tagbar window
 nnoremap <silent> <f4> :TagbarToggle<cr>
 
+" }}}
+" TagmaTasks {{{
+" Since tasks are generated in the quickfix/location list windows, their
+" bindings can be used
+" Don't create marks
+let g:TagmaTasksMarks = 0
+" I could either use a regex or list of tokens to look for – I'll go with the
+" regex
+let g:TagmaTasksRegexp = '\<\(FIXME\|TODO\|TASK\)\>\|\\todo{\|\\missingfigure{'
+" Again, I like using my own keybindings
+let g:TagmaTasksPrefix = ''
+" I'll also use the location list keybindings for moving between errors
+" instead of those defined in this plugin
+let g:TagmaTasksJumpKeys = 0
+" Toggle task window
+map <silent> <f5> <Plug>TagmaTaskToggle
 " }}}
 " UltiSnips {{{
 " Don't reverse search order
