@@ -73,32 +73,41 @@ bindsym $mod+i exec mount-script -m -- dmenu -p 'Mount:' $dmenu_args
 bindsym $mod+o exec mount-script -u -- dmenu -p 'Unmount:' $dmenu_args
 # }}}
 # {{{ MPD stuff
-# mpc prev
-bindsym $mod+Left exec mpc -q prev
-# mpc next
-bindsym $mod+Right exec mpc -q next
-# albumbler
-bindsym $mod+Up exec albumbler
-# mpc toggle
-bindsym $mod+Down exec mpc -q toggle
+mode "music" {
+    # mpc prev
+    bindsym h exec mpc -q prev
+    # mpc next
+    bindsym l exec mpc -q next
+    # albumbler
+    bindsym Shift+a exec albumbler
+    # mpc play
+    bindsym p exec mpc -q play
+    # mpc toggle
+    bindsym Return exec mpc -q toggle
 
-# mpc single
-bindsym $mod+Shift+Left exec mpc -q single
-# mpc consume
-bindsym $mod+Shift+Down exec mpc -q consume
-# mpc random
-bindsym $mod+Shift+Up exec mpc -q random
-# mpc repeat
-bindsym $mod+Shift+Right exec mpc -q repeat
+    # mpc single
+    bindsym Shift+s exec mpc -q single
+    # mpc consume
+    bindsym Shift+c exec mpc -q consume
+    # mpc random
+    bindsym s exec mpc -q random
+    # mpc repeat
+    bindsym r exec mpc -q repeat
 
-# mpc seek -10s
-bindsym $mod+Ctrl+Left exec mpc -q seek -00:00:10
-# mpc seek +10s
-bindsym $mod+Ctrl+Right exec mpc -q seek +00:00:10
-# mpc volume +5
-bindsym $mod+Ctrl+Up exec mpc -q volume +5
-# mpc volume -5
-bindsym $mod+Ctrl+Down exec mpc -q volume -5
+    # mpc seek -10s
+    bindsym Shift+h exec mpc -q seek -00:00:10
+    # mpc seek +10s
+    bindsym Shift+l exec mpc -q seek +00:00:10
+    # mpc volume +5
+    bindsym k exec mpc -q volume +5
+    bindsym + exec mpc -q volume +5
+    # mpc volume -5
+    bindsym j exec mpc -q volume -5
+    bindsym - exec mpc -q volume -5
+    # Escape leaves music context
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "music"
 # }}}
 # {{{ Moving
 # Change focus
@@ -191,8 +200,7 @@ mode "resize" {
         bindsym Up          resize shrink height 10 px or 10 ppt
         bindsym Right       resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
+        # back to normal: Escape
         bindsym Escape mode "default"
 }
 
