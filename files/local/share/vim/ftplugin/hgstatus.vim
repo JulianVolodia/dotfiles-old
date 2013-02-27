@@ -12,3 +12,5 @@ noremap <silent> <buffer> <leader>vvD :Hgstatusvdiffsum<cr>
 noremap <silent> <buffer> <leader>vC :Hgstatuscommit<cr>
 " Commit file on current line or in selection in vertical buffer
 noremap <silent> <buffer> <leader>vvC :Hgstatusvcommit<cr>
+" Close buffer
+noremap <silent> <buffer> q :bd!<cr>
