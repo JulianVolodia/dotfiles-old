@@ -205,38 +205,22 @@ au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
 
 " }}}
 " Quickfix and location list windows {{{
-" NOTE: All quickfix commands potentially change buffers
+" Use unimpaired for the regularly used bracket commands
 " Jump to current error
-noremap <silent> <leader>cc :cc!<cr>
+noremap <silent> <leader>cc :cc<cr>
 " Open quickfix window
 noremap <silent> <leader>co :botright :copen<cr>
 " Close quickfix window
 noremap <silent> <leader>cC :cclose<cr>
-" Open window when there are recognized errors
+" Open window when there are recognized errors, close it if there are none
 noremap <silent> <leader>cw :botright :cwindow<cr>
-" Go to previous error in list
-noremap <silent> <leader>cp :cprevious!<cr>
-noremap <silent> <leader>cN :cNext!<cr>
-" Go to next error in list
-noremap <silent> <leader>cn :cnext!<cr>
-noremap <silent> <leader>cP :cPrevious!<cr>
-" Go to last error in previous file in list that includes a filename
-noremap <silent> <leader>cpf :cpfile!<cr>
-noremap <silent> <leader>cNf :cNfile!<cr>
-" Go to first error in next file in list that includes a file name
-noremap <silent> <leader>cnf :cnfile!<cr>
-" Display first error
-noremap <silent> <leader>c0 :cfirst!<cr>
-" Display last error
-noremap <silent> <leader>cG :clast!<cr>
-" Quit Vim with error code so compile will not compile the same file again
-noremap <silent> <leader>cq :cquit!<cr>
+noremap <silent> <f6> :botright :cwindow<cr>
 " Re-read error file
 noremap <silent> <leader>cf :cgetfile<cr>
 " Re-read error file and jump to first error
-noremap <silent> <leader>cj :cfile!<cr>
+noremap <silent> <leader>cj :cfile<cr>
 " List all errors
-noremap <silent> <leader>cl :clist!<cr>
+noremap <silent> <leader>cl :clist<cr>
 " Go to older quickfix error list
 noremap <silent> <leader>c- :colder<cr>
 " Go to newer quickfix error list
@@ -249,25 +233,9 @@ noremap <silent> <leader>ll :ll<cr>
 noremap <silent> <leader>lo :lopen<cr>
 " Close location list window
 noremap <silent> <leader>lC :lclose<cr>
-" Open window when there are recognized errors
+" Open window when there are recognized errors, close it if there are none
 noremap <silent> <leader>lw :lwindow<cr>
-" Go to previous error in list
-noremap <silent> <leader>lp :lprevious<cr>
-noremap <silent> <leader>lN :lNext<cr>
-" Go to next error in list
-noremap <silent> <leader>ln :lnext<cr>
-noremap <silent> <leader>lP :lPrevious<cr>
-" Go to last error in previous file in list that includes a filename
-noremap <silent> <leader>lpf :lpfile<cr>
-noremap <silent> <leader>lNf :lNfile<cr>
-" Go to first error in next file in list that includes a file name
-noremap <silent> <leader>lnf :lnfile<cr>
-" Display first error
-noremap <silent> <leader>l0 :lfirst<cr>
-" Display last error
-noremap <silent> <leader>lG :llast<cr>
-" Quit Vim with error code so compile will not compile the same file again
-noremap <silent> <leader>lq :lquit<cr>
+noremap <silent> <f7> :lwindow<cr>
 " Re-read error file
 noremap <silent> <leader>lf :lgetfile<cr>
 " Re-read error file and jump to first error

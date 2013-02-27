@@ -23,6 +23,7 @@ Bundle 'git://github.com/majutsushi/tagbar'
 Bundle 'git://github.com/LStinson/TagmaTasks'
 Bundle 'git://github.com/maxbrunsfeld/vim-yankstack'
 Bundle 'git://github.com/SirVer/ultisnips'
+Bundle 'git://github.com/tpope/vim-unimpaired'
 Bundle 'git://github.com/ervandew/supertab'
 
 " }}}
