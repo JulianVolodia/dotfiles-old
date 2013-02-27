@@ -40,7 +40,7 @@ set ttimeoutlen=50
 " Don't create backup files
 set nobackup
 " Save viminfo file to keep state information from one vim session to the next
-set viminfo+=$XDG_CACHE_HOME/vim
+set viminfo+="n$XDG_CACHE_HOME/vim/viminfo"
 " Common directory for all swap files (first existing directory is used)
 set directory=$XDG_CACHE_HOME/vim,.,/var/tmp,/tmp
 " Persistent undo (see ":help persistent-undo")
