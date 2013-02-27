@@ -2,6 +2,7 @@
 Bundle 'git://github.com/gmarik/vundle'
 Bundle 'git://github.com/ervandew/ag'
 Bundle 'git://github.com/tpope/vim-commentary'
+Bundle 'git://github.com/kien/ctrlp.vim'
 Bundle 'git://github.com/vim-scripts/DeleteTrailingWhitespace'
 Bundle 'git://github.com/sjl/gundo.vim.git'
 Bundle 'git://github.com/ivanov/vim-ipython'
@@ -41,6 +42,24 @@ xmap ü <Plug>Commentary
 nmap ü <Plug>Commentary
 nmap üü <Plug>CommentaryLine
 nmap üu <Plug>CommentaryUndo
+
+" }}}
+" CtrlP {{{
+" Keybinding for CtrlP in normal mode
+let g:ctrlp_map = '<leader>e'
+" Cache directory
+let g:ctrlp_cache_dir = $XDG_CACHE_HOME.'/vim/ctrlp'
+" Use extensions:
+" - mixed
+let g:ctrlp_extensions = ['mixed']
+" Normal Ctrlp
+noremap <silent> <leader>e :CtrlP<cr>
+" CtrlP in find buffer mode
+noremap <silent> <leader>b :CtrlPBuffer<cr>
+" CtrlP with root dir search disabled
+noremap <silent> <leader>E :CtrlPRoot<cr>
+" CtrlP in mixed mode
+noremap <silent> <leader>x :CtrlPMixed<cr>
 
 " }}}
 " DeleteTrailingWhitespace {{{
