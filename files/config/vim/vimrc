@@ -158,6 +158,18 @@ noremap K <nop>
 
 " }}}
 " Movement {{{
+" Makes opening command line easier
+nnoremap ü :
+vnoremap ü :
+
+" This is similar to the US-English keyboard layout and makes typing bracket
+" commands a LOT easier
+nmap ö [
+vmap ö [
+nmap ä ]
+vmap ä ]
+" OMG I love bracket commands
+
 " Easier movement between virtual lines
 noremap <silent> j gj
 noremap <silent> k gk
@@ -179,10 +191,6 @@ noremap <tab> %
 
 " }}}
 " Command-line window {{{
-" Makes opening command line easier
-nnoremap ö :
-vnoremap ö :
-
 " Use Q for macros
 noremap Q q
 " q is often used to close transient windows, so being able to use it without

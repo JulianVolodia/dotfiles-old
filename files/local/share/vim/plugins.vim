@@ -37,14 +37,6 @@ Bundle 'git://github.com/ervandew/supertab'
 noremap <leader>a :Ag<space>
 
 " }}}
-" Commentary {{{
-" Use ü and üü for commenting
-xmap ü <Plug>Commentary
-nmap ü <Plug>Commentary
-nmap üü <Plug>CommentaryLine
-nmap üu <Plug>CommentaryUndo
-
-" }}}
 " CtrlP {{{
 " Keybinding for CtrlP in normal mode
 let g:ctrlp_map = '<leader>e'
