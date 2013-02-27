@@ -42,11 +42,11 @@ set nobackup
 " Save viminfo file to keep state information from one vim session to the next
 set viminfo+="n$XDG_CACHE_HOME/vim/viminfo"
 " Common directory for all swap files (first existing directory is used)
-set directory=$XDG_CACHE_HOME/vim,.,/var/tmp,/tmp
+set directory=$XDG_CACHE_HOME/vim/swap
 " Persistent undo (see ":help persistent-undo")
 set undofile
 " Common directory for persistent undo files
-set undodir=$XDG_CACHE_HOME/vim
+set undodir=$XDG_CACHE_HOME/vim/undo
 
 " }}}
 " Indentation & linebreaks {{{
