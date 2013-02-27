@@ -155,8 +155,6 @@ set foldtext=CustomFoldText()
 " Fucking keys {{{
 " Fuck you, man key
 noremap K <nop>
-" Fuck you too, ex key
-noremap Q <nop>
 
 " }}}
 " Movement {{{
@@ -181,52 +179,97 @@ noremap <tab> %
 
 " }}}
 " Command-line window {{{
-" Opens appropriate command-line window with every operation
-nmap ö :
-vmap ö :
-nnoremap : q:i
-vnoremap : q:i
-nnoremap / q/i
-vnoremap / q/i
-nnoremap ? q?i
-vnoremap ? q?i
+" Makes opening command line easier
+nnoremap ö :
+vnoremap ö :
 
-" allow normal cmdline :, / and ?
-nnoremap q: :
-vnoremap q: :
-nnoremap q/ /
-vnoremap q/ /
-nnoremap q? ?
-vnoremap q? ?
+" Use Q for macros
+noremap Q q
+" q is often used to close transient windows, so being able to use it without
+" a delay is nice
+" I'll just use <c-f> on the command line to open the :,/, and ? windows
+noremap q <nop>
 
-" allow leaving cmdline-window with <ESC>
-au CmdwinEnter * nnoremap <buffer> <ESC> :quit<cr>
+" allow leaving cmdline-window with <esc>
+au CmdwinEnter * nnoremap <buffer> <esc> :quit<cr>
 " Select current line without having to enter insert mode
 au CmdwinEnter * nnoremap <buffer> <cr> i<cr>
 
 " }}}
 " Quickfix and location list windows {{{
+" NOTE: All quickfix commands potentially change buffers
+" Jump to current error
+noremap <silent> <leader>cc :cc!<cr>
 " Open quickfix window
-noremap <silent> <leader>qo :botright :copen<cr>
-" Jump to current error
-noremap <silent> <leader>qq :cc<cr>
-" Open quickfix window in bottom right IF there are any errors
-noremap <silent> <leader>qw :botright :cwindow<cr>
-" Go to next error in quickfix window
-noremap <silent> <leader>qn :cnext<cr>
-" Go to previous error in quickfix window
-noremap <silent> <leader>qp :cprevious<cr>
+noremap <silent> <leader>co :botright :copen<cr>
+" Close quickfix window
+noremap <silent> <leader>cC :cclose<cr>
+" Open window when there are recognized errors
+noremap <silent> <leader>cw :botright :cwindow<cr>
+" Go to previous error in list
+noremap <silent> <leader>cp :cprevious!<cr>
+noremap <silent> <leader>cN :cNext!<cr>
+" Go to next error in list
+noremap <silent> <leader>cn :cnext!<cr>
+noremap <silent> <leader>cP :cPrevious!<cr>
+" Go to last error in previous file in list that includes a filename
+noremap <silent> <leader>cpf :cpfile!<cr>
+noremap <silent> <leader>cNf :cNfile!<cr>
+" Go to first error in next file in list that includes a file name
+noremap <silent> <leader>cnf :cnfile!<cr>
+" Display first error
+noremap <silent> <leader>c0 :cfirst!<cr>
+" Display last error
+noremap <silent> <leader>cG :clast!<cr>
+" Quit Vim with error code so compile will not compile the same file again
+noremap <silent> <leader>cq :cquit!<cr>
+" Re-read error file
+noremap <silent> <leader>cf :cgetfile<cr>
+" Re-read error file and jump to first error
+noremap <silent> <leader>cj :cfile!<cr>
+" List all errors
+noremap <silent> <leader>cl :clist!<cr>
+" Go to older quickfix error list
+noremap <silent> <leader>c- :colder<cr>
+" Go to newer quickfix error list
+noremap <silent> <leader>c+ :cnewer<cr>
 
-" Open location list window
-noremap <silent> <leader>lo :botright :copen<cr>
+" NOTE: No location list command changes buffers
 " Jump to current error
-noremap <silent> <leader>ll :cc<cr>
-" Open location list window in bottom right IF there are any errors
-noremap <silent> <leader>lw :botright :cwindow<cr>
-" Go to next error in location list window
-noremap <silent> <leader>ln :cnext<cr>
-" Go to previous error in location list window
-noremap <silent> <leader>lp :cprevious<cr>
+noremap <silent> <leader>ll :ll<cr>
+" Open location list window
+noremap <silent> <leader>lo :lopen<cr>
+" Close location list window
+noremap <silent> <leader>lC :lclose<cr>
+" Open window when there are recognized errors
+noremap <silent> <leader>lw :lwindow<cr>
+" Go to previous error in list
+noremap <silent> <leader>lp :lprevious<cr>
+noremap <silent> <leader>lN :lNext<cr>
+" Go to next error in list
+noremap <silent> <leader>ln :lnext<cr>
+noremap <silent> <leader>lP :lPrevious<cr>
+" Go to last error in previous file in list that includes a filename
+noremap <silent> <leader>lpf :lpfile<cr>
+noremap <silent> <leader>lNf :lNfile<cr>
+" Go to first error in next file in list that includes a file name
+noremap <silent> <leader>lnf :lnfile<cr>
+" Display first error
+noremap <silent> <leader>l0 :lfirst<cr>
+" Display last error
+noremap <silent> <leader>lG :llast<cr>
+" Quit Vim with error code so compile will not compile the same file again
+noremap <silent> <leader>lq :lquit<cr>
+" Re-read error file
+noremap <silent> <leader>lf :lgetfile<cr>
+" Re-read error file and jump to first error
+noremap <silent> <leader>lj :lfile<cr>
+" List all errors
+noremap <silent> <leader>ll :llist<cr>
+" Go to older error location list
+noremap <silent> <leader>l- :lolder<cr>
+" Go to newer error location list
+noremap <silent> <leader>l+ :lnewer<cr>
 
 " }}}
 " Completion {{{
