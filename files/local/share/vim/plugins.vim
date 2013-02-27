@@ -145,7 +145,7 @@ let g:splice_initial_scrollbind_path = 1
 " g:SuperTabContextDefaultCompletionType
 let g:SuperTabDefaultCompletionType = "context"
 " Use this as fallback
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 " Complete longest common match (like in shells)
 let g:SuperTabLongestEnhanced = 1
 " Automatically select first entry in menu
@@ -157,7 +157,6 @@ let g:SuperTabMappingBackward = "<s-tab>"
 " Use this to display the normal <tab> character (is still affected by
 " expandtab, shiftwidth, etc.)
 " Doesn't work in terminal
-left
 let g:SuperTabMappingTabLiteral = "<c-tab>"
 " Use <cr> to cancel completion
 let g:SuperTabCrMapping = 1
@@ -242,3 +241,4 @@ call yankstack#setup()
 
 " }}}
 
+" vim: foldmethod=marker

@@ -17,6 +17,8 @@ setlocal textwidth=78
 " Wrap at 72 chars for comments
 setlocal formatoptions=cq textwidth=72 foldignore= wildignore+=*.py
 
+set omnifunc=pythoncomplete#Complete
+
 " Vim-IPython plugin {{{
 " Only use IPython completion for Python buffers
 let g:ipy_completefunc = 'local'

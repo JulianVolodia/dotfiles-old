@@ -124,7 +124,7 @@ set mouse=a
 " Complete to longest common substring
 set completeopt=menuone,preview,longest
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest:full,full
 
 " }}}
 
@@ -276,10 +276,6 @@ noremap <silent> <leader>l+ :lnewer<cr>
 " Use <C-J> and <C-K> instead of <C-N> and <C-P>
 imap <c-j> <c-n>
 imap <c-k> <c-p>
-" Use <C-H> to abort completion
-inoremap <c-h> <c-e>
-" Use <C-L> to confirm completion
-inoremap <c-l> <c-y>
 
 " }}}
 
