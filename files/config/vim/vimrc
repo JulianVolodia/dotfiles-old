@@ -255,8 +255,6 @@ imap <c-k> <c-p>
 
 " }}}
 
-" Make!
-noremap <silent> <f5> :make<cr>
 " Easier :nohl
 noremap <silent> <leader><cr> :nohlsearch<cr>
 " Makes folding fun
