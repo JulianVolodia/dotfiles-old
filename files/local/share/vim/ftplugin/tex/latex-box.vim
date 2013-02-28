@@ -17,6 +17,9 @@ let g:LatexBox_autojump = 0
 " I use cleveref, so citation completion for it is a nice thing to have
 " let g:LatexBox_ref_pattern = '\\\(\(lc\)\?name\[Cc\]refs\?\|\(label\)\?[cC]\?\(page\)\?ref\(range\)\?\){'
 
+" Don't automatically open quickfix window after compilation
+let g:LatexBox_quickfix = 0
+
 " }}}
 " Mappings {{{
 " Latexmk interface {{{
@@ -40,7 +43,7 @@ noremap <buffer> <silent> <localleader>E :LatexErrors<cr>
 noremap <buffer> <silent> <localleader>v :LatexView<cr>
 
 " }}}
-" {{{
+" Movement commands {{{
 " Jump to corresponding match
 nmap <buffer> <silent> % <Plug>LatexBox_JumpToMatch
 vmap <buffer> % <Plug>LatexBox_JumpToMatch
@@ -61,6 +64,7 @@ omap <buffer> a$ :normal va$<cr>
 map <buffer> <silent> <tab> %
 
 " }}}
+" Wrapping commands {{{
 " Change the current environment
 nmap <buffer> <silent> <LocalLeader>e <Plug>LatexChangeEnv
 " Wrap the current selection in a LaTeX command
@@ -72,3 +76,7 @@ vmap <buffer> <silent> <LocalLeader>W <Plug>LatexEnvWrapSelection
 noremap <buffer> <silent> <F4> :LatexTOC<cr>
 
 " }}}
+
+" }}}
+
+" vim: foldmethod=marker
