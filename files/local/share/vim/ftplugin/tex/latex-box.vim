@@ -12,13 +12,12 @@ call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 " Enable quickfix error parsing
 " Use -shell-escape for minted
 let g:LatexBox_latexmk_options = "-file-line-error -shell-escape -pdflatex=lualatex"
+" Don't automatically open quickfix window after compilation
+let g:LatexBox_quickfix = 0
 " Don't automatically jump to first error after calling latexmk
 let g:LatexBox_autojump = 0
 " I use cleveref, so citation completion for it is a nice thing to have
 " let g:LatexBox_ref_pattern = '\\\(\(lc\)\?name\[Cc\]refs\?\|\(label\)\?[cC]\?\(page\)\?ref\(range\)\?\){'
-
-" Don't automatically open quickfix window after compilation
-let g:LatexBox_quickfix = 0
 
 " }}}
 " Mappings {{{
@@ -35,10 +34,6 @@ noremap <buffer> <silent> <localleader>C :LatexmkClean!<cr>
 noremap <buffer> <silent> <localleader>k :LatexmkStop<cr>
 " Show running status for current buffer
 noremap <buffer> <silent> <localleader>s :LatexmkStatus<cr>
-" Show running status for all buffers within process group
-noremap <buffer> <silent> <localleader>S :LatexmkStatus!<cr>
-" Load log file for current document and jump to first error
-noremap <buffer> <silent> <localleader>E :LatexErrors<cr>
 " View output
 noremap <buffer> <silent> <localleader>v :LatexView<cr>
 
