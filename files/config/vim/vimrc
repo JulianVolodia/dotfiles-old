@@ -50,6 +50,7 @@ Bundle 'edsono/vim-matchit'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-repeat'
+Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
 Bundle 'tmhedberg/SimpylFold'
 Bundle 'sjl/splice.vim.git'
@@ -82,7 +83,7 @@ noremap <leader>a :Ag<space>
 " Keybinding for CtrlP in normal mode
 let g:ctrlp_map = '<leader>e'
 " Cache directory
-let g:ctrlp_cache_dir = $XDG_CACHE_HOME.'/vim/ctrlp'
+let g:ctrlp_cache_dir = expand("$XDG_CACHE_HOME/vim/ctrlp")
 " Use extensions:
 " - mixed
 let g:ctrlp_extensions = ['mixed']
@@ -172,6 +173,16 @@ let g:Powerline_mode_cs = 'SBL'
 " Toggle display of all kinds of parens
 noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
 
+" }}}
+" Session {{{
+" Don't load sessions automatically
+let g:session_autoload = 0
+" Automatically save current session on quitting Vim
+let g:session_autosave = 'yes'
+" Define :Session* commands
+let g:session_command_aliases = 1
+" Directory to save sessions in
+let g:session_directory = expand("$XDG_CACHE_HOME/vim/sessions")
 " }}}
 " ShowTrailingWhitespace {{{
 " Show it by default
@@ -281,7 +292,7 @@ map <silent> <f5> <Plug>TagmaTaskToggle
 " Don't reverse search order
 let g:UltiSnipsDontReverseSearchPath = "1"
 " Snippet directory for private snippets
-let g:UltiSnipsSnippetsDir = "$XDG_DATA_HOME/vim/snippets"
+let g:UltiSnipsSnippetsDir = expand("$XDG_DATA_HOME/vim/snippets")
 " Snippet search path
 " The default snippets are in <bundledir>/ultisnips/UltiSnips directory
 let g:UltiSnipsSnippetDirectories = ["snippets", "UltiSnips"]
