@@ -18,6 +18,8 @@ let g:LatexBox_quickfix = 0
 let g:LatexBox_autojump = 0
 " I use cleveref, so citation completion for it is a nice thing to have
 " let g:LatexBox_ref_pattern = '\\\(\(lc\)\?name\[Cc\]refs\?\|\(label\)\?[cC]\?\(page\)\?ref\(range\)\?\){'
+let g:LatexBox_open_pats  = ['\\{','{','\\(','(','\\\[','\[', '\\begin\s*{.\{-}}', '\\left\s*\%([^\\]\|\\.\|\\\a*\)']
+let g:LatexBox_close_pats = ['\\}','}','\\)',')','\\\]','\]', '\\end\s*{.\{-}}', '\\right\s*\%([^\\]\|\\.\|\\\a*\)']
 
 " }}}
 " Mappings {{{
