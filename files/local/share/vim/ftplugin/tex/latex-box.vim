@@ -70,7 +70,7 @@ vmap <buffer> <silent> <LocalLeader>w <Plug>LatexWrapSelection
 vmap <buffer> <silent> <LocalLeader>W <Plug>LatexEnvWrapSelection
 " The tagbar plugin is not very useful for larger documents, so its key is
 " remapped to LaTeX-Box's TOC
-noremap <buffer> <silent> <F4> :LatexTOC<cr>
+noremap <buffer> <silent> <F4> :call LatexBox_TOC()<cr>
 
 " }}}
 
