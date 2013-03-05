@@ -35,6 +35,7 @@ set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$VIM/vimfiles,$VIMRUNTIME,$XDG_
 filetype off
 call vundle#rc("$XDG_DATA_HOME/vim/bundle")
 " Bundles
+Bundle 'gmarik/vundle'
 Bundle 'ervandew/ag'
 Bundle 'tpope/vim-commentary'
 Bundle 'kien/ctrlp.vim'
@@ -62,6 +63,8 @@ Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'ervandew/supertab'
 filetype plugin indent on
+" Late runtimepath dickery!
+set runtimepath^=$XDG_DATA_HOME/vim runtimepath+=$VIM/vimfiles/after
 
 " }}}
 " Configuration {{{
@@ -308,8 +311,6 @@ call yankstack#setup()
 " }}}
 
 " }}}
-" Late runtimepath dickery!
-set runtimepath^=$XDG_DATA_HOME/vim runtimepath+=$VIM/vimfiles/after
 
 " }}}
 " General {{{
