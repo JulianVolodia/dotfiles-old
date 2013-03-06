@@ -1,16 +1,17 @@
 # Templates
-snippet lualatexpre "LuaLaTeX preamble" b
-\documentclass{${0:class}}
+snippet lualatexpre "LuaLaTeX preamble" !b
+\documentclass{${1:class}}
 
 \usepackage{fontspec}
 
 \defaultfontfeatures{Ligatures=TeX}
 
-\author{${1:author}}
-\title{${2:title}}
-\date{${3:date}}
+\author{${2:author}}
+\title{${3:title}}
+\date{${4:date}}
 
 \begin{document}
+	${0:${VISUAL}}
 \end{document}
 endsnippet
 
@@ -21,7 +22,7 @@ snippet "b(egin)?" "begin{} / end{}" !br
 \end{$1}
 endsnippet
 
-snippet "fig(ure)?" "Figure" br
+snippet "fig(ure)?" "Figure" !br
 \begin{figure}[${1:htbp}]
 	\centering
 	\includegraphics{${0:${VISUAL}}}
@@ -30,7 +31,7 @@ snippet "fig(ure)?" "Figure" br
 \end{$1}
 endsnippet
 
-snippet "table" "Table" b
+snippet table "Table" !b
 \begin{table}[${1:htbp}]
 	\centering
 	${0:${VISUAL}}
@@ -39,13 +40,13 @@ snippet "table" "Table" b
 \end{table}
 endsnippet
 
-snippet "tabu" "Tabu" b
+snippet tabu "Tabu" !b
 \begin{tabu}${1:to,spread}{${2:preamble}}
 	${0:${VISUAL}}
 \end{tabu}
 endsnippet
 
-snippet "longt(abu)?" "Longtabu" br
+snippet "longt(abu)?" "Longtabu" !br
 \begin{longtabu}${1:to,spread}{${2:preamble}}
 	${0:${VISUAL}}
 \end{longtabu}
@@ -74,7 +75,6 @@ snippet cha "Chapter" !b
 \label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
 
 snippet sec "Section" !b
@@ -82,16 +82,13 @@ snippet sec "Section" !b
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
-
 
 snippet sub "Subsection" !b
 \subsection{${1:subsection name}}
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
 
 snippet ssub "Subsubsection" !b
@@ -99,15 +96,13 @@ snippet ssub "Subsubsection" !b
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
 
-snippet par "Paragraph" !b
+snippet par "Paragraph!" !b
 \paragraph{${1:paragraph name}}
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
 
 snippet spar "Subparagraph" !b
@@ -115,7 +110,6 @@ snippet spar "Subparagraph" !b
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
-
 endsnippet
 
 # Other

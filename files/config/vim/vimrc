@@ -289,8 +289,6 @@ let g:TagmaTasksJumpKeys = 0
 map <silent> <f5> <Plug>TagmaTaskToggle
 " }}}
 " UltiSnips {{{
-" Don't reverse search order
-let g:UltiSnipsDontReverseSearchPath = "1"
 " Snippet directory for private snippets
 let g:UltiSnipsSnippetsDir = expand("$XDG_DATA_HOME/vim/snippets")
 " Snippet search path
