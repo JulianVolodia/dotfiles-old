@@ -1,7 +1,17 @@
-" Hide menubar, toolbar, right-hand scrollbar
+" Hide menubar
 set guioptions-=m
+" Hide toolbar
 set guioptions-=T
+" Hide all scrollbars
+set guioptions-=l
+set guioptions-=L
 set guioptions-=r
+set guioptions-=R
+set guioptions-=b
+" Use console-style tabs
+set guioptions-=e
+" Use console-style popups
+set guioptions+=c
 
 " Use this font as guifont
 set guifont=Consolas\ 12
