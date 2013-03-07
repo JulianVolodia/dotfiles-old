@@ -20,7 +20,7 @@ map L -builtin <C-n>
 " Additional reload bindings
 map <C-R> :reloadall<CR>
 map <C-S-R> :reloadall!<CR>
-map ö :
+map ü :
 
 " <C-B> opens bookmarks
 map <C-B> :bmarks<CR>
