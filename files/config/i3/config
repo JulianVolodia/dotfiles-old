@@ -110,19 +110,13 @@ mode "music" {
 bindsym $mod+m mode "music"
 # }}}
 # {{{ Moving
-# Change focus
+# Focus different container
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# Move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Switch to workspace
+# Focus different workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -130,13 +124,31 @@ bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 
-# Move focused container to workspace
+# Focus other output (toggles with two outputs)
+bindsym $mod+w focus output down
+
+# Move current window to container
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Move current container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
+
+# Move current container to other output
+bindsym $mod+Ctrl+Shift+h move container to output left
+bindsym $mod+Ctrl+Shift+j move container to output down
+bindsym $mod+Ctrl+Shift+k move container to output up
+bindsym $mod+Ctrl+Shift+l move container to output right
+
+# Move current workspace to other output (toggles with two outputs)
+bindsym $mod+Shift+w move workspace to output down
 # }}}
 # {{{ Window Management
 # Use this+mouse to drag floating windows to their wanted position
