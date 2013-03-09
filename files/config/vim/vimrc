@@ -28,7 +28,7 @@ let maplocalleader = "´"
 "   both in the regular plugin/ftplugin directories as well as in the after/
 "   directories. I believe this is the way it should be. }}}
 " Early runtimepath dickery!
-set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$VIM/vimfiles,$VIMRUNTIME,$XDG_DATA_HOME/vim/after
+set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 " Plugins {{{
 " Vundle initialization {{{
 " Vundle wants this to be off
@@ -65,8 +65,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'ervandew/supertab'
 filetype plugin indent on
 " Late runtimepath dickery!
-set runtimepath^=$XDG_DATA_HOME/vim runtimepath+=$VIM/vimfiles/after
-
+set runtimepath^=$XDG_DATA_HOME/vim runtimepath+=$XDG_DATA_HOME/vim/after
 " }}}
 " Configuration {{{
 " Some preliminary remarks:
