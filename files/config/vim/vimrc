@@ -40,6 +40,7 @@ Bundle 'ervandew/ag'
 Bundle 'tpope/vim-commentary'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim.git'
 Bundle 'ivanov/vim-ipython'
 Bundle 'davidhalter/jedi-vim'
@@ -101,6 +102,73 @@ let g:DeleteTrailingWhitespace = 0
 noremap <silent> <leader>d<space> :DeleteTrailingWhitespace<cr>
 
 " }}}
+" Fugitive {{{
+" Mappings are done in a function because they are used as autocommands
+function! s:setup_fugitive_mappings()
+    " Edit fugitive-revision (with repo basedir as working directory)
+    noremap <buffer> <leader>ve<space> :Gedit<space>
+    " Edit fugitive-revision in split
+    noremap <buffer> <leader>ves :Gsplit<space>
+    " Edit fugitive-revision in vertical split
+    noremap <buffer> <leader>vev :Gvsplit<space>
+    " Edit fugitive-revision in new tab
+    noremap <buffer> <leader>vet :Gtabedit<space>
+    " Edit fugitive-revision in preview window
+    noremap <buffer> <leader>vet :Gpedit<space>
+    " Read output of git command in current buffer
+    noremap <buffer> <leader>vE :Gread!<space>
+    " Read output of git command in new split
+    noremap <buffer> <leader>veS :Gsplit!<space>
+    " Read output of git command in vertical split
+    noremap <buffer> <leader>veV :Gvsplit!<space>
+    " Read output of git command in new tab
+    noremap <buffer> <leader>veT :Gtabedit!<space>
+    " Read output of git command in preview window
+    noremap <buffer> <leader>veP :Gpedit!<space>
+    " :cd relative to repository
+    noremap <buffer> <leader>vcd :Gcd<space>
+    " :lcd relative to repository
+    noremap <buffer> <leader>vcl :Glcd<space>
+    " Move file and rename buffer accordingly
+    noremap <buffer> <leader>vm :Gmove<space>
+    " Move file and rename buffer accordingly (overwrite if necessary)
+    noremap <buffer> <leader>vM :Gmove!<space>
+    " Do :w and stage results
+    noremap <silent> <buffer> <leader>vw :Gwrite<cr>
+    " Do :w, stage results, do :q
+    noremap <silent> <buffer> <leader>vwq :Gwq<cr>
+    " Do :w and stage results
+    noremap <silent> <buffer> <leader>vW :Gwrite!<cr>
+    " Do :w, stage results, do :q
+    noremap <silent> <buffer> <leader>vwQ :Gwq!<cr>
+    " Remove current file and delete buffer
+    noremap <buffer> <leader>vrm :Gremove<cr>
+    " Remove current file and delete buffer forcefully
+    noremap <buffer> <leader>vrM :Gremove!<cr>
+    " Open annotation window ("git blame", but who's counting)
+    noremap <silent> <buffer> <leader>va :Gblame<cr>
+    " Browse on GitHub, if possible
+    noremap <silent> <buffer> <leader>vb :Gbrowse<cr>
+    " Put GitHub URL in clipboard
+    noremap <silent> <buffer> <leader>vB :Gbrowse!<cr>
+    " Open status window
+    noremap <silent> <buffer> <leader>vs :Gstatus<cr>
+    " Show list of revisions for current file in location list
+    noremap <silent> <buffer> <leader>vl :Gllog<cr>
+    " Show list of commits for current file in location list
+    noremap <silent> <buffer> <leader>vL :Gllog --<cr>
+    " Open diff window
+    noremap <silent> <buffer> <leader>vd :Gsdiff<cr>
+    " Open vertical diff window
+    noremap <silent> <buffer> <leader>vvd :Gvdiff<cr>
+    " :Glgrep
+    noremap <buffer> <leader>vg :Glgrep<space>
+    " :Ggrep
+    noremap <buffer> <leader>vG :Ggrep<space>
+    " Open commit buffer (or status buffer if there's nothing staged)
+    noremap <silent> <buffer> <leader>vC :Gcommit<cr>
+endfunction
+" }}}
 " Gundo {{{
 " Toggles the Gundo windows
 " It looks kinda like a tree, see? See?
@@ -120,36 +188,40 @@ let g:gundo_close_on_revert = 1
 " Lawrencium {{{
 " I like my own mappings better
 let g:lawrencium_define_mappings = 0
-" :Hgedit
-noremap <leader>ve :Hgedit<space>
-" :Hgcd
-noremap <leader>vcd :Hgcd<space>
-" :Hglcd
-noremap <leader>vcl :Hglcd<space>
-" Open annotation window
-noremap <silent> <leader>va :Hgannotate<cr>
-" Open status window
-noremap <silent> <leader>vs :Hgstatus<cr>
-" Open log window for current file
-noremap <silent> <leader>vl :Hglogthis<cr>
-" Open log window for entire repository
-noremap <silent> <leader>vL :Hglog<cr>
-" Open diff window
-noremap <silent> <leader>vd :Hgdiff<cr>
-" Open vertical diff window
-noremap <silent> <leader>vvd :Hgvdiff<cr>
-" Open diffsum window
-noremap <silent> <leader>vD :Hgdiffsumsplit<cr>
-" Open vertical diffsum window
-noremap <silent> <leader>vvD :Hgvdiffsumsplit<cr>
-" Open commit buffer
-noremap <silent> <leader>vC :Hgcommit<cr>
-" Open vertical commit buffer
-noremap <silent> <leader>vvC :Hgvcommit<cr>
-" Revert current file to previous revision
-noremap <silent> <leader>vr :Hgrevert<cr>
-" Revert current file to previous revision (no backup)
-noremap <silent> <leader>vR :Hgrevert!<cr>
+" As for fugitive: mappings are done in a function because they are used as
+" autocommands
+function! s:setup_lawrencium_mappings()
+    " :Hgedit
+    noremap <buffer> <leader>ve :Hgedit<space>
+    " :Hgcd
+    noremap <buffer> <leader>vcd :Hgcd<space>
+    " :Hglcd
+    noremap <buffer> <leader>vcl :Hglcd<space>
+    " Open annotation window
+    noremap <silent> <buffer> <leader>va :Hgannotate<cr>
+    " Open status window
+    noremap <silent> <buffer> <leader>vs :Hgstatus<cr>
+    " Open log window for current file
+    noremap <silent> <buffer> <leader>vl :Hglogthis<cr>
+    " Open log window for entire repository
+    noremap <silent> <buffer> <leader>vL :Hglog<cr>
+    " Open diff window
+    noremap <silent> <buffer> <leader>vd :Hgdiff<cr>
+    " Open vertical diff window
+    noremap <silent> <buffer> <leader>vvd :Hgvdiff<cr>
+    " Open diffsum window
+    noremap <silent> <buffer> <leader>vD :Hgdiffsumsplit<cr>
+    " Open vertical diffsum window
+    noremap <silent> <buffer> <leader>vvD :Hgvdiffsumsplit<cr>
+    " Open commit buffer
+    noremap <silent> <buffer> <leader>vC :Hgcommit<cr>
+    " Open vertical commit buffer
+    noremap <silent> <buffer> <leader>vvC :Hgvcommit<cr>
+    " Revert current file to previous revision
+    noremap <silent> <buffer> <leader>vr :Hgrevert<cr>
+    " Revert current file to previous revision (no backup)
+    noremap <silent> <buffer> <leader>vR :Hgrevert!<cr>
+endfunction
 " }}}
 " Powerline {{{
 " Set mode names
@@ -448,6 +520,16 @@ endf
 set foldtext=CustomFoldText()
 
 " }}}
+" Check if I should set up Lawrencium or Fugitive keybindings {{{
+function! s:setup_vcs_keybindings()
+    if exists('b:mercurial_dir')
+        call s:setup_lawrencium_mappings()
+    elseif exists('b:git_dir')
+        call s:setup_fugitive_mappings()
+    endif
+endfunction
+
+" }}}
 
 " }}}
 " Keybindings {{{
@@ -560,5 +642,12 @@ set pastetoggle=<f1>
 noremap <silent> Y y$
 
 " }}}
+" Autocommands {{{
+" Check for Git/Mercurial and set up keybindings accordingly
+augroup vcscheck
+    autocmd!
+    autocmd BufNewFile,BufRead,VimEnter * call s:setup_vcs_keybindings()
+augroup END
 
+" }}}
 " vim: foldmethod=marker
