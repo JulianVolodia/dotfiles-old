@@ -1,6 +1,16 @@
 [global]
     font = EB Garamond-12
 
+    # allow a small subset of html markup:
+    # <b>bold</b>
+    # <i>italic</i>
+    # <s>strikethrough<s/>
+    # <u>underline</u>
+    #
+    # for a complete reference see http://developer.gnome.org/pango/stable/PangoMarkupFormat.html
+    # If markup is not allowed, those tags will be stripped out of the message.
+    allow_markup = yes
+
     # The format of the message. Possible variables are:
     #   %a  appname
     #   %s  summary
@@ -33,16 +43,21 @@
     # split long notifications into multiple lines
     word_wrap = yes
 
+    # ignore newlines '\n' in notifications
+    ignore_newline = no
+
 
     # the geometry of the window
     # geometry [{width}]x{height}][+/-{x}+/-{y}]
     # The geometry of the message window.
-    # The height is measured in lines everything else in pixels. If the width
+    # The height is measured in number of notifications everything else in pixels. If the width
     # is omitted but the height is given ("-geometry x2"), the message window
     # expands over the whole screen (dmenu-like). If width is 0,
     # the window expands to the longest message displayed.
     # A positive x is measured from the left, a negative from the
     # right side of the screen.  Y is measured from the top and down respectevly.
+    # The width can be negative. In this case the actual width is the
+    # screen width minus the width defined in within the geometry option.
     geometry = "880x1+200+2"
 
     # The transparency of the window. range: [0; 100]
@@ -80,12 +95,36 @@
 
     # Draw a line of 'separatpr_height' pixel height between two notifications.
     # Set to 0 to disable
-    separator_height = 0;
+    separator_height = 0
+
+    # padding between text and separator
+    padding = 8
+
+    # horizontal padding
+    horizontal_padding = 8
 
     # Define a color for the separator.
-    # This can either be "auto" or "foreground". "Auto" tries to find a color
-    # that fits nicely to the background color.
-    separator_color = auto
+    # possible values are:
+    #  * auto: dunst tries to find a color fitting to the background
+    #  * foreground: use the same color as the foreground
+    #  * frame: use the same color as the frame.
+    #  * anything else will be interpreted as a X color
+    separator_color = frame
+
+    # print a notification on startup
+    # This is mainly for error detection, since dbus (re-)starts dunst
+    # automatically after a crash.
+    startup_notification = false
+
+    # dmenu path
+    dmenu = /usr/bin/dmenu -p dunst:
+
+    # browser for opening urls in context menu
+    browser = /usr/bin/firefox -new-tab
+
+[frame]
+    width = 0
+    color = "#aaaaaa"
 
 
 [shortcuts]
@@ -132,11 +171,6 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order to find
 # fitting options for rules.
 
-#[ignore]
-## This notification will not be displayed
-#    summary = "foobar"
-#    format = ""
-
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
@@ -151,9 +185,3 @@
 #    appname = Pidgin
 #    summary = *says*
 #    urgency = critical
-#
-#[twitter]
-#    appname = Pidgin
-#    summary = *twitter.com*
-#    urgency = normal
-#
