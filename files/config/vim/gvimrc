@@ -8,8 +8,6 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 set guioptions-=b
-" Use console-style tabs
-set guioptions-=e
 " Use console-style popups
 set guioptions+=c
 
