@@ -23,6 +23,8 @@ Vim:
 
 * Use dmenu for files/buffers
 * Find better keys for Ctrl, Esc, CapsLock
+* Use new powerline
+* Display VCS info in statusline
 
 Mutt-kz:
 ========
