@@ -522,6 +522,11 @@ set foldtext=CustomFoldText()
 " }}}
 " Check if I should set up Lawrencium or Fugitive keybindings {{{
 function! s:setup_vcs_keybindings()
+    if exists('b:keybindings_setup')
+        return
+    endif
+    let b:keybindings_setup = 1
+
     if exists('b:mercurial_dir')
         call s:setup_lawrencium_mappings()
     elseif exists('b:git_dir')
@@ -646,7 +651,9 @@ noremap <silent> Y y$
 " Check for Git/Mercurial and set up keybindings accordingly
 augroup vcscheck
     autocmd!
-    autocmd BufNewFile,BufRead,VimEnter * call s:setup_vcs_keybindings()
+    " Is executed after BufNewPost as well
+    autocmd BufEnter * call s:setup_vcs_keybindings()
+    autocmd BufUnload * unlet! b:keybindings_setup
 augroup END
 
 " }}}
