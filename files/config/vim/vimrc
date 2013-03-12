@@ -48,10 +48,10 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'ludovicchabant/vim-lawrencium'
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 Bundle 'edsono/vim-matchit'
+Bundle 'tpope/vim-obsession'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-repeat'
-Bundle 'xolox/vim-session'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
 Bundle 'tmhedberg/SimpylFold'
 Bundle 'sjl/splice.vim.git'
@@ -223,6 +223,26 @@ function! s:setup_lawrencium_mappings()
     noremap <silent> <buffer> <leader>vR :Hgrevert!<cr>
 endfunction
 " }}}
+" Obsession {{{
+" Sets up keybinding, invoked in autocmd below
+" Place for session file depends on whether current file is in Git/Hg repo or
+" not: For repos, session file is $reporoot/.session.vim, for non-repo files,
+" the session file is saved at ./.session.vim
+function! s:obsession() " {{{{
+    if exists('b:mercurial_dir')
+        let dir = fnamemodify(b:mercurial_dir, ':p:h')
+    elseif exists('b:git_dir')
+        " b:git_dir points to the actual .git directory
+        let dir = fnamemodify(b:git_dir, ':p:h:h')
+    else
+        let dir = fnamemodify(getcwd(), ':p:h')
+    endif
+    let fname = fnameescape(dir . "/.session.vim")
+    execute 'Obsession ' . fname
+endfunction " }}}
+noremap <silent> <leader>o :call <SID>obsession()<cr>
+noremap <silent> <leader>O :Obsession!<cr>
+" }}}
 " Powerline {{{
 " Set mode names
 let g:Powerline_mode_n = ' N '
@@ -242,16 +262,6 @@ let g:Powerline_mode_cs = 'SBL'
 " Toggle display of all kinds of parens
 noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
 
-" }}}
-" Session {{{
-" Don't load sessions automatically
-let g:session_autoload = 0
-" Automatically save current session on quitting Vim
-let g:session_autosave = 'yes'
-" Define :Session* commands
-let g:session_command_aliases = 1
-" Directory to save sessions in
-let g:session_directory = expand("$XDG_CACHE_HOME/vim/sessions")
 " }}}
 " ShowTrailingWhitespace {{{
 " Show it by default
