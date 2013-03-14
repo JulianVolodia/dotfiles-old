@@ -1,9 +1,0 @@
-[Unit]
-Description=Urxvtd socket
-
-[Socket]
-ListenStream=%t/urxvt/urxvtd.socket
-Environment=RXVT_SOCKET=%t/urxvt/urxvtd.socket
-
-[Install]
-WantedBy=graphical.target
