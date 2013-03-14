@@ -49,7 +49,6 @@ Bundle 'ludovicchabant/vim-lawrencium'
 Bundle 'MarcWeber/vim-addon-local-vimrc'
 Bundle 'edsono/vim-matchit'
 Bundle 'tpope/vim-obsession'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'vim-scripts/ShowTrailingWhitespace'
@@ -242,19 +241,6 @@ function! s:obsession() " {{{{
 endfunction " }}}
 noremap <silent> <leader>o :call <SID>obsession()<cr>
 noremap <silent> <leader>O :Obsession!<cr>
-" }}}
-" Powerline {{{
-" Set mode names
-let g:Powerline_mode_n = ' N '
-let g:Powerline_mode_i = ' I '
-let g:Powerline_mode_R = ' R '
-let g:Powerline_mode_v = ' V '
-let g:Powerline_mode_V = 'VLN'
-let g:Powerline_mode_cv = 'VBL'
-let g:Powerline_mode_s = ' S '
-let g:Powerline_mode_S = 'SLN'
-let g:Powerline_mode_cs = 'SBL'
-" TODO: Theme
 " }}}
 " Rainbow Parentheses {{{
 " TODO:
