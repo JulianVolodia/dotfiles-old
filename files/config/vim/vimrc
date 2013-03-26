@@ -321,6 +321,12 @@ let g:syntastic_mode_map = { 'mode': 'passive' }
 noremap <leader>S :SyntasticCheck<cr>
 
 " }}}
+" Tabularize {{{
+" Input new tabular expression
+noremap <leader>T :Tabularize<space>
+" Repeat last :Tabularize command
+noremap <leader>t :Tabularize<cr>
+" }}}
 " Tagbar {{{
 " Open tagbar window on the left
 let tagbar_left = 1
