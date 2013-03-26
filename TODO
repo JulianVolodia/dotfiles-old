@@ -11,6 +11,9 @@ deploy:
 * Ignore *.orig files in source directory
 * Figure out how to save file permissions properly
   (see http://stackoverflow.com/questions/1289816)
+* Add ability to create temporary, cache, etc. directories
+* Use rsync(?) to monitor changes in config files and add "reploy" ability that
+  mirrors changes back into the repository
 
 Zsh:
 ====
