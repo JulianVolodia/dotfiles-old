@@ -1,3 +1,5 @@
+* Fix console to have 256 colors by default
+
 deploy:
 =======
 
@@ -24,10 +26,10 @@ Zsh:
 Vim:
 ====
 
-* Use dmenu for files/buffers
-* Find better keys for Ctrl, Esc, CapsLock
-* Use new powerline
-* Display VCS info in statusline
+* Fix jedi-vim mucking up .rst files
+* Fix commentstring in ft=python buffers
+* Fix jedi-vim display of function signatures or something (white background on
+  white background makes stuff indistinguishable from normal text)
 
 Mutt-kz:
 ========
