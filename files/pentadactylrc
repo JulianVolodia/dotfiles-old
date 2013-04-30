@@ -24,3 +24,6 @@ map ü :
 
 " <C-B> opens bookmarks
 map <C-B> :bmarks<CR>
+
+" Automatically enter pass-through mode on IPython Notebook
+autocmd LocationChange '^https?://(127\.0\.0\.1|localhost):8888' :normal! <c-z>
