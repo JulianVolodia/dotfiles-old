@@ -11,5 +11,5 @@ XKBKEYMAPFILE="$XKBDIR/keymaps/default.xkb"
 xkbcomp -I$XKBDIR $XKBKEYMAPFILE $DISPLAY
 
 # }}}
-exec systemd --user
+exec /usr/lib/systemd/systemd --user
 # vim: foldmethod=marker
