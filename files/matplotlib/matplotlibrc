@@ -198,13 +198,13 @@ text.latex.preamble : \usepackage{siunitx},\usepackage{amsmath},\usepackage{comm
 # default fontsizes for ticklabels, and so on.  See
 # http://matplotlib.sourceforge.net/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
-axes.facecolor      : eeeeee   # axes background color
-axes.edgecolor      : bcbcbc   # axes edge color
+axes.facecolor      : ffffff   # axes background color
+axes.edgecolor      : 0.5   # axes edge color
 axes.linewidth      : 1        # edge linewidth
 axes.grid           : True     # display grid or not
 axes.titlesize      : x-large  # fontsize of the axes title
 axes.labelsize      : large    # fontsize of the x any y labels
-axes.labelcolor     : 555555
+axes.labelcolor     : 0.5
 axes.axisbelow      : True     # whether axis gridlines and ticks are below
                                # the axes elements (lines, text, etc)
 #axes.formatter.limits : -7, 7 # use scientific notation if log10
@@ -238,7 +238,7 @@ xtick.major.size     : 0      # major tick size in points
 xtick.minor.size     : 0      # minor tick size in points
 xtick.major.pad      : 6      # distance to major tick label in points
 xtick.minor.pad      : 6      # distance to the minor tick label in points
-xtick.color          : 555555      # color of the tick labels
+xtick.color          : 0.5      # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
 xtick.direction      : in     # direction: in or out
 
@@ -246,13 +246,13 @@ ytick.major.size     : 0      # major tick size in points
 ytick.minor.size     : 0      # minor tick size in points
 ytick.major.pad      : 6      # distance to major tick label in points
 ytick.minor.pad      : 6      # distance to the minor tick label in points
-ytick.color          : 555555      # color of the tick labels
+ytick.color          : 0.5      # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
 ytick.direction      : in     # direction: in or out
 
 
 ### GRIDS
-#grid.color       :   black   # grid color
+grid.color       :   0.5   # grid color
 #grid.linestyle   :   :       # dotted
 #grid.linewidth   :   0.5     # in points
 
@@ -276,7 +276,7 @@ ytick.direction      : in     # direction: in or out
 # See http://matplotlib.sourceforge.net/api/figure_api.html#matplotlib.figure.Figure
 figure.figsize   : 11, 8    # figure size in inches
 figure.dpi       : 96      # figure dots per inch
-figure.facecolor : 0.85    # figure facecolor; 0.75 is scalar gray
+figure.facecolor : FFFFFF    # figure facecolor; 0.75 is scalar gray
 figure.edgecolor : 0.50   # figure edgecolor
 
 # The figure subplot parameters.  All dimensions are fraction of the
