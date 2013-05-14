@@ -350,6 +350,7 @@ figure.subplot.hspace  : 0.5    # the amount of height reserved for white space 
 
 # pgf backend params
 pgf.texsystem : lualatex
+pgf.preamble : \usepackage{siunitx},\usepackage{amsmath},\usepackage{commath},\usepackage{mathtools},\usepackage{textgreek},\usepackage{chemmacros}
 
 # svg backend params
 #svg.image_inline : True       # write raster image data directly into the svg file
