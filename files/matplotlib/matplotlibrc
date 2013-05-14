@@ -63,7 +63,7 @@ lines.antialiased : True         # render lines in antialised (no jaggies)
 # circles.  See
 # http://matplotlib.sourceforge.net/api/artist_api.html#module-matplotlib.patches
 # information on patch properties
-patch.linewidth        : 0.5     # edge width in points
+patch.linewidth        : 0.8     # edge width in points
 patch.facecolor        : 348ABD # blue
 patch.edgecolor        : eeeeee
 patch.antialiased      : True    # render patches in antialised (no jaggies)
@@ -200,14 +200,14 @@ text.latex.preamble : \usepackage{siunitx},\usepackage{amsmath},\usepackage{comm
 #axes.hold           : True    # whether to clear the axes by default on
 axes.facecolor      : ffffff   # axes background color
 axes.edgecolor      : 0.5   # axes edge color
-axes.linewidth      : 1        # edge linewidth
+axes.linewidth      : 0.8        # edge linewidth
 axes.grid           : True     # display grid or not
 axes.titlesize      : x-large  # fontsize of the axes title
 axes.labelsize      : large    # fontsize of the x any y labels
-axes.labelcolor     : 0.5
+axes.labelcolor     : 000000
 axes.axisbelow      : True     # whether axis gridlines and ticks are below
                                # the axes elements (lines, text, etc)
-#axes.formatter.limits : -7, 7 # use scientific notation if log10
+axes.formatter.limits : -5, 5  # use scientific notation if log10
                                # of the axis range is smaller than the
                                # first or larger than the second
 #axes.unicode_minus  : True    # use unicode for the minus symbol
@@ -238,7 +238,7 @@ xtick.major.size     : 0      # major tick size in points
 xtick.minor.size     : 0      # minor tick size in points
 xtick.major.pad      : 6      # distance to major tick label in points
 xtick.minor.pad      : 6      # distance to the minor tick label in points
-xtick.color          : 0.5      # color of the tick labels
+xtick.color          : 000000 # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
 xtick.direction      : in     # direction: in or out
 
@@ -246,7 +246,7 @@ ytick.major.size     : 0      # major tick size in points
 ytick.minor.size     : 0      # minor tick size in points
 ytick.major.pad      : 6      # distance to major tick label in points
 ytick.minor.pad      : 6      # distance to the minor tick label in points
-ytick.color          : 0.5      # color of the tick labels
+ytick.color          : 000000 # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
 ytick.direction      : in     # direction: in or out
 
@@ -254,7 +254,7 @@ ytick.direction      : in     # direction: in or out
 ### GRIDS
 grid.color       :   0.5   # grid color
 #grid.linestyle   :   :       # dotted
-#grid.linewidth   :   0.5     # in points
+grid.linewidth   :   0.5     # in points
 
 ### Legend
 #legend.fancybox      : False  # if True, use a rounded box for the
