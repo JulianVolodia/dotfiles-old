@@ -150,6 +150,7 @@ font.monospace      : Consolas, Andale Mono, Nimbus Mono L, Courier New, Courier
                             # beware of package collisions: color, geometry, graphicx,
                             # type1cm, textcomp. Adobe Postscript (PSSNFS) font packages
                             # may also be loaded, depending on your font settings
+text.latex.preamble : \usepackage{siunitx},\usepackage{amsmath},\usepackage{commath},\usepackage{mathtools},\usepackage{textgreek},\usepackage{chemmacros}
 
 #text.dvipnghack : None      # some versions of dvipng don't handle alpha
                              # channel properly.  Use True to correct
