@@ -199,7 +199,7 @@ text.latex.preamble : \usepackage{siunitx},\usepackage{amsmath},\usepackage{comm
 # http://matplotlib.sourceforge.net/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
 axes.facecolor      : ffffff   # axes background color
-axes.edgecolor      : 0.5   # axes edge color
+axes.edgecolor      : 0.4   # axes edge color
 axes.linewidth      : 0.8        # edge linewidth
 axes.grid           : True     # display grid or not
 axes.titlesize      : x-large  # fontsize of the axes title
@@ -207,7 +207,7 @@ axes.labelsize      : large    # fontsize of the x any y labels
 axes.labelcolor     : 000000
 axes.axisbelow      : True     # whether axis gridlines and ticks are below
                                # the axes elements (lines, text, etc)
-axes.formatter.limits : -5, 5  # use scientific notation if log10
+axes.formatter.limits : -6, 6  # use scientific notation if log10
                                # of the axis range is smaller than the
                                # first or larger than the second
 #axes.unicode_minus  : True    # use unicode for the minus symbol
@@ -234,27 +234,27 @@ axes.color_cycle    : 348ABD, A60628, 467821, CF4457, 188487, 7A68A6, E24A33
 
 ### TICKS
 # see http://matplotlib.sourceforge.net/api/axis_api.html#matplotlib.axis.Tick
-xtick.major.size     : 0      # major tick size in points
-xtick.minor.size     : 0      # minor tick size in points
+xtick.major.size     : 2      # major tick size in points
+xtick.minor.size     : 1      # minor tick size in points
 xtick.major.pad      : 6      # distance to major tick label in points
 xtick.minor.pad      : 6      # distance to the minor tick label in points
-xtick.color          : 000000 # color of the tick labels
+xtick.color          : 0.4 # color of the tick labels
 #xtick.labelsize      : medium # fontsize of the tick labels
 xtick.direction      : in     # direction: in or out
 
-ytick.major.size     : 0      # major tick size in points
-ytick.minor.size     : 0      # minor tick size in points
+ytick.major.size     : 2      # major tick size in points
+ytick.minor.size     : 1      # minor tick size in points
 ytick.major.pad      : 6      # distance to major tick label in points
 ytick.minor.pad      : 6      # distance to the minor tick label in points
-ytick.color          : 000000 # color of the tick labels
+ytick.color          : 0.4 # color of the tick labels
 #ytick.labelsize      : medium # fontsize of the tick labels
 ytick.direction      : in     # direction: in or out
 
 
 ### GRIDS
-grid.color       :   0.5   # grid color
+grid.color       :   0.80   # grid color
 #grid.linestyle   :   :       # dotted
-grid.linewidth   :   0.5     # in points
+grid.linewidth   :   0.80     # in points
 
 ### Legend
 #legend.fancybox      : False  # if True, use a rounded box for the
@@ -277,7 +277,7 @@ grid.linewidth   :   0.5     # in points
 figure.figsize   : 11, 8    # figure size in inches
 figure.dpi       : 96      # figure dots per inch
 figure.facecolor : FFFFFF    # figure facecolor; 0.75 is scalar gray
-figure.edgecolor : 0.50   # figure edgecolor
+figure.edgecolor : 0.40   # figure edgecolor
 
 # The figure subplot parameters.  All dimensions are fraction of the
 # figure width or height
@@ -286,7 +286,7 @@ figure.edgecolor : 0.50   # figure edgecolor
 #figure.subplot.bottom  : 0.1    # the bottom of the subplots of the figure
 #figure.subplot.top     : 0.9    # the top of the subplots of the figure
 #figure.subplot.wspace  : 0.2    # the amount of width reserved for blank space between subplots
-figure.subplot.hspace  : 0.5    # the amount of height reserved for white space between subplots
+#figure.subplot.hspace  : 0.5    # the amount of height reserved for white space between subplots
 
 ### IMAGES
 #image.aspect : equal             # equal | auto | a number
