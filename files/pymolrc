@@ -1,0 +1,6 @@
+from sys import path
+from os.path import expanduser, expandvars
+path.append(expanduser(expandvars('$XDG_DATA_HOME/pymol')))
+
+import tmalign
+import spectrumany
