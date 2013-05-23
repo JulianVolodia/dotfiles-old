@@ -4,3 +4,4 @@ path.append(expanduser(expandvars('$XDG_DATA_HOME/pymol')))
 
 import tmalign
 import spectrumany
+import make_pov
