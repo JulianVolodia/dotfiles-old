@@ -5,3 +5,11 @@ path.append(expanduser(expandvars('$XDG_DATA_HOME/pymol')))
 import tmalign
 import spectrumany
 import make_pov
+
+# Make background white...
+bg_color white
+# ...and transparent
+set opaque_background, off
+# Use multilayer transparency by default
+set transparency_mode, 1
+
