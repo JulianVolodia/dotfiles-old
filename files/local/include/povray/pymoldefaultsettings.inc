@@ -8,14 +8,15 @@ global_settings {
     // To calculate SSLT for different materials
     mm_per_unit 10
     // Only with +q9 or higher
-    subsurface {
+    // subsurface {
         // Number of sample rays for diffuse (first value) and single
         // (second value) scattering
         // Lower values -> better performance
-        samples 50, 50
+        // samples 50, 50
         // Use subsurface scattering on radiosity photons
-        radiosity on
-    }
+        // radiosity on
+    // }
+
     radiosity {
         pretrace_start 0.128
         pretrace_end   0.002
@@ -31,3 +32,22 @@ global_settings {
         adc_bailout 0.005
     }
 }
+
+// Default texture
+#default {
+    finish {
+        // Ambient light fraction for texture; ignored if radiosity is used
+        // ambient 0.1
+        // Fraction of light that is scattered instead of reflected
+        // diffuse 0.6
+        // No phong highlights, only specular highlights
+        // Specular has superior lighting model
+        // albedo: ratio of diffuse/specular reflection instead of peak
+        // reflection
+        specular albedo 0.9 roughness 0.05
+    }
+}
+
+// Macros for transforming from/to pymol coordinates
+#include "pymolmacro.inc"
+

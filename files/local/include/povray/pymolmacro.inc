@@ -172,12 +172,12 @@
 #end
 
 
-#macro PYMOL_VIEW( r11, r12, r13,     // 3x3 Rotation matrix ( Model space to Camera space )
+#macro PYMOL_VIEW( r11, r12, r13,     // 3x3 Rotation matrix (Model space to camera space)
            r21, r22, r23,
            r31, r32, r33,
-            c1,  c2,  c3,     // Camera position ( Model space )
-            o1,  o2,  o3,     // Origin of rotation ( Model space )
-            s1,  s2,  or)     // Slab near and far, orthoscopic flag ( discarded )
+            c1,  c2,  c3,     // Vector from camera position to OOR position (camera space)
+            o1,  o2,  o3,     // OOR position (model space)
+            s1,  s2,  or)     // Slab near and far distance from camera, orthoscopic flag (±) and field of view (abs(or))
 
   #declare PYMOLVIEW_RMATRIX = array[9] { r11, r12, r13,
                       r21, r22, r23,
