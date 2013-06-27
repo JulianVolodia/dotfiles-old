@@ -63,6 +63,8 @@ inoremap <silent> <c-l> <right>
 
 " }}}
 " Tabgroup management {{{
+" Toggle tabgroups screen
+noremap <silent> <leader>e <c-s-e>
 " List all tabgroups
 noremap <silent> <leader>tl :tabgroups<cr>
 " Create and switch to tabgroup
@@ -101,6 +103,7 @@ noremap <silent> <c-r> :reloadall<cr>
 noremap <silent> <c-s-r> :reloadall!<cr>
 " Open bookmarks
 noremap <silent> <c-b> :bmarks<cr>
+" Open
 
 " }}}
 
