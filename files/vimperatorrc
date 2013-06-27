@@ -32,11 +32,19 @@ set hintchars="asdfghjkl"
 " }}}
 " Keybindings {{{
 " Movement {{{
-" Remap H/J/K/L
+" Faster scrolling
+noremap <silent> h 5h
+noremap <silent> j 5j
+noremap <silent> k 5k
+noremap <silent> l 5l
+
+" Move between tabs
 noremap <silent> H <c-p>
+noremap <silent> L <c-n>
+
+" Move forwards/backwards in history
 noremap <silent> J <c-i>
 noremap <silent> K <c-o>
-noremap <silent> L <c-n>
 
 " Move between frames more easily
 nnoremap ö [
@@ -48,6 +56,7 @@ nnoremap öö [[
 nnoremap ää ]]
 
 " Easier :tabmove; wraps around
+" TODO: Ask if counts can be implemented
 nnoremap <silent> <c-h> :tabmove! -1
 nnoremap <silent> <c-l> :tabmove! +1
 
