@@ -1,30 +1,107 @@
-" ~/.pentadactylrc by runiq.
+" ~/.vimperatorrc by runiq.
 
+" Settings {{{
+" Set default search engine
 set defsearch="ddg"
-set titlestring=""
-set complete="lf"
-set hintchars="asdfghjkl"
 set newtab=all
+" Mapleader for a few keybindings
+let mapleader=","
 
+" Appearance {{{
+" Show these in status line
+set status="input,history,location,bookmark,position"
+" Don't show scrollbars, we have the position marker for that
+set scrollbars=false
 " Only show tab line
 set gui="none,tabs"
+" }}}
+" Completion {{{
+" Completion menu can be activated on <tab> on command mode
+set autocomplete=false
+" Complete bookmarks and local files by default
+set complete="bf"
+" First complete to longest common substring, then fully complete next match
+set wildmode="list:longest,full"
 
+" }}}
+" Hints {{{
+" Match on labels only
+set hintinputs="label"
+set hintchars="asdfghjkl"
+" }}}
+" }}}
+" Keybindings {{{
+" Movement {{{
 " Remap H/J/K/L
-noremap <silent> H <C-p>
-noremap <silent> J <C-i>
-noremap <silent> K <C-o>
-noremap <silent> L <C-n>
+noremap <silent> H <c-p>
+noremap <silent> J <c-i>
+noremap <silent> K <c-o>
+noremap <silent> L <c-n>
 
-" No need to move from homerow in command-line mode
-cnoremap <c-h> <left>
-cnoremap <c-j> <down>
-cnoremap <c-k> <up>
-cnoremap <c-l> <right>
+" Move between frames more easily
+nnoremap ö [
+vnoremap ö [
+nnoremap ä ]
+vnoremap ä ]
+" These have to be specified explicitly
+nnoremap öö [[
+nnoremap ää ]]
 
-" Additional reload bindings
-noremap <C-R> :reloadall<CR>
-noremap <C-S-R> :reloadall!<CR>
+" Easier :tabmove; wraps around
+nnoremap <silent> <c-h> :tabmove! -1
+nnoremap <silent> <c-l> :tabmove! +1
+
+" No need to move from homerow in command-line and insert mode
+cnoremap <silent> <c-h> <left>
+cnoremap <silent> <c-j> <down>
+cnoremap <silent> <c-k> <up>
+cnoremap <silent> <c-l> <right>
+inoremap <silent> <c-h> <left>
+inoremap <silent> <c-j> <down>
+inoremap <silent> <c-k> <up>
+inoremap <silent> <c-l> <right>
+
+" }}}
+" Tabgroup management {{{
+" List all tabgroups
+noremap <silent> <leader>tl :tabgroups<cr>
+" Create and switch to tabgroup
+noremap <leader>ta :tabgroups add<space>
+" Create, move current tab, and switch to new tabgroup
+noremap <leader>tA :tabgroups add!<space>
+" Pull tab from tabgroup
+noremap <leader>ty :tabgroups pulltab<space>
+" Pull tab from tabgroup and switch to it
+noremap <leader>tY :tabgroups pulltab!<space>
+" Move current tab to new tabgroup
+noremap <leader>tp :tabgroups pushtab<space>
+" Move current tab to new tabgroup and create it if necessary
+noremap <leader>tP :tabgroups pushtab!<space>
+" Remove a tabgroup
+noremap <leader>td :tabgroups remove<space>
+" Remove current tabgroup
+noremap <silent> <leader>tD :tabgroups remove<cr>
+" Switch to next tabgroup
+noremap <silent> <leader>ts :tabgroups 1switch<cr>
+noremap <silent> ]t :tabgroups 1switch<cr>
+" Switch to a tabgroup
+noremap <leader>tS :tabgroups switch<space>
+
+" }}}
+" Easier to reach
 noremap ü :
+" Easier extended hint matching
+noremap <silent> < ;
+" I'm used to the CtrlP Vim plugin, so…
+noremap <leader>b :buffer #
+" Toggle app tab for current tab
+noremap <leader>a :set invapptab<cr>
+" Additional reload bindings
+noremap <silent> <c-r> :reloadall<cr>
+noremap <silent> <c-s-r> :reloadall!<cr>
+" Open bookmarks
+noremap <silent> <c-b> :bmarks<cr>
 
-" <C-B> opens bookmarks
-noremap <C-B> :bmarks<CR>
+" }}}
+
+" vim: set filetype=vim foldmethod=marker:
