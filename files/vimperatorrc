@@ -1,0 +1,30 @@
+" ~/.pentadactylrc by runiq.
+
+set defsearch="ddg"
+set titlestring=""
+set complete="lf"
+set hintchars="asdfghjkl"
+set newtab=all
+
+" Only show tab line
+set gui="none,tabs"
+
+" Remap H/J/K/L
+noremap <silent> H <C-p>
+noremap <silent> J <C-i>
+noremap <silent> K <C-o>
+noremap <silent> L <C-n>
+
+" No need to move from homerow in command-line mode
+cnoremap <c-h> <left>
+cnoremap <c-j> <down>
+cnoremap <c-k> <up>
+cnoremap <c-l> <right>
+
+" Additional reload bindings
+noremap <C-R> :reloadall<CR>
+noremap <C-S-R> :reloadall!<CR>
+noremap ü :
+
+" <C-B> opens bookmarks
+noremap <C-B> :bmarks<CR>
