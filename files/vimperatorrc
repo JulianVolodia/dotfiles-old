@@ -57,8 +57,8 @@ nnoremap ää ]]
 
 " Easier :tabmove; wraps around
 " TODO: Ask if counts can be implemented
-nnoremap <silent> <c-h> :tabmove! -1
-nnoremap <silent> <c-l> :tabmove! +1
+nnoremap <silent> <c-h> :tabmove! -1<cr>
+nnoremap <silent> <c-l> :tabmove! +1<cr>
 
 " No need to move from homerow in command-line and insert mode
 cnoremap <silent> <c-h> <left>
