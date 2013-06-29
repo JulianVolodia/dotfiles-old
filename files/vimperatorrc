@@ -31,6 +31,11 @@ set hintchars="asdfghjkl"
 " }}}
 " }}}
 " Keybindings {{{
+" Fucking keys {{{
+" Fuck you, sidebar
+iunmap <c-b>
+vunmap <c-b>
+" }}}
 " Movement {{{
 " Faster scrolling
 noremap <silent> h 5h
@@ -107,12 +112,15 @@ noremap <silent> < ;
 noremap <leader>b :buffer #
 " Toggle app tab for current tab
 noremap <leader>a :set invapptab<cr>
+" Toggle navbar display
+noremap <leader>N :set toolbars=invnavigation<cr>
+" Toggle tabbar display
+noremap <leader>T :set toolbars=invtabs<cr>
 " Additional reload bindings
 noremap <silent> <c-r> :reloadall<cr>
 noremap <silent> <c-s-r> :reloadall!<cr>
 " Open bookmarks
 noremap <silent> <c-b> :bmarks<cr>
-" Open
 
 " }}}
 
