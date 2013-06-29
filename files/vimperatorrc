@@ -31,11 +31,6 @@ set hintchars="asdfghjkl"
 " }}}
 " }}}
 " Keybindings {{{
-" Fucking keys {{{
-" Fuck you, sidebar
-iunmap <c-b>
-vunmap <c-b>
-" }}}
 " Movement {{{
 " Faster scrolling
 noremap <silent> h 5h
