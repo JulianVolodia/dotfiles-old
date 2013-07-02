@@ -21,27 +21,16 @@ Zsh:
 ====
 
 * Figure out how to incorporate virtualenv into path
-* Show applied patches
 
 Vim:
 ====
 
+* Fix Vim assuming <256 colors even on a 256-color terminal
 * Fix jedi-vim mucking up .rst files
 * Fix commentstring in ft=python buffers
-* Fix jedi-vim display of function signatures or something (white background on
-  white background makes stuff indistinguishable from normal text)
 
 Mutt-kz:
 ========
 
-* Trash patch
-* Show mailboxes in sidebar hierarchically
-* Add some useful keybindings & get familiar with them
-* How does it work?
-* Is spam filtering by pressing button ("mark as spam" or somesuch) possible?
-  * macro index,pager S "<save-message>=[Gmail]/Spam?<enter>" "mark message as spam
-  * macro index,pager H "<save-message>=INBOX<enter>" "mark message as ham (not
-    really useful, especially for mailing list messages)
-* IMAPfilter
+* Does it work with mu?
 * Reorganize config files
-* Gmail hardlinks
