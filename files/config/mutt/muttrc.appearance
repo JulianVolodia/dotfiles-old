@@ -24,15 +24,11 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 
 # Sidebar options {{{
 # The delimiter string
-set sidebar_delim = " │"
+set sidebar_delim = "│"
 # Show sidebar by default
 set sidebar_visible
 # Sidebar width
-set sidebar_width = 30
-# Sort sidebar entries
-set sidebar_sort
-# Shorten sidebar path
-set sidebar_shortpath
+set sidebar_width = 26
 # }}}
 
 # Index view {{{
@@ -92,3 +88,5 @@ color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
 color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 # }}}
+
+# vim: set foldmethod=marker:

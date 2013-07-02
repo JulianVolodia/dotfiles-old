@@ -110,3 +110,5 @@ set sort_aux = date-received
 # Only create threads from "In-Reply-To" and "References" fields
 set strict_threads
 # }}}
+
+# vim: set foldmethod=marker:

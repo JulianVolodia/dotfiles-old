@@ -47,3 +47,5 @@ macro index,pager \cu "<enter-command> set my_pdsave=\$pipe_decode<enter>\
     <enter-command> set pipe_decode=\$my_pdsave<enter>" \
     "Get URLs"
 # }}}
+
+# vim: set foldmethod=marker:
