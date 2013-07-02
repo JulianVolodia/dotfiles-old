@@ -9,6 +9,7 @@ import netrc
 import binascii
 import codecs
 
+
 #############
 # Nametrans #
 #############
@@ -22,28 +23,22 @@ def gmail_local_nametrans(foldername, prefix='[Gmail]', separator='/'):
         return foldername
 
 
-
 ###############
 # Credentials #
 ###############
-def getcredentials(hostname, auth):
-    try:
-        netrcfile = netrc.netrc()
-    except netrc.NetrcParseError:
-        print 'The file is malformed.'
-    if auth == 'host':
-        return hostname
-    if auth == 'user':
-        return netrcfile.authenticators(hostname)[0]
-    if auth == 'pass':
-        return netrcfile.authenticators(hostname)[2]
+def get_credentials(host, user=None):
+    netrcfile = netrc.netrc()
+    if user is None:
+        return netrcfile.hosts[host][1]
+    else:
+        return netrcfile.hosts[host][2]
 
 
 ##################
 # # De-/encoding #
 ##################
-# Imap folder names are encoded using a special version of utf-7 as defined in RFC 
-# 2060 section 5.1.3.
+# Imap folder names are encoded using a special version of utf-7 as defined
+# in RFC 2060 section 5.1.3.
 def encoder(s):
     def doB64(_in, r):
         def modified_base64(s):
