@@ -29,7 +29,7 @@ def gmail_local_nametrans(foldername, prefix='[Gmail]', separator='/'):
 def get_credentials(host, user=None):
     netrcfile = netrc.netrc()
     if user is None:
-        return netrcfile.hosts[host][1]
+        return netrcfile.hosts[host][0]
     else:
         return netrcfile.hosts[host][2]
 

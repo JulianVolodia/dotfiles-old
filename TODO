@@ -29,8 +29,13 @@ Vim:
 * Fix jedi-vim mucking up .rst files
 * Fix commentstring in ft=python buffers
 
-Mutt-kz:
-========
+Mutt:
+=====
 
-* Does it work with mu?
+* "Virtual" mailboxes with mu
+* Mu commands:
+    * send+tag
+    * movetotrash
+    * movetospam
+    * archive (remove from inbox)
 * Reorganize config files
