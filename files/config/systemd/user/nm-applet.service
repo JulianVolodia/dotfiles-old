@@ -1,6 +1,6 @@
 [Unit]
 Description=NetworkManager applet
-Requires=NetworkManager.service
+# Requires=NetworkManager.service
 After=NetworkManager.service
 # Requires=xorg.target
 # After=xorg.target
@@ -8,6 +8,7 @@ After=NetworkManager.service
 [Service]
 BusName=org.gnome.network_manager_applet
 ExecStart=/usr/bin/nm-applet
+Restart=always
 
 [Install]
 WantedBy=wm.target
