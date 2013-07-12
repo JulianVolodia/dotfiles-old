@@ -402,16 +402,16 @@
                 " I fucking love this plugin
                 noremap <silent> <leader>h :Unite -no-split -toggle -buffer-name=help -resume -start-insert help<cr>
                 " Grep through current buffer
-                noremap <leader>g :Unite -no-split -toggle -buffer-name=grep -resume grep:%::<cr>
+                noremap <leader>g :Unite -no-split -toggle -buffer-name=grep grep:%::<cr>
                 " Grep through all open buffers
-                noremap <leader>g :Unite -no-split -toggle -buffer-name=grep -resume grep:$buffers::<cr>
+                noremap <leader>G :Unite -no-split -toggle -buffer-name=grep grep:$buffers::<cr>
+                " Modify quickfix window with unite
                 " Note: Remember to reload the unite window with <c-l> after
                 " changing the quickfix/location list contents
-                " Modify quickfix window with unite
                 noremap <leader>q :Unite  -buffer-name=quickfix -no-quit -toggle quickfix<cr>
                 " Modify quickfix window with unite
-                noremap <silent> <leader>c :Unite  -buffer-name=quickfix -no-quit -horizontal -winheight=12 -no-quit -toggle quickfix<cr>
-                noremap <silent> <leader>l :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle quickfix<cr>
+                noremap <silent> <leader>cc :Unite  -buffer-name=quickfix -no-quit -horizontal -winheight=12 -no-quit -toggle quickfix<cr>
+                noremap <silent> <leader>ll :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle quickfix<cr>
 
             " }}}
 
