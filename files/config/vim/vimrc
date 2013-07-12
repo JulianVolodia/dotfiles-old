@@ -40,7 +40,7 @@
             Bundle 'gmarik/vundle'
             Bundle 'ervandew/ag'
             Bundle 'tpope/vim-commentary'
-            Bundle 'kien/ctrlp.vim'
+            Bundle 'Shougo/unite.vim'
             Bundle 'vim-scripts/DeleteTrailingWhitespace'
             Bundle 'tpope/vim-fugitive'
             Bundle 'sjl/gundo.vim.git'
@@ -48,6 +48,7 @@
             Bundle 'davidhalter/jedi-vim'
             Bundle 'LaTeX-Box-Team/LaTeX-Box'
             Bundle 'ludovicchabant/vim-lawrencium'
+            Bundle 'zhaocai/linepower.vim'
             Bundle 'MarcWeber/vim-addon-local-vimrc'
             Bundle 'edsono/vim-matchit'
             Bundle 'tpope/vim-obsession'
@@ -61,7 +62,6 @@
             Bundle 'godlygeek/tabular'
             Bundle 'majutsushi/tagbar'
             Bundle 'LStinson/TagmaTasks'
-            Bundle 'maxbrunsfeld/vim-yankstack'
             Bundle 'SirVer/ultisnips'
             Bundle 'tpope/vim-unimpaired'
             Bundle 'ervandew/supertab'
@@ -76,24 +76,6 @@
             "   commentary and üü)
             " Ag {{{
                 noremap <leader>a :Ag<space>
-
-            " }}}
-            " CtrlP {{{
-                " Keybinding for CtrlP in normal mode
-                let g:ctrlp_map = '<leader>e'
-                " Cache directory
-                let g:ctrlp_cache_dir = expand("$XDG_CACHE_HOME/vim/ctrlp")
-                " Use extensions:
-                " - mixed
-                let g:ctrlp_extensions = ['mixed']
-                " Normal Ctrlp
-                noremap <silent> <leader>e :CtrlP<cr>
-                " CtrlP in find buffer mode
-                noremap <silent> <leader>b :CtrlPBuffer<cr>
-                " CtrlP with root dir search disabled
-                noremap <silent> <leader>E :CtrlPRoot<cr>
-                " CtrlP in mixed mode
-                noremap <silent> <leader>x :CtrlPMixed<cr>
 
             " }}}
             " DeleteTrailingWhitespace {{{
@@ -377,17 +359,37 @@
                 " no snippet to expand
 
             " }}}
-            " Yankstack {{{
-                " Don't load default maps
-                let g:yankstack_map_keys = 0
-                "map Use + and - to cycle through yank stack
-                nmap <silent> + <Plug>yankstack_substitute_older_paste
-                nmap <silent> - <Plug>yankstack_substitute_newer_paste
-                " Use this to show yank stack
-                nnoremap <f2> :Yanks<cr>
-                " Needs to be called before redefining yank maps
-                call yankstack#setup()
+            " Unite {{{
+                " Requires the following to be installed:
+                " - github.com/zhaocai/linepower.vim
+                " - github.com/Shougo/vimproc.vim
+                " TODO:
+                " - Quickfix & locationlist windows
+                " - help buffer
+                " - taglist
+                " For all those, see
+                " github.com/Shougo/unite.vim/wiki/unite-plugins and the
+                " unite.vim help file.
 
+                " Unite conflicts with powerline
+                let g:unite_force_overwrite_statusline = 0
+                " Track yank history with unite
+                let g:unite_source_history_yank_enable = 1
+                " Use fuzzy matcher
+                call unite#filters#matcher_default#use(['matcher_fuzzy'])
+                " Open buffer list of current tab in current window
+                noremap <silent> <leader>b :Unite -no-split -toggle -buffer-name="buffers" buffer_tab<cr>
+                " Open buffer list of all tabs in current window
+                noremap <silent> <leader>B :Unite -no-split -toggle -buffer-name="buffers" buffer<cr>
+                " Edit file in current window
+                noremap <silent> <leader>e :Unite -no-split -toggle -buffer-name="files" file<cr>
+                " Find file recursively
+                " Note: Uses vimproc for asynchronous access and starts in insert
+                " mode, because it's highly probably I want to narrow stuff down
+                " immediately
+                noremap <silent> <leader>E :Unite -no-split -toggle -start-insert file_rec/async:!<cr>
+                " Open yank history
+                noremap <silent> <leader>y :Unite history/yank<cr>
             " }}}
 
         " }}}
