@@ -40,7 +40,6 @@
             Bundle 'gmarik/vundle'
             Bundle 'ervandew/ag'
             Bundle 'tpope/vim-commentary'
-            Bundle 'Shougo/unite.vim'
             Bundle 'vim-scripts/DeleteTrailingWhitespace'
             Bundle 'tpope/vim-fugitive'
             Bundle 'sjl/gundo.vim.git'
@@ -64,6 +63,9 @@
             Bundle 'LStinson/TagmaTasks'
             Bundle 'SirVer/ultisnips'
             Bundle 'tpope/vim-unimpaired'
+            Bundle 'Shougo/unite.vim'
+            Bundle 'tsukkee/unite-help'
+            Bundle 'tsukkee/unite-tag'
             Bundle 'ervandew/supertab'
             filetype plugin indent on
         " }}}
@@ -365,31 +367,39 @@
                 " - github.com/Shougo/vimproc.vim
                 " TODO:
                 " - Quickfix & locationlist windows
-                " - help buffer
-                " - taglist
-                " For all those, see
-                " github.com/Shougo/unite.vim/wiki/unite-plugins and the
-                " unite.vim help file.
+                " - ag/ack/grep integration
+
+                " Info:
+                " - -buffer-name and -resume together speed up subsequent openings of that buffer, even if the content changes
+                " - -toggle allows to toggle with the same keybinding
+                " - -no-split replaces the current viewport with the unite buffer
 
                 " Unite conflicts with powerline
                 let g:unite_force_overwrite_statusline = 0
                 " Track yank history with unite
                 let g:unite_source_history_yank_enable = 1
+                " Use XDG spec compliant data directory
+                let g:unite_data_directory = expand("$XDG_CACHE_HOME/vim/unite")
                 " Use fuzzy matcher
                 call unite#filters#matcher_default#use(['matcher_fuzzy'])
                 " Open buffer list of current tab in current window
-                noremap <silent> <leader>b :Unite -no-split -toggle -buffer-name="buffers" buffer_tab<cr>
+                noremap <silent> <leader>b :Unite -no-split -toggle -buffer-name="buffers" -resume buffer_tab<cr>
                 " Open buffer list of all tabs in current window
-                noremap <silent> <leader>B :Unite -no-split -toggle -buffer-name="buffers" buffer<cr>
+                noremap <silent> <leader>B :Unite -no-split -toggle -buffer-name="buffers" -resume buffer<cr>
                 " Edit file in current window
-                noremap <silent> <leader>e :Unite -no-split -toggle -buffer-name="files" file<cr>
+                noremap <silent> <leader>e :Unite -no-split -toggle -buffer-name="files" -resume file<cr>
                 " Find file recursively
                 " Note: Uses vimproc for asynchronous access and starts in insert
                 " mode, because it's highly probably I want to narrow stuff down
                 " immediately
-                noremap <silent> <leader>E :Unite -no-split -toggle -start-insert file_rec/async:!<cr>
+                noremap <silent> <leader>E :Unite -no-split -toggle -buffer-name="files" -resume -start-insert file_rec/async:!<cr>
                 " Open yank history
-                noremap <silent> <leader>y :Unite history/yank<cr>
+                noremap <silent> <leader>y :Unite -no-split -toggle -buffer-name="yanks" -resume history/yank<cr>
+                " Use unite for help files
+                " I fucking love this plugin
+                noremap <silent> <leader>h :Unite -no-split -toggle -buffer-name="help" -resume -start-insert help<cr>
+                " Use unite for displaying ag search results
+
             " }}}
 
         " }}}
@@ -661,7 +671,6 @@
         autocmd BufEnter * call s:setup_vcs_keybindings()
         autocmd BufUnload * unlet! b:keybindings_setup
     augroup END
-
 " }}}
 
 " vim: foldmethod=marker

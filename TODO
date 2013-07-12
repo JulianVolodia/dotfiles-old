@@ -28,6 +28,8 @@ Vim:
 * Fix Vim assuming <256 colors even on a 256-color terminal
 * Fix jedi-vim mucking up .rst files
 * Fix commentstring in ft=python buffers
+* YouCompleteMe and Jedi integration
+* Tagbar or unite-outline?
 
 Mutt:
 =====
