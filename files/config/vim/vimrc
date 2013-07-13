@@ -403,6 +403,25 @@
                 noremap <silent> <leader>ll :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle quickfix<cr>
 
             " }}}
+            " YouCompleteMe {{{
+            " Only use completion for these file types
+            let g:ycm_filetype_whitelist = {
+                \ 'c': 1,
+                \ 'cpp': 1,
+                \ 'python': 1
+                \ }
+            " Make YCM register itself as Syntastic checker for C, C++, Obj-C
+            " and Obj-C++ filetypes (enables Syntastic integration)
+            let g_ycm_register_as_syntastic_checker = 1
+            " Seed completer with language keywords
+            let g:ycm_seed_identifiers_with_syntax = 1
+            " Show previews on completion
+            let g:ycm_add_preview_window_to_completeopt = 1
+            " Auto-close preview window
+            let g:ycm_autoclose_preview_window_after_completion = 1
+            " Load .ycm_extra_conf.py only from ~/prj and downwards
+            let g:ycm_extra_conf_globlist = ['~/prj/*', '!~/*']
+            " }}}
 
         " }}}
 
