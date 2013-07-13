@@ -50,6 +50,7 @@
                 \     },
                 \ }
             NeoBundle 'ervandew/ag'
+            NeoBundle 'vim-scripts/argtextobj.vim'
             NeoBundle 'tpope/vim-commentary'
             NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
             NeoBundle 'tpope/vim-fugitive'
@@ -64,6 +65,7 @@
             NeoBundle 'kien/rainbow_parentheses.vim'
             NeoBundle 'tpope/vim-repeat'
             NeoBundle 'vim-scripts/ShowTrailingWhitespace'
+            NeoBundle 'mhinz/vim-signify'
             NeoBundle 'tmhedberg/SimpylFold'
             NeoBundle 'sjl/splice.vim.git'
             NeoBundle 'tpope/vim-surround'
@@ -253,11 +255,22 @@
             " }}}
             " ShowTrailingWhitespace {{{
                 " Show it by default
-                let g:ShowTrailingWhitespace = 1
+                let g:ShowTrailingWhitespace = 0
                 " ZOMGWTFBBQ
                 " I mean, toggle trailing whitespace display for current buffer
                 noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Showing trailing whitespace' : 'Not showing trailing whitespace')<cr>
 
+            " }}}
+            " Signify {{{
+            " Use only for these VCSs, in the order specified
+            let g:signify_vcs_list = ['hg', 'git']
+            " Don't run Signify by default
+            let g:signify_disable_by_default = 1
+            " Don't overwrite signs used by other plugins (e.g. Syntastic)
+            let g:signify_sign_overwrite = 0
+            " Toggle Signify symbols
+            " (the vV mapping comes from Signify's interaction with VCSs)
+            noremap <leader>vV :SignifyToggle<cr>
             " }}}
             " Splice {{{
                 " Use this as the splice prefix
@@ -277,8 +290,8 @@
                 " Use the :sign interface to show errors
                 let g:syntastic_enable_signs = 1
                 " Use these symbols for errors, warnings, and style errors/warnings
-                let g:syntastic_error_symbol = 'E'
-                let g:syntastic_warning_symbol = 'W'
+                let g:syntastic_error_symbol = '✗'
+                let g:syntastic_warning_symbol = '⚠'
                 let g:syntastic_style_error_symbol = 'S'
                 let g:syntastic_style_warning_symbol = 's'
                 " Don't use balloons
@@ -287,14 +300,18 @@
                 let g:syntastic_enable_highlighting = 0
                 " Don't automatically jump to the first error when first opening a file
                 let g:syntastic_auto_jump = 0
+                " Always use location list for errors
+                let g:syntastic_always_populate_loc_list = 1
                 " Automatically close location list when no more errors are found
                 let g:syntastic_auto_loc_list = 2
                 " Error list height = command window height
-                let g:syntastic_loc_list_height = 7
+                let g:syntastic_loc_list_height = 5
                 " Don't automatically check
                 let g:syntastic_mode_map = { 'mode': 'passive' }
                 " Check manually
-                noremap <leader>S :SyntasticCheck<cr>
+                noremap <leader>SS :SyntasticCheck<cr>
+                " Toggle between active and passive
+                noremap <leader>St :SyntasticToggleMode<cr>
 
             " }}}
             " Tabularize {{{
@@ -659,9 +676,9 @@
     " }}}
 
     " Easier :nohl
-    nnoremap <silent> <esc> :nohlsearch<cr>
+    nnoremap <silent> <leader><cr> :nohlsearch<cr>
     " Use this to toggle paste mode
-    set pastetoggle=<f1>
+    set pastetoggle=<f2>
     " Make Y behave like D and C
     noremap <silent> Y y$
     " Switch ; and , behavior so that , searches forwards and <s-,> backwards
@@ -679,4 +696,4 @@
     augroup END
 " }}}
 
-" vim: foldmethod=marker
+" vim: set foldmethod=marker:
