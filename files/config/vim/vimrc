@@ -270,7 +270,7 @@
             " Don't overwrite signs used by other plugins (e.g. Syntastic)
             let g:signify_sign_overwrite = 0
             " Toggle Signify symbols
-            " (the mapping is similar to the [c and ]c mappings)
+            " (the mapping is similar to those defined in unimpaired)
             noremap <silent> coC :SignifyToggle<cr>
             " }}}
             " Splice {{{
@@ -293,12 +293,12 @@
                 " Use these symbols for errors, warnings, and style errors/warnings
                 let g:syntastic_error_symbol = '✗'
                 let g:syntastic_warning_symbol = '⚠'
-                let g:syntastic_style_error_symbol = 'S'
-                let g:syntastic_style_warning_symbol = 's'
+                let g:syntastic_style_error_symbol = '✑'
+                let g:syntastic_style_warning_symbol = '✎'
                 " Don't use balloons
                 let g:syntastic_enable_balloons = 0
                 " Don't use syntax highlighting
-                let g:syntastic_enable_highlighting = 0
+                let g:syntastic_enable_highlighting = 1
                 " Don't automatically jump to the first error when first opening a file
                 let g:syntastic_auto_jump = 0
                 " Always use location list for errors
@@ -418,7 +418,7 @@
                 noremap <leader>q :Unite  -buffer-name=quickfix -no-quit -toggle quickfix<cr>
                 " Modify quickfix window with unite
                 noremap <silent> <leader>cc :Unite  -buffer-name=quickfix -no-quit -horizontal -winheight=12 -no-quit -toggle quickfix<cr>
-                noremap <silent> <leader>ll :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle quickfix<cr>
+                noremap <silent> <leader>ll :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle location_list<cr>
 
             " }}}
             " YouCompleteMe {{{
@@ -661,8 +661,6 @@
         noremap <silent> <leader>lf :lgetfile<cr>
         " Re-read error file and jump to first error
         noremap <silent> <leader>lj :lfile<cr>
-        " List all errors
-        noremap <silent> <leader>ll :llist<cr>
         " Go to older error location list
         noremap <silent> <leader>l- :lolder<cr>
         " Go to newer error location list
