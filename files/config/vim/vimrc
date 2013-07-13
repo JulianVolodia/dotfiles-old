@@ -250,7 +250,8 @@
                 " TODO:
                 " - Add explicit color mappings
                 " Toggle display of all kinds of parens
-                noremap <silent> <leader>r :RainbowParenthesesToggleAll<cr>
+                noremap <silent> co) :RainbowParenthesesToggleAll<cr>
+                noremap <silent> co( :RainbowParenthesesToggleAll<cr>
 
             " }}}
             " ShowTrailingWhitespace {{{
@@ -258,7 +259,7 @@
                 let g:ShowTrailingWhitespace = 0
                 " ZOMGWTFBBQ
                 " I mean, toggle trailing whitespace display for current buffer
-                noremap <silent> <leader><space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Showing trailing whitespace' : 'Not showing trailing whitespace')<cr>
+                noremap <silent> co<space> :<c-u>call ShowTrailingWhitespace#Toggle(0)<bar>echo (ShowTrailingWhitespace#IsSet() ? 'Showing trailing whitespace' : 'Not showing trailing whitespace')<cr>
 
             " }}}
             " Signify {{{
@@ -269,8 +270,8 @@
             " Don't overwrite signs used by other plugins (e.g. Syntastic)
             let g:signify_sign_overwrite = 0
             " Toggle Signify symbols
-            " (the vV mapping comes from Signify's interaction with VCSs)
-            noremap <leader>vV :SignifyToggle<cr>
+            " (the mapping is similar to the [c and ]c mappings)
+            noremap <silent> coC :SignifyToggle<cr>
             " }}}
             " Splice {{{
                 " Use this as the splice prefix
@@ -311,7 +312,7 @@
                 " Check manually
                 noremap <leader>SS :SyntasticCheck<cr>
                 " Toggle between active and passive
-                noremap <leader>St :SyntasticToggleMode<cr>
+                noremap <silent> coS :SyntasticToggleMode<cr>
 
             " }}}
             " Tabularize {{{
