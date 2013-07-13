@@ -4,8 +4,8 @@
     " Leaders {{{
         " These have to be put here in order to work, otherwise the plugin keybindings
         " don't pick up the leader change
-        let mapleader = ","
-        let maplocalleader = "´"
+        let mapleader = "\<space>"
+        let maplocalleader = "-"
 
     " }}}
     " A word on runtimepath settings. {{{
@@ -421,6 +421,7 @@
             let g:ycm_autoclose_preview_window_after_completion = 1
             " Load .ycm_extra_conf.py only from ~/prj and downwards
             let g:ycm_extra_conf_globlist = ['~/prj/*', '!~/*']
+
             " }}}
 
         " }}}
@@ -652,19 +653,20 @@
     " }}}
     " Completion {{{
         " Use <C-J> and <C-K> instead of <C-N> and <C-P>
-        imap <c-j> <c-n>
-        imap <c-k> <c-p>
+        inoremap <c-j> <c-n>
+        inoremap <c-k> <c-p>
 
     " }}}
 
     " Easier :nohl
-    noremap <silent> <leader><cr> :nohlsearch<cr>
-    " Makes folding fun
-    noremap <silent> <space> za
+    nnoremap <silent> <esc> :nohlsearch<cr>
     " Use this to toggle paste mode
     set pastetoggle=<f1>
     " Make Y behave like D and C
     noremap <silent> Y y$
+    " Switch ; and , behavior so that , searches forwards and <s-,> backwards
+    noremap , ;
+    noremap ; ,
 
 " }}}
 " Autocommands {{{
