@@ -9,13 +9,14 @@
 
     " }}}
     " A word on runtimepath settings. {{{
-        " Vundle adds the rtps of its bundles to the beginning of an existing
+        " NeoBundle adds the rtps of its bundles to the beginning of an existing
         " runtimepath, and its bundle/after rtps at the end of the existing
-        " runtimepath. Since Vim gives higher priority to files that are earlier in
-        " the runtimepath, this leads to bundle settings having higher precedence than
-        " user settings, which just shouldn't happen. In order to alleviate that
-        " problem, I wait after Vundle has initialized all its bundles before I set
-        " the remaining part of the runtimepath. It should look like this:
+        " runtimepath. Since Vim gives higher priority to files that are earlier
+        " in the runtimepath, this leads to bundle settings having higher
+        " precedence than user settings, which just shouldn't happen. In order
+        " to alleviate that problem, I wait until after NeoBundle has
+        " initialized all its bundles before I set the remaining part of the
+        " runtimepath. It should look like this:
         "
         "   u - b - s -- sa - ba - ua
         "
@@ -30,44 +31,58 @@
         "   both in the regular plugin/ftplugin directories as well as in the after/
     "   directories. I believe this is the way it should be. }}}
     " Early runtimepath dickery!
-    set runtimepath=$XDG_DATA_HOME/vim/bundle/vundle,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+    set runtimepath=$XDG_DATA_HOME/vim/bundle/neobundle.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
     " Plugins {{{
-        " Vundle initialization {{{
-            " Vundle wants this to be off
+        " Neobundle initialization {{{
+            " Neobundle wants this to be off
             filetype off
-            call vundle#rc("$XDG_DATA_HOME/vim/bundle")
+            call neobundle#rc(expand("$XDG_DATA_HOME/vim/bundle"))
+            " Let NeoBundle manage NeoBundle
+            NeoBundleFetch 'Shougo/neobundle.vim'
             " Bundles
-            Bundle 'gmarik/vundle'
-            Bundle 'ervandew/ag'
-            Bundle 'tpope/vim-commentary'
-            Bundle 'vim-scripts/DeleteTrailingWhitespace'
-            Bundle 'tpope/vim-fugitive'
-            Bundle 'sjl/gundo.vim.git'
-            Bundle 'ivanov/vim-ipython'
-            Bundle 'davidhalter/jedi-vim'
-            Bundle 'LaTeX-Box-Team/LaTeX-Box'
-            Bundle 'ludovicchabant/vim-lawrencium'
-            Bundle 'zhaocai/linepower.vim'
-            Bundle 'MarcWeber/vim-addon-local-vimrc'
-            Bundle 'edsono/vim-matchit'
-            Bundle 'tpope/vim-obsession'
-            Bundle 'kien/rainbow_parentheses.vim'
-            Bundle 'tpope/vim-repeat'
-            Bundle 'vim-scripts/ShowTrailingWhitespace'
-            Bundle 'tmhedberg/SimpylFold'
-            Bundle 'sjl/splice.vim.git'
-            Bundle 'tpope/vim-surround'
-            Bundle 'scrooloose/syntastic'
-            Bundle 'godlygeek/tabular'
-            Bundle 'majutsushi/tagbar'
-            Bundle 'LStinson/TagmaTasks'
-            Bundle 'SirVer/ultisnips'
-            Bundle 'tpope/vim-unimpaired'
-            Bundle 'Shougo/unite.vim'
-            Bundle 'tsukkee/unite-help'
-            Bundle 'osyo-manga/unite-quickfix'
-            Bundle 'tsukkee/unite-tag'
-            Bundle 'ervandew/supertab'
+            " Vimproc has a native component
+            NeoBundle 'Shougo/vimproc', {
+                \ 'build': {
+                \     'windows': 'make -f make_mingw32.mak',
+                \     'cygwin': 'make -f make_cygwin.mak',
+                \     'mac': 'make -f make_mac.mak',
+                \     'unix': 'make -f make_unix.mak',
+                \     },
+                \ }
+            NeoBundle 'ervandew/ag'
+            NeoBundle 'tpope/vim-commentary'
+            NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
+            NeoBundle 'tpope/vim-fugitive'
+            NeoBundle 'sjl/gundo.vim.git'
+            NeoBundle 'ivanov/vim-ipython'
+            NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+            NeoBundle 'ludovicchabant/vim-lawrencium'
+            NeoBundle 'zhaocai/linepower.vim'
+            NeoBundle 'MarcWeber/vim-addon-local-vimrc'
+            NeoBundle 'edsono/vim-matchit'
+            NeoBundle 'tpope/vim-obsession'
+            NeoBundle 'kien/rainbow_parentheses.vim'
+            NeoBundle 'tpope/vim-repeat'
+            NeoBundle 'vim-scripts/ShowTrailingWhitespace'
+            NeoBundle 'tmhedberg/SimpylFold'
+            NeoBundle 'sjl/splice.vim.git'
+            NeoBundle 'tpope/vim-surround'
+            NeoBundle 'scrooloose/syntastic'
+            NeoBundle 'godlygeek/tabular'
+            NeoBundle 'majutsushi/tagbar'
+            NeoBundle 'LStinson/TagmaTasks'
+            NeoBundle 'SirVer/ultisnips'
+            NeoBundle 'tpope/vim-unimpaired'
+            NeoBundle 'Shougo/unite.vim'
+            NeoBundle 'tsukkee/unite-help'
+            NeoBundle 'osyo-manga/unite-quickfix'
+            NeoBundle 'tsukkee/unite-tag'
+            " Requires libclang 3.2 or higher, CMake, and Python headers
+            NeoBundle 'Valloric/YouCompleteMe', {
+            \   'build': {
+            \       'unix': 'cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON cpp && make ycm_core'
+            \       }
+            \ }
             filetype plugin indent on
         " }}}
         " Configuration {{{
@@ -252,32 +267,6 @@
                 let g:splice_initial_scrollbind_loupe = 1
                 let g:splice_initial_scrollbind_compare = 1
                 let g:splice_initial_scrollbind_path = 1
-
-            " }}}
-            " Supertab {{{
-                " Let supertab make out completion context
-                " Uses completefunc if set, or else omnifunc
-                " Else: Falls back to secondary default as specified by
-                " g:SuperTabContextDefaultCompletionType
-                let g:SuperTabDefaultCompletionType = "context"
-                " Use this as fallback
-                let g:SuperTabContextDefaultCompletionType = "<c-n>"
-                " Complete longest common match (like in shells)
-                let g:SuperTabLongestEnhanced = 1
-                " Automatically select first entry in menu
-                let g:SuperTabLongestHighlight = 1
-                " Use this to move forward
-                let g:SuperTabMappingForward = "<tab>"
-                " Use this to move backward
-                let g:SuperTabMappingBackward = "<s-tab>"
-                " Use this to display the normal <tab> character (is still affected by
-                " expandtab, shiftwidth, etc.)
-                " Doesn't work in terminal
-                let g:SuperTabMappingTabLiteral = "<c-tab>"
-                " Use <cr> to cancel completion
-                let g:SuperTabCrMapping = 1
-                " Automatically close preview window when popup window is closed
-                let g:SuperTabClosePreviewOnPopupClose = 1
 
             " }}}
             " Syntastic {{{
