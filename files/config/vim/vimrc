@@ -174,8 +174,7 @@
             " }}}
             " Gundo {{{
                 " Toggles the Gundo windows
-                " It looks kinda like a tree, see? See?
-                noremap <f3> :GundoToggle<cr>
+                noremap <leader>u :GundoToggle<cr>
                 " horizontal width of Gundo graph
                 let g:gundo_width = 50
                 " Vertical height of preview window
