@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=MegaMan Revolution
+Exec=env WINEARCH=win32 WINEPREFIX=$XDG_DATA_HOME/wine/mmr wine "C:/Program Files/Mega Man Revolution/Launcher.exe"
+Terminal=false
+Type=Application
+Categories=Game;

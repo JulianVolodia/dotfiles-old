@@ -17,11 +17,11 @@ set $mod Mod4
 set $term xfce4-terminal
 
 # Dmenu arguments
-set $dmenu_args -fn 'EB Garamond 12' -nf '#262729' -nb '#fafafa' -sb '#356aa0' -sf '#ffffff'
+set $dmenu_args -fn 'Myriad Pro 12' -nf '#262729' -nb '#fafafa' -sb '#356aa0' -sf '#ffffff'
 # }}}
 # {{{ General
 # font for window titles
-font xft:EB Garamond 12
+font xft:Myriad Pro 12
 
 # Automatic back-and-forth
 workspace_auto_back_and_forth no
@@ -43,7 +43,7 @@ client.background #fafafa
 bar {
     status_command i3status
     position top
-    font xft:EB Garamond 12
+    font xft:Myriad Pro 12
     # Systray only on main monitor
     tray_output primary
     colors {
@@ -62,7 +62,7 @@ bar {
 bindsym $mod+y exec $term
 
 # Dmenu
-bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p 'Run:' $dmenu_args" --entry-type=command
+bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p 'Run:' $dmenu_args"
 
 # Ranger
 bindsym $mod+c exec $term -e ranger
