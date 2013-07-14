@@ -283,6 +283,10 @@
                 let g:splice_initial_scrollbind_path = 1
 
             " }}}
+            " Surround {{{
+            " I don't use the substitute command in visual/select mode anyways
+            xmap s <Plug>VSurround
+            " }}}
             " Syntastic {{{
                 " Don't run Syntastic on opening files
                 let g:syntastic_check_on_open = 0
@@ -625,7 +629,7 @@
         nnoremap <c-h> <c-w>h
 
         " Use <tab> to teleport to matching parens
-        noremap <tab> %
+        map <tab> %
 
     " }}}
     " Command-line window {{{
