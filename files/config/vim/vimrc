@@ -63,7 +63,6 @@
             NeoBundle 'MarcWeber/vim-addon-local-vimrc'
             NeoBundle 'edsono/vim-matchit'
             NeoBundle 'tpope/vim-obsession'
-            NeoBundle 'kien/rainbow_parentheses.vim'
             NeoBundle 'tpope/vim-repeat'
             NeoBundle 'vim-scripts/ShowTrailingWhitespace'
             NeoBundle 'mhinz/vim-signify'
@@ -250,14 +249,6 @@
                 endfunction " }}}
                 noremap <silent> <leader>o :call <SID>obsession()<cr>
                 noremap <silent> <leader>O :Obsession!<cr>
-            " }}}
-            " Rainbow Parentheses {{{
-                " TODO:
-                " - Add explicit color mappings
-                " Toggle display of all kinds of parens
-                noremap <silent> co) :RainbowParenthesesToggleAll<cr>
-                noremap <silent> co( :RainbowParenthesesToggleAll<cr>
-
             " }}}
             " ShowTrailingWhitespace {{{
                 " Show it by default
