@@ -425,12 +425,6 @@
 
             " }}}
             " YouCompleteMe {{{
-            " Only use completion for these file types
-            let g:ycm_filetype_whitelist = {
-                \ 'c': 1,
-                \ 'cpp': 1,
-                \ 'python': 1
-                \ }
             " Make YCM register itself as Syntastic checker for C, C++, Obj-C
             " and Obj-C++ filetypes (enables Syntastic integration)
             let g_ycm_register_as_syntastic_checker = 1
@@ -442,6 +436,12 @@
             let g:ycm_autoclose_preview_window_after_completion = 1
             " Load .ycm_extra_conf.py only from ~/prj and downwards
             let g:ycm_extra_conf_globlist = ['~/prj/*', '!~/*']
+            " Don't register a mapping for showing detailed diagnostics
+            let g:ycm_key_detailed_diagnostics = ''
+
+            " Use YCM's superior engine to goto definition
+            noremap gd :YcmCompleter GoToDeclaration<cr>
+            noremap gD :YcmCompleter GoToDefinitionElseDeclaration<cr> 
 
             " }}}
 
