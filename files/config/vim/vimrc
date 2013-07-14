@@ -59,6 +59,7 @@
             NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
             NeoBundle 'ludovicchabant/vim-lawrencium'
             NeoBundle 'zhaocai/linepower.vim'
+            NeoBundle 'Valloric/ListToggle'
             NeoBundle 'MarcWeber/vim-addon-local-vimrc'
             NeoBundle 'edsono/vim-matchit'
             NeoBundle 'tpope/vim-obsession'
@@ -77,8 +78,6 @@
             NeoBundle 'tpope/vim-unimpaired'
             NeoBundle 'Shougo/unite.vim'
             NeoBundle 'tsukkee/unite-help'
-            NeoBundle 'osyo-manga/unite-quickfix'
-            NeoBundle 'tsukkee/unite-tag'
             " Requires libclang 3.2 or higher, CMake, and Python headers
             NeoBundle 'Valloric/YouCompleteMe', {
             \   'build': {
@@ -224,6 +223,13 @@
                     " Revert current file to previous revision (no backup)
                     noremap <silent> <buffer> <leader>vR :Hgrevert!<cr>
                 endfunction
+            " }}}
+            " ListToggle {{{
+                " Line height
+                let g:lt_height = 10
+                " Toggle quickfix list
+                let g:quickfix_list_toggle_map = '<leader>cc'
+                let g:location_list_toggle_map = '<leader>ll'
             " }}}
             " Obsession {{{
                 " Sets up keybinding, invoked in autocmd below
@@ -415,13 +421,6 @@
                 noremap <leader>g :Unite -no-split -toggle -buffer-name=grep grep:%::<cr>
                 " Grep through all open buffers
                 noremap <leader>G :Unite -no-split -toggle -buffer-name=grep grep:$buffers::<cr>
-                " Modify quickfix window with unite
-                " Note: Remember to reload the unite window with <c-l> after
-                " changing the quickfix/location list contents
-                noremap <leader>q :Unite  -buffer-name=quickfix -no-quit -toggle quickfix<cr>
-                " Modify quickfix window with unite
-                noremap <silent> <leader>cc :Unite  -buffer-name=quickfix -no-quit -horizontal -winheight=12 -no-quit -toggle quickfix<cr>
-                noremap <silent> <leader>ll :Unite  -buffer-name=locations -no-quit -horizontal -winheight=12 -toggle location_list<cr>
 
             " }}}
             " YouCompleteMe {{{
