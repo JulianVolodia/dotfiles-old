@@ -360,11 +360,11 @@
                 " The default snippets are in <bundledir>/ultisnips/UltiSnips directory
                 let g:UltiSnipsSnippetDirectories = ["snippets", "UltiSnips"]
                 " " Use this to expand a trigger (i.e. insert a snippet)
-                let g:UltiSnipsExpandTrigger = "<tab>"
+                let g:UltiSnipsExpandTrigger = "<c-j>"
                 " Use this to jump forward to next trigger
-                let g:UltiSnipsJumpForwardTrigger = "<tab>"
+                let g:UltiSnipsJumpForwardTrigger = "<c-j>"
                 " Use this to jump backward to next trigger
-                let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+                let g:UltiSnipsJumpBackwardTrigger = "<c-j>"
                 " NOTE: UltiSnips automatically falls back on Supertab completion if there's
                 " no snippet to expand
 
@@ -587,11 +587,6 @@
 
 " }}}
 " Keybindings {{{
-    " Fucking keys {{{
-        " Fuck you, man key
-        noremap K <nop>
-
-    " }}}
     " Movement {{{
         " Makes opening command line easier
         nnoremap ü :
@@ -658,12 +653,6 @@
         noremap <silent> <leader>l- :lolder<cr>
         " Go to newer error location list
         noremap <silent> <leader>l+ :lnewer<cr>
-
-    " }}}
-    " Completion {{{
-        " Use <C-J> and <C-K> instead of <C-N> and <C-P>
-        inoremap <c-j> <c-n>
-        inoremap <c-k> <c-p>
 
     " }}}
 
