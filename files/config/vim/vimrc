@@ -472,8 +472,8 @@
 " }}}
 " General {{{
     syntax enable
-    set background=light
-    colorscheme summerfruit256
+    set background=dark
+    colorscheme base16-monokai
     " I want to use LaTeX as my main TeX flavor, thank you very much
     " Also, it's kind of a pain in the ass having to set this in .vimrc, though
     " that's probably just my ignorance speaking
