@@ -50,6 +50,7 @@
                 \     },
                 \ }
             NeoBundle 'ervandew/ag'
+            NeoBundle 'bling/vim-airline'
             NeoBundle 'vim-scripts/argtextobj.vim'
             NeoBundle 'tpope/vim-commentary'
             NeoBundle 'vim-scripts/DeleteTrailingWhitespace'
@@ -58,7 +59,6 @@
             NeoBundle 'ivanov/vim-ipython'
             NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
             NeoBundle 'ludovicchabant/vim-lawrencium'
-            NeoBundle 'zhaocai/linepower.vim'
             NeoBundle 'Valloric/ListToggle'
             NeoBundle 'MarcWeber/vim-addon-local-vimrc'
             NeoBundle 'edsono/vim-matchit'
@@ -94,6 +94,34 @@
             "   commentary and üü)
             " Ag {{{
                 noremap <leader>a :Ag<space>
+
+            " }}}
+            " Airline {{{
+                " Separators between categories
+                " let g:airline_left_sep = '▶'
+                let g:airline_left_sep = '»'
+                " let g:airline_right_sep = '◀'
+                let g:airline_right_sep = '«'
+                let g:airline_linecolumn_prefix = '␤'
+                let g:airline_fugitive_prefix = '⎇'
+                let g:airline_readonly_symbol = 'RO'
+                let g:airline_paste_symbol = 'ρ'
+                " Disable bufferline integration
+                let g:airline_enable_bufferline = 0
+                " Enable Syntastic integration
+                let g:airline_enable_syntastic = 1
+                " Enable Fugitive integration
+                let g:airline_enable_fugitive = 1
+                " Define the text to display for each mode
+                let g:airline_mode_map = {
+                    \ 'n'  : ' N',
+                    \ 'i'  : ' I',
+                    \ 'R'  : ' R',
+                    \ 'v'  : ' V',
+                    \ 'V'  : 'lV',
+                    \ 'c'  : ' C',
+                    \ '' : 'bV',
+                    \ }
 
             " }}}
             " DeleteTrailingWhitespace {{{
@@ -431,7 +459,7 @@
 
             " Use YCM's superior engine to goto definition
             noremap gd :YcmCompleter GoToDeclaration<cr>
-            noremap gD :YcmCompleter GoToDefinitionElseDeclaration<cr> 
+            noremap gD :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
             " }}}
 
