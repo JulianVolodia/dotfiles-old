@@ -36,3 +36,8 @@ Mutt:
     * movetotrash
     * movetospam
     * archive (remove from inbox)
+
+Weechat:
+========
+
+* Toggle timestamps
