@@ -26,6 +26,7 @@ Vim:
 ====
 
 * Fix Vim assuming <256 colors even on a 256-color terminal
+* Fix completion highlighting
 
 Mutt:
 =====

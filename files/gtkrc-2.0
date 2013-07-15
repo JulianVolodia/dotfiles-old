@@ -1,8 +1,10 @@
-gtk-theme-name="Elegant_revisited"
-gtk-font-name="EB Garamond 12"
+gtk-theme-name="Numix"
+gtk-font-name="Myriad Pro 12"
 gtk-icon-theme-name="all-blacks"
 gtk-cursor-theme-size=0
-gtk-button-images=1
+gtk-toolbar-style=GTK_TOOLBAR_TEXT
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=0
 gtk-menu-images=1
 gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=1
