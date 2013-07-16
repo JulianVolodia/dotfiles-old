@@ -2,22 +2,22 @@
 " Scheme: Wimer Hazenberg (http://www.monokai.nl)
 
 " GUI color definitions
-let s:gui00 = "272822"
-let s:gui01 = "383830"
-let s:gui02 = "49483e"
-let s:gui03 = "75715e"
-let s:gui04 = "a59f85"
-let s:gui05 = "f8f8f2"
-let s:gui06 = "f5f4f1"
-let s:gui07 = "f9f8f5"
-let s:gui08 = "f92672"
-let s:gui09 = "fd971f"
-let s:gui0A = "f4bf75"
-let s:gui0B = "a6e22e"
-let s:gui0C = "a1efe4"
-let s:gui0D = "66d9ef"
-let s:gui0E = "ae81ff"
-let s:gui0F = "cc6633"
+let s:gui00 = "272822" " darkest gray
+let s:gui01 = "383830" " darker gray
+let s:gui02 = "49483e" " gray
+let s:gui03 = "75715e" " lighter gray
+let s:gui04 = "a59f85" " lightest gray
+let s:gui05 = "f8f8f2" " whiter
+let s:gui06 = "f5f4f1" " white
+let s:gui07 = "f9f8f5" " whitest
+let s:gui08 = "f92672" " magenta
+let s:gui09 = "fd971f" " orange
+let s:gui0A = "f4bf75" " skin tone
+let s:gui0B = "a6e22e" " faded lime
+let s:gui0C = "a1efe4" " sky blue
+let s:gui0D = "66d9ef" " cyan
+let s:gui0E = "ae81ff" " lilac
+let s:gui0F = "cc6633" " light brown
 
 " Terminal color definitions
 let s:cterm00 = "00"

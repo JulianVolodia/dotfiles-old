@@ -17,11 +17,11 @@ set $mod Mod4
 set $term xfce4-terminal
 
 # Dmenu arguments
-set $dmenu_args -i -fn 'Myriad Pro 12' -nf '#262729' -nb '#fafafa' -sb '#356aa0' -sf '#ffffff'
+set $dmenu_args -i -fn 'Consolas 12' -nf '#f5f4f1' -nb '#272822' -sb '#fd971f' -sf '#f9f8f5'
 # }}}
 # {{{ General
 # font for window titles
-font xft:Myriad Pro 12
+font xft:Consolas 12
 
 # Automatic back-and-forth
 workspace_auto_back_and_forth no
@@ -31,49 +31,69 @@ hide_edge_borders both
 # }}}
 # {{{ Window Rules
 # Makes games float
-for_window [class="FTL"] floating enable
-for_window [title="Diablo II"] floating enable
-for_window [title="MMR Launcher"] floating enable
-for_window [title="Mega Man Revolution*"] floating enable
-for_window [title="Mega Man Unlimited"] floating enable
-for_window [title="Hotline Miami*"] floating enable
-for_window [class="CaveStory+"] floating enable
-for_window [class="intrusion2-*"] floating enable
-for_window [title="Super Hexagon"] floating enable
-for_window [class="Snes9x-gtk"] floating enable
-for_window [class="Desmume"] floating enable
-for_window [class="mednafen"] floating enable
-for_window [class="bit.trip.beat"] floating enable
-for_window [class="bit.trip.runner"] floating enable
+for_window [class="^FTL$"] floating enable
+for_window [title="^Diablo II$"] floating enable
+for_window [title="^MMR Launcher$"] floating enable
+for_window [title="^Mega Man Revolution*"] floating enable
+for_window [title="^Mega Man Unlimited$"] floating enable
+for_window [title="^Hotline Miami*"] floating enable
+for_window [class="^CaveStory\+$"] floating enable
+for_window [class="^intrusion2-*"] floating enable
+for_window [title="^Super Hexagon$"] floating enable
+for_window [class="^Snes9x-gtk$"] floating enable
+for_window [class="^Desmume$"] floating enable
+for_window [class="^mednafen$"] floating enable
+for_window [class="^bit.trip.beat$"] floating enable
+for_window [class="^bit.trip.runner$"] floating enable
 
 # }}}
 # {{{ Colors
+# Color palette {{{
+# #272822 - darkest gray, bg
+# #383830 - darker gray
+# #49483e - gray, comments
+# #75715e - lighter gray
+# #a59f85 - lightest gray
+# #f8f8f2 - whiter
+# #f5f4f1 - white
+# #f9f8f5 - whitest
+# #f92672 - magenta
+# #fd971f - orange
+# #f4bf75 - skin
+# #a6e22e - faded lime
+# #a1efe4 - faded sky blue
+# #66d9ef - cyan
+# #ae81ff - light purple
+# #cc6633 - light brown
+# }}}
 # Name - border - background - text - indicator
 # Focused window
-client.focused #d3d3d4 #356aa0 #fafafa #262729
+client.focused #49483e #272822 #a6e22e #fd971f
 # Focused window in another container
-client.focused_inactive #356aa0 #fafafa #356aa0 #262729
+client.focused_inactive #383830 #272822 #a1efe4 #f5f4f1
 # Unfocused window
-client.unfocused #d3d3d4 #fafafa #262729 #262729
+client.unfocused #272822 #272822 #f5f4f1 #f5f4f1
 # Window with urgent hint
-client.urgent #121212 #fa2573 #ffffff #262729
+client.urgent #272822 #f92672 #f9f8f5 #f5f4f1
 # The part of a window that's not the client
-client.background #fafafa
+client.background #272822
 # }}}
 # {{{ Status bar
 bar {
     status_command i3status
     position top
-    font xft:Myriad Pro 12
+    font xft:Consolas 12
     # Systray only on main monitor
     tray_output primary
     colors {
-        background #fafafa
-        statusline #262729
-        focused_workspace #356aa0 #356aa0 #ffffff
-        active_workspace #d3d3d4 #98b2cd #262729
-        inactive_workspace #d3d3d4 #fafafa #262729
-        urgent_workspace #eda087 #eda087 #262729
+        background #272822
+        statusline #f5f4f1
+        separator #fd971f
+        # Name - border - background - text
+        focused_workspace #49483e #272822 #a6e22e
+        active_workspace #383830 #272822 #a1efe4
+        inactive_workspace #272822 #272822 #f5f4f1
+        urgent_workspace #272822 #f92672 #f9f8f5
     }
 }
 # }}}
@@ -83,15 +103,15 @@ bar {
 bindsym $mod+y exec $term
 
 # Dmenu
-bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p 'Run:' $dmenu_args"
+bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p ' ×〉' $dmenu_args"
 
 # Ranger
 bindsym $mod+c exec $term -e ranger
 
 # Mounting
-bindsym $mod+i exec mount-script -m -- dmenu -p 'Mount:' $dmenu_args
+bindsym $mod+i exec mount-script -m -- dmenu -p ' ☐ 〉' $dmenu_args
 # Unmounting
-bindsym $mod+o exec mount-script -u -- dmenu -p 'Unmount:' $dmenu_args
+bindsym $mod+o exec mount-script -u -- dmenu -p '〈☒ ' $dmenu_args
 # }}}
 # {{{ MPD stuff
 mode "music" {

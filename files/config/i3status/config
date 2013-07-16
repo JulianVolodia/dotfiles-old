@@ -1,9 +1,9 @@
 general {
     colors = true
-    color_good = "#262729"
-    color_degraded = "#808080"
-    color_bad = "#356aa0"
-    color_separator = "#d3d3d4"
+    color_good = "#f9f8f5"
+    color_degraded = "#fd971f"
+    color_bad = "#f92672"
+    color_separator = "#fd971f"
     interval = 5
 }
 
@@ -12,9 +12,11 @@ order += "battery 0"
 order += "time"
 
 battery 0 {
-    format = "B: %percentage %remaining"
+    format = "⚡ %percentage %remaining"
 }
 
+# Other unicode characters:
+# ⌚ ⧖ ⧗
 time {
-    format = "%H:%M"
+    format = "⧖ %H:%M"
 }
