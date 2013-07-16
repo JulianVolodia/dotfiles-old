@@ -41,3 +41,13 @@ Weechat:
 * Toggle timestamps
 * Use GNOME-Keyring for password storage (requirement for bitlbee usage)
 * Use bitlbee (with libpurple, maybe)
+
+Systemd:
+========
+
+* Add pulseaudio service
+* Add gnome-keyring service
+* Add notification-daemon service
+* Mercurial-keyring integration
+* offlineimap-keyring integration
+* msmtp-keyring integration

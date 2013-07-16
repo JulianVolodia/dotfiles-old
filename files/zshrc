@@ -16,13 +16,8 @@ colors
 
 # {{{ Setup
 # Setup gpg-agent for SSH keys
-ENV_FILE="$XDG_RUNTIME_DIR/gpg-agent.info"
-if [[ -r "$ENV_FILE" ]]; then
-    source "$ENV_FILE"
-    export GPG_AGENT_INFO
-    export SSH_AUTH_SOCK
-    export GPG_TTY=$(tty)
-fi
+export GPG_AGENT_INFO=$XDG_RUNTIME_DIR/gnome-keyring/gpg
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnome-keyring/ssh
 
 # Source virtualenvwrapper if it's installed
 if $(which virtualenvwrapper_lazy.sh) &> /dev/null; then
