@@ -1,4 +1,10 @@
 # ~/.zshrc
+#
+# {{{ Fix color terminal setup
+case $COLORTERM in
+    xfce4-terminal) export TERM=xterm-256color;;
+esac
+# }}}
 
 # {{{ Modules
 autoload -U compinit

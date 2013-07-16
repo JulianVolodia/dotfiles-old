@@ -1,5 +1,3 @@
-* Fix console to have 256 colors by default
-
 deploy:
 =======
 
@@ -25,7 +23,6 @@ Zsh:
 Vim:
 ====
 
-* Fix Vim assuming <256 colors even on a 256-color terminal
 * Fix completion highlighting
 
 Mutt:
