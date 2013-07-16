@@ -46,6 +46,9 @@ for_window [class="^mednafen$"] floating enable
 for_window [class="^bit.trip.beat$"] floating enable
 for_window [class="^bit.trip.runner$"] floating enable
 
+# Make GNOME-Keyring passphrase prompt float
+for_window [class="^Gcr-prompter$"] floating enable
+
 # }}}
 # {{{ Colors
 # Color palette {{{
