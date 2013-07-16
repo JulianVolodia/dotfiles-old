@@ -1,4 +1,4 @@
-export HOSTCOLOR='$black'
+export HOSTCOLOR='$white'
 export EDITOR="vim"
 
 # Not supplied by libx11 anymore, and I need them for some things
