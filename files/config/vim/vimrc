@@ -459,6 +459,11 @@
                 \ 'python': 1,
                 \ 'tex': 1,
                 \ }
+            " Use '{' to trigger semantic completion for LaTeX, using
+            " LaTeX-Box's omnicomplete function
+            let g:ycm_semantic_triggers = {
+                \ 'tex': ['{'],
+                \ }
             " Load .ycm_extra_conf.py only from ~/prj and downwards
             let g:ycm_extra_conf_globlist = ['~/prj/*', '!~/*']
             " Don't register a mapping for showing detailed diagnostics
