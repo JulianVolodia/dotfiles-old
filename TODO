@@ -46,7 +46,6 @@ Systemd:
 ========
 
 * Use gdm
-* Add pulseaudio service
 * Add gnome-keyring service
 * Add notification-daemon service
 
