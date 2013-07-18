@@ -392,9 +392,7 @@
                 " Use this to jump forward to next trigger
                 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
                 " Use this to jump backward to next trigger
-                let g:UltiSnipsJumpBackwardTrigger = "<c-j>"
-                " NOTE: UltiSnips automatically falls back on Supertab completion if there's
-                " no snippet to expand
+                let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
             " }}}
             " Unite {{{
@@ -695,7 +693,7 @@
     set pastetoggle=<f2>
     " Make Y behave like D and C
     noremap <silent> Y y$
-    " Switch ; and , behavior so that , searches forwards and <s-,> backwards
+    " Switch ; and , behavior so that , searches forwards and ; backwards
     noremap , ;
     noremap ; ,
 
