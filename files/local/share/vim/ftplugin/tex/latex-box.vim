@@ -1,6 +1,8 @@
 " Settings {{{
     " Disable default keybindings
     let g:LatexBox_no_mappings = 1
+    " Use asynchronous compilation
+    let g:LatexBox_latexmk_async = 1
     " Use spaces as wildcards in BibTeX completion
     let g:LatexBox_bibtex_wild_spaces = 1
     " Allow folding
