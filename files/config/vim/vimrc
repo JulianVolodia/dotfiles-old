@@ -255,8 +255,8 @@
                 " Line height
                 let g:lt_height = 10
                 " Toggle quickfix list
-                let g:quickfix_list_toggle_map = '<leader>cc'
-                let g:location_list_toggle_map = '<leader>ll'
+                let g:lt_quickfix_list_toggle_map = '<leader>cc'
+                let g:lt_location_list_toggle_map = '<leader>ll'
             " }}}
             " Obsession {{{
                 " Sets up keybinding, invoked in autocmd below
@@ -666,7 +666,6 @@
     " }}}
     " Quickfix and location list windows {{{
         " Use unimpaired for the regularly used bracket commands
-        " Use unite for basic window interaction (see above)
         " Re-read error file
         noremap <silent> <leader>cf :cgetfile<cr>
         " Re-read error file and jump to first error
