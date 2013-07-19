@@ -68,13 +68,11 @@
         " Compile with latexmk in background
         noremap <buffer> <silent> <f5> :Latexmk<cr>
         " Force latexmk compilation
-        noremap <buffer> <silent> <f6> :LatexmkForce<cr>
-        " Clean all compilation output (including generated output file)
-        noremap <buffer> <silent> <f7> :LatexmkClean!<cr>
+        noremap <buffer> <silent> <f6> :Latexmk!<cr>
         " Show running status for current buffer
-        noremap <buffer> <silent> <f8> :LatexmkStatus<cr>
+        noremap <buffer> <silent> <f7> :LatexmkStatus<cr>
         " View output
-        noremap <buffer> <silent> <f12> :LatexView<cr>
+        noremap <buffer> <silent> <f8> :LatexView<cr>
 
     " }}}
     " Movement commands {{{
