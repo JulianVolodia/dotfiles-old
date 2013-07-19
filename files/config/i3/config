@@ -106,15 +106,15 @@ bar {
 bindsym $mod+y exec $term
 
 # Dmenu
-bindsym $mod+x exec i3-dmenu-desktop --dmenu="dmenu -p ' ×〉' $dmenu_args"
+bindsym $mod+x exec i3-dmenu-desktop --entry-type=name --dmenu="dmenu -p '×〉' $dmenu_args"
 
 # Ranger
 bindsym $mod+c exec $term -e ranger
 
 # Mounting
-bindsym $mod+i exec mount-script -m -- dmenu -p ' ☐ 〉' $dmenu_args
+bindsym $mod+i exec mount-script -m -- dmenu -p '☐ »' $dmenu_args
 # Unmounting
-bindsym $mod+o exec mount-script -u -- dmenu -p '〈☒ ' $dmenu_args
+bindsym $mod+o exec mount-script -u -- dmenu -p '«☒ ' $dmenu_args
 # }}}
 # {{{ MPD stuff
 mode "music" {
