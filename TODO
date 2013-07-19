@@ -60,3 +60,8 @@ Gnome-Keyring:
 * Msmtp-keyring integration
 * Firefox integration
 * Weechat integration
+
+Dmenu:
+======
+
+* substring matching
