@@ -64,4 +64,8 @@ Gnome-Keyring:
 Dmenu:
 ======
 
+Patches:
 * substring matching
+* Height
+* xrdb
+* xft
