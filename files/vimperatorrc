@@ -5,7 +5,7 @@
 set defsearch="ddg"
 set newtab=all
 " Mapleader for a few keybindings
-let mapleader=","
+let mapleader="<space>"
 
 " Appearance {{{
 " Show these in status line
@@ -101,8 +101,6 @@ noremap <leader>tS :tabgroups switch<space>
 " }}}
 " Easier to reach
 noremap ü :
-" Easier extended hint matching
-noremap <silent> < ;
 " I'm used to the CtrlP Vim plugin, so…
 noremap <leader>b :buffer #
 " Toggle app tab for current tab
@@ -115,7 +113,7 @@ noremap <leader>T :set toolbars=invtabs<cr>
 noremap <silent> <c-r> :reloadall<cr>
 noremap <silent> <c-s-r> :reloadall!<cr>
 " Open bookmarks
-noremap <silent> <c-b> :bmarks<cr>
+noremap <silent> <f2> :bmarks<cr>
 
 " }}}
 
