@@ -5,7 +5,7 @@
 set defsearch="ddg"
 set newtab=all
 " Mapleader for a few keybindings
-let mapleader="<space>"
+let mapleader=","
 
 " Appearance {{{
 " Show these in status line
