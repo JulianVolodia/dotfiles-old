@@ -101,7 +101,7 @@
                 let g:airline_left_sep = '»'
                 let g:airline_right_sep = '«'
                 let g:airline_linecolumn_prefix = '␤ '
-                let g:airline_fugitive_prefix = '⎇ '
+                let g:airline_branch_prefix = '⎇ '
                 let g:airline_readonly_symbol = '₩'
                 let g:airline_paste_symbol = 'ρ'
                 " Disable bufferline integration
@@ -109,7 +109,7 @@
                 " Enable Syntastic integration
                 let g:airline_enable_syntastic = 1
                 " Enable Fugitive integration
-                let g:airline_enable_fugitive = 1
+                let g:airline_enable_branch = 1
                 " Define the text to display for each mode
                 let g:airline_mode_map = {
                     \ 'n'  : ' N',
