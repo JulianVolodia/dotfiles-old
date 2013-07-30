@@ -97,6 +97,8 @@
 
             " }}}
             " Airline {{{
+                " Use this theme
+                let g:airline_theme = 'molokai'
                 " Separators between categories
                 let g:airline_left_sep = '»'
                 let g:airline_right_sep = '«'
