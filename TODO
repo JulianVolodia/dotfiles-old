@@ -69,3 +69,9 @@ Patches:
 * Height
 * xrdb
 * xft
+
+Pulseaudio:
+===========
+
+* In conjunction with i3: Toggle mute from commandline (win-m win-m, also exits
+  music mode)
