@@ -114,7 +114,7 @@
         xmap <buffer> <silent> sW <Plug>LatexEnvWrapSelection
         " The tagbar plugin is not very useful for larger documents, so its key is
         " remapped to LaTeX-Box's TOC
-        noremap <buffer> <silent> <f2> :LatexTOCToggle<cr>
+        noremap <buffer> <silent> <f3> :LatexTOCToggle<cr>
 
 " }}}
 

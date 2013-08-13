@@ -372,7 +372,7 @@
                 " the tag
                 let tagbar_autoshowtag = 1
                 " Toggle Tagbar window
-                nnoremap <silent> <f4> :TagbarToggle<cr>
+                nnoremap <silent> <f3> :TagbarToggle<cr>
 
             " }}}
             " TagmaTasks {{{
@@ -389,7 +389,7 @@
                 " instead of those defined in this plugin
                 let g:TagmaTasksJumpKeys = 0
                 " Toggle task window
-                map <silent> <f5> <Plug>TagmaTaskToggle
+                map <silent> <f4> <Plug>TagmaTaskToggle
             " }}}
             " UltiSnips {{{
                 " Snippet directory for private snippets
@@ -699,8 +699,6 @@
 
     " Easier :nohl
     nnoremap <silent> <leader><cr> :nohlsearch<cr>
-    " Use this to toggle paste mode
-    set pastetoggle=<f2>
     " Make Y behave like D and C
     noremap <silent> Y y$
     " Switch ; and , behavior so that , searches forwards and ; backwards
