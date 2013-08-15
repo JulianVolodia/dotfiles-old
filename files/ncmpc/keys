@@ -7,7 +7,7 @@ key screen-keyedit = 273
 key home = 262,  'g'
 
 ## Move cursor to the bottom of the list
-key end = 360
+key end = 360, 'G'
 
 ## Scroll down one line
 key scroll-up-line = 16
