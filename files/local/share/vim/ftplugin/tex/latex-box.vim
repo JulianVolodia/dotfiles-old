@@ -109,9 +109,9 @@
         " Change the current environment
         nmap <buffer> <silent> cse <Plug>LatexChangeEnv
         " Wrap selection in a LaTeX command
-        xmap <buffer> <silent> sw <Plug>LatexWrapSelection
+        xmap <buffer> <silent> sc <Plug>LatexWrapSelection
         " Wrap selection in an environment
-        xmap <buffer> <silent> sW <Plug>LatexEnvWrapSelection
+        xmap <buffer> <silent> se <Plug>LatexEnvWrapSelection
         " The tagbar plugin is not very useful for larger documents, so its key is
         " remapped to LaTeX-Box's TOC
         noremap <buffer> <silent> <f3> :LatexTOCToggle<cr>
