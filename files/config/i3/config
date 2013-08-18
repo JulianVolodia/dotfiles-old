@@ -192,7 +192,7 @@ bindsym $mod+Ctrl+Shift+k move container to output up
 bindsym $mod+Ctrl+Shift+l move container to output right
 
 # Move current workspace to other output (toggles with two outputs)
-bindsym $mod+Shift+w move workspace to output down
+bindsym $mod+Shift+w move workspace to output left
 # }}}
 # {{{ Window Management
 # Use this+mouse to drag floating windows to their wanted position
