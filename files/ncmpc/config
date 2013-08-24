@@ -30,7 +30,7 @@ enable-mouse = yes
 search-mode = 4
 
 ## Auto center (center the playing track in the playlist)
-uto-center = yes
+auto-center = yes
 
 ## Show the most recent query when using find.
 find-show-last = yes
