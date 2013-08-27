@@ -12,4 +12,13 @@ bg_color white
 set opaque_background, off
 # Use multilayer transparency by default
 set transparency_mode, 1
-
+# Better antialiasing
+set antialias, 2
+# More "coarse" ray texture
+set ray_texture, 4
+# Use ambient occlusion for surfaces
+set ambient_occlusion_mode, 1
+set ambient_occlusion_scale, 2
+# No reflection
+set spec_reflect, 0.0
+set spec_power, 1500.0
