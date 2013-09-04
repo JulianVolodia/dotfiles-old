@@ -1,5 +1,6 @@
 export HOSTCOLOR='$white'
 export EDITOR="vim"
+export TERMCMD="xfce4-terminal"
 
 # Not supplied by libx11 anymore, and I need them for some things
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
@@ -17,6 +18,3 @@ export LD_LIBRARY_PATH="$MODINSTALL9v11/lib/x86_64-intel8"
 
 # Use this as local texmf tree
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
-
-# for notmuch mail index program
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuch.conf"
