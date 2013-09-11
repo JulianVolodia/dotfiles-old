@@ -18,7 +18,8 @@ deploy:
 Zsh:
 ====
 
-* Figure out how to incorporate virtualenv into path
+* Figure out how to incorporate virtualenv into prompt
+* Indicate RANGER_LEVEL to prompt somehow
 
 Vim:
 ====
@@ -40,7 +41,6 @@ Weechat:
 ========
 
 * Toggle timestamps
-* Use bitlbee (with libpurple, maybe)
 
 Systemd:
 ========
