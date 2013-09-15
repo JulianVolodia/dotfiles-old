@@ -21,11 +21,10 @@ Zsh:
 * Figure out how to incorporate virtualenv into prompt
 * Indicate RANGER_LEVEL to prompt somehow
 
-Vim:
-====
+Terminal:
+=========
 
-* Fix completion highlighting
-* Airline: Molokai theme
+* Fix the fucking 256-color weirdness
 
 Mutt:
 =====
@@ -41,6 +40,7 @@ Weechat:
 ========
 
 * Toggle timestamps
+* Remove seconds from timestamps
 
 Systemd:
 ========
