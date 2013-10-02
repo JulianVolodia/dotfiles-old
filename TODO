@@ -45,9 +45,9 @@ Weechat:
 Systemd:
 ========
 
-* Use gdm
 * Add gnome-keyring service
 * Add notification-daemon service
+* Fix systemd --user
 
 Gnome-Keyring:
 ==============
@@ -65,10 +65,9 @@ Dmenu:
 ======
 
 Patches:
-* substring matching
-* Height
-* xrdb
-* xft
+* Substring matching
+* Xrdb
+* Pango
 
 Pulseaudio:
 ===========
