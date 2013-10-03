@@ -4,7 +4,7 @@ Description=Compositing Manager
 # After=xorg.target
 
 [Service]
-ExecStart=/usr/bin/compton
+ExecStart=/usr/bin/compton --sw-opti --unredir-if-possible --detect-transient
 
 [Install]
 WantedBy=wm.target
