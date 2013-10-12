@@ -13,4 +13,7 @@ XKBKEYMAPFILE="$XKBDIR/keymaps/default.xkb"
 xkbcomp -I$XKBDIR $XKBKEYMAPFILE $DISPLAY
 
 # }}}
+
+# Start wm
+DISPLAY=:0.0 exec i3 -a
 # vim: foldmethod=marker
