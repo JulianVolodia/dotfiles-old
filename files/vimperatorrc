@@ -1,6 +1,8 @@
 " ~/.vimperatorrc by runiq.
 
 " Settings {{{
+" Runtimepath
+set runtimepath="$XDG_DATA_HOME/vimperator"
 " Set default search engine
 set defsearch="ddg"
 set newtab=all
@@ -8,6 +10,9 @@ set newtab=all
 let mapleader=","
 
 " Appearance {{{
+" Molokai colorscheme, stolen from
+" github.com/vehk/dotfiles/blob/master/vimperator/colors/molokai.vimp
+colorscheme molokai
 " Show these in status line
 set status="input,history,location,bookmark,position"
 " Don't show scrollbars, we have the position marker for that
@@ -27,17 +32,11 @@ set wildmode="list:longest,full"
 " Hints {{{
 " Match on labels only
 set hintinputs="label"
-set hintchars="asdfghjkl"
+set hintchars="abcdefghijklmnopqrstuvwxyz"
 " }}}
 " }}}
 " Keybindings {{{
 " Movement {{{
-" Faster scrolling
-noremap <silent> h 5h
-noremap <silent> j 5j
-noremap <silent> k 5k
-noremap <silent> l 5l
-
 " Move between tabs
 noremap <silent> H <c-p>
 noremap <silent> L <c-n>
@@ -56,7 +55,6 @@ nnoremap öö [[
 nnoremap ää ]]
 
 " Easier :tabmove; wraps around
-" TODO: Ask if counts can be implemented
 nnoremap <silent> <c-h> :tabmove! -1<cr>
 nnoremap <silent> <c-l> :tabmove! +1<cr>
 
@@ -73,21 +71,17 @@ inoremap <silent> <c-l> <right>
 " }}}
 " Tabgroup management {{{
 " Toggle tabgroups screen
-noremap <silent> <leader>e <c-s-e>
+noremap <silent> <leader>tt <c-s-e>
 " List all tabgroups
 noremap <silent> <leader>tl :tabgroups<cr>
 " Create and switch to tabgroup
 noremap <leader>ta :tabgroups add<space>
-" Create, move current tab, and switch to new tabgroup
-noremap <leader>tA :tabgroups add!<space>
-" Pull tab from tabgroup
-noremap <leader>ty :tabgroups pulltab<space>
 " Pull tab from tabgroup and switch to it
-noremap <leader>tY :tabgroups pulltab!<space>
-" Move current tab to new tabgroup
-noremap <leader>tp :tabgroups pushtab<space>
+noremap <leader>ty :tabgroups pulltab!<space>
+" Pull tab from tabgroup
+noremap <leader>tY :tabgroups pulltab<space>
 " Move current tab to new tabgroup and create it if necessary
-noremap <leader>tP :tabgroups pushtab!<space>
+noremap <leader>tp :tabgroups pushtab!<space>
 " Remove a tabgroup
 noremap <leader>td :tabgroups remove<space>
 " Remove current tabgroup
