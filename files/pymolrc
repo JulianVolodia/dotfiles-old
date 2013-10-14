@@ -10,15 +10,16 @@ import make_pov
 bg_color white
 # ...and transparent
 set opaque_background, off
-# Use multilayer transparency by default
-set transparency_mode, 1
+# Use unilayer transparency by default
+set transparency_mode, 2
 # Better antialiasing
 set antialias, 2
 # More "coarse" ray texture
 set ray_texture, 4
 # Use ambient occlusion for surfaces
 set ambient_occlusion_mode, 1
-set ambient_occlusion_scale, 2
+# MOAR OCCLUSION!
+set ambient_occlusion_scale, 18.0
 # No reflection
 set spec_reflect, 0.0
 set spec_power, 1500.0
