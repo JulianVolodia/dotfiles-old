@@ -55,8 +55,6 @@ say() { # {{{
 # }}}
 
 # {{{ Aliases
-alias qmine="qstat | grep $USER"
-alias mkdbindex="dropbox-index -R ~/shr/Dropbox/Public"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -64,9 +62,11 @@ alias ls='ls -F -h --color'
 alias ll='ls -l'
 alias la='ls -A'
 alias lla='ls -lA'
-which pacman &> /dev/null && alias p=pacman
-which pacaur &> /dev/null && alias pa=pacaur
-which systemctl &> /dev/null && alias syu="systemctl --user"
+alias p=pacman
+alias pa=pacaur
+alias syu="systemctl --user"
+alias sy="systemctl"
+alias jo="journalctl"
 
 # virtualenv {{{
 # These only work when a virtualenv is active
