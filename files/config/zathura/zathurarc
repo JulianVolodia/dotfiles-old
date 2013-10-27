@@ -8,6 +8,7 @@ set adjust-open "width"
 set pages-per-row 1
 
 # Appearance
+set statusbar-padding 17
 set completion-bg "#121212"
 set completion-fg "#5f5f5f"
 set completion-group-bg "#5f5f5f"
