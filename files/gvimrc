@@ -10,6 +10,3 @@ set guioptions-=R
 set guioptions-=b
 " Use console-style popups
 set guioptions+=c
-
-" Use this font as guifont
-set guifont=Consolas\ 12

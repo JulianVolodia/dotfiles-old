@@ -1,6 +1,0 @@
-export HOSTCOLOR='$green'
-
-# MODELLER {{{
-# Use MODELLER from system Python installation (works with Python 2.5+ only)
-MODELLER_PATH="$HOME/.local/modeller/9.10"
-export PYTHONPATH="$MODELLER_PATH/modlib:$MODELLER_PATH/lib/i386-intel8/python2.5"

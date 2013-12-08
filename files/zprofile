@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-# Remove delay when pressing Esc; makes Vi mode more pleasant to use
-export KEYTIMEOUT=0
-
-source $HOME/.profile

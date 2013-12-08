@@ -35,4 +35,4 @@ set highlight-transparency 0.7
 set recolor-darkcolor "#121212"
 set recolor-lightcolor "#d0d0d0"
 
-set font "Consolas normal 12"
+set font "monospace normal 12"
