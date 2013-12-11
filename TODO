@@ -1,0 +1,76 @@
+deploy:
+=======
+
+* Logging
+* Remove stale symlinks (there's a trick involving find:
+
+      find -L . -type l -delete
+
+  Tries to follow symlinks, but if it cannot, the stale symlink matches the
+  "-type l" specifier and gets deleted)
+* Ignore .orig files in source directory
+* Figure out how to save file permissions properly
+  (see http://stackoverflow.com/questions/1289816)
+* Add ability to create temporary, cache, etc. directories
+* Use rsync(?) to monitor changes in config files and add "reploy" ability that
+  mirrors changes back into the repository
+
+Zsh:
+====
+
+* Figure out how to incorporate virtualenv into prompt
+* Indicate RANGER_LEVEL to prompt somehow
+
+Terminal:
+=========
+
+* Fix the fucking 256-color weirdness
+
+Mutt:
+=====
+
+* "Virtual" mailboxes with mu
+* Mu commands:
+    * send+tag
+    * movetotrash
+    * movetospam
+    * archive (remove from inbox)
+
+Weechat:
+========
+
+* Toggle timestamps
+* Remove seconds from timestamps
+
+Systemd:
+========
+
+* Add gnome-keyring service
+* Add notification-daemon service
+* Fix systemd --user
+
+Gnome-Keyring:
+==============
+
+* Pam integration
+* Why are SSH_AUTH_SOCK and GPG_AGENT_INFO not forwarded through the systemd
+  environment?
+* Mercurial-keyring integration
+* Offlineimap-keyring integration
+* Msmtp-keyring integration
+* Firefox integration
+* Weechat integration
+
+Dmenu:
+======
+
+Patches:
+* Substring matching
+* Xrdb
+* Pango
+
+Pulseaudio:
+===========
+
+* In conjunction with i3: Toggle mute from commandline (win-m win-m, also exits
+  music mode)

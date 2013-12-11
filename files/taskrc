@@ -1,0 +1,32 @@
+# Location of task data
+# Note that environment vars are not expanded
+#data.location=$XDG_DATA_HOME/task
+
+nag=Es gibt Wichtigeres zu tun.
+
+shell.prompt=task>  
+
+tag.indicator=⚑
+active.indicator=★
+dependency.indicator=└
+recurrence.indicator=⌚
+
+# Show max 3 recurrent tasks
+recurrence.limit=3
+
+undo.style=diff
+
+# See taskrc(5)
+burndown.bias=0.666
+
+# Why the fuck doesn't taskwarrior respect LC_TIME?
+dateformat=d.m.Y
+dateformat.report=d.m.Y
+dateformat.holiday=YMD
+dateformat.edit=H:N d.m.Y
+dateformat.info=H:N d.m.Y
+dateformat.annotation=d.m.Y
+weekstart=Monday
+
+# Include holiday file
+include /usr/share/doc/task/rc/holidays.de-DE.rc

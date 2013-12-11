@@ -1,0 +1,12 @@
+[Unit]
+Description=WM Target
+# Requires=xorg.target
+Requires=dbus.socket
+Wants=common.target graphical.target
+AllowIsolate=true
+# Don't start the WM *after* the services, start them in parallel – they don't
+# depend on each other
+DefaultDependencies=false
+
+[Install]
+Alias=default.target

@@ -1,0 +1,18 @@
+#! /usr/bin/fish
+# vim: set foldmethod=marker filetype=sh:
+
+# Environment variables {{{
+set -x PATH "$HOME/.local/bin" "$PATH"
+set -x PAGER less
+set -x EDITOR vim
+# Smart case searching as in Vim
+set -x LESS "-Ri"
+# XDG basedir specification
+test -z $XDG_CONFIG_HOME; and set -x XDG_CONFIG_HOME "$HOME/.config"
+test -z $XDG_DATA_HOME; and set -x XDG_DATA_HOME "$HOME/.local/share"
+test -z $XDG_CACHE_HOME; and set -x XDG_CACHE_HOME "$HOME/.cache"
+test -z $XDG_DATA_DIRS; and set -x XDG_DATA_DIRS /usr/local/share /usr/share "$XDG_DATA_DIRS"
+test -z $XDG_CONFIG_DIRS; and set -x XDG_CONFIG_DIRS /etc/xdg "$XDG_CONFIG_DIRS"
+
+set -x TEXMFHOME "$XDG_DATA_HOME/texmf"
+# }}}

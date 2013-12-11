@@ -1,0 +1,10 @@
+[Unit]
+Description=Compositing Manager
+# Requires=xorg.target
+# After=xorg.target
+
+[Service]
+ExecStart=/usr/bin/compton --sw-opti --unredir-if-possible --detect-transient
+
+[Install]
+WantedBy=wm.target

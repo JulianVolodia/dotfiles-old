@@ -1,0 +1,25 @@
+#!/usr/bin/fish
+# vim: set filetype=sh:
+
+set sysresources /etc/X11/xinit/.Xresources
+set sysmodmap /etc/X11/xinit/.Xmodmap
+set userresources "$HOME/.Xresources"
+set usermodmap "$HOME/.Xmodmap"
+
+# Merge in defaults and keymaps
+test -f $sysresources; and xrdb -merge "$sysresources"
+test -f $sysmodmap; and xmodmap "$sysmodmap"
+test -f $userresources; and xrdb -merge "$userresources"
+test -f $usermodmap; and xmodmap "$usermodmap"
+
+# Start some nice programs
+#if test -d /etc/X11/xinit/xinitrc.d
+#  for f in /etc/X11/xinit/xinitrc.d/*
+#    #test -x "$f"; and eval "$f"
+#  end
+#end
+
+source $HOME/.xprofile
+
+# Start WM/DE
+exec awesome
