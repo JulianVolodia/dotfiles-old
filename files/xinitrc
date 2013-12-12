@@ -1,25 +1,24 @@
-#!/usr/bin/fish
-# vim: set filetype=sh:
+#!/bin/bash
 
-set sysresources /etc/X11/xinit/.Xresources
-set sysmodmap /etc/X11/xinit/.Xmodmap
-set userresources "$HOME/.Xresources"
-set usermodmap "$HOME/.Xmodmap"
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+userresources="$HOME/.Xresources"
+usermodmap="$HOME/.Xmodmap"
 
 # Merge in defaults and keymaps
-test -f $sysresources; and xrdb -merge "$sysresources"
-test -f $sysmodmap; and xmodmap "$sysmodmap"
-test -f $userresources; and xrdb -merge "$userresources"
-test -f $usermodmap; and xmodmap "$usermodmap"
+[ -f $sysresources ] && xrdb -merge "$sysresources"
+[ -f $sysmodmap ] && xmodmap "$sysmodmap"
+[ -f $userresources ] && xrdb -merge "$userresources"
+[ -f $usermodmap ] && xmodmap "$usermodmap"
 
 # Start some nice programs
-#if test -d /etc/X11/xinit/xinitrc.d
-#  for f in /etc/X11/xinit/xinitrc.d/*
-#    #test -x "$f"; and eval "$f"
-#  end
-#end
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && source "$f"
+  done
+fi
 
-source $HOME/.xprofile
+source "$HOME/.xprofile"
 
 # Start WM/DE
 exec awesome
