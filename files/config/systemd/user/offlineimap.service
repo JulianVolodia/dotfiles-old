@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/offlineimap -c ${XDG_CONFIG_HOME}/offlineimap/offlineimap.conf -u basic
+ExecStart=/usr/bin/offlineimap -u basic
 Restart=on-abort
 
 [Install]

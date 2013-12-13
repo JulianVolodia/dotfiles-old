@@ -1,21 +1,12 @@
-#!/bin/bash
-# vim: set foldmethod=marker:
+#!/bin/sh
 
 # Override environment variables for graphical environment
 export EDITOR="gvim -f"
 
-# Appearance {{{
-  # Need this in order to use GTK style for Qt
-  export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+# Need this in order to use GTK style for Qt
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-# }}}
-# XBK Settings {{{
-  if [ -n $XDG_DATA_HOME ]; then
-    XKBDIR="$XDG_DATA_HOME/X11/xkb"
-  else
-    XKBDIR="$HOME/.local/share/X11/xkb"
-  fi
-  XKBKEYMAPFILE="$XKBDIR/keymaps/default.xkb"
-  xkbcomp -I"$XKBDIR" "$XKBKEYMAPFILE" "$DISPLAY"
-
-# }}}
+# XBK Settings
+XKBDIR="${XDG_DATA_HOME:-$HOME/.local/share}/X11/xkb"
+XKBKEYMAPFILE="$XKBDIR/keymaps/default.xkb"
+xkbcomp -I"$XKBDIR" "$XKBKEYMAPFILE" "$DISPLAY"

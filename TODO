@@ -46,15 +46,13 @@ Systemd:
 ========
 
 * Add gnome-keyring service
-* Add notification-daemon service
-* Fix systemd --user
 
 Gnome-Keyring:
 ==============
 
+* Export SSH_AUTH_SOCK, GPG_AGENT_INFO, and GNOME_KEYRING_CONTROL for systemd --user units
+* Find out how to make this work with displays other than :0
 * Pam integration
-* Why are SSH_AUTH_SOCK and GPG_AGENT_INFO not forwarded through the systemd
-  environment?
 * Mercurial-keyring integration
 * Offlineimap-keyring integration
 * Msmtp-keyring integration
