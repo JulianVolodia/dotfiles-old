@@ -3,7 +3,7 @@ Description=Dropbox
 After=local-fs.target network.target
 
 [Service]
-Type=simple
+Environment=DISPLAY=:0
 ExecStart=/usr/bin/dropboxd
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
