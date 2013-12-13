@@ -1,4 +1,4 @@
-" ~/.vimperatorrc by runiq.
+" vim: set filetype=vim foldmethod=marker:
 
 " Settings {{{
 " Runtimepath
@@ -27,7 +27,6 @@ set autocomplete=false
 set complete="bf"
 " First complete to longest common substring, then fully complete next match
 set wildmode="list:longest,full"
-
 " }}}
 " Hints {{{
 " Match on labels only
@@ -108,7 +107,4 @@ noremap <silent> <c-r> :reloadall<cr>
 noremap <silent> <c-s-r> :reloadall!<cr>
 " Open bookmarks
 noremap <silent> <f2> :bmarks<cr>
-
 " }}}
-
-" vim: set filetype=vim foldmethod=marker:

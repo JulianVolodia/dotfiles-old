@@ -1,3 +1,5 @@
+# vim: set foldmethod=marker:
+#
 # General appearance {{{
 # Make thread display narrower
 set narrow_tree
@@ -21,7 +23,6 @@ set folder_format = "%t %2C %N %D %f"
 set status_chars = "*%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 # }}}
-
 # Sidebar options {{{
 # The delimiter string
 set sidebar_delim = "│"
@@ -30,13 +31,11 @@ set sidebar_visible
 # Sidebar width
 set sidebar_width = 26
 # }}}
-
 # Index view {{{
 set date_format = "%g-%m-%d %R"
 set index_format="%C [%Z] %D %-20.20F %?M?+& ? %s"
 unset uncollapse_jump
 # }}}
-
 # Headers {{{
 # Ignore all headers...
 ignore *
@@ -45,7 +44,6 @@ unignore from: to: cc: date: subject:
 # ...in this order
 hdr_order from: to: cc: date: subject:
 # }}}
-
 # Colors {{{
 color normal default default
 color attachment magenta default
@@ -88,5 +86,3 @@ color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
 color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 # }}}
-
-# vim: set foldmethod=marker:

@@ -12,7 +12,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
--- {{{ Error handling
+-- Error handling {{{
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -34,17 +34,16 @@ do
                          text = err })
         in_error = false
     end)
-end
--- }}}
+end -- }}}
 
--- {{{ Variable definitions
+-- Variable definitions {{{
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "termite"
 editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+editor_cmd = editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -68,27 +67,24 @@ local layouts =
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
-}
--- }}}
+} -- }}}
 
--- {{{ Wallpaper
+-- Wallpaper {{{
 if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
-end
--- }}}
+end -- }}}
 
--- {{{ Tags
+-- Tags {{{
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
-end
--- }}}
+end -- }}}
 
--- {{{ Menu
+-- Menu {{{
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
@@ -109,7 +105,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- {{{ Wibox
+-- Wibox {{{
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
@@ -200,18 +196,16 @@ for s = 1, screen.count() do
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
-end
--- }}}
+end -- }}}
 
--- {{{ Mouse bindings
+-- Mouse bindings {{{
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
-))
--- }}}
+)) -- }}}
 
--- {{{ Key bindings
+-- Key bindings {{{
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
@@ -340,10 +334,9 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 -- Set keys
-root.keys(globalkeys)
--- }}}
+root.keys(globalkeys) -- }}}
 
--- {{{ Rules
+-- Rules {{{
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -361,10 +354,9 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
-}
--- }}}
+} -- }}}
 
--- {{{ Signals
+-- Signals {{{
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus

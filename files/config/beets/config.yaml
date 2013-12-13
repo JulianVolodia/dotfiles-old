@@ -17,7 +17,6 @@ paths:
 
 # Number discs separately for multi-disc releases
 per_disc_numbering: yes
-
 # }}}
 # Plugins {{{
 pluginpath:
@@ -40,7 +39,6 @@ plugins:
     - mpdupdate
     - replaygain
     - scrub
-
 # }}}
 # Plugin settings {{{
 acoustid: # {{{

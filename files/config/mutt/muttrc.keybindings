@@ -1,3 +1,5 @@
+# vim: set foldmethod=marker:
+
 # Keybindings {{{
 bind index,pager N search-opposite
 bind index,pager . sidebar-next
@@ -27,9 +29,7 @@ bind pager b previous-page
 
 bind compose p postpone-message
 # }}}
-
 # Macros {{{
-
 # Use abook for queries
 set query_command = "abook --mutt-query '%s'"
 
@@ -47,5 +47,3 @@ macro index,pager \cu "<enter-command> set my_pdsave=\$pipe_decode<enter>\
     <enter-command> set pipe_decode=\$my_pdsave<enter>" \
     "Get URLs"
 # }}}
-
-# vim: set foldmethod=marker:

@@ -1,4 +1,5 @@
-set spoolfile = "+al/INBOX"
+# vim: set foldmethod=marker:
+
 
 # SMTP options {{{
 # Include headers in editor window
@@ -10,8 +11,22 @@ set sendmail_wait = -1
 # If envelope_from_address is set, use it as the sender address
 set use_envelope_from
 # }}}
-
 # General options {{{
+# Don't add @<domain> when not specifying it
+unset use_domain
+
+# No, I do not want to continue my drafts, thank you very much
+unset recall
+# Don't move read messages out from spoolfile
+# I don't have an mbox anyways
+unset move
+
+# Sort messages by threads
+set sort = threads
+# Show oldest message first in threads
+set sort_aux = date-received
+# Only create threads from "In-Reply-To" and "References" fields
+set strict_threads
 # No delay when switching mailboxes
 set sleep_time = 0
 
@@ -73,8 +88,8 @@ unset wait_key
 # mailbox
 unset confirmappend
 # }}}
-
 # System options {{{
+set spoolfile = "+al/INBOX"
 # Keep headers in cache file
 set header_cache = ${XDG_CACHE_HOME}/mutt/headers
 
@@ -93,22 +108,4 @@ set charset = "UTF8"
 
 # Command for printing
 set print_command = "lp"
-
-# Don't add @<domain> when not specifying it
-unset use_domain
-
-# No, I do not want to continue my drafts, thank you very much
-unset recall
-# Don't move read messages out from spoolfile
-# I don't have an mbox anyways
-unset move
-
-# Sort messages by threads
-set sort = threads
-# Show oldest message first in threads
-set sort_aux = date-received
-# Only create threads from "In-Reply-To" and "References" fields
-set strict_threads
 # }}}
-
-# vim: set foldmethod=marker:

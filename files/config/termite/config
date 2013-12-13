@@ -1,4 +1,5 @@
 # vim: set foldmethod=marker filetype=dosini:
+
 [options]
 resize_grip = false
 scroll_on_output = false
@@ -64,4 +65,3 @@ color15 = #ffffff
 #border = #3f3f3f
 #border_width = 0.5
 #roundness = 2.0
-

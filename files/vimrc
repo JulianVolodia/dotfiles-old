@@ -1,4 +1,4 @@
-" runiq's ~/.config/vim/.vimrc
+" vim: set foldmethod=marker:
 
 " Early stuff {{{
     " These have to be put here in order to work, otherwise the plugin keybindings
@@ -710,5 +710,3 @@
         autocmd BufUnload * unlet! b:keybindings_setup
     augroup END
 " }}}
-
-" vim: set foldmethod=marker:
