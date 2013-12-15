@@ -333,6 +333,14 @@ clientbuttons = awful.util.table.join(
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
+-- Music {{{
+globalkeys = awful.util.table.join(globalkeys,
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end)
+)
+-- }}}
+
 -- Set keys
 root.keys(globalkeys) -- }}}
 

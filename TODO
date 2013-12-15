@@ -15,16 +15,10 @@ deploy:
 * Use rsync(?) to monitor changes in config files and add "reploy" ability that
   mirrors changes back into the repository
 
-Zsh:
+Fish:
 ====
 
-* Figure out how to incorporate virtualenv into prompt
 * Indicate RANGER_LEVEL to prompt somehow
-
-Terminal:
-=========
-
-* Fix the fucking 256-color weirdness
 
 Mutt:
 =====
@@ -66,9 +60,3 @@ Patches:
 * Substring matching
 * Xrdb
 * Pango
-
-Pulseaudio:
-===========
-
-* In conjunction with i3: Toggle mute from commandline (win-m win-m, also exits
-  music mode)
