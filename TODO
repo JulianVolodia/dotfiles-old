@@ -1,19 +1,7 @@
 deploy:
 =======
 
-* Logging
-* Remove stale symlinks (there's a trick involving find:
-
-      find -L . -type l -delete
-
-  Tries to follow symlinks, but if it cannot, the stale symlink matches the
-  "-type l" specifier and gets deleted)
-* Ignore .orig files in source directory
-* Figure out how to save file permissions properly
-  (see http://stackoverflow.com/questions/1289816)
-* Add ability to create temporary, cache, etc. directories
-* Use rsync(?) to monitor changes in config files and add "reploy" ability that
-  mirrors changes back into the repository
+* Use stow/rcm
 
 Fish:
 ====
@@ -23,40 +11,56 @@ Fish:
 Mutt:
 =====
 
-* "Virtual" mailboxes with mu
-* Mu commands:
-    * send+tag
-    * movetotrash
-    * movetospam
-    * archive (remove from inbox)
+* Configure mutt-kz
 
 Weechat:
 ========
 
+* Theme dat shit
 * Toggle timestamps
 * Remove seconds from timestamps
 
 Systemd:
 ========
 
-* Add gnome-keyring service
+* Make Gnome-Keyring work from systemd service
+* Perhaps add an environment.service
 
 Gnome-Keyring:
 ==============
 
-* Export SSH_AUTH_SOCK, GPG_AGENT_INFO, and GNOME_KEYRING_CONTROL for systemd --user units
 * Find out how to make this work with displays other than :0
-* Pam integration
-* Mercurial-keyring integration
+* Pam integration (pam_gnome_keyring.so always creates the keyring dir in $XDG_USER_DIR/keyring-<random> and with wrong permissions)
 * Offlineimap-keyring integration
 * Msmtp-keyring integration
 * Firefox integration
 * Weechat integration
 
-Dmenu:
-======
+Awesome:
+========
 
-Patches:
-* Substring matching
-* Xrdb
-* Pango
+* Theme dat shit
+    * "Useless gaps"
+    * Transparent window decorations?
+* Fewer layouts, super+m switches to current layout's mirror if possible
+* Is manual tiling possible?
+* See if I can remove pulseaudio-ctl dependency and use the PA D-Bus API directly
+* Mount script (DBUS, udisks[2])
+* Run-or-raise with different stuff (see http://awesome.naquadah.org/wiki/Run_or_raise)
+* Change colorscheme
+* Tags (dynamic) with tyrannical
+* Use modal keybindings and/or keychains
+    * e.g.: press Super + r (=resize), h/j/k/l resizes window
+    * Leave the mode as soon as one of the following happens:
+        * Super is released
+        * A key not used in this mode
+* Widgets
+    * MPD
+    * Battery
+    * Wireless
+    * Mail
+    * Calendar
+    * Taskwarrior
+* Document keybindings (http://awesome.naquadah.org/wiki/Document_keybindings)
+* Toggle-able statusbar, or autoshow/autohide it on certain events (changing desktop/monitor, tag)
+    * Keybinding to toggle statusbar persistence
