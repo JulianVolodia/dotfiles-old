@@ -1,7 +1,7 @@
 [general]
 #########
 
-accounts = itz
+accounts = itz,dr
 
 metadata = ~/.cache/offlineimap
 maxsyncaccounts = 4
@@ -133,8 +133,8 @@ nametrans: %(default_local_nametrans)s
 
 type = IMAP
 remotehost = mail.uni-halle.de
-remoteusereval = get_credentials("mail.uni-halle.de")
-remotepasseval = get_credentials("mail.uni-halle.de", get_credentials("mail.uni-halle.de"))
+remoteuser = ajaam
+remotepasseval = str(keyring.get_password('E-Mail', 'itz'))
 cert_fingerprint = 12d119730215484d00cecef256e5eca97d147691
 ssl = yes
 usecompression = no
@@ -168,8 +168,8 @@ nametrans: %(default_local_nametrans)s
 
 type = IMAP
 remotehost = imap.strato.de
-remoteusereval = get_credentials("imap.strato.de")
-remotepasseval = get_credentials("imap.strato.de", get_credentials("imap.strato.de"))
+remoteuser = patrice.peterson@dronox.de
+remotepasseval = str(keyring.get_password('E-Mail', 'dr'))
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 usecompression = no

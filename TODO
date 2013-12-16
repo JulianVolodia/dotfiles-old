@@ -24,14 +24,11 @@ Systemd:
 ========
 
 * Make Gnome-Keyring work from systemd service
-* Perhaps add an environment.service
 
 Gnome-Keyring:
 ==============
 
 * Find out how to make this work with displays other than :0
-* Pam integration (pam_gnome_keyring.so always creates the keyring dir in $XDG_USER_DIR/keyring-<random> and with wrong permissions)
-* Offlineimap-keyring integration
 * Msmtp-keyring integration
 * Firefox integration
 * Weechat integration

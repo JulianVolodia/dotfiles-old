@@ -5,7 +5,7 @@ Helper functions for offlineimap
 """
 
 
-import netrc
+import keyring
 import binascii
 import codecs
 
@@ -21,17 +21,6 @@ def gmail_local_nametrans(foldername, prefix='[Gmail]', separator='/'):
         return "{}{}{}".format(prefix, separator, foldername)
     else:
         return foldername
-
-
-###############
-# Credentials #
-###############
-def get_credentials(host, user=None):
-    netrcfile = netrc.netrc()
-    if user is None:
-        return netrcfile.hosts[host][0]
-    else:
-        return netrcfile.hosts[host][2]
 
 
 ##################
