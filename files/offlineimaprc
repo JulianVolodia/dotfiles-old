@@ -1,7 +1,7 @@
 [general]
 #########
 
-accounts = al,gm,un,dr
+accounts = itz
 
 metadata = ~/.cache/offlineimap
 maxsyncaccounts = 4
@@ -19,7 +19,7 @@ default_local_nametrans = lambda foldername: foldername.decode('utf-8').encode('
 # Default local backend
 default_backend = sqlite
 # Default postsynchook
-default_postsynchook = mu index --maildir ~/.mail --my-address runiq@archlinux.us --my-address dapatti@gmail.com --my-address dapatti@googlemail.com --my-address patrice.peterson@student.uni-halle.de --my-address patrice.peterson@dronox.de
+default_postsynchook = 
 
 ##################################################
 # Mailbox name recorder
@@ -108,33 +108,33 @@ readonly = True
 nametrans = lambda foldername: re.sub('\[Google Mail\]/', '', foldername.decode('imap4-utf-7').encode('utf-8'))
 folderfilter = lambda foldername: foldername in ['[Google Mail]/Alle Nachrichten', '[Google Mail]/Papierkorb']
 
-[Account un]
+[Account itz]
 ###################
 
-localrepository = un-local
-remoterepository = un-remote
+localrepository = itz-local
+remoterepository = itz-remote
 autorefresh = 5
 quick = 10
 status_backend: %(default_backend)s
 postsynchook = %(default_postsynchook)s
 
-[Repository un-local]
+[Repository itz-local]
 ############################
 
 type = Maildir
-localfolders = ~/.mail/un
+localfolders = ~/.mail/itz
 subscribedonly = no
 sep = /
 restoreatime = no
 nametrans: %(default_local_nametrans)s
 
-[Repository un-remote]
+[Repository itz-remote]
 #############################
 
 type = IMAP
-remotehost = studmail.uni-halle.de
-remoteusereval = get_credentials("studmail.uni-halle.de")
-remotepasseval = get_credentials("studmail.uni-halle.de", get_credentials("studmail.uni-halle.de"))
+remotehost = mail.uni-halle.de
+remoteusereval = get_credentials("mail.uni-halle.de")
+remotepasseval = get_credentials("mail.uni-halle.de", get_credentials("mail.uni-halle.de"))
 cert_fingerprint = 12d119730215484d00cecef256e5eca97d147691
 ssl = yes
 usecompression = no
