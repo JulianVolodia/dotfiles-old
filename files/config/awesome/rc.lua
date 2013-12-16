@@ -11,6 +11,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local keydoc = require("keydoc")
 
 -- Error handling {{{
 -- Check if awesome encountered an error during startup and fell back to
@@ -38,7 +39,8 @@ end -- }}}
 
 -- Variable definitions {{{
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init(os.getenv("XDG_DATA_HOME") .. "/awesome/themes/monokai.lua")
+-- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "termite"
@@ -55,17 +57,16 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 } -- }}}
 
@@ -335,9 +336,11 @@ clientbuttons = awful.util.table.join(
 
 -- Music {{{
 globalkeys = awful.util.table.join(globalkeys,
-    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end)
+    keydoc.group("Music"),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower volume"),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end, "Raise volume"),
+    awful.key({modkey}, "F1", keydoc.display, "Raise volume")
 )
 -- }}}
 
