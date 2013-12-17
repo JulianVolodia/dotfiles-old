@@ -89,7 +89,8 @@ unset wait_key
 unset confirmappend
 # }}}
 # System options {{{
-set spoolfile = "+al/INBOX"
+# WTF is a spoolfile
+set spoolfile = "+itz/inbox"
 # Keep headers in cache file
 set header_cache = ${XDG_CACHE_HOME}/mutt/headers
 

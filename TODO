@@ -13,6 +13,17 @@ Mutt:
 
 * Configure mutt-kz
 
+Mbsync:
+=======
+
+* Set Patterns to synchronize more than just INBOX
+    * Nametrans
+* Mutt mailboxes?
+* Trash/Expunge settings?
+    * Gmail supports auto-trash, so no settings necessary there
+    * See mbsync(1)
+* Set Sync to Both after verifying that everything works
+
 Weechat:
 ========
 

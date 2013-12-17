@@ -1,0 +1,90 @@
+# vim: set foldmethod=marker:
+
+# dr {{{
+IMAPAccount dr
+Host imap.strato.de
+User patrice.peterson@dronox.de
+PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"dr\")'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore dr-remote
+Account dr
+
+MaildirStore dr-local
+# The trailing slash is important
+Path ~/.mail/dr/
+Inbox ~/.mail/dr/inbox
+
+Channel dr
+Master :dr-remote:
+Slave :dr-local:
+Create Slave
+# }}}
+
+# itz {{{
+IMAPAccount itz
+Host mail.uni-halle.de
+User ajaam
+PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"itz\")'"
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore itz-remote
+Account itz
+
+MaildirStore itz-local
+Path ~/.mail/itz/
+Inbox ~/.mail/itz/inbox
+
+# Group
+Channel itz
+Master :itz-remote:
+Slave :itz-local:
+Create Slave
+# }}}
+
+# gm {{{
+IMAPAccount gm
+Host imap.gmail.com
+User dapatti@gmail.com
+PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"gm\")'"
+UseIMAPS yes
+UseTLSv1.1 yes
+UseTLSv1.2 yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gm-remote
+Account gm
+
+MaildirStore gm-local
+Path ~/.mail/gm/
+Inbox ~/.mail/gm/inbox
+
+# Group {{{
+Channel gm
+Master :gm-remote:
+Slave :gm-local:
+Create Slave
+# }}}
+# }}}
+
+# al {{{
+IMAPAccount al
+Host imap.gmail.com
+User runiq@archlinux.us
+PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"al\")'"
+UseIMAPS yes
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore al-remote
+Account al
+
+MaildirStore al-local
+Path ~/.mail/al/
+Inbox ~/.mail/al/inbox
+
+# Group
+Channel al
+Master :al-remote:
+Slave :al-local:
+Create Slave
+# }}}
