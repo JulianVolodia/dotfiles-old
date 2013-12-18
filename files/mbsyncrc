@@ -4,7 +4,7 @@
 IMAPAccount dr
 Host imap.strato.de
 User patrice.peterson@dronox.de
-PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"dr\")'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"dr\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore dr-remote
@@ -25,7 +25,7 @@ Create Slave
 IMAPAccount itz
 Host mail.uni-halle.de
 User ajaam
-PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"itz\")'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"itz\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore itz-remote
@@ -46,7 +46,7 @@ Create Slave
 IMAPAccount gm
 Host imap.gmail.com
 User dapatti@gmail.com
-PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"gm\")'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"gm\"))'"
 UseIMAPS yes
 UseTLSv1.1 yes
 UseTLSv1.2 yes
@@ -71,7 +71,7 @@ Create Slave
 IMAPAccount al
 Host imap.gmail.com
 User runiq@archlinux.us
-PassCmd "python2 -c 'import keyring; print keyring.get_password(\"E-Mail\", \"al\")'"
+PassCmd "python3 -c('import keyring; print keyring.get_password(\"E-Mail\", \"al\"))'"
 UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
