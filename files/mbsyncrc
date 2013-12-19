@@ -71,7 +71,7 @@ Create Slave
 IMAPAccount al
 Host imap.gmail.com
 User runiq@archlinux.us
-PassCmd "python3 -c('import keyring; print keyring.get_password(\"E-Mail\", \"al\"))'"
+PassCmd "python3 -c('import keyring; print(keyring.get_password(\"E-Mail\", \"al\"))'"
 UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
