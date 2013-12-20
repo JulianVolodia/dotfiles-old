@@ -47,9 +47,9 @@ IMAPAccount gm
 Host imap.gmail.com
 User dapatti@gmail.com
 PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"gm\"))'"
-UseIMAPS yes
-UseTLSv1.1 yes
-UseTLSv1.2 yes
+# UseIMAPS yes
+# UseTLSv1.1 yes
+# UseTLSv1.2 yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore gm-remote
@@ -63,7 +63,9 @@ Inbox ~/.mail/gm/inbox
 Channel gm
 Master :gm-remote:
 Slave :gm-local:
+Pattern *
 Create Slave
+Sync Pull
 # }}}
 # }}}
 
@@ -83,8 +85,36 @@ Path ~/.mail/al/
 Inbox ~/.mail/al/inbox
 
 # Group
-Channel al
+Channel al-default
 Master :al-remote:
 Slave :al-local:
 Create Slave
+Pattern * ![Gmail]* !"[Google Mail]*"
+
+Channel al-sent
+Master :al-remote:"[Gmail]/Gesendet"
+Slave :al-local:sent
+Create Slave
+
+Channel al-drafts
+Master :al-remote:"[Gmail]/Entw&APw-rfe"
+Slave :al-local:drafts
+Create Slave
+
+Channel al-starred
+Master :al-remote:"[Gmail]/Markiert"
+Slave :al-local:starred
+Create Slave
+
+Channel al-trash
+Master :al-remote:"[Gmail]/Papierkorb"
+Slave :al-local:trash
+Create Slave
+
+Channel al-spam
+Master :al-remote:"[Gmail]/Spam"
+Slave :al-local:spam
+Create Slave
+
+Group al al-default al-sent al-drafts al-starred al-trash al-spam
 # }}}
