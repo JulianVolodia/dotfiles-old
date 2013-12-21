@@ -26,6 +26,7 @@ Mbsync:
 Weechat:
 ========
 
+* Gnome-Keyring integration
 * Theme dat shit
 * Toggle timestamps
 * Remove seconds from timestamps
@@ -34,14 +35,14 @@ Systemd:
 ========
 
 * Make Gnome-Keyring work from systemd service
+* Find out how to make --user session work with displays other than :0
+    * Server socket directory in $XDG_RUNTIME_DIR?
 
 Gnome-Keyring:
 ==============
 
-* Find out how to make this work with displays other than :0
-* Msmtp-keyring integration
-* Firefox integration
-* Weechat integration
+* Unlock at login
+    * How do I change the name of a keyring? ("Default" to "login")
 
 Awesome:
 ========
@@ -50,9 +51,11 @@ Awesome:
     * "Useless gaps"
     * Transparent window decorations?
 * Fewer layouts, super+m switches to current layout's mirror if possible
+* Launcher with substring matching
 * Is manual tiling possible?
 * See if I can remove pulseaudio-ctl dependency and use the PA D-Bus API directly
 * Mount script (DBUS, udisks[2])
+    * Have a look at udevil
 * Run-or-raise with different stuff (see http://awesome.naquadah.org/wiki/Run_or_raise)
 * Change colorscheme
 * Tags (dynamic) with tyrannical
@@ -71,3 +74,7 @@ Awesome:
 * Document keybindings (http://awesome.naquadah.org/wiki/Document_keybindings)
 * Toggle-able statusbar, or autoshow/autohide it on certain events (changing desktop/monitor, tag)
     * Keybinding to toggle statusbar persistence
+
+Firefox:
+========
+* Gnome-Keyring integration
