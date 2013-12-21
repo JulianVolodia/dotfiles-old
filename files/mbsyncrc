@@ -1,11 +1,14 @@
 # vim: set foldmethod=marker:
+Sync Pull
 
 # dr {{{
+# Account {{{
 IMAPAccount dr
 Host imap.strato.de
 User patrice.peterson@dronox.de
 PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"dr\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+# Doesn't support TLS 1.1 or v1.2
 
 IMAPStore dr-remote
 Account dr
@@ -14,19 +17,52 @@ MaildirStore dr-local
 # The trailing slash is important
 Path ~/.mail/dr/
 Inbox ~/.mail/dr/inbox
+# }}}
 
-Channel dr
+# Group {{{
+Channel dr-default
 Master :dr-remote:
 Slave :dr-local:
+Pattern * !"Drafts" !"Sent Items" !"Spam" !"Trash"
 Create Slave
+SyncState *
+
+Channel dr-sent
+Master :dr-remote:"Sent Items"
+Slave :dr-local:"sent"
+Create Slave
+SyncState *
+
+Channel dr-drafts
+Master :dr-remote:"Drafts"
+Slave :dr-local:"drafts"
+Create Slave
+SyncState *
+
+Channel dr-trash
+Master :dr-remote:"Trash"
+Slave :dr-local:"trash"
+Create Slave
+SyncState *
+
+Channel dr-spam
+Master :dr-remote:"Spam"
+Slave :dr-local:"spam"
+Create Slave
+SyncState *
+
+group dr dr-default dr-sent dr-drafts dr-trash dr-spam
+# }}}
 # }}}
 
 # itz {{{
+# Account {{{
 IMAPAccount itz
 Host mail.uni-halle.de
 User ajaam
 PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"itz\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+# Doesn't support TLS 1.1 or v1.2
 
 IMAPStore itz-remote
 Account itz
@@ -34,23 +70,62 @@ Account itz
 MaildirStore itz-local
 Path ~/.mail/itz/
 Inbox ~/.mail/itz/inbox
+# }}}
 
-# Group
-Channel itz
+# Group {{{
+Channel itz-default
 Master :itz-remote:
 Slave :itz-local:
+Pattern * !"Archive" !"Entw&APw-rfe" !"Gesendet" !"Junk" !"Papierkorb"
 Create Slave
+SyncState *
+
+Channel itz-archive
+Master :itz-remote:"Archive"
+Slave :itz-local:"archive"
+Create Slave
+SyncState *
+
+Channel itz-drafts
+Master :itz-remote:"Entw&APw-rfe"
+Slave :itz-local:"drafts"
+Create Slave
+SyncState *
+
+Channel itz-sent
+Master :itz-remote:"Gesendet"
+Slave :itz-local:"sent"
+Create Slave
+SyncState *
+
+Channel itz-spam
+Master :itz-remote:"Junk"
+Slave :itz-local:"spam"
+Create Slave
+SyncState *
+
+Channel itz-trash
+Master :itz-remote:"Papierkorb"
+Slave :itz-local:"trash"
+Create Slave
+SyncState *
+
+group itz itz-default itz-archive itz-drafts itz-sent itz-spam itz-trash
+# }}}
 # }}}
 
 # gm {{{
+# Account {{{
 IMAPAccount gm
 Host imap.gmail.com
 User dapatti@gmail.com
 PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"gm\"))'"
-# UseIMAPS yes
-# UseTLSv1.1 yes
-# UseTLSv1.2 yes
+UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+UseTLSv1 no
+UseTLSv1.1 no
+UseTLSv1.2 yes
+
 
 IMAPStore gm-remote
 Account gm
@@ -58,24 +133,68 @@ Account gm
 MaildirStore gm-local
 Path ~/.mail/gm/
 Inbox ~/.mail/gm/inbox
+# }}}
 
 # Group {{{
-Channel gm
+Channel gm-default
 Master :gm-remote:
 Slave :gm-local:
-Pattern *
 Create Slave
-Sync Pull
+Pattern * !"[Google Mail]*"
+SyncState *
+
+Channel gm-sent
+Master :gm-remote:"[Google Mail]/Gesendet"
+Slave :gm-local:sent
+Create Slave
+SyncState *
+
+Channel gm-drafts
+Master :gm-remote:"[Google Mail]/Entw&APw-rfe"
+Slave :gm-local:drafts
+Create Slave
+SyncState *
+
+Channel gm-starred
+Master :gm-remote:"[Google Mail]/Markiert"
+Slave :gm-local:starred
+Create Slave
+SyncState *
+
+Channel gm-trash
+Master :gm-remote:"[Google Mail]/Papierkorb"
+Slave :gm-local:trash
+Create Slave
+SyncState *
+
+Channel gm-spam
+Master :gm-remote:"[Google Mail]/Spam"
+Slave :gm-local:spam
+Create Slave
+SyncState *
+
+Channel gm-archive
+Master :gm-remote:"[Google Mail]/Alle Nachrichten"
+Slave :gm-local:archive
+Create Slave
+SyncState *
+
+Group gm gm-default gm-sent gm-drafts gm-starred gm-trash gm-spam gm-archive
 # }}}
 # }}}
 
 # al {{{
+# Account {{{
 IMAPAccount al
 Host imap.gmail.com
 User runiq@archlinux.us
 PassCmd "python3 -c'import keyring; print(keyring.get_password(\"E-Mail\", \"al\"))'"
 UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+UseTLSv1 no
+UseTLSv1.1 no
+UseTLSv1.2 yes
+
 
 IMAPStore al-remote
 Account al
@@ -83,38 +202,52 @@ Account al
 MaildirStore al-local
 Path ~/.mail/al/
 Inbox ~/.mail/al/inbox
+# }}}
 
-# Group
+# Group {{{
 Channel al-default
 Master :al-remote:
 Slave :al-local:
+Pattern * !"[Gmail]*"
 Create Slave
-Pattern * ![Gmail]* !"[Google Mail]*"
+SyncState *
 
 Channel al-sent
 Master :al-remote:"[Gmail]/Gesendet"
 Slave :al-local:sent
 Create Slave
+SyncState *
 
 Channel al-drafts
 Master :al-remote:"[Gmail]/Entw&APw-rfe"
 Slave :al-local:drafts
 Create Slave
+SyncState *
 
 Channel al-starred
 Master :al-remote:"[Gmail]/Markiert"
 Slave :al-local:starred
 Create Slave
+SyncState *
 
 Channel al-trash
 Master :al-remote:"[Gmail]/Papierkorb"
 Slave :al-local:trash
 Create Slave
+SyncState *
 
 Channel al-spam
 Master :al-remote:"[Gmail]/Spam"
 Slave :al-local:spam
 Create Slave
+SyncState *
 
-Group al al-default al-sent al-drafts al-starred al-trash al-spam
+Channel al-archive
+Master :al-remote:"[Gmail]/Alle Nachrichten"
+Slave :al-local:archive
+Create Slave
+SyncState *
+
+Group al al-default al-sent al-drafts al-starred al-trash al-spam al-archive
+# }}}
 # }}}

@@ -16,7 +16,9 @@ Mutt:
 Mbsync:
 =======
 
-* Nametrans for @gmail.com
+* Get itz and dr servers to support TLS 1.1+
+* Systemd --user service
+    * Support keyring unlocking on login
 * Mutt mailboxes?
 * Trash/Expunge settings
 * Set Sync to Both after verifying that everything works
