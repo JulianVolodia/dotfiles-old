@@ -1,5 +1,8 @@
 # vim: set foldmethod=marker:
 Sync Pull
+Create Slave
+Expunge None
+SyncState *
 
 # dr {{{
 # Account {{{
@@ -24,32 +27,22 @@ Channel dr-default
 Master :dr-remote:
 Slave :dr-local:
 Pattern * !"Drafts" !"Sent Items" !"Spam" !"Trash"
-Create Slave
-SyncState *
 
 Channel dr-sent
 Master :dr-remote:"Sent Items"
 Slave :dr-local:"sent"
-Create Slave
-SyncState *
 
 Channel dr-drafts
 Master :dr-remote:"Drafts"
 Slave :dr-local:"drafts"
-Create Slave
-SyncState *
 
 Channel dr-trash
 Master :dr-remote:"Trash"
 Slave :dr-local:"trash"
-Create Slave
-SyncState *
 
 Channel dr-spam
 Master :dr-remote:"Spam"
 Slave :dr-local:"spam"
-Create Slave
-SyncState *
 
 group dr dr-default dr-sent dr-drafts dr-trash dr-spam
 # }}}
@@ -77,38 +70,26 @@ Channel itz-default
 Master :itz-remote:
 Slave :itz-local:
 Pattern * !"Archive" !"Entw&APw-rfe" !"Gesendet" !"Junk" !"Papierkorb"
-Create Slave
-SyncState *
 
 Channel itz-archive
 Master :itz-remote:"Archive"
 Slave :itz-local:"archive"
-Create Slave
-SyncState *
 
 Channel itz-drafts
 Master :itz-remote:"Entw&APw-rfe"
 Slave :itz-local:"drafts"
-Create Slave
-SyncState *
 
 Channel itz-sent
 Master :itz-remote:"Gesendet"
 Slave :itz-local:"sent"
-Create Slave
-SyncState *
 
 Channel itz-spam
 Master :itz-remote:"Junk"
 Slave :itz-local:"spam"
-Create Slave
-SyncState *
 
 Channel itz-trash
 Master :itz-remote:"Papierkorb"
 Slave :itz-local:"trash"
-Create Slave
-SyncState *
 
 group itz itz-default itz-archive itz-drafts itz-sent itz-spam itz-trash
 # }}}
@@ -139,45 +120,31 @@ Inbox ~/.mail/gm/inbox
 Channel gm-default
 Master :gm-remote:
 Slave :gm-local:
-Create Slave
 Pattern * !"[Google Mail]*"
-SyncState *
 
 Channel gm-sent
 Master :gm-remote:"[Google Mail]/Gesendet"
 Slave :gm-local:sent
-Create Slave
-SyncState *
 
 Channel gm-drafts
 Master :gm-remote:"[Google Mail]/Entw&APw-rfe"
 Slave :gm-local:drafts
-Create Slave
-SyncState *
 
 Channel gm-starred
 Master :gm-remote:"[Google Mail]/Markiert"
 Slave :gm-local:starred
-Create Slave
-SyncState *
 
 Channel gm-trash
 Master :gm-remote:"[Google Mail]/Papierkorb"
 Slave :gm-local:trash
-Create Slave
-SyncState *
 
 Channel gm-spam
 Master :gm-remote:"[Google Mail]/Spam"
 Slave :gm-local:spam
-Create Slave
-SyncState *
 
 Channel gm-archive
 Master :gm-remote:"[Google Mail]/Alle Nachrichten"
 Slave :gm-local:archive
-Create Slave
-SyncState *
 
 Group gm gm-default gm-sent gm-drafts gm-starred gm-trash gm-spam gm-archive
 # }}}
@@ -209,44 +176,30 @@ Channel al-default
 Master :al-remote:
 Slave :al-local:
 Pattern * !"[Gmail]*"
-Create Slave
-SyncState *
 
 Channel al-sent
 Master :al-remote:"[Gmail]/Gesendet"
 Slave :al-local:sent
-Create Slave
-SyncState *
 
 Channel al-drafts
 Master :al-remote:"[Gmail]/Entw&APw-rfe"
 Slave :al-local:drafts
-Create Slave
-SyncState *
 
 Channel al-starred
 Master :al-remote:"[Gmail]/Markiert"
 Slave :al-local:starred
-Create Slave
-SyncState *
 
 Channel al-trash
 Master :al-remote:"[Gmail]/Papierkorb"
 Slave :al-local:trash
-Create Slave
-SyncState *
 
 Channel al-spam
 Master :al-remote:"[Gmail]/Spam"
 Slave :al-local:spam
-Create Slave
-SyncState *
 
 Channel al-archive
 Master :al-remote:"[Gmail]/Alle Nachrichten"
 Slave :al-local:archive
-Create Slave
-SyncState *
 
 Group al al-default al-sent al-drafts al-starred al-trash al-spam al-archive
 # }}}
