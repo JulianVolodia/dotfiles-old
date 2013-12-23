@@ -87,11 +87,11 @@ mpd: # {{{
     host: localhost
     port: 6600
 # }}}
-# mpdstats: # {{{
-    # music_directory: ~/snd/tagged
-    # 0.0: stable only, 1.0: rolling only
-    # 0.75 a good compromise according to the devs
-    # rating_mix: 0.75
+mpdstats: # {{{
+    music_directory: ~/snd/tagged
+    0.0: stable only, 1.0: rolling only
+    0.75 a good compromise according to the devs
+    rating_mix: 0.75
 # }}}
 # scrub: # {{{
     # No automatic scrubbing, thanks
