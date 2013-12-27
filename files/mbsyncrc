@@ -9,7 +9,7 @@ SyncState *
 IMAPAccount dr
 Host imap.strato.de
 User patrice.peterson@dronox.de
-PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"dr\"))'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"mail://strato.de\", \"password\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 # Doesn't support TLS 1.1 or v1.2
 
@@ -53,7 +53,7 @@ group dr dr-default dr-sent dr-drafts dr-trash dr-spam
 IMAPAccount itz
 Host mail.uni-halle.de
 User ajaam
-PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"itz\"))'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"mail://uni-halle.de\", \"password\"))'"
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 # Doesn't support TLS 1.1 or v1.2
 
@@ -100,7 +100,7 @@ group itz itz-default itz-archive itz-drafts itz-sent itz-spam itz-trash
 IMAPAccount gm
 Host imap.gmail.com
 User dapatti@gmail.com
-PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"E-Mail\", \"gm\"))'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"mail://gmail.com\", \"password\"))'"
 UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 UseTLSv1 no
@@ -155,7 +155,7 @@ Group gm gm-default gm-sent gm-drafts gm-starred gm-trash gm-spam gm-archive
 IMAPAccount al
 Host imap.gmail.com
 User runiq@archlinux.us
-PassCmd "python3 -c'import keyring; print(keyring.get_password(\"E-Mail\", \"al\"))'"
+PassCmd "python3 -c 'import keyring; print(keyring.get_password(\"mail://archlinux.us\", \"password\"))'"
 UseIMAPS yes
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 UseTLSv1 no
