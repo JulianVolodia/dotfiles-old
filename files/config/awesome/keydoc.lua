@@ -45,15 +45,30 @@ local function key2str(key)
    local sym = key.key or key.keysym
    local translate = {
       ["#14"] = "#",
-      [" "] = "Space",
+      [" "] = "␣",
+      ["Esc"] = "⎋",
+      ["Return"] = "↵",
+      ["Tab"] = "↹",
+      ["Compose"] = "⎄",
+      ["Delete"] = "⌦",
+      ["Backspace"] = "⌫",
+      ["Home"] = "↖",
+      ["End"] = "↘",
+      ["PgUp"] = "⇞",
+      ["PgDn"] = "⇟",
+      ["UpArrow"] = "↑",
+      ["DownArrow"] = "↓",
+      ["LeftArrow"] = "←",
+      ["RightArrow"] = "→"
    }
    sym = translate[sym] or sym
    if not key.modifiers or #key.modifiers == 0 then return sym end
    local result = ""
    local translate = {
-      [modkey] = "⊞",
+      [modkey] = "⌘",
       Shift    = "⇧",
-      Control  = "Ctrl",
+      Control  = "⎈",
+      Alt      = "⎇",
    }
    for _, mod in pairs(key.modifiers) do
       mod = translate[mod] or mod
