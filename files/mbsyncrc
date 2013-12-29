@@ -1,7 +1,7 @@
 # vim: set foldmethod=marker:
-Sync Pull
-Create Slave
-Expunge None
+Sync All
+Create Both
+Expunge Both
 SyncState *
 
 # dr {{{
@@ -26,7 +26,7 @@ Inbox ~/.mail/dr/inbox
 Channel dr-default
 Master :dr-remote:
 Slave :dr-local:
-Pattern * !"Drafts" !"Sent Items" !"Spam" !"Trash"
+Pattern * !sent !drafts !trash !spam !"Sent Items" !Drafts !Trash !Spam
 
 Channel dr-sent
 Master :dr-remote:"Sent Items"
@@ -69,7 +69,7 @@ Inbox ~/.mail/itz/inbox
 Channel itz-default
 Master :itz-remote:
 Slave :itz-local:
-Pattern * !"Archive" !"Entw&APw-rfe" !"Gesendet" !"Junk" !"Papierkorb"
+Pattern * !archive !drafts !sent !spam !trash !Archive !Entw&APw-rfe !Gesendet !Junk !Papierkorb
 
 Channel itz-archive
 Master :itz-remote:"Archive"
@@ -120,7 +120,7 @@ Inbox ~/.mail/gm/inbox
 Channel gm-default
 Master :gm-remote:
 Slave :gm-local:
-Pattern * !"[Google Mail]*"
+Pattern * !sent !drafts !starred !trash !spam !archive !"[Google Mail]/Gesendet" !"[Google Mail]/Entw&APw-rfe" !"[Google Mail]/Markiert" !"[Google Mail]/Papierkorb" !"[Google Mail]/Spam" !"[Google Mail]/Alle Nachrichten"
 
 Channel gm-sent
 Master :gm-remote:"[Google Mail]/Gesendet"
@@ -175,7 +175,7 @@ Inbox ~/.mail/al/inbox
 Channel al-default
 Master :al-remote:
 Slave :al-local:
-Pattern * !"[Gmail]*"
+Pattern * !sent !drafts !starred !trash !spam !archive !"[Gmail]/Gesendet" !"[Gmail]/Entw&APw-rfe" !"[Gmail]/Markiert" !"[Gmail]/Papierkorb" !"[Gmail]/Spam" !"[Gmail]/Alle Nachrichten"
 
 Channel al-sent
 Master :al-remote:"[Gmail]/Gesendet"
