@@ -239,10 +239,10 @@ globalkeys = awful.util.table.join(
 
     awful.key({modkey}, "l", function () awful.tag.incmwfact(0.05) end, "Increase master ratio"),
     awful.key({modkey}, "h", function () awful.tag.incmwfact(-0.05) end, "Decrease master ratio"),
-    awful.key({modkey, "Shift"}, "h", function () awful.tag.incnmaster(1) end, "Increase number of master clients"),
-    awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1) end, "Decrease number of master clients"),
-    awful.key({modkey, "Control"}, "h", function () awful.tag.incncol( 1) end, "Increase number of slave columns"),
-    awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1) end, "Decrease number of slave columns"),
+    awful.key({modkey, "Shift"}, "h", function () awful.tag.incnmaster(1) end, "More master clients"),
+    awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1) end, "Fewer master clients"),
+    awful.key({modkey, "Control"}, "h", function () awful.tag.incncol( 1) end, "More slave columns"),
+    awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1) end, "Fewer slave columns"),
     awful.key({modkey}, "space", function () awful.layout.inc(layouts,  1) end, "Next layout"),
     awful.key({modkey, "Shift"}, "space", function () awful.layout.inc(layouts, -1) end, "Previous layout"),
 
@@ -283,7 +283,12 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-        end, "Maximize client")
+        end, "Maximize client"),
+    keydoc.group("Music"),
+    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower volume"),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end, "Raise volume"),
+    awful.key({modkey}, "F1", keydoc.display, "Raise volume")
 )
 
 -- Bind all key numbers to tags.
@@ -299,7 +304,7 @@ for i = 1, 9 do
                         if tag then
                            awful.tag.viewonly(tag)
                         end
-                  end, "Show only tag " .. i),
+                  end, "Show only this tag"),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       local screen = mouse.screen
@@ -307,7 +312,7 @@ for i = 1, 9 do
                       if tag then
                          awful.tag.viewtoggle(tag)
                       end
-                  end, "Toggle view of tag " .. i),
+                  end, "Toggle view of this tag"),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
@@ -316,7 +321,7 @@ for i = 1, 9 do
                               awful.client.movetotag(tag)
                           end
                      end
-                  end, "Move client to tag " .. i),
+                  end, "Move client to this tag"),
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus then
@@ -325,7 +330,7 @@ for i = 1, 9 do
                               awful.client.toggletag(tag)
                           end
                       end
-                  end, "Toggle client on tag " .. i))
+                  end, "Toggle client on this tag"))
 end
 
 clientbuttons = awful.util.table.join(
@@ -333,16 +338,6 @@ clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end, "Focus and raise client"),
     awful.button({ modkey }, 1, awful.mouse.client.move, "Move client"),
     awful.button({ modkey }, 3, awful.mouse.client.resize, "Resize client"))
-
--- Music {{{
-globalkeys = awful.util.table.join(globalkeys,
-    keydoc.group("Music"),
-    awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower volume"),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end, "Raise volume"),
-    awful.key({modkey}, "F1", keydoc.display, "Raise volume")
-)
--- }}}
 
 -- Set keys
 root.keys(globalkeys) -- }}}

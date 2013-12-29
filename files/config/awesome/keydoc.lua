@@ -31,7 +31,14 @@ local function new(mod, key, press, release, docstring)
    end
    local k = orig(mod, key, press, release)
    -- Remember documentation for this key (we take the first one)
-   if k and #k > 0 and docstring then
+   local doc_exists = false
+   for _, val in pairs(doc) do
+      if val.help == docstring then
+         doc_exists = true
+         break
+      end
+   end
+   if k and #k > 0 and docstring and (not doc_exists) then
       doc[k[1]] = { help = docstring,
             group = currentgroup }
    end
@@ -44,9 +51,9 @@ awful.key.new = new             -- monkey patch
 local function key2str(key)
    local sym = key.key or key.keysym
    local translate = {
-      ["#14"] = "#",
+      ["#10"] = "#",
       [" "] = "␣",
-      ["Esc"] = "⎋",
+      ["Escape"] = "⎋",
       ["Return"] = "↵",
       ["Tab"] = "↹",
       ["Compose"] = "⎄",
@@ -59,7 +66,10 @@ local function key2str(key)
       ["UpArrow"] = "↑",
       ["DownArrow"] = "↓",
       ["LeftArrow"] = "←",
-      ["RightArrow"] = "→"
+      ["RightArrow"] = "→",
+      ["XF86AudioMute"] = "🔈",
+      ["XF86AudioLowerVolume"] = "🔉",
+      ["XF86AudioRaiseVolume"] = "🔊"
    }
    sym = translate[sym] or sym
    if not key.modifiers or #key.modifiers == 0 then return sym end
@@ -72,7 +82,7 @@ local function key2str(key)
    }
    for _, mod in pairs(key.modifiers) do
       mod = translate[mod] or mod
-      result = result .. mod .. " + "
+      result = result .. mod .. " "
    end
    return result .. sym
 end
@@ -107,10 +117,8 @@ local function markup(keys)
      local help, group = doc[key].help, doc[key].group
      local skey = key2str(key)
      result[group] = (result[group] or "") ..
-        '<span font="' .. beautiful.font .. '" color="' .. beautiful.fg_widget_clock .. '"> ' ..
-        string.format("%" .. (longest - unilen(skey)) .. "s  ", "") .. skey ..
-        '</span>  <span color="' .. beautiful.fg_widget_value .. '">' ..
-        help .. '</span>\n'
+        string.format("%" .. (longest - unilen(skey)) .. "s", " ") ..
+        skey .. "   <span color='" .. beautiful.fg_normal .. "'>" ..  help .. '</span>\n'
       end
    end
 
@@ -127,9 +135,7 @@ function display()
    local result = ""
    for group, res in pairs(strings) do
       if #result > 0 then result = result .. "\n" end
-      result = result ..
-     '<span weight="bold" color="' .. beautiful.fg_widget_value_important .. '">' ..
-     group .. "</span>\n" .. res
+      result = result .. '<span weight="bold">' ..group .. "</span>\n" .. res
    end
    nid = naughty.notify({ text = result,
               replaces_id = nid,
