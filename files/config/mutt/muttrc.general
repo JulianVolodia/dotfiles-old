@@ -21,10 +21,10 @@ unset recall
 
 # Don't move read messages from spoolfile to archive
 unset move
-# Don't expunge deleted mails on closing/syncing a mailbox
-unset delete
-# Files in maildirs won't be unlinked but flagged with \Trashed
-set maildir_trash
+# Don't move flagged messages to archive
+set keep_flagged
+# Expunge deleted mails on closing/syncing a mailbox
+set delete = ask-yes
 
 # Automatically quote forwarded messages
 unset forward_quote
@@ -47,9 +47,9 @@ set pipe_decode
 # Strip headers and eval mimes before searching
 set thorough_search
 
-# Don't mark new unread messages as old when leaving a mailbox
+# Mark new unread messages as old when leaving a mailbox
 # without reading them
-unset mark_old
+set mark_old
 
 # Use original receiver address for replies even when replying from a
 # different account
