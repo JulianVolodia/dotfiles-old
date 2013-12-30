@@ -1,8 +1,8 @@
 # vim: set foldmethod=marker:
-#
+
 # General appearance {{{
-# Make thread display narrower
-set narrow_tree
+# I don't need no help
+unset help
 # Number of index lines (one of them is the status bar)
 set pager_index_lines = 6
 # Number of lines of context
@@ -14,28 +14,40 @@ set pager_stop
 set smart_wrap
 # Insert "--" line before signature
 set sig_dashes
-# Don't beep, dammit
+# Don't beep on errors, dammit
 unset beep
+# Don't beep on new mail
+unset beep_new
 # No ugly plus signs
 unset markers
 # Display of folders:
 set folder_format = "%t %2C %N %D %f"
 set status_chars = "*%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+set status_format = "─ %f ─ %m ✉%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ─%>─%?p?( %p postponed )?─"
 # }}}
+
+# Threads {{{
+# Make thread display narrower
+set narrow_tree
+# }}}
+
 # Sidebar options {{{
 # The delimiter string
 set sidebar_delim = "│"
 # Show sidebar by default
 set sidebar_visible
 # Sidebar width
-set sidebar_width = 26
+set sidebar_width = 20
 # }}}
+
 # Index view {{{
 set date_format = "%g-%m-%d %R"
-set index_format="%C [%Z] %D %-20.20F %?M?+& ? %s"
+# Why the fuck do I have to set this manually?
+set locale = ${LANG}
+set index_format="%* %4C [%Z] %D %-20.20F %?M?+& ? %s%* "
 unset uncollapse_jump
 # }}}
+
 # Headers {{{
 # Ignore all headers...
 ignore *
@@ -44,6 +56,7 @@ unignore from: to: cc: date: subject:
 # ...in this order
 hdr_order from: to: cc: date: subject:
 # }}}
+
 # Colors {{{
 color normal default default
 color attachment magenta default
@@ -86,3 +99,4 @@ color body green default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 # identifies URLs
 color body cyan default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 # }}}
+
