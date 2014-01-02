@@ -5,7 +5,7 @@
 # Include headers in editor window
 set edit_headers
 # Use this for sending mail
-set sendmail = "/usr/local/bin/msmtpq"
+set sendmail = "msmtpq"
 # Always put sendmail in the background without waiting
 set sendmail_wait = -1
 # If envelope_from_address is set, use it as the sender address
@@ -93,8 +93,8 @@ set indent_str = "> "
 # Use format_flowed plaintext messages
 set text_flowed
 
-# Add tildes at EOF
-set tilde
+# No tilde at EOF
+unset tilde
 
 # Don't wait after calling subprocess
 unset wait_key
