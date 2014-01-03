@@ -30,8 +30,8 @@ bind pager b previous-page
 bind compose p postpone-message
 # }}}
 # Macros {{{
-# Use abook for queries
-set query_command = "abook --mutt-query '%s'"
+# Use lbdbq for queries
+set query_command = "lbdbq '%s'"
 
 macro generic,index,pager A \
     "<shell-escape>abook<return>" \
