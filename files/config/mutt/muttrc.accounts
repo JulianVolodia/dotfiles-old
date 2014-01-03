@@ -27,6 +27,8 @@ folder-hook =al \
 
 mbox-hook =al "+al/archive"
 
+send-hook "~f ^runiq@archlinux.us$" \
+    'unset signature'
 send2-hook "~f ^runiq@archlinux.us$" \
     'set realname = "Runiq"; \
     unset copy'
@@ -42,6 +44,8 @@ folder-hook =gm \
 
 mbox-hook =gm "+gm/archive"
 
+send-hook "~f ^dapatti@g(oogle)?mail.com$" \
+    'unset signature'
 send2-hook "~f ^dapatti@g(oogle)?mail.com$" \
     'unset copy'
 # }}}
@@ -56,6 +60,8 @@ folder-hook =itz \
 
 mbox-hook =itz "+itz/archive"
 
+send-hook "~f ^patrice.peterson@itz.uni-halle.de$" \
+    'set signature = "${HOME}/.mail/itz/signature"'
 send2-hook "~f ^patrice.peterson@itz.uni-halle.de$" \
     'set copy'
 # }}}
@@ -70,6 +76,8 @@ folder-hook =dr \
 
 mbox-hook =dr "+dr/archive"
 
+send-hook "~f ^patrice.peterson@dronox.de$" \
+    'unset signature'
 send2-hook "~f ^patrice.peterson@dronox.de$" \
     'set copy'
 # }}}
