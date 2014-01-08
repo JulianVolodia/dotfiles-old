@@ -1,5 +1,5 @@
 # What methods to use
-METHODS="m_abook"
+METHODS="m_inmail m_abook"
 
 # Sort output by real name
 SORT_OUTPUT="name"
