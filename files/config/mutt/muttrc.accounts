@@ -30,7 +30,8 @@ mbox-hook =al "+al/archive"
 send-hook "~f ^runiq@archlinux.us$" \
     'unset signature'
 send2-hook "~f ^runiq@archlinux.us$" \
-    'set realname = "Runiq"; \
+    'set realname = "Runiq" \
+    pgp_sign_as = "0xD6780B45"; \
     unset copy'
 # }}}
 
@@ -47,7 +48,8 @@ mbox-hook =gm "+gm/archive"
 send-hook "~f ^dapatti@g(oogle)?mail.com$" \
     'unset signature'
 send2-hook "~f ^dapatti@g(oogle)?mail.com$" \
-    'unset copy'
+    'set pgp_sign_as = "0xD6780B45"; \
+    unset copy'
 # }}}
 
 # patrice.peterson@itz.uni-halle.de {{{
@@ -63,7 +65,8 @@ mbox-hook =itz "+itz/archive"
 send-hook "~f ^patrice.peterson@itz.uni-halle.de$" \
     'set signature = "${HOME}/.mail/itz/signature"'
 send2-hook "~f ^patrice.peterson@itz.uni-halle.de$" \
-    'set copy'
+    'set copy \
+    pgp_sign_as = "0x3B2EBD7F"'
 # }}}
 
 # patrice.peterson@dronox.de {{{
@@ -79,6 +82,7 @@ mbox-hook =dr "+dr/archive"
 send-hook "~f ^patrice.peterson@dronox.de$" \
     'unset signature'
 send2-hook "~f ^patrice.peterson@dronox.de$" \
-    'set copy'
+    'set copy \
+    pgp_sign_as = "0xD6780B45"'
 # }}}
 

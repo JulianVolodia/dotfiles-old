@@ -4,6 +4,10 @@
 # Needed to verify signed and encrypted messages
 set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 
+# "Play interesting key selection games"
+# Or, in better words: Allow to use subkeys for signing
+unset pgp_ignore_subkeys
+
 # Use gpg agent
 set pgp_use_gpg_agent
 
