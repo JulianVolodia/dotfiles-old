@@ -10,3 +10,5 @@ set guioptions-=R
 set guioptions-=b
 " Use console-style popups
 set guioptions+=c
+
+set guifont=monospace\ 11
