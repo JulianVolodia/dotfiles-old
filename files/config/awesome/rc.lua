@@ -209,7 +209,7 @@ root.buttons(awful.util.table.join(
 -- Key bindings {{{
 globalkeys = awful.util.table.join(
     awful.key({modkey}, "F1", keydoc.display),
-    keydoc.group("Movement"),
+    keydoc.group("Movement"), -- {{{
     awful.key({modkey}, "Escape", awful.tag.history.restore, "Revert to last tag configuration"),
 
     awful.key({modkey}, "j",
@@ -235,9 +235,9 @@ globalkeys = awful.util.table.join(
             if client.focus then
                 client.focus:raise()
             end
-        end, "Focus previous client"),
+        end, "Focus previous client"), -- }}}
 
-    keydoc.group("Layout Manipulation"),
+    keydoc.group("Layout Manipulation"), -- {{{
     awful.key({modkey}, "l", function () awful.tag.incmwfact(0.05) end, "Decrease/increase master ratio"),
     awful.key({modkey}, "h", function () awful.tag.incmwfact(-0.05) end),
     awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1) end,  "Fewer/more master clients"),
@@ -245,22 +245,23 @@ globalkeys = awful.util.table.join(
     awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1) end, "Fewer/more slave columns"),
     awful.key({modkey, "Control"}, "h", function () awful.tag.incncol( 1) end),
     awful.key({modkey}, "space", function () awful.layout.inc(layouts,  1) end, "Next layout"),
-    awful.key({modkey, "Shift"}, "space", function () awful.layout.inc(layouts, -1) end, "Previous layout"),
+    awful.key({modkey, "Shift"}, "space", function () awful.layout.inc(layouts, -1) end, "Previous layout"), -- }}}
 
-    keydoc.group("Prompts and spawns"),
+    keydoc.group("Prompts and spawns"), -- {{{
     awful.key({modkey, "Control"}, "r", awesome.restart, "Restart Awesome"),
     awful.key({modkey, "Control"}, "q", awesome.quit, "Quit Awesome"),
     awful.key({modkey}, "y", function () awful.util.spawn(terminal) end, "Spawn terminal"),
     awful.key({modkey}, "x", function() menubar.show() end, "Menubar"),
+    awful.key({modkey}, "r", function() awful.util.spawn(terminal .. "-e ranger") end, "Spawn file manager"), -- }}}
 
-    keydoc.group("Music"),
+    keydoc.group("Music"), -- {{{
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
     awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower/raise volume"),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end)
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end) -- }}}
 )
 
 clientkeys = awful.util.table.join(
-    keydoc.group("Client Operations"),
+    keydoc.group("Client Operations"), -- {{{
     awful.key({modkey, "Shift"}, "w", function (c) awful.client.movetoscreen(c, 1) end, "Move to screen 1/2/3"),
     awful.key({modkey, "Shift"}, "e", function (c) awful.client.movetoscreen(c, 2) end),
     awful.key({modkey, "Shift"}, "r", function (c) awful.client.movetoscreen(c, 3) end),
@@ -279,7 +280,7 @@ clientkeys = awful.util.table.join(
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
-        end, "Minimize client")
+        end, "Minimize client") -- }}}
 )
 
 -- Bind all key numbers to tags.
@@ -287,7 +288,7 @@ clientkeys = awful.util.table.join(
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
     globalkeys = awful.util.table.join(globalkeys,
-        keydoc.group("Tag Operations"),
+        keydoc.group("Tag Operations"), -- {{{
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
                         local screen = mouse.screen
@@ -321,14 +322,14 @@ for i = 1, 9 do
                               awful.client.toggletag(tag)
                           end
                       end
-                  end, "Toggle tag on client"))
+                  end, "Toggle tag on client")) -- }}}
 end
 
 clientbuttons = awful.util.table.join(
-    keydoc.group("Mouse"),
+    keydoc.group("Mouse"), -- {{{
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end, "Focus and raise client"),
     awful.button({ modkey }, 1, awful.mouse.client.move, "Move client"),
-    awful.button({ modkey }, 3, awful.mouse.client.resize, "Resize client"))
+    awful.button({ modkey }, 3, awful.mouse.client.resize, "Resize client")) -- }}}
 
 -- Set keys
 root.keys(globalkeys) -- }}}
