@@ -207,6 +207,7 @@ root.buttons(awful.util.table.join(
 )) -- }}}
 
 -- Key bindings {{{
+-- Global keys {{{
 globalkeys = awful.util.table.join(
     awful.key({modkey}, "F1", keydoc.display),
     keydoc.group("Movement"), -- {{{
@@ -260,29 +261,6 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end) -- }}}
 )
 
-clientkeys = awful.util.table.join(
-    keydoc.group("Client Operations"), -- {{{
-    awful.key({modkey, "Shift"}, "w", function (c) awful.client.movetoscreen(c, 1) end, "Move to screen 1/2/3"),
-    awful.key({modkey, "Shift"}, "e", function (c) awful.client.movetoscreen(c, 2) end),
-    awful.key({modkey, "Shift"}, "r", function (c) awful.client.movetoscreen(c, 3) end),
-    awful.key({modkey, "Shift"}, "x", function (c) c:kill() end, "Kill client"),
-    awful.key({modkey, "Control"}, "Return", function (c) c:swap(awful.client.getmaster()) end, "Focus master"),
-    awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen end, "Toggle fullscreen state"),
-    awful.key({modkey, "Shift"}, "f", awful.client.floating.toggle, "Toggle floating state"),
-    awful.key({modkey}, "t", function (c) c.ontop = not c.ontop end, "Toggle top state"),
-    awful.key({modkey}, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end, "Toggle maximize state"),
-    awful.key({modkey}, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end, "Minimize client") -- }}}
-)
-
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
@@ -324,12 +302,38 @@ for i = 1, 9 do
                       end
                   end, "Toggle tag on client")) -- }}}
 end
+-- }}}
+
+-- Per-client keys {{{
+clientkeys = awful.util.table.join(
+    keydoc.group("Client Operations"), -- {{{
+    awful.key({modkey, "Shift"}, "w", function (c) awful.client.movetoscreen(c, 1) end, "Move to screen 1/2/3"),
+    awful.key({modkey, "Shift"}, "e", function (c) awful.client.movetoscreen(c, 2) end),
+    awful.key({modkey, "Shift"}, "r", function (c) awful.client.movetoscreen(c, 3) end),
+    awful.key({modkey, "Shift"}, "x", function (c) c:kill() end, "Kill client"),
+    awful.key({modkey, "Control"}, "Return", function (c) c:swap(awful.client.getmaster()) end, "Focus master"),
+    awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen end, "Toggle fullscreen state"),
+    awful.key({modkey, "Shift"}, "f", awful.client.floating.toggle, "Toggle floating state"),
+    awful.key({modkey}, "t", function (c) c.ontop = not c.ontop end, "Toggle top state"),
+    awful.key({modkey}, "m",
+        function (c)
+            c.maximized_horizontal = not c.maximized_horizontal
+            c.maximized_vertical   = not c.maximized_vertical
+        end, "Toggle maximize state"),
+    awful.key({modkey}, "n",
+        function (c)
+            -- The client currently has the input focus, so it cannot be
+            -- minimized, since minimized clients can't have the focus.
+            c.minimized = true
+        end, "Minimize client") -- }}}
+)
 
 clientbuttons = awful.util.table.join(
     keydoc.group("Mouse"), -- {{{
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end, "Focus and raise client"),
     awful.button({ modkey }, 1, awful.mouse.client.move, "Move client"),
     awful.button({ modkey }, 3, awful.mouse.client.resize, "Resize client")) -- }}}
+-- }}}
 
 -- Set keys
 root.keys(globalkeys) -- }}}
