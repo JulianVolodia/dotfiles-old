@@ -261,9 +261,9 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
     keydoc.group("Client Operations"),
-    awful.key({modkey, "Shift"}, "w", awful.client.movetoscreen(c, 1), "Move to screen 1/2/3"),
-    awful.key({modkey, "Shift"}, "e", awful.client.movetoscreen(c, 1)),
-    awful.key({modkey, "Shift"}, "r", awful.client.movetoscreen(c, 1)),
+    awful.key({modkey, "Shift"}, "w", function (c) awful.client.movetoscreen(c, 1) end, "Move to screen 1/2/3"),
+    awful.key({modkey, "Shift"}, "e", function (c) awful.client.movetoscreen(c, 2) end),
+    awful.key({modkey, "Shift"}, "r", function (c) awful.client.movetoscreen(c, 3) end),
     awful.key({modkey, "Shift"}, "x", function (c) c:kill() end, "Kill client"),
     awful.key({modkey, "Control"}, "Return", function (c) c:swap(awful.client.getmaster()) end, "Focus master"),
     awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen end, "Toggle fullscreen state"),
