@@ -61,11 +61,12 @@ local function key2str(key)
       ["XF86AudioMute"] = "🔈",
       -- For combined bindings
       ["#10"] = "#",
-      ["j"] = "j/k",
-      ["l"] = "l/h",
+      ["l"] = "h/j/k/l",
       ["UpArrow"] = "↑/↓",
       ["LeftArrow"] = "←/→",
       ["w"] = "w/e/r",
+      ["-"] = "-/+",
+      [","] = ",/.",
       ["PgUp"] = "⇞/⇟",
       ["Home"] = "↖/↘",
       ["XF86AudioLowerVolume"] = "🔉/🔊"
