@@ -51,7 +51,6 @@ awful.key.new = new             -- monkey patch
 local function key2str(key)
    local sym = key.key or key.keysym
    local translate = {
-      ["#10"] = "#",
       [" "] = "␣",
       ["Escape"] = "⎋",
       ["Return"] = "↵",
@@ -59,17 +58,17 @@ local function key2str(key)
       ["Compose"] = "⎄",
       ["Delete"] = "⌦",
       ["Backspace"] = "⌫",
-      ["Home"] = "↖",
-      ["End"] = "↘",
-      ["PgUp"] = "⇞",
-      ["PgDn"] = "⇟",
-      ["UpArrow"] = "↑",
-      ["DownArrow"] = "↓",
-      ["LeftArrow"] = "←",
-      ["RightArrow"] = "→",
       ["XF86AudioMute"] = "🔈",
-      ["XF86AudioLowerVolume"] = "🔉",
-      ["XF86AudioRaiseVolume"] = "🔊"
+      -- For combined bindings
+      ["#10"] = "#",
+      ["j"] = "j/k",
+      ["l"] = "l/h",
+      ["UpArrow"] = "↑/↓",
+      ["LeftArrow"] = "←/→",
+      ["w"] = "w/e/r",
+      ["PgUp"] = "⇞/⇟",
+      ["Home"] = "↖/↘",
+      ["XF86AudioLowerVolume"] = "🔉/🔊"
    }
    sym = translate[sym] or sym
    if not key.modifiers or #key.modifiers == 0 then return sym end

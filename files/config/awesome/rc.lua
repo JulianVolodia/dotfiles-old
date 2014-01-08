@@ -216,17 +216,18 @@ globalkeys = awful.util.table.join(
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
-        end, "Focus next client"),
+        end, "Focus next/previous client"),
     awful.key({modkey}, "k",
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
-        end, "Focus previous client"),
-    awful.key({modkey, "Shift"}, "j", function () awful.client.swap.byidx(1) end, "Swap with next client"),
-    awful.key({modkey, "Shift"}, "k", function () awful.client.swap.byidx(-1) end, "Swap with previous client"),
-    awful.key({modkey, "Control"}, "j", function () awful.screen.focus_relative(1) end, "Focus next screen"),
-    awful.key({modkey, "Control"}, "k", function () awful.screen.focus_relative(-1) end, "Focus previous screen"),
+        end),
+    awful.key({modkey, "Shift"}, "j", function () awful.client.swap.byidx(1) end, "Swap with next/previous client"),
+    awful.key({modkey, "Shift"}, "k", function () awful.client.swap.byidx(-1) end),
     awful.key({modkey}, "u", awful.client.urgent.jumpto, "Jump to urgent client"),
+    awful.key({modkey}, "w", function () awful.screen.focus(1) end, "Focus screen 1/2/3"),
+    awful.key({modkey}, "e", function () awful.screen.focus(2) end),
+    awful.key({modkey}, "r", function () awful.screen.focus(3) end),
     awful.key({modkey, "Control" }, "n", awful.client.restore, "Restore random client"),
     awful.key({modkey}, "Tab",
         function ()
@@ -237,12 +238,12 @@ globalkeys = awful.util.table.join(
         end, "Focus previous client"),
 
     keydoc.group("Layout Manipulation"),
-    awful.key({modkey}, "l", function () awful.tag.incmwfact(0.05) end, "Increase master ratio"),
-    awful.key({modkey}, "h", function () awful.tag.incmwfact(-0.05) end, "Decrease master ratio"),
-    awful.key({modkey, "Shift"}, "h", function () awful.tag.incnmaster(1) end, "More master clients"),
-    awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1) end, "Fewer master clients"),
-    awful.key({modkey, "Control"}, "h", function () awful.tag.incncol( 1) end, "More slave columns"),
-    awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1) end, "Fewer slave columns"),
+    awful.key({modkey}, "l", function () awful.tag.incmwfact(0.05) end, "Decrease/increase master ratio"),
+    awful.key({modkey}, "h", function () awful.tag.incmwfact(-0.05) end),
+    awful.key({modkey, "Shift"}, "l", function () awful.tag.incnmaster(-1) end,  "Fewer/more master clients"),
+    awful.key({modkey, "Shift"}, "h", function () awful.tag.incnmaster(1) end),
+    awful.key({modkey, "Control"}, "l", function () awful.tag.incncol(-1) end, "Fewer/more slave columns"),
+    awful.key({modkey, "Control"}, "h", function () awful.tag.incncol( 1) end),
     awful.key({modkey}, "space", function () awful.layout.inc(layouts,  1) end, "Next layout"),
     awful.key({modkey, "Shift"}, "space", function () awful.layout.inc(layouts, -1) end, "Previous layout"),
 
@@ -254,15 +255,15 @@ globalkeys = awful.util.table.join(
 
     keydoc.group("Music"),
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
-    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower volume"),
-    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end, "Raise volume")
+    awful.key({}, "XF86AudioLowerVolume", function() awful.util.spawn("pulseaudio-ctl down") end, "Lower/raise volume"),
+    awful.key({}, "XF86AudioRaiseVolume", function() awful.util.spawn("pulseaudio-ctl up") end)
 )
 
 clientkeys = awful.util.table.join(
     keydoc.group("Client Operations"),
-    awful.key({modkey, "Shift"}, "w", awful.client.movetoscreen(c, 1), "Move to first screen"),
-    awful.key({modkey, "Shift"}, "e", awful.client.movetoscreen(c, 1), "Move to second screen"),
-    awful.key({modkey, "Shift"}, "r", awful.client.movetoscreen(c, 1), "Move to third screen"),
+    awful.key({modkey, "Shift"}, "w", awful.client.movetoscreen(c, 1), "Move to screen 1/2/3"),
+    awful.key({modkey, "Shift"}, "e", awful.client.movetoscreen(c, 1)),
+    awful.key({modkey, "Shift"}, "r", awful.client.movetoscreen(c, 1)),
     awful.key({modkey, "Shift"}, "x", function (c) c:kill() end, "Kill client"),
     awful.key({modkey, "Control"}, "Return", function (c) c:swap(awful.client.getmaster()) end, "Focus master"),
     awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen end, "Toggle fullscreen state"),
