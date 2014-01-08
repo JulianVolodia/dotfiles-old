@@ -63,11 +63,11 @@ local layouts =
     -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    -- awful.layout.suit.magnifier
 } -- }}}
 
 -- Wallpaper {{{
@@ -253,7 +253,7 @@ globalkeys = awful.util.table.join(
     awful.key({modkey, "Control"}, "q", awesome.quit, "Quit Awesome"),
     awful.key({modkey}, "y", function () awful.util.spawn(terminal) end, "Spawn terminal"),
     awful.key({modkey}, "x", function() menubar.show() end, "Menubar"),
-    awful.key({modkey}, "r", function() awful.util.spawn(terminal .. "-e ranger") end, "Spawn file manager"), -- }}}
+    awful.key({modkey}, "r", function() awful.util.spawn(terminal .. " -e ranger") end, "Spawn file manager"), -- }}}
 
     keydoc.group("Music"), -- {{{
     awful.key({}, "XF86AudioMute", function() awful.util.spawn("pulseaudio-ctl mute") end, "Toggle mute"),
@@ -340,22 +340,18 @@ root.keys(globalkeys) -- }}}
 
 -- Rules {{{
 awful.rules.rules = {
-    -- All clients will match this rule.
+    -- All clients will match this rule
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
+    { rule = { class = "mpv" },
       properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    -- Set Firefox to always map on screen 1, tag 1
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][1] } },
 } -- }}}
 
 -- Signals {{{
