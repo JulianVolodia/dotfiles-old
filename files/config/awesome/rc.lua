@@ -233,8 +233,8 @@ keydoc.group("Layout Manipulation"), -- {{{
     awful.key({modkey, "Shift"}, "+", function () awful.tag.incnmaster(1) end),
     awful.key({modkey, "Control"}, "-", function () awful.tag.incncol(-1) end, "Fewer/more slave columns"),
     awful.key({modkey, "Control"}, "+", function () awful.tag.incncol( 1) end),
-    awful.key({modkey}, ",", function () awful.layout.inc(layouts,  1) end, "Previous/next layout"),
-    awful.key({modkey}, ".", function () awful.layout.inc(layouts, -1) end), -- }}}
+    awful.key({modkey}, ",", function () awful.layout.inc(layouts, -1) end, "Previous/next layout"),
+    awful.key({modkey}, ".", function () awful.layout.inc(layouts, 1) end), -- }}}
 
     keydoc.group("Prompts and spawns"), -- {{{
         awful.key({modkey, "Control"}, "r", awesome.restart, "Restart Awesome"),
