@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Weechat
+Type=Application
+Comment=Command-line IRC client
+Terminal=true
+Exec=weechat-curses
+Icon=weechat-curses
+Categories=ConsoleOnly;
+GenericName=IRC Client

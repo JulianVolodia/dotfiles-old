@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Ncmpc
+Type=Application
+Comment=Command-line MPD client
+Terminal=true
+Exec=ncmpc
+Icon=ncmpc
+Categories=ConsoleOnly;
+GenericName=Music Player
