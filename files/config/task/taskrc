@@ -20,13 +20,11 @@ undo.style=diff
 burndown.bias=0.666
 
 # Why the fuck doesn't taskwarrior respect LC_TIME?
-dateformat=d.m.Y
-dateformat.report=d.m.Y
+dateformat=d.m.Y h:n
 dateformat.holiday=YMD
-dateformat.edit=H:N d.m.Y
-dateformat.info=H:N d.m.Y
-dateformat.annotation=d.m.Y
 weekstart=Monday
+
+calendar.holidays=full
 
 # Include holiday file
 include /usr/share/doc/task/rc/holidays.de-DE.rc
