@@ -32,6 +32,6 @@ fi
 export HGRCPATH="$XDG_CONFIG_HOME/mercurial/hgrc"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export GVIMINIT='let $MYGVIMRC="$XDG_CONFIG_HOME/vim/gvimrc" | source $MYGVIMRC'
-export VIMPERATOR_INIT=":source \"$XDG_CONFIG_HOME/vimperator/vimperatorrc\""
+export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
