@@ -18,7 +18,7 @@ search_wrap = true
 # "system", "on" or "off"
 cursor_blink = system
 # "block", "underline" or "ibeam"
-cursor_shape = ibeam
+cursor_shape = block
 
 # $BROWSER is used by default
 #browser = firefox
@@ -30,14 +30,14 @@ cursor_shape = ibeam
 size_hints = false
 
 [colors]
-foreground = #dcdccc
-foreground_bold = #ffffff
-#foreground_dim = #888888
-background = #1a1a1a
-#cursor = #dcdccc
+foreground = #999999
+foreground_bold = #808080
+foreground_dim = #cccccc
+background = #ffffff
+cursor = #32cd32
 
 # if unset, will reverse foreground and background
-highlight = #2f2f2f
+highlight = #32cd32
 
 # colors from color0 to color254 can be set
 color0 = #3f3f3f
