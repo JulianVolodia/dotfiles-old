@@ -30,9 +30,9 @@ cursor_shape = block
 size_hints = false
 
 [colors]
-foreground = #999999
-foreground_bold = #808080
-foreground_dim = #cccccc
+foreground = #808080
+foreground_bold = #707070
+foreground_dim = #aaaaaa
 background = #ffffff
 cursor = #32cd32
 
