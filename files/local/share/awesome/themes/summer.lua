@@ -20,7 +20,7 @@ theme.fg_focus      = white
 theme.fg_urgent     = white
 theme.fg_minimize   = white
 
-theme.border_width  = 2
+theme.border_width  = 8
 theme.border_normal = lightgray
 theme.border_focus  = limegreen
 theme.border_marked = darkgray
