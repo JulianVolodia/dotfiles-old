@@ -39,7 +39,7 @@ end -- }}}
 
 -- Variable definitions {{{
 -- Themes define colours, icons, and wallpapers
-theme = "monokai.lua"
+theme = "summer.lua"
 themedir = os.getenv("XDG_DATA_HOME") .. "/awesome/themes/"
 beautiful.init(themedir .. theme)
 
