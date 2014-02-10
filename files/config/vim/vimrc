@@ -93,7 +93,7 @@
             " }}}
             " Airline {{{
                 " Use this theme
-                let g:airline_theme = 'molokai'
+                let g:airline_theme = 'light'
                 " Separators between categories
                 let g:airline_left_sep = '»'
                 let g:airline_right_sep = '«'
@@ -482,7 +482,7 @@
 " General {{{
     syntax enable
     set background=dark
-    colorscheme base16-monokai
+    colorscheme summerfruit256
     " I want to use LaTeX as my main TeX flavor, thank you very much
     " Also, it's kind of a pain in the ass having to set this in .vimrc, though
     " that's probably just my ignorance speaking
