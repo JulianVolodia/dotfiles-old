@@ -3,7 +3,7 @@
 [ -z $XDG_RUNTIME_DIR ] && export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/dbus/user_bus_socket"
 # Start GNOME Keyring
-eval $(/usr/bin/gnome-keyring-daemon --start)
+eval $(/usr/bin/gnome-keyring-daemon --components=pkcs11,secrets,ssh,gpg --start)
 export GNOME_KEYRING_CONTROL GPG_AGENT_INFO SSH_AUTH_SOCK
 
 export PATH="$HOME/.local/bin:$PATH"
