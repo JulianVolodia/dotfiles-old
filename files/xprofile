@@ -2,9 +2,6 @@
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/dbus/user_bus_socket"
 
-# Override environment variables for graphical environment
-export EDITOR="gvim -f"
-
 # Need this in order to use GTK style for Qt
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
