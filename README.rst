@@ -1,3 +1,9 @@
+=======
+Warning
+=======
+
+This repository has been deprecated and was moved to ``dotfiles-old``. The new ``dotfiles`` repo uses Evan Purkhiser's ``dots`` utility, which allows for more customization.
+
 ================
 Runiq's dotfiles
 ================
